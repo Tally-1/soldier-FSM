@@ -4,7 +4,7 @@ switch (stance _man) do
 	{
 		case "STAND" :	{ _man setUnitPos "MIDDLE" };
 		case "CROUCH": 	{ _man setUnitPos "DOWN"  };
-		case "PRONE" : 	{ [_man] spawn Tally_Fnc_Roll;};
+		case "PRONE" : 	{ [_man] spawn SFSM_fnc_Roll;};
 	};
 
 true;

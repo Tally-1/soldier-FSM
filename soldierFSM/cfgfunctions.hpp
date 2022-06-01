@@ -1,20 +1,20 @@
 class CfgFunctions
 {
-	class Tally
+	class SFSM
 	{
 		class misc
 		{
 			class HandleSuppression {file = "\soldierFSM\functions\misc\fn_HandleSuppression.sqf"};
-			class SFSM_TaskManager 	{file = "\soldierFSM\functions\misc\fn_SFSM_TaskManager.sqf"};
+			class TaskManager 		{file = "\soldierFSM\functions\misc\fn_TaskManager.sqf"};
 			class StoreSuppression	{file = "\soldierFSM\functions\misc\fn_StoreSuppression.sqf"};
-			class SFSM_InitMan		{file = "\soldierFSM\functions\misc\fn_SFSM_InitMan.sqf"};
+			class InitMan			{file = "\soldierFSM\functions\misc\fn_InitMan.sqf"};
 			class onSuppression		{file = "\soldierFSM\functions\misc\fn_onSuppression.sqf"};
 			class SuppressedEH		{file = "\soldierFSM\functions\misc\fn_SuppressedEH.sqf"};
 			class Roll				{file = "\soldierFSM\functions\misc\fn_Roll.sqf"};
-			class SFSM_unitData		{file = "\soldierFSM\functions\misc\fn_SFSM_unitData.sqf"};
+			class unitData			{file = "\soldierFSM\functions\misc\fn_unitData.sqf"};
 			class sinCosPos			{file = "\soldierFSM\functions\misc\fn_sinCosPos.sqf"};
 			class 3dDebug			{file = "\soldierFSM\functions\misc\fn_3dDebug.sqf"};
-			class SFSM_3DdebugText	{file = "\soldierFSM\functions\misc\fn_SFSM_3DdebugText.sqf"};
+			class 3DdebugText		{file = "\soldierFSM\functions\misc\fn_3DdebugText.sqf"};
 			
 		};
 
@@ -41,7 +41,7 @@ class CfgFunctions
 		{
 			class serverInit		{file = "\soldierFSM\functions\init\fn_serverInit.sqf"};
 			class initClient		{file = "\soldierFSM\functions\init\fn_initClient.sqf"};
-			class SFSM_init			{file = "\soldierFSM\functions\init\fn_SFSM_init.sqf"; 		postInit = 1};
+			class initSFSM			{file = "\soldierFSM\functions\init\fn_initSFSM.sqf"; 		postInit = 1};
 		};
 	};
 };

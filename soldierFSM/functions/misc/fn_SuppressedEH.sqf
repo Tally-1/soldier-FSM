@@ -25,7 +25,7 @@ _man addEventHandler ["Suppressed", {
 	if((!(SFSM_TestMode)) 
 	&&{(side _man == side _shooter)})exitwith{};
 
-	[_unit, _ammoClassName, _shooter] call Tally_Fnc_onSuppression;
+	[_unit, _ammoClassName, _shooter] call SFSM_fnc_onSuppression;
 	
 }];
 
@@ -33,15 +33,15 @@ private _explosionEH =
 _man addEventHandler ["Explosion", {
 	params ["_vehicle", "_damage", "_source"];
 	
-	if([_man] call Tally_Fnc_canFlinch)
+	if([_man] call SFSM_fnc_canFlinch)
 	then{
-			[_vehicle, true] call Tally_Fnc_flinch;
+			[_vehicle, true] call SFSM_fnc_flinch;
 	};
 
 }];
 
-[_man, "SuppressedEH", _SuppressedEH] call Tally_Fnc_SFSM_unitData;
-[_man, "explosionEH", _explosionEH] call Tally_Fnc_SFSM_unitData;
+[_man, "SuppressedEH", _SuppressedEH] call SFSM_fnc_unitData;
+[_man, "explosionEH", _explosionEH] call SFSM_fnc_unitData;
 
 
 
@@ -52,7 +52,7 @@ then{
 		_man removeAllEventHandlers "FiredNear";
 		_man addEventHandler ["FiredNear", {
 			params ["_unit", "_firer", "_distance", "_weapon", "_muzzle", "_mode", "_ammo", "_gunner"];
-			if(SFSM_TestMode)then{[_unit, _ammo, _firer] call Tally_Fnc_onSuppression};
+			if(SFSM_TestMode)then{[_unit, _ammo, _firer] call SFSM_fnc_onSuppression};
 
 		}];
 };

@@ -10,7 +10,7 @@ then{
 
 			if(_close
 			&&{_notPlayer})
-			then{[_x] call Tally_Fnc_SFSM_3DdebugText};
+			then{[_x] call SFSM_fnc_3DdebugText};
 			
 		} forEach allUnits;
 }}];

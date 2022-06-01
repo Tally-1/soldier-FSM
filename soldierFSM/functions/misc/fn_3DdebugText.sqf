@@ -1,10 +1,11 @@
 params["_man"];
 if(isPlayer _man)exitwith{};
+if!(typeOf (vehicle _man) == typeOf _man)exitwith{};//if man is in a vehicle
 
 private _3dPos		= (ASLToAGL getPosASL _man);
-private _supp		= [(getSuppression _man), 2]call Tally_fnc_Decimals;
-private _rps		= [_man, "roundsPrSecond"] 	call Tally_Fnc_SFSM_unitData;
-private _action		= [_man, "action"] 			call Tally_Fnc_SFSM_unitData;
+private _supp		= [(getSuppression _man), 2]call ObjScan_fnc_Decimals;
+private _rps		= [_man, "roundsPrSecond"] 	call SFSM_fnc_unitData;
+private _action		= [_man, "action"] 			call SFSM_fnc_unitData;
 
 private _actionTxt   = ["Action: ", _action] 		joinString "";
 private _supTxt		 = ["Supression: ", _supp] 		joinString "";
@@ -43,31 +44,32 @@ then{
 	};
 
 //suppression level
+
 if(_supp > 0)
 then{
 drawIcon3D 	[
-				"",			//texture (icon type)
-				_suppColor,	//color
-				_supPos,	//position
-				0.2, 		//size X
-				0.2, 		//size Y
-				0, 	 		//angle
-				_supTxt, 	//text
-				2, 			//shadow
-				0.03		//textSize
+				"",			
+				_suppColor,	
+				_supPos,	
+				0.2, 		
+				0.2, 		
+				0, 	 		
+				_supTxt, 	
+				2, 			
+				0.03		
 			];
 };
 //current action
 drawIcon3D 	[
-				"",			//texture (icon type)
-				_actColor,	//color
-				_actionPos,	//position
-				0.2, 		//size X
-				0.2, 		//size Y
-				0, 	 		//angle
-				_actionTxt, //text
-				2, 			//shadow
-				0.03		//textSize
+				"",			
+				_actColor,	
+				_actionPos,	
+				0.2, 		
+				0.2, 		
+				0, 	 		
+				_actionTxt, 
+				2, 			
+				0.03		
 			];
 
 

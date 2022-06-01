@@ -1,7 +1,7 @@
 params ["_man"];
 	sleep 1.2;
-	[_man, "flinching", false] 	call Tally_Fnc_SFSM_unitData;
-	[_man, "action", "none"] 	call Tally_Fnc_SFSM_unitData;
+	[_man, "flinching", false] 	call SFSM_fnc_unitData;
+	[_man, "action", "none"] 	call SFSM_fnc_unitData;
 	_man enableAI "FSM";
 
 if ((stance _man) == "PRONE")

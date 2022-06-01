@@ -1,6 +1,6 @@
 params ["_man", "_endPos", "_timer", "_target", "_behaviour"];
 
-waitUntil{sleep 1; [_man, _endPos, _timer] call Tally_Fnc_dodgeEnded};
+waitUntil{sleep 1; [_man, _endPos, _timer] call SFSM_fnc_dodgeEnded};
 
 if(SFSM_forceDodge)
 then{
@@ -17,5 +17,5 @@ then{
 
 };
 
-[_man, "dodging", 	false] 	call Tally_Fnc_SFSM_unitData;
-[_man, "action", 	"none"]	call Tally_Fnc_SFSM_unitData;
+[_man, "dodging", 	false] 	call SFSM_fnc_unitData;
+[_man, "action", 	"none"]	call SFSM_fnc_unitData;

@@ -8,7 +8,7 @@ private _dirCorrection	= -90;
 if(_dodgeDir == "right")then{_dirCorrection = 90};
 
 private _newDir 	= (_dir + _dirCorrection);
-private _dodgePos 	= [_XX, _YY, _newDir, SFSM_DodgeDistance] call Tally_Fnc_sinCosPos;
+private _dodgePos 	= [_XX, _YY, _newDir, SFSM_DodgeDistance] call SFSM_fnc_sinCosPos;
 
 
 _dodgePos

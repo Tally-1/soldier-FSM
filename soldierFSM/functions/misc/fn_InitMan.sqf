@@ -16,6 +16,6 @@ _unitData set 	["action", 				"none"];
 
 
 _man setVariable["SFSM_UnitData", _unitData, true];
-[_man] call Tally_Fnc_SuppressedEH;
+[_man] call SFSM_fnc_SuppressedEH;
 
 true;

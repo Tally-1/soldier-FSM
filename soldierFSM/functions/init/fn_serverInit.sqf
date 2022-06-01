@@ -32,7 +32,7 @@ missionNamespace setVariable ["SFSM_Debugger", 			SFSM_Debugger, 			true];
 missionNamespace setVariable ["SFSM_TestMode", 			SFSM_TestMode, 			true];
 
 
-{[_x] call Tally_Fnc_SFSM_InitMan} forEach allUnits;
-[] spawn Tally_Fnc_SFSM_TaskManager;
+{[_x] call SFSM_fnc_InitMan} forEach allUnits;
+[] spawn SFSM_fnc_TaskManager;
 
 diag_log "**soldier FSM server loaded**";
