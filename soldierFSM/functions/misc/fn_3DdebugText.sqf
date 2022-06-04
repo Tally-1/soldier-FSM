@@ -19,8 +19,8 @@ private _supPos 	= [(_3dPos # 0), (_3dPos # 1), ((_3dPos # 2) + 2.1)];
 private _incPos 	= [(_3dPos # 0), (_3dPos # 1), ((_3dPos # 2) + 1.9)];
 
 if(isNil "_action")			then{_actionTxt = "unknown"};
-if(_action == "flinch")	then{_actColor = [0.9,0.2,0.2,1]};
-if(_action == "dodging")then{_actColor = [0.85,0.4,0,1]};
+if(_action == "flinch")		then{_actColor = [0.9,0.2,0.2,1]};
+if(_action == "dodging")	then{_actColor = [0.85,0.4,0,1]};
 
 /*
 3D icons works in layers, the last one to be added is on the top.
