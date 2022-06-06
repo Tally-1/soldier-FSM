@@ -146,7 +146,7 @@
 	"CHECKBOX",
 	["Debugger", "show debug-info, and 3D markers"],
 	"soldier FSM",
-	true
+	false
 ] call cba_settings_fnc_init;
 
 [
