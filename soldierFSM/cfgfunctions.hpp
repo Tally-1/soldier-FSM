@@ -10,7 +10,7 @@ class CfgFunctions
 			class InitMan			{file = "\soldierFSM\functions\misc\fn_InitMan.sqf"};
 			class onSuppression		{file = "\soldierFSM\functions\misc\fn_onSuppression.sqf"};
 			class SuppressedEH		{file = "\soldierFSM\functions\misc\fn_SuppressedEH.sqf"};
-			class Roll				{file = "\soldierFSM\functions\misc\fn_Roll.sqf"};
+			class Roll			{file = "\soldierFSM\functions\misc\fn_Roll.sqf"};
 			class unitData			{file = "\soldierFSM\functions\misc\fn_unitData.sqf"};
 			class sinCosPos			{file = "\soldierFSM\functions\misc\fn_sinCosPos.sqf"};
 			class 3dDebug			{file = "\soldierFSM\functions\misc\fn_3dDebug.sqf"};
