@@ -1,3 +1,4 @@
+#include "BIS_AddonInfo.hpp"
 #include "\soldierFSM\functions\cfgFunctions.hpp"
 
 
