@@ -12,6 +12,6 @@ do {
 		} 
 		forEach allUnits;
 
-
+		{[_x] call SFSM_fnc_InitGroup} forEach allGroups;
 		sleep SFSM_TaskCycleTimer;
 	};

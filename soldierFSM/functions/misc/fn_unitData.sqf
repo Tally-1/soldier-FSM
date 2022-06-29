@@ -14,4 +14,4 @@ if(isNil "_value")exitwith{_returnVal};
 _unitData set [_item, _value];
 _man setVariable["SFSM_UnitData", _unitData, true];
 
-true;
+_value;

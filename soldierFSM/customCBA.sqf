@@ -43,7 +43,7 @@
 	[
 		2,   	//minimum 
 		30, 	//max
-		6, 		//default
+		4, 		//default
 		0,		//decimals
 		false
 	],
@@ -59,7 +59,7 @@
 	[
 		2,   	//minimum 
 		30, 	//max
-		6, 		//default
+		10,		//default
 		0,		//decimals
 		false
 	],
@@ -73,15 +73,29 @@
 	["Dodge Distance", "How far the man will run when dodging"],
 	"soldier FSM",
 	[
-		5,   	//minimum 
-		200, 	//max
-		20, 	//default
+		30,   	//minimum 
+		80, 	//max
+		50, 	//default
 		0,		//decimals
 		false
 	],
 	1
 ] call cba_settings_fnc_init;
 
+[
+	"SFSM_reactFireCoolDown",
+	"SLIDER",
+	["React fire coolDown", "Time between each time a unit inmediately barrages the enemy upon incoming fire"],
+	"soldier FSM",
+	[
+		60,   	//minimum 
+		300, 	//max
+		180, 	//default
+		0,		//decimals
+		false
+	],
+	1
+] call cba_settings_fnc_init;
 
 [
 	"SFSM_DodgeTimer",
@@ -107,7 +121,7 @@
 	[
 		0.1,   	//minimum 
 		2, 		//max
-		0.5, 	//default
+		0.95, 	//default
 		2,		//decimals
 		false
 	],
@@ -117,21 +131,27 @@
 
 
 [
-	"SFSM_TaskCycleTimer",
+	"SFSM_customEH_Timer",
 	"SLIDER",
-	["Task Cycle", "Time beteen each iteration of the Task-manager"],
+	["Custom EH Cycle", "Time beteen each iteration of the custom EnemySpotted eventhandler, for better performance increase value here"],
 	"soldier FSM",
 	[
-		8,   	//minimum 
-		30, 	//max
-		10, 	//default
-		0,		//decimals
+		0.02,   //minimum 
+		3, 		//max
+		0.2, 	//default
+		2,		//decimals
 		false
 	],
 	1
 ] call cba_settings_fnc_init;
 
-
+[
+	"SFSM_noCoverPanic",
+	"CHECKBOX",
+	["panic upon lack of cover", "Yip's much wanted eyelid trench, if no cover is found upon battle-start the unit panics for about 2 seconds"],
+	"soldier FSM",
+	true
+] call cba_settings_fnc_init;
 
 [
 	"SFSM_forceDodge",
@@ -148,7 +168,7 @@
 	"soldier FSM",
 	false
 ] call cba_settings_fnc_init;
-
+/*
 [
 	"SFSM_TestMode",
 	"CHECKBOX",
@@ -157,3 +177,4 @@
 	false
 ] call cba_settings_fnc_init;
 
+*/

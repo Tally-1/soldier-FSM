@@ -1,0 +1,15 @@
+params ["_unit", "_target"];
+private _lastBullet = [_unit, "last_bullet_fired"] call SFSM_fnc_unitData;
+if(time - _lastBullet < 2)exitwith{false};
+
+private _battle = [_unit, "currentBattle"] call SFSM_fnc_unitData;
+if!(_battle == "none")exitwith{false};
+
+private _lastBattle = [_unit, "lastBattle"] call SFSM_fnc_unitData;
+if(time - _lastBattle < 10)exitwith{false};
+
+private _initData = [_unit, _target] call SFSM_fnc_battleInitType;
+if!(_initData#0 == "start")exitwith{false};
+
+
+true;

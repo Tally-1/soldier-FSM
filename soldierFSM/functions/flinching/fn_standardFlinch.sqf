@@ -1,10 +1,13 @@
 params ["_man"];
-_man disableAI "FSM"; 
-switch (stance _man) do
-	{
-		case "STAND" :	{ _man setUnitPos "MIDDLE" };
-		case "CROUCH": 	{ _man setUnitPos "DOWN"  };
-		case "PRONE" : 	{ [_man] spawn SFSM_fnc_Roll;};
-	};
+private _minReactionTime = 0.2;
+private _reactionTime	 = 1;
+private _timeReduction 	 = random(_man skill "spotTime");
 
-true;
+_reactionTime = _reactionTime - _timeReduction;
+
+if	(_reactionTime < _minReactionTime)
+then{_reactionTime = _minReactionTime};
+
+[_man, _reactionTime] spawn SFSM_fnc_execStandardFlinch;
+
+_reactionTime;

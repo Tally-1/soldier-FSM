@@ -1,5 +1,7 @@
 params ["_man"];
-_man disableAI "FSM"; 
+_man disableAI "FSM";
+[_man, "action", "flinch"] call SFSM_fnc_unitData;
+
 private _move 		= "";
 private _standmoves = [	"AmovPercMstpSrasWrflDnon_AadjPpneMstpSrasWrflDright",
 						"AmovPercMstpSrasWrflDnon_AadjPpneMstpSrasWrflDleft",
@@ -20,4 +22,4 @@ switch (stance _man) do {
 
 _man playMove _move;
 
-true;
+0;
