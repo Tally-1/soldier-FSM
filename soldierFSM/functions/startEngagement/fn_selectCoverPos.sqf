@@ -25,8 +25,7 @@ private _coverPos = nil;
 
 if!(count _availablePositions > 0)
 then{
-		_coverPos = [_man, _availablePositions] call Tcore_fnc_nearestPos; 
-		"found available position" call SFSM_fnc_debugMessage;
+		_coverPos = [_man, _availablePositions] call Tcore_fnc_nearestPos;
 	};
 
 if(isNil "_coverPos")exitWith{nil};

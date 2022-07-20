@@ -6,8 +6,10 @@ private _centerPos = (_battleField get "center");
 private _radius    = (_battleField get "radius");
 private _areaName  = (_battleField get "name");
 private _zones     = (_battleField get "zones");
-
 private _coverPos  = (_battleField get "coverPositions");
+private _gridHash  = missionNamespace getVariable (_battleField get 'grid');
+
+
 
 private _marker1 = [_centerPos, _radius] call SFSM_fnc_drawCircle;
 private _marker2 = [_centerPos, _areaName, 1] call SFSM_fnc_posMarker;
@@ -45,7 +47,30 @@ if(count _coverPos > 100)exitWith{_battleField set ["markers", _markers]; _marke
 } forEach _coverPos;
 
 
+if(!isNil "_gridHash")
+then{
+		private _hfWest   = _gridHash get 'hiddenFromWest';
+		private _hfEast   = _gridHash get 'hiddenFromEast';
+		private _hfGuer   = _gridHash get 'hiddenFromGuer';
 
+		{
+			private _marker = [_x, "", 0.7, 'colorBlue', "Contact_dot1"] call SFSM_fnc_posMarker;
+			_markers pushBackUnique _marker;
+		} forEach _hfWest;
+
+		{
+			private _marker = [_x, "", 0.7, 'colorRed', "Contact_dot1"] call SFSM_fnc_posMarker;
+			_markers pushBackUnique _marker;
+		} forEach _hfEast;
+
+
+		/*
+		{
+			private _marker = [_x, "", 0.7, 'colorGreen', "Contact_dot1"] call SFSM_fnc_posMarker;
+			_markers pushBackUnique _marker;
+		} forEach _hfGuer;
+		*/
+};
 
 _battleField set ["markers", _markers];
 

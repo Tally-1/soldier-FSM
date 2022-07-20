@@ -1,0 +1,33 @@
+Appraisal - "Soldier.FSM" Alpha 0.1
+The beginning of the big thing, to make soldiers value their virtual lives. 
+
+This project will regularily read a unit's total suppression value. We will use the sum of suppression to make decisions in battle. 
+Vanilla mechanics dictate the suppression value. 
+
+When a unit is initially suppressed, as in they are now above 0% suppression and below a threshold- the first bullets in an engagement should trigger this 
+(Parameter, maximum allowed suppression for flinch response), they will "Flinch". 
+
+
+A Flinching unit will just initially crouch. (This is a placeholder for potential animations.) 
+After triggering, the 'Flinch' response will go into a cooldown before it can trigger again. (Parameter, FlinchCoolDown)
+
+If a unit is initially suppressed by .50 cal weapons or larger, or are nearby an explosion, they will instead immediately dive and go prone as their "Flinch" response. 
+This type of flinch is subject to the same parameters as above. 
+
+While a unit is too suppressed, they will stay prone. (Parameter, suppression is above 50%). 
+(Note: We will later account for a unit not going prone if they are using cover that doesn't make sense for it. Expect to edit this in the future.)
+Use Pinned Down as a reference for the above two features. 
+
+If a unit takes a large amount of suppression in a short time (Parameter, rate of suppression increase needed to trigger), they will "Dodge". 
+A unit cannot dodge while flinching. (flinching will eventually be an animation, it's meant to resemble a "Stunned" state.)
+A Dodging unit will quickly strafe to one side if they are standing or crouched. 
+A Dodging unit will roll to one side if they are prone. 
+After dodging, a unit cannot dodge again until a cooldown expires. (Parameter, DodgeCoolDown) 
+Use danger.FSM as an educational reference. 
+
+
+*   (Parameter, maximum allowed suppression for flinch response). //meaning if over a certain level then no flinch
+*   (Parameter, FlinchCoolDown).
+*   (Parameter, suppression is above 50%).// stayProne
+*   (Parameter, rate of suppression increase needed to trigger) //Rounds pr Second to trigger dodge
+*   (Parameter, DodgeCoolDown) 

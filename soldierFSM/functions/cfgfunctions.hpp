@@ -18,6 +18,12 @@ class CfgFunctions
 			class soundReaction         {file = "\soldierFSM\functions\misc\fn_soundReaction.sqf"};
 			class forceMoveToPos		{file = "\soldierFSM\functions\misc\fn_forceMoveToPos.sqf"};
 		};
+
+		class curator
+		{
+			class zWPplaced             {file = "\soldierFSM\functions\curator\fn_zWPplaced.sqf"};
+			class zWPdeleted            {file = "\soldierFSM\functions\curator\fn_zWPdeleted.sqf"};
+		};
 		
 		class eventHandlers
 		{
@@ -38,6 +44,7 @@ class CfgFunctions
 			class GetDodgePos			{file = "\soldierFSM\functions\dodging\fn_GetDodgePos.sqf"};
 			class canDodge				{file = "\soldierFSM\functions\dodging\fn_canDodge.sqf"};
 			class getLateralPos			{file = "\soldierFSM\functions\dodging\fn_getLateralPos.sqf"};
+			class groupCanDodge         {file = "\soldierFSM\functions\dodging\fn_groupCanDodge.sqf"};
 			
 			
 		};
@@ -68,12 +75,24 @@ class CfgFunctions
 
 		class startEngagement
 		{
-			class getCoverPos           {file = "\soldierFSM\functions\startEngagement\fn_getCoverPos.sqf"};
-			class fightInitCover		{file = "\soldierFSM\functions\startEngagement\fn_fightInitCover.sqf"};
-			class takeCover				{file = "\soldierFSM\functions\startEngagement\fn_takeCover.sqf"};
-			class endTakeCover        	{file = "\soldierFSM\functions\startEngagement\fn_endTakeCover.sqf"};
-			class eyelidTrench			{file = "\soldierFSM\functions\startEngagement\fn_eyelidTrench.sqf"};
-			class selectCoverPos        {file = "\soldierFSM\functions\startEngagement\fn_selectCoverPos.sqf"};
+			class getCoverPos            {file = "\soldierFSM\functions\startEngagement\fn_getCoverPos.sqf"};
+			class fightInitCover		 {file = "\soldierFSM\functions\startEngagement\fn_fightInitCover.sqf"};
+			class takeCover				 {file = "\soldierFSM\functions\startEngagement\fn_takeCover.sqf"};
+			class endTakeCover        	 {file = "\soldierFSM\functions\startEngagement\fn_endTakeCover.sqf"};
+			class eyelidTrench			 {file = "\soldierFSM\functions\startEngagement\fn_eyelidTrench.sqf"};
+			class selectCoverPos         {file = "\soldierFSM\functions\startEngagement\fn_selectCoverPos.sqf"};
+			class getEnemyVehicles       {file = "\soldierFSM\functions\startEngagement\fn_getEnemyVehicles.sqf"};
+			class specialInitFightActions{file = "\soldierFSM\functions\startEngagement\fn_specialInitFightActions.sqf"};
+			class machineGunInitFight    {file = "\soldierFSM\functions\startEngagement\fn_machineGunInitFight.sqf"};
+			class supressPositions       {file = "\soldierFSM\functions\startEngagement\fn_supressPositions.sqf"};
+
+			class AtSpecialistInitFight  {file = "\soldierFSM\functions\startEngagement\fn_AtSpecialistInitFight.sqf"};
+			class targetInfWithLauncher  {file = "\soldierFSM\functions\startEngagement\fn_targetInfWithLauncher.sqf"};
+			class postCoverActions       {file = "\soldierFSM\functions\startEngagement\fn_postCoverActions.sqf"};
+			class reactTovehicles        {file = "\soldierFSM\functions\startEngagement\fn_reactTovehicles.sqf"};
+			class unkillableEnemyVehicle {file = "\soldierFSM\functions\startEngagement\fn_unkillableEnemyVehicle.sqf"};
+			class findHidePos            {file = "\soldierFSM\functions\startEngagement\fn_findHidePos.sqf"};
+			class hideFromVehicle        {file = "\soldierFSM\functions\startEngagement\fn_hideFromVehicle.sqf"};
 		}
 
 		class init
@@ -96,6 +115,7 @@ class CfgFunctions
 			class man3dInfo             {file = "\soldierFSM\functions\debug\fn_man3dInfo.sqf"};
 			class debugMessage			{file = "\soldierFSM\functions\debug\fn_debugMessage.sqf"};
 			class hunkerObj3d			{file = "\soldierFSM\functions\debug\fn_hunkerObj3d.sqf"};
+			class manInfo               {file = "\soldierFSM\functions\debug\fn_manInfo.sqf"};
 		};
 		
 		class healing
@@ -129,6 +149,8 @@ class CfgFunctions
 			class getBattlefield		{file = "\soldierFSM\functions\battlefield\fn_getBattlefield.sqf"};
 			class getEnemyPositions		{file = "\soldierFSM\functions\battlefield\fn_getEnemyPositions.sqf"};
 			class updateHunkerObjects	{file = "\soldierFSM\functions\battlefield\fn_updateHunkerObjects.sqf"};
+			class initGrid              {file = "\soldierFSM\functions\battlefield\fn_initGrid.sqf"};
+			class updateGrid            {file = "\soldierFSM\functions\battlefield\fn_updateGrid.sqf"};
 		};
 		
 		class markers
@@ -148,6 +170,8 @@ class CfgFunctions
 			class excludedMapObject		{file = "\soldierFSM\functions\objectData\fn_excludedMapObject.sqf"};
 			class filterMapObjects		{file = "\soldierFSM\functions\objectData\fn_filterMapObjects.sqf"};
 			class terrainObjData		{file = "\soldierFSM\functions\objectData\fn_terrainObjData.sqf"};
+			class squadAsset			{file = "\soldierFSM\functions\objectData\fn_squadAsset.sqf"};
+			class hasAmmoForWeapon      {file = "\soldierFSM\functions\objectData\fn_hasAmmoForWeapon.sqf"};
 		};
 		class hunkerDown
 		{
@@ -185,7 +209,7 @@ class CfgFunctions
 			class get360Positions		{file = "\soldierFSM\functions\core\fn_get360Positions.sqf"};
 			class nearestPos			{file = "\soldierFSM\functions\core\fn_nearestPos.sqf"};
 			class getMidpoint           {file = "\soldierFSM\functions\core\fn_getMidpoint.sqf"};
-			class sinCosPos				{file = "\soldierFSM\functions\core\fn_sinCosPos.sqf"};//rewrite this one and reduce amount of params allowing for pos
+			class sinCosPos				{file = "\soldierFSM\functions\core\fn_sinCosPos.sqf"};
 			
 			class formatDir 			{file = "\soldierFSM\functions\core\fn_formatDir.sqf"};
 			class avgRelDir				{file = "\soldierFSM\functions\core\fn_avgRelDir.sqf"};
@@ -228,6 +252,11 @@ class CfgFunctions
 			class nearKnownEnemies      {file = "\soldierFSM\functions\core\fn_nearKnownEnemies.sqf"};
 			class knownDirToEnemy       {file = "\soldierFSM\functions\core\fn_knownDirToEnemy.sqf"};
 			class getLosTarget			{file = "\soldierFSM\functions\core\fn_getLosTarget.sqf"};
+			class deadCrew				{file = "\soldierFSM\functions\core\fn_deadCrew.sqf"};
+			class grid100Pos            {file = "\soldierFSM\functions\core\fn_grid100Pos.sqf"};
+			class substringsPresent     {file = "\soldierFSM\functions\core\fn_substringsPresent.sqf"};
+			class playerLedGrp          {file = "\soldierFSM\functions\core\fn_playerLedGrp.sqf"};
+			class isPlayer				{file = "\soldierFSM\functions\core\fn_isPlayer.sqf"};
 
 		};
 	};

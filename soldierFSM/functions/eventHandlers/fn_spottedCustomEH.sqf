@@ -1,3 +1,5 @@
+if!(SFSM_enableCustomEH)exitWith{"custom eventhandler deactivated" call SFSM_fnc_debugMessage};
+
 waitUntil {time > 2};
 
 while {true} do {

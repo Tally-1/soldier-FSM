@@ -5,9 +5,9 @@ private _groupData = (_group getVariable "SFSM_groupData");
 
 if(isNil "_groupData")
 exitWith{
-		"groupData is nil" call SFSM_fnc_debugMessage; 
-		(str _group) call SFSM_fnc_debugMessage;
-		[_group] call SFSM_fnc_initGroup;
+		if(SFSM_Debugger)then{diag_log "groupData is nil"};
+		// [_group] call SFSM_fnc_initGroup;
+		// _this call SFSM_fnc_groupData;
 		nil
 		};
 

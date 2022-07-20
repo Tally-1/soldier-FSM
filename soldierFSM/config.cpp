@@ -10,7 +10,7 @@ class CfgPatches
 		name 				= "soldier FSM";
 		author 				= "YipMan, Jihem, Deebs, Tally";
 		requiredVersion 	= 1.60;
-		requiredAddons[] 	= { "CBA_settings" };
+		requiredAddons[] 	= { "A3_Functions_F", "CBA_settings" };
 		units[] 			= {};
 		weapons[] 			= {};
 	};

@@ -1,0 +1,1289 @@
+[
+  [
+    "O_APC_Wheeled_02_rcws_v2_F",
+    [
+      ["crew", 2],
+      ["name", "MSE-3 Marid"],
+      [
+        "armorData",
+        [
+          ["Alt Armor-Level", 0],
+          ["HP", 270],
+          ["armor", 5],
+          ["Standard Armor-Level", 3],
+          ["CUP-armor", 0],
+          ["Calculated HP", 54],
+          ["damageResistance", 0.00719],
+          ["combined HP", 275],
+          ["openVehicle", 1]
+        ]
+      ],
+      ["maxSpeed", 105],
+      [
+        "weapons",
+        [
+          [
+            "SmokeLauncher",
+            [
+              ["ammoClasses", [0.9]],
+              ["name", "Smoke Screen"],
+              ["description", "non-lethal weapon"],
+              ["class ID", 0.9]
+            ]
+          ],
+          [
+            "TruckHorn",
+            [
+              ["ammoClasses", []],
+              ["name", "Horn"],
+              ["description", "Horn"],
+              ["class ID", 0.8]
+            ]
+          ],
+          [
+            "GMG_40mm",
+            [
+              ["ammoClasses", [3]],
+              ["name", "RCWS GMG 40 mm"],
+              ["description", "GMG"],
+              ["class ID", 3.4]
+            ]
+          ],
+          [
+            "HMG_127_APC",
+            [
+              ["ammoClasses", [2.4]],
+              ["name", "RCWS HMG 12.7 mm"],
+              ["description", "HMG"],
+              ["class ID", 3.3]
+            ]
+          ]
+        ]
+      ],
+      ["macro", "O_APC_Wheeled_02_rcws_v2_F"],
+      ["weaponTypes", [3.3, 3.4, 0.9, 0.8]],
+      [
+        "chassis",
+        [
+          ["chassisID", 2.4],
+          ["wheels", 6],
+          ["chassisDescription", "light armor"],
+          ["mass", 18650],
+          [
+            "shape",
+            [
+              ["height", 3],
+              ["length", 5.8],
+              ["width", 2.5],
+              ["center", [-0.22247, 1.25866, 2.40684]],
+              ["Y to X", 2.3]
+            ]
+          ],
+          ["size", 16]
+        ]
+      ],
+      ["driver", 1],
+      ["passengers", 8]
+    ]
+  ],
+  [
+    "O_MBT_02_cannon_F",
+    [
+      ["crew", 2],
+      ["name", "T-100 Varsuk"],
+      [
+        "armorData",
+        [
+          ["Alt Armor-Level", 0],
+          ["HP", 850],
+          ["armor", 6],
+          ["Standard Armor-Level", 4],
+          ["CUP-armor", 0],
+          ["Calculated HP", 142],
+          ["damageResistance", 0.00389],
+          ["combined HP", 856],
+          ["openVehicle", 0]
+        ]
+      ],
+      ["maxSpeed", 75],
+      [
+        "weapons",
+        [
+          [
+            "LMG_coax",
+            [
+              ["ammoClasses", [2.2]],
+              ["name", "Coaxial MG 7.62 mm"],
+              ["description", "MachineGun"],
+              ["class ID", 3]
+            ]
+          ],
+          [
+            "cannon_125mm",
+            [
+              ["ammoClasses", [5.2, 8, 5.1, 7.1]],
+              ["name", "Cannon 125mm"],
+              ["description", "100-130mm Cannon"],
+              ["class ID", 5.3]
+            ]
+          ]
+        ]
+      ],
+      ["macro", "O_MBT_02_cannon_F"],
+      ["weaponTypes", [5.3, 3]],
+      [
+        "chassis",
+        [
+          ["chassisID", 2.6],
+          ["wheels", 18],
+          ["chassisDescription", "heavy armor"],
+          ["mass", 47000],
+          [
+            "shape",
+            [
+              ["height", 2.7],
+              ["length", 6.2],
+              ["width", 4],
+              ["center", [-0.014183, 1.03993, 2.19044]],
+              ["Y to X", 1.5]
+            ]
+          ],
+          ["size", 18]
+        ]
+      ],
+      ["driver", 1],
+      ["passengers", 0]
+    ]
+  ],
+  [
+    "B_APC_Wheeled_01_cannon_F",
+    [
+      ["crew", 2],
+      ["name", "AMV-7 Marshall"],
+      [
+        "armorData",
+        [
+          ["Alt Armor-Level", 0],
+          ["HP", 320],
+          ["armor", 5],
+          ["Standard Armor-Level", 3],
+          ["CUP-armor", 0],
+          ["Calculated HP", 64],
+          ["damageResistance", 0.00719],
+          ["combined HP", 325],
+          ["openVehicle", 1]
+        ]
+      ],
+      ["maxSpeed", 110],
+      [
+        "weapons",
+        [
+          [
+            "TruckHorn",
+            [
+              ["ammoClasses", []],
+              ["name", "Horn"],
+              ["description", "Horn"],
+              ["class ID", 0.8]
+            ]
+          ],
+          [
+            "autocannon_40mm_CTWS",
+            [
+              ["ammoClasses", [3, 4.2]],
+              ["name", "Cannon 40 mm"],
+              ["description", "Auto-cannon"],
+              ["class ID", 5.2]
+            ]
+          ],
+          [
+            "LMG_coax",
+            [
+              ["ammoClasses", [2.2]],
+              ["name", "Coaxial MG 7.62 mm"],
+              ["description", "MachineGun"],
+              ["class ID", 3]
+            ]
+          ]
+        ]
+      ],
+      ["macro", "B_APC_Wheeled_01_cannon_F"],
+      ["weaponTypes", [5.2, 3, 0.8]],
+      [
+        "chassis",
+        [
+          ["chassisID", 2.4],
+          ["wheels", 8],
+          ["chassisDescription", "light armor"],
+          ["mass", 23300],
+          [
+            "shape",
+            [
+              ["height", 3],
+              ["length", 6.1],
+              ["width", 3.7],
+              ["center", [-0, 1.55423, 2.46725]],
+              ["Y to X", 1.6]
+            ]
+          ],
+          ["size", 17]
+        ]
+      ],
+      ["driver", 1],
+      ["passengers", 8]
+    ]
+  ],
+  [
+    "B_AFV_Wheeled_01_up_cannon_F",
+    [
+      ["crew", 2],
+      ["name", "Rhino MGS UP"],
+      [
+        "armorData",
+        [
+          ["Alt Armor-Level", 0],
+          ["HP", 480],
+          ["armor", 5],
+          ["Standard Armor-Level", 3],
+          ["CUP-armor", 0],
+          ["Calculated HP", 96],
+          ["damageResistance", 0.00719],
+          ["combined HP", 485],
+          ["openVehicle", 1]
+        ]
+      ],
+      ["maxSpeed", 120],
+      [
+        "weapons",
+        [
+          [
+            "cannon_120mm",
+            [
+              ["ammoClasses", [5.2, 8, 5.1, 7.1]],
+              ["name", "Cannon 120 mm"],
+              ["description", "100-130mm Cannon"],
+              ["class ID", 5.3]
+            ]
+          ],
+          [
+            "TruckHorn",
+            [
+              ["ammoClasses", []],
+              ["name", "Horn"],
+              ["description", "Horn"],
+              ["class ID", 0.8]
+            ]
+          ],
+          [
+            "MMG_02_coax",
+            [
+              ["ammoClasses", [2.3]],
+              ["name", "SPMG .338"],
+              ["description", "GPMG"],
+              ["class ID", 3.2]
+            ]
+          ]
+        ]
+      ],
+      ["macro", "B_AFV_Wheeled_01_up_cannon_F"],
+      ["weaponTypes", [5.3, 3.2, 0.8]],
+      [
+        "chassis",
+        [
+          ["chassisID", 2.4],
+          ["wheels", 8],
+          ["chassisDescription", "light armor"],
+          ["mass", 24200],
+          [
+            "shape",
+            [
+              ["height", 2.7],
+              ["length", 5.7],
+              ["width", 3.7],
+              ["center", [-0, 1.07039, 2.19182]],
+              ["Y to X", 1.5]
+            ]
+          ],
+          ["size", 16]
+        ]
+      ],
+      ["driver", 1],
+      ["passengers", 0]
+    ]
+  ],
+  [
+    "O_MRAP_02_gmg_F",
+    [
+      ["crew", 2],
+      ["name", "Ifrit GMG"],
+      [
+        "armorData",
+        [
+          ["Alt Armor-Level", 0],
+          ["HP", 200],
+          ["armor", 5],
+          ["Standard Armor-Level", 2],
+          ["CUP-armor", 0],
+          ["Calculated HP", 40],
+          ["damageResistance", 0.004],
+          ["combined HP", 205],
+          ["openVehicle", 0]
+        ]
+      ],
+      ["maxSpeed", 135],
+      [
+        "weapons",
+        [
+          [
+            "SmokeLauncher",
+            [
+              ["ammoClasses", [0.9]],
+              ["name", "Smoke Screen"],
+              ["description", "non-lethal weapon"],
+              ["class ID", 0.9]
+            ]
+          ],
+          [
+            "TruckHorn",
+            [
+              ["ammoClasses", []],
+              ["name", "Horn"],
+              ["description", "Horn"],
+              ["class ID", 0.8]
+            ]
+          ],
+          [
+            "GMG_40mm",
+            [
+              ["ammoClasses", [3]],
+              ["name", "RCWS GMG 40 mm"],
+              ["description", "GMG"],
+              ["class ID", 3.4]
+            ]
+          ]
+        ]
+      ],
+      ["macro", "O_MRAP_02_gmg_F"],
+      ["weaponTypes", [3.4, 0.8, 0.9]],
+      [
+        "chassis",
+        [
+          ["chassisID", 1.2],
+          ["wheels", 4],
+          ["chassisDescription", "MRAP"],
+          ["mass", 8439],
+          [
+            "shape",
+            [
+              ["height", 3.2],
+              ["length", 6],
+              ["width", 1.9],
+              ["center", [-0.000209987, 1.64902, 2.61883]],
+              ["Y to X", 3.1]
+            ]
+          ],
+          ["size", 16]
+        ]
+      ],
+      ["driver", 1],
+      ["passengers", 3]
+    ]
+  ],
+  [
+    "B_LSV_01_armed_F",
+    [
+      ["crew", 5],
+      ["name", "Prowler (HMG)"],
+      [
+        "armorData",
+        [
+          ["Alt Armor-Level", 0],
+          ["HP", 80],
+          ["armor", 4],
+          ["Standard Armor-Level", 1],
+          ["CUP-armor", 0],
+          ["Calculated HP", 20],
+          ["damageResistance", 0.004],
+          ["combined HP", 84],
+          ["openVehicle", 1]
+        ]
+      ],
+      ["maxSpeed", 170],
+      [
+        "weapons",
+        [
+          [
+            "HMG_127_LSV_01",
+            [
+              ["ammoClasses", [2.4]],
+              ["name", "Mk30 HMG .50"],
+              ["description", "HMG"],
+              ["class ID", 3.3]
+            ]
+          ],
+          [
+            "SportCarHorn",
+            [
+              ["ammoClasses", []],
+              ["name", "Horn"],
+              ["description", "Horn"],
+              ["class ID", 0.8]
+            ]
+          ]
+        ]
+      ],
+      ["macro", "B_LSV_01_armed_F"],
+      ["weaponTypes", [3.3, 0.8]],
+      [
+        "chassis",
+        [
+          ["chassisID", 1],
+          ["wheels", 4],
+          ["chassisDescription", "car"],
+          ["mass", 3413],
+          [
+            "shape",
+            [
+              ["height", 2.5],
+              ["length", 3.6],
+              ["width", 2.1],
+              ["center", [-0.0350946, 0.499361, 2.07318]],
+              ["Y to X", 1.8]
+            ]
+          ],
+          ["size", 11]
+        ]
+      ],
+      ["driver", 1],
+      ["passengers", 0]
+    ]
+  ],
+  [
+    "O_MBT_04_cannon_F",
+    [
+      ["crew", 2],
+      ["name", "T-140 Angara"],
+      [
+        "armorData",
+        [
+          ["Alt Armor-Level", 0],
+          ["HP", 700],
+          ["armor", 6],
+          ["Standard Armor-Level", 4],
+          ["CUP-armor", 0],
+          ["Calculated HP", 117],
+          ["damageResistance", 0.00547],
+          ["combined HP", 706],
+          ["openVehicle", 0]
+        ]
+      ],
+      ["maxSpeed", 70],
+      [
+        "weapons",
+        [
+          [
+            "cannon_125mm_advanced",
+            [
+              ["ammoClasses", [5.2, 8, 5.1, 7.1]],
+              ["name", "Cannon 125mm"],
+              ["description", "100-130mm Cannon"],
+              ["class ID", 5.3]
+            ]
+          ],
+          [
+            "LMG_coax",
+            [
+              ["ammoClasses", [2.2]],
+              ["name", "Coaxial MG 7.62 mm"],
+              ["description", "MachineGun"],
+              ["class ID", 3]
+            ]
+          ]
+        ]
+      ],
+      ["macro", "O_MBT_04_cannon_F"],
+      ["weaponTypes", [5.3, 3]],
+      [
+        "chassis",
+        [
+          ["chassisID", 2.6],
+          ["wheels", 18],
+          ["chassisDescription", "heavy armor"],
+          ["mass", 50350],
+          [
+            "shape",
+            [
+              ["height", 3.5],
+              ["length", 7.2],
+              ["width", 4.2],
+              ["center", [0.0893389, 1.68316, 2.20607]],
+              ["Y to X", 1.7]
+            ]
+          ],
+          ["size", 20]
+        ]
+      ],
+      ["driver", 1],
+      ["passengers", 0]
+    ]
+  ],
+  [
+    "O_APC_Tracked_02_cannon_F",
+    [
+      ["crew", 2],
+      ["name", "BTR-K Kamysh"],
+      [
+        "armorData",
+        [
+          ["Alt Armor-Level", 0],
+          ["HP", 500],
+          ["armor", 6],
+          ["Standard Armor-Level", 3],
+          ["CUP-armor", 0],
+          ["Calculated HP", 83],
+          ["damageResistance", 0.00547],
+          ["combined HP", 506],
+          ["openVehicle", 0]
+        ]
+      ],
+      ["maxSpeed", 87],
+      [
+        "weapons",
+        [
+          [
+            "autocannon_30mm_CTWS",
+            [
+              ["ammoClasses", [4.3, 4.2]],
+              ["name", "CTWS Cannon 30 mm"],
+              ["description", "Auto-cannon"],
+              ["class ID", 5.2]
+            ]
+          ],
+          [
+            "LMG_coax_ext",
+            [
+              ["ammoClasses", [2.2]],
+              ["name", "Coaxial MG 7.62 mm"],
+              ["description", "MachineGun"],
+              ["class ID", 3]
+            ]
+          ],
+          [
+            "missiles_titan",
+            [
+              ["ammoClasses", [7.1, 7.3]],
+              ["name", "Titan Missile"],
+              ["description", "Combined misile battery"],
+              ["class ID", 7.5]
+            ]
+          ]
+        ]
+      ],
+      ["macro", "O_APC_Tracked_02_cannon_F"],
+      ["weaponTypes", [5.2, 3, 7.5]],
+      [
+        "chassis",
+        [
+          ["chassisID", 2.4],
+          ["wheels", 16],
+          ["chassisDescription", "light armor"],
+          ["mass", 30100],
+          [
+            "shape",
+            [
+              ["height", 2.9],
+              ["length", 6.6],
+              ["width", 3.4],
+              ["center", [-0.0219069, 0.799206, 2.3928]],
+              ["Y to X", 1.9]
+            ]
+          ],
+          ["size", 18]
+        ]
+      ],
+      ["driver", 1],
+      ["passengers", 8]
+    ]
+  ],
+  [
+    "B_MRAP_01_hmg_F",
+    [
+      ["crew", 2],
+      ["name", "Hunter HMG"],
+      [
+        "armorData",
+        [
+          ["Alt Armor-Level", 0],
+          ["HP", 200],
+          ["armor", 5],
+          ["Standard Armor-Level", 2],
+          ["CUP-armor", 0],
+          ["Calculated HP", 40],
+          ["damageResistance", 0.004],
+          ["combined HP", 205],
+          ["openVehicle", 0]
+        ]
+      ],
+      ["maxSpeed", 115],
+      [
+        "weapons",
+        [
+          [
+            "TruckHorn2",
+            [
+              ["ammoClasses", []],
+              ["name", "Horn"],
+              ["description", "Horn"],
+              ["class ID", 0.8]
+            ]
+          ],
+          [
+            "HMG_127",
+            [
+              ["ammoClasses", [2.4]],
+              ["name", "RCWS HMG 12.7 mm"],
+              ["description", "HMG"],
+              ["class ID", 3.3]
+            ]
+          ]
+        ]
+      ],
+      ["macro", "B_MRAP_01_hmg_F"],
+      ["weaponTypes", [3.3, 0.8]],
+      [
+        "chassis",
+        [
+          ["chassisID", 1.2],
+          ["wheels", 4],
+          ["chassisDescription", "MRAP"],
+          ["mass", 8389],
+          [
+            "shape",
+            [
+              ["height", 3.2],
+              ["length", 5.7],
+              ["width", 1.8],
+              ["center", [-0.006455, 1.59695, 2.58458]],
+              ["Y to X", 3.2]
+            ]
+          ],
+          ["size", 16]
+        ]
+      ],
+      ["driver", 1],
+      ["passengers", 2]
+    ]
+  ],
+  [
+    "O_APC_Tracked_02_AA_F",
+    [
+      ["crew", 2],
+      ["name", "ZSU-39 Tigris"],
+      [
+        "armorData",
+        [
+          ["Alt Armor-Level", 0],
+          ["HP", 500],
+          ["armor", 6],
+          ["Standard Armor-Level", 3],
+          ["CUP-armor", 0],
+          ["Calculated HP", 83],
+          ["damageResistance", 0.00547],
+          ["combined HP", 506],
+          ["openVehicle", 0]
+        ]
+      ],
+      ["maxSpeed", 87],
+      [
+        "weapons",
+        [
+          [
+            "autocannon_35mm",
+            [
+              ["ammoClasses", [4.1]],
+              ["name", "Autocannon 35 mm"],
+              ["description", "Auto-cannon"],
+              ["class ID", 5.2]
+            ]
+          ],
+          [
+            "missiles_titan_AA",
+            [
+              ["ammoClasses", [7.3]],
+              ["name", "Titan Missile"],
+              ["description", "AA misile battery"],
+              ["class ID", 7.4]
+            ]
+          ]
+        ]
+      ],
+      ["macro", "O_APC_Tracked_02_AA_F"],
+      ["weaponTypes", [5.2, 7.4]],
+      [
+        "chassis",
+        [
+          ["chassisID", 2.4],
+          ["wheels", 16],
+          ["chassisDescription", "light armor"],
+          ["mass", 33700],
+          [
+            "shape",
+            [
+              ["height", 3.2],
+              ["length", 6.6],
+              ["width", 3.4],
+              ["center", [-0.0219069, 0.799206, 2.63165]],
+              ["Y to X", 1.9]
+            ]
+          ],
+          ["size", 18]
+        ]
+      ],
+      ["driver", 1],
+      ["passengers", 0]
+    ]
+  ],
+  [
+    "B_MRAP_01_gmg_F",
+    [
+      ["crew", 2],
+      ["name", "Hunter GMG"],
+      [
+        "armorData",
+        [
+          ["Alt Armor-Level", 0],
+          ["HP", 200],
+          ["armor", 5],
+          ["Standard Armor-Level", 2],
+          ["CUP-armor", 0],
+          ["Calculated HP", 40],
+          ["damageResistance", 0.004],
+          ["combined HP", 205],
+          ["openVehicle", 0]
+        ]
+      ],
+      ["maxSpeed", 115],
+      [
+        "weapons",
+        [
+          [
+            "TruckHorn2",
+            [
+              ["ammoClasses", []],
+              ["name", "Horn"],
+              ["description", "Horn"],
+              ["class ID", 0.8]
+            ]
+          ],
+          [
+            "GMG_40mm",
+            [
+              ["ammoClasses", [3]],
+              ["name", "RCWS GMG 40 mm"],
+              ["description", "GMG"],
+              ["class ID", 3.4]
+            ]
+          ]
+        ]
+      ],
+      ["macro", "B_MRAP_01_gmg_F"],
+      ["weaponTypes", [3.4, 0.8]],
+      [
+        "chassis",
+        [
+          ["chassisID", 1.2],
+          ["wheels", 4],
+          ["chassisDescription", "MRAP"],
+          ["mass", 8389],
+          [
+            "shape",
+            [
+              ["height", 3.2],
+              ["length", 5.6],
+              ["width", 1.8],
+              ["center", [-0.006455, 1.56523, 2.58458]],
+              ["Y to X", 3.1]
+            ]
+          ],
+          ["size", 15]
+        ]
+      ],
+      ["driver", 1],
+      ["passengers", 2]
+    ]
+  ],
+  [
+    "O_MRAP_02_hmg_F",
+    [
+      ["crew", 2],
+      ["name", "Ifrit HMG"],
+      [
+        "armorData",
+        [
+          ["Alt Armor-Level", 0],
+          ["HP", 200],
+          ["armor", 5],
+          ["Standard Armor-Level", 2],
+          ["CUP-armor", 0],
+          ["Calculated HP", 40],
+          ["damageResistance", 0.004],
+          ["combined HP", 205],
+          ["openVehicle", 0]
+        ]
+      ],
+      ["maxSpeed", 135],
+      [
+        "weapons",
+        [
+          [
+            "SmokeLauncher",
+            [
+              ["ammoClasses", [0.9]],
+              ["name", "Smoke Screen"],
+              ["description", "non-lethal weapon"],
+              ["class ID", 0.9]
+            ]
+          ],
+          [
+            "HMG_127",
+            [
+              ["ammoClasses", [2.4]],
+              ["name", "RCWS HMG 12.7 mm"],
+              ["description", "HMG"],
+              ["class ID", 3.3]
+            ]
+          ],
+          [
+            "TruckHorn",
+            [
+              ["ammoClasses", []],
+              ["name", "Horn"],
+              ["description", "Horn"],
+              ["class ID", 0.8]
+            ]
+          ]
+        ]
+      ],
+      ["macro", "O_MRAP_02_hmg_F"],
+      ["weaponTypes", [3.3, 0.8, 0.9]],
+      [
+        "chassis",
+        [
+          ["chassisID", 1.2],
+          ["wheels", 4],
+          ["chassisDescription", "MRAP"],
+          ["mass", 8439],
+          [
+            "shape",
+            [
+              ["height", 3.2],
+              ["length", 6],
+              ["width", 1.9],
+              ["center", [-0.000209987, 1.64902, 2.61901]],
+              ["Y to X", 3.1]
+            ]
+          ],
+          ["size", 16]
+        ]
+      ],
+      ["driver", 1],
+      ["passengers", 3]
+    ]
+  ],
+  [
+    "O_LSV_02_armed_F",
+    [
+      ["crew", 7],
+      ["name", "Qilin (Minigun)"],
+      [
+        "armorData",
+        [
+          ["Alt Armor-Level", 0],
+          ["HP", 75],
+          ["armor", 4],
+          ["Standard Armor-Level", 1],
+          ["CUP-armor", 0],
+          ["Calculated HP", 19],
+          ["damageResistance", 0.004],
+          ["combined HP", 79],
+          ["openVehicle", 1]
+        ]
+      ],
+      ["maxSpeed", 160],
+      [
+        "weapons",
+        [
+          [
+            "LMG_Minigun_Transport",
+            [
+              ["ammoClasses", [2.1, 2.3]],
+              ["name", "Minigun 6.5 mm"],
+              ["description", "Light miniGun"],
+              ["class ID", 5]
+            ]
+          ],
+          [
+            "SportCarHorn",
+            [
+              ["ammoClasses", []],
+              ["name", "Horn"],
+              ["description", "Horn"],
+              ["class ID", 0.8]
+            ]
+          ]
+        ]
+      ],
+      ["macro", "O_LSV_02_armed_F"],
+      ["weaponTypes", [5, 0.8]],
+      [
+        "chassis",
+        [
+          ["chassisID", 1],
+          ["wheels", 4],
+          ["chassisDescription", "car"],
+          ["mass", 3924],
+          [
+            "shape",
+            [
+              ["height", 2],
+              ["length", 3.6],
+              ["width", 1.8],
+              ["center", [0.166065, -0.0210968, 1.61042]],
+              ["Y to X", 2]
+            ]
+          ],
+          ["size", 10]
+        ]
+      ],
+      ["driver", 1],
+      ["passengers", 0]
+    ]
+  ],
+  [
+    "B_LSV_01_unarmed_F",
+    [
+      ["crew", 7],
+      ["name", "Prowler (Unarmed)"],
+      [
+        "armorData",
+        [
+          ["Alt Armor-Level", 0],
+          ["HP", 80],
+          ["armor", 4],
+          ["Standard Armor-Level", 1],
+          ["CUP-armor", 0],
+          ["Calculated HP", 20],
+          ["damageResistance", 0.004],
+          ["combined HP", 84],
+          ["openVehicle", 1]
+        ]
+      ],
+      ["maxSpeed", 170],
+      [
+        "weapons",
+        [
+          [
+            "SportCarHorn",
+            [
+              ["ammoClasses", []],
+              ["name", "Horn"],
+              ["description", "Horn"],
+              ["class ID", 0.8]
+            ]
+          ]
+        ]
+      ],
+      ["macro", "B_LSV_01_unarmed_F"],
+      ["weaponTypes", [0.8]],
+      [
+        "chassis",
+        [
+          ["chassisID", 1],
+          ["wheels", 4],
+          ["chassisDescription", "car"],
+          ["mass", 3413],
+          [
+            "shape",
+            [
+              ["height", 2.5],
+              ["length", 3.6],
+              ["width", 2.1],
+              ["center", [-0.0350946, 0.499361, 2.07318]],
+              ["Y to X", 1.8]
+            ]
+          ],
+          ["size", 11]
+        ]
+      ],
+      ["driver", 1],
+      ["passengers", 0]
+    ]
+  ],
+  [
+    "B_LSV_01_AT_F",
+    [
+      ["crew", 5],
+      ["name", "Prowler (AT)"],
+      [
+        "armorData",
+        [
+          ["Alt Armor-Level", 0],
+          ["HP", 80],
+          ["armor", 4],
+          ["Standard Armor-Level", 1],
+          ["CUP-armor", 0],
+          ["Calculated HP", 20],
+          ["damageResistance", 0.004],
+          ["combined HP", 84],
+          ["openVehicle", 1]
+        ]
+      ],
+      ["maxSpeed", 170],
+      [
+        "weapons",
+        [
+          [
+            "missiles_titan_static",
+            [
+              ["ammoClasses", [7.1, 7.3]],
+              ["name", "Titan Missile"],
+              ["description", "AA-AT combo launcher"],
+              ["class ID", 4.3]
+            ]
+          ],
+          [
+            "SportCarHorn",
+            [
+              ["ammoClasses", []],
+              ["name", "Horn"],
+              ["description", "Horn"],
+              ["class ID", 0.8]
+            ]
+          ]
+        ]
+      ],
+      ["macro", "B_LSV_01_AT_F"],
+      ["weaponTypes", [4.3, 0.8]],
+      [
+        "chassis",
+        [
+          ["chassisID", 1],
+          ["wheels", 4],
+          ["chassisDescription", "car"],
+          ["mass", 3413],
+          [
+            "shape",
+            [
+              ["height", 2.1],
+              ["length", 3.6],
+              ["width", 2.1],
+              ["center", [-0.0350946, 0.499361, 1.75758]],
+              ["Y to X", 1.8]
+            ]
+          ],
+          ["size", 11]
+        ]
+      ],
+      ["driver", 1],
+      ["passengers", 0]
+    ]
+  ],
+  [
+    "O_MBT_04_command_F",
+    [
+      ["crew", 2],
+      ["name", "T-140K Angara"],
+      [
+        "armorData",
+        [
+          ["Alt Armor-Level", 0],
+          ["HP", 700],
+          ["armor", 6],
+          ["Standard Armor-Level", 4],
+          ["CUP-armor", 0],
+          ["Calculated HP", 117],
+          ["damageResistance", 0.00547],
+          ["combined HP", 706],
+          ["openVehicle", 0]
+        ]
+      ],
+      ["maxSpeed", 70],
+      [
+        "weapons",
+        [
+          [
+            "cannon_125mm_advanced",
+            [
+              ["ammoClasses", [5.2, 8, 5.1, 7.1]],
+              ["name", "Cannon 125mm"],
+              ["description", "100-130mm Cannon"],
+              ["class ID", 5.3]
+            ]
+          ],
+          [
+            "LMG_coax",
+            [
+              ["ammoClasses", [2.2]],
+              ["name", "Coaxial MG 7.62 mm"],
+              ["description", "MachineGun"],
+              ["class ID", 3]
+            ]
+          ]
+        ]
+      ],
+      ["macro", "O_MBT_04_command_F"],
+      ["weaponTypes", [5.3, 3]],
+      [
+        "chassis",
+        [
+          ["chassisID", 2.6],
+          ["wheels", 18],
+          ["chassisDescription", "heavy armor"],
+          ["mass", 50650],
+          [
+            "shape",
+            [
+              ["height", 3.2],
+              ["length", 7.2],
+              ["width", 4.2],
+              ["center", [0.0893389, 1.68316, 2.562]],
+              ["Y to X", 1.7]
+            ]
+          ],
+          ["size", 20]
+        ]
+      ],
+      ["driver", 1],
+      ["passengers", 0]
+    ]
+  ],
+  [
+    "O_LSV_02_AT_F",
+    [
+      ["crew", 7],
+      ["name", "Qilin (AT)"],
+      [
+        "armorData",
+        [
+          ["Alt Armor-Level", 0],
+          ["HP", 75],
+          ["armor", 4],
+          ["Standard Armor-Level", 1],
+          ["CUP-armor", 0],
+          ["Calculated HP", 19],
+          ["damageResistance", 0.004],
+          ["combined HP", 79],
+          ["openVehicle", 1]
+        ]
+      ],
+      ["maxSpeed", 160],
+      [
+        "weapons",
+        [
+          [
+            "SportCarHorn",
+            [
+              ["ammoClasses", []],
+              ["name", "Horn"],
+              ["description", "Horn"],
+              ["class ID", 0.8]
+            ]
+          ],
+          [
+            "missiles_Vorona",
+            [
+              ["ammoClasses", [7.1, 7.2]],
+              ["name", "9M135 Vorona"],
+              ["description", "AT misile launcher"],
+              ["class ID", 4.1]
+            ]
+          ]
+        ]
+      ],
+      ["macro", "O_LSV_02_AT_F"],
+      ["weaponTypes", [4.1, 0.8]],
+      [
+        "chassis",
+        [
+          ["chassisID", 1],
+          ["wheels", 4],
+          ["chassisDescription", "car"],
+          ["mass", 3908],
+          [
+            "shape",
+            [
+              ["height", 2],
+              ["length", 3.6],
+              ["width", 1.8],
+              ["center", [0.166065, -0.0210968, 1.61042]],
+              ["Y to X", 2]
+            ]
+          ],
+          ["size", 10]
+        ]
+      ],
+      ["driver", 1],
+      ["passengers", 0]
+    ]
+  ],
+  [
+    "O_LSV_02_unarmed_F",
+    [
+      ["crew", 7],
+      ["name", "Qilin (Unarmed)"],
+      [
+        "armorData",
+        [
+          ["Alt Armor-Level", 0],
+          ["HP", 75],
+          ["armor", 4],
+          ["Standard Armor-Level", 1],
+          ["CUP-armor", 0],
+          ["Calculated HP", 19],
+          ["damageResistance", 0.004],
+          ["combined HP", 79],
+          ["openVehicle", 1]
+        ]
+      ],
+      ["maxSpeed", 160],
+      [
+        "weapons",
+        [
+          [
+            "SportCarHorn",
+            [
+              ["ammoClasses", []],
+              ["name", "Horn"],
+              ["description", "Horn"],
+              ["class ID", 0.8]
+            ]
+          ]
+        ]
+      ],
+      ["macro", "O_LSV_02_unarmed_F"],
+      ["weaponTypes", [0.8]],
+      [
+        "chassis",
+        [
+          ["chassisID", 1],
+          ["wheels", 4],
+          ["chassisDescription", "car"],
+          ["mass", 3924],
+          [
+            "shape",
+            [
+              ["height", 2],
+              ["length", 3.6],
+              ["width", 1.8],
+              ["center", [0.166065, -0.0210968, 1.61042]],
+              ["Y to X", 2]
+            ]
+          ],
+          ["size", 10]
+        ]
+      ],
+      ["driver", 1],
+      ["passengers", 0]
+    ]
+  ]
+]

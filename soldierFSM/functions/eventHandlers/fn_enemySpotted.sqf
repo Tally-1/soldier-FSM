@@ -25,6 +25,6 @@ if(_currentEnemy distance2D _leader > 600)exitWith{objNull};
 
  [_group, "lastSpotting", time] call SFSM_fnc_groupData;
 
-"Enemy spotted" call SFSM_fnc_debugMessage;
+"Enemy spotted" call dbgmsg;
 
 _currentEnemy;

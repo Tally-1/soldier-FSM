@@ -1,5 +1,5 @@
 params ["_man"];
-private _minReactionTime = 0.2;
+private _minReactionTime = 0.1;
 private _reactionTime	 = 1;
 private _timeReduction 	 = random(_man skill "spotTime");
 

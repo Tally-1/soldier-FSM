@@ -14,5 +14,6 @@ private _hunkerDown = (random 1 > 0.7
 					or _medic
 					or _misileGuy);
 
-if(_hunkerDown)
-then{[_man] call SFSM_fnc_initHunker;};
+if(_hunkerDown)exitWith{[_man] call SFSM_fnc_initHunker};
+
+_man doFollow leader(group _man);

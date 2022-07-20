@@ -1,5 +1,14 @@
 params ['_man', '_coverPos'];
-if(isNil '_coverPos')exitWith{'cover-pos is nil' call SFSM_fnc_debugMessage};
+private _group = group _man;
+
+if(isNil '_group')exitWith{};
+if(isNull _group) exitWith{};
+
+private _canTakeCover = [_group] call SFSM_fnc_groupCanDodge;
+if!(_canTakeCover)    exitWith{"taking cover blocked, playerGroup" call dbgmsg};
+
+
+if(isNil '_coverPos')exitWith{'cover-pos is undefined, cannot take cover' call SFSM_fnc_debugMessage};
 
 private _timer  = time + 5;
 private _available = [_man, _timer] call SFSM_fnc_manAvailable;
@@ -31,7 +40,7 @@ then{
 
 [_man, "action", "taking cover"]	call SFSM_fnc_unitData;
 
-_man moveTo _coverPos;
+//_man moveTo _coverPos;
 _man doMove _coverPos;
 
 [_man, _coverPos, _timer, _target, _behaviour] spawn SFSM_fnc_endTakeCover;

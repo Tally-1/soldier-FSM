@@ -12,7 +12,7 @@ if!(_action == "none")exitWith{_exitText call SFSM_fnc_debugMessage; false};
 
 _battlefield set ["currentAction",	"updating"];
 
-private _markers   = _battlefield get "markers";
+private _markers   = _battlefield get "markers"; 
 private _centerPos = _battlefield get "center";
 private _radius    = _battlefield get "radius";
 private _sides     = [east, west, independent];
@@ -41,7 +41,14 @@ private _vehicles    = [_clustersData] call Tcore_fnc_clusterVehicles;
 
 _battlefield set ["zones", ([_battlefield] call SFSM_fnc_getZones)];
 
-{[_x, "currentBattle", _battleKey] call SFSM_fnc_unitData} forEach _units;
+{
+	[_x, "currentBattle", _battleKey] call SFSM_fnc_unitData;
+	[_x, _battleField] call SFSM_fnc_reactToVehicles;
+} forEach _units;
+
+
+
+
 {[_x, "currentBattle", _battleKey] call SFSM_fnc_groupData} forEach _groups;
 
 {deleteMarker _x} forEach _markers;

@@ -1,0 +1,105 @@
+ ***DONE*** 1. AT vs dodging: 
+ ***DONE*** Issue: 
+ ***DONE*** AT infantry is dodging rather than firing at vehicles resulting in whole squad being wiped as a result. 
+ ***DONE*** Solution: 
+
+
+ ***DONE*** a. No vehicle in battle area = enable dodge.
+ ***DONE*** b. Force switching to AT when vehicles in battle area. 
+ ***DONE*** c. Force targeting of vehicles over the need for taking cover.
+ ***DONE*** d. If no vehicle alive or AT fired then ENABLE dodge. (?? no AT fired?)
+ 
+
+ ***DONE*** 2. MG suppression vs dodging: 
+ ***DONE*** Issue: 
+ ***DONE*** Machine gunners also dodge rather than returning fire - resulting in lack of suppression - while riflemen are dodging into cover - also resulting in unnecessary causalities. 
+
+ ***DONE*** Solution: 
+ ***DONE*** a. Force MG to suppress rather than dodging for cover. 
+ ***DONE*** (The problem with ARMA 3 hardcoded AI is that it cannot suppress accurately while moving. )
+ ***DONE*** b. When suppression is done then enable Dodge. 
+
+
+
+ ***DONE*** 3.  Hiding from major threats:
+ ***DONE*** Issue: 
+ ***DONE*** Groups aren't hiding from vehicles they cannot destroy, resulting in getting wiped. 
+ ***DONE*** Solution: 
+ ***DONE*** a. If a major threat is within a given distance the group  will be forced into prone state, hold fire and have the crawl into nearest cover. 
+ ***DONE*** b. If group is IN THE OPEN, they will be unable to move and return fire until threat has moved away.
+ ***DONE*** c. If the threat is CLOSER than a given distance, the group will RUN for nearby cover (Can be disabled in settings) 
+ 
+
+ ***DONE*** Tallys translation.
+ ***DONE*** 1) use the (init-cover / EndTakeCover) function as a entry-point. (maybe task manager as well)
+ ***DONE*** 2) Check if vehicles have chassis-class >= 1.2 && < 3.
+ ***DONE*** 3) if chassis >=1.2 && man has no launcher && no GL then force-prone / hold fire once cover has been reached.
+ ***DONE*** 4) if distance2d vehicle < 100 get up and RUN (careless just move!)
+
+
+
+ ***DONE*** functions needed:
+
+ ***DONE*** 1) threat detector (check vehicles in battlefield, if threat is present then activate function)
+ ***DONE*** 2) find hiding-spot (terrain-scanner? Grid builder?)
+ ***DONE*** 3) move into hiding (force move-to can be used here)
+ ***DONE*** 4) disabeled crew (a function that tells wether or not the crew of a vehicle is absent or dead).
+
+
+
+
+(Bonus) A) If a dropped launcher is within dodge-distance then pick it up and use it. 
+(Bonus) B) Check dead units for projectiles that fits with said launcher. (requires compatible magazines data, a list of near dead units, a list of equipment carried by the dead)
+
+
+
+
+
+
+***DONE*** 4.  Enable player command override:
+***DONE*** Issue: 
+***DONE*** Ai would not listen to player commands and instead dodge out of positions the player wanted them in. 
+***DONE*** Solution: 
+***DONE*** a. Enable a parameter to disable hiding, dodging and hunkering for player controlled units. 
+|***DONE*** |
+
+
+ ***DONE*** 5. Enable Zeus command override
+ ***DONE*** Issue: 
+ ***DONE*** AI would not follow zeus waypoints fast enough because of dodging and hunkering down behind cover. 
+ ***DONE*** Solution: 
+Enable option to disable dodging while zeus has given waypoint. 
+ ***DONE*** (Dodging, hunkering and displacing cover will still occur when squad has no waypoints given) 
+
+
+components needed:
+ ***DONE*** 1) eventHandler for waypoint placed.
+ ***DONE*** 2) eventHandler for waypoint deleted.
+ ***DONE*** 3) param-variable that can be toggled on and off
+ ***DONE*** 4) function that disables dodge when a waypoint is placed.
+ ***DONE*** 5) function that enables dodge when a waypoint is reached
+ ***DONE*** 6) function that enables dodge when no zeus waypoints are left. (maybe this one combined with a checker is all that is needed)
+
+ !FINAL!) include CBA options...
+
+
+
+
+
+
+***DONE*** 6. Disable individual features not mentioned
+***DONE*** Issue: 
+***DONE*** Some features cannot be disabled. 
+***DONE*** Solution: 
+***DONE*** a. Add options to disable features in the CBA options.
+ ***DONE*** b. Path disabled at init - then Dodge / hunker = disabled.
+
+
+
+***DONE*** disable soldier FSM
+***DONE*** disAble flinch
+***DONE*** disable dodge
+***DONE*** disable hide from vehicle
+***DONE*** disable suppression
+***DONE*** disable vehicle hunting
+***DONE*** disable custom Eventhandler

@@ -17,6 +17,7 @@ if((eyePos _man) distance2d _safePos > 2)
 exitWith{[_man, "action", "cannot reach hunker pos"] call SFSM_fnc_unitData};
 
 [_man, "action", "hunker down"] 	call SFSM_fnc_unitData;
+[_man, "hunkObjectHash", _objectHash] call SFSM_fnc_unitData;
 
 _man disableAI "PATH";
 _man setUnitPos "DOWN";

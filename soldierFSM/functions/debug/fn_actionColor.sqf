@@ -1,6 +1,7 @@
 params["_action"];
 private _default	= [0.5,0.6,0.4,1];
 
+if("none" 			    == _action)	exitWith{_default};
 if("reacting" 			== _action)	exitWith{[0.3,0.3,0.8,1]};
 if("! Suppressed !" 	== _action)	exitWith{[0.9,0.1,0.1,1]};
 if("Fleeing" 			== _action)	exitWith{[0.9,0.1,0.1,1]};
@@ -13,5 +14,8 @@ if("taking cover" 	    == _action)	exitWith{[0.5,0.25,0,1]};
 if("dodging to cover"   == _action)	exitWith{[0.5,0.25,0,1]};
 if("No cover panic!"    == _action)	exitWith{[0.9,0.1,0.1,1]};
 
+if("Hiding"             in _action) exitWith{[0.5,0.25,0,1]};
+if("Suppressing"        in _action) exitWith{[0,0,1,1]};
+if("Targeting"          in _action) exitWith{[0,0,1,1]};
 
 _default

@@ -1,3 +1,4 @@
+//Returns an array of positions in AGL format
 params["_side", "_battleField"];
 private _clusterPositions = (_battlefield get "clusterPositions");
 if(isNil "_clusterPositions")exitWith{[]};

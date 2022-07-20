@@ -43,7 +43,7 @@ if(stance _man == "prone")then{_man setUnitPos "MIDDLE"};
 
 [_man, "currentDestination", _dodgePos] call SFSM_fnc_unitData;
 [_man, "action", _action]	call SFSM_fnc_unitData;
-_man moveTo _dodgePos;
+//_man moveTo _dodgePos;
 _man doMove _dodgePos;
 
 [_man, _dodgePos, _timer, _target, _behaviour] spawn SFSM_fnc_EndDodge;

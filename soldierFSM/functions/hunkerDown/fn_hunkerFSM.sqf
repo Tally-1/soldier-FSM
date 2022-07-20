@@ -34,7 +34,9 @@ while {true} do {
 	_script = [_man, _objectHash, _battlefield] spawn SFSM_fnc_handleHunkerStatus;
 	waitUntil{sleep 0.5; scriptDone _script};
 
-	private _status = (([_man, "action"] call SFSM_fnc_unitData) splitString " ")#0;
+	private _action = ([_man, "action"] call SFSM_fnc_unitData);
+	private _noTarget = _action == "wait, cannot aquire target from hunker-pos";
+	private _status = (_action splitString " ")#0;
 	
 	
 
@@ -43,16 +45,17 @@ while {true} do {
 	if(_status == "displace,")exitWith{_endText = "displacing"};
 
 	if(_status == "fired!")then{_timer = _timer + 15};
-	if(_status == "wait,")then{_timer = _timer + 2};
 
 	private _safePos = _objectHash get "safe_pos";
-	_man moveTo _safePos;
 	_man doMove _safePos;
 
 	private _randomSleep = round(random 15);
 	sleep _randomSleep;
 
-	if(_status == "wait,")then{_timer = _timer + _randomSleep};
+	if(_status == "wait," 
+	&&{! _noTarget})then{_timer = _timer + _randomSleep};
+
+	if(_noTarget)then{_timer = _timer - 10};
 };
 
 if(_endText == "displacing")

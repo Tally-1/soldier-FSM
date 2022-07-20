@@ -20,6 +20,9 @@ _battlefield set ["markers",		_markers];
 _battlefield set ["Started", 		_startTime];
 _battlefield set ["lastDataUpdate", -300];
 _battlefield set ["radius", 		_radius];
+_battlefield set ["gridLoaded", 	false];
+// _battlefield set ["grid", 		    ];
+
 
 SFSM_Battles set [_battleKey, _battlefield];
 
@@ -36,7 +39,10 @@ private _clustersData = [
 [["Loaded clusterPositions in ",(time - _startTime)," seconds."]] call SFSM_fnc_debugMessage;
 
 private _mapObjsData = createHashmap;
-
+//the following function will get all the info on the map-objects in the area.
+//it will get the objects inside the cluster-zones using a unscheduled call
+//then it will use a scheduled call (spawn) to aquire all of the map-objects within the battlefield radius.
+//This might take some time depending on the amount of objects in the area.
 [_centerPos, _radius, _battlefield, _clustersData, _mapObjsData, true] call SFSM_fnc_areaData;
 
 private _groups          = [_clustersData] call Tcore_fnc_clusterGroups;
@@ -44,16 +50,24 @@ private _units           = [_clustersData] call Tcore_fnc_clusterUnits;
 private _vehicles        = [_clustersData] call Tcore_fnc_clusterVehicles;
 private _areaName        = _battlefield get "name";
 
-[_battlefield, _clustersData, _units, _vehicles, _groups, _areaName, _mapObjsData] call SFSM_fnc_battlefieldVariables;
+[
+	_battlefield, 
+	_clustersData, 
+	_units, 
+	_vehicles, 
+	_groups, 
+	_areaName, 
+	_mapObjsData
+] call SFSM_fnc_battlefieldVariables;
 
 _battlefield set ["zones", ([_battlefield] call SFSM_fnc_getZones)];
 
 {[_x, "currentBattle", _battleKey] call SFSM_fnc_unitData} forEach _units;
-{[_x, "currentBattle", _battleKey] call SFSM_fnc_groupData} forEach _groups;
+{[_x, "currentBattle", _battleKey] call SFSM_fnc_groupData} forEach _groups; 
 
 
 
-
+[_battlefield] spawn SFSM_fnc_initGrid;//initGrid will create a hashmap containing 100 positions, and 3 arrays containing positions hidden from clusters divided by side.
 [_battlefield] call SFSM_fnc_getCoverPositionsLight;
  
 [["Battle at ", _areaName, " initialized in ", (time - _startTime), " seconds"]] call SFSM_fnc_debugMessage;

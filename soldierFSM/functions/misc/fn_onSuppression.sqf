@@ -18,3 +18,4 @@ else{_rps = 1};
 
 //Select course of action
 [_man, _ammoCFG, _shooter] call SFSM_fnc_initReaction;
+true;

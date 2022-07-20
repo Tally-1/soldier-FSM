@@ -2,6 +2,7 @@ params["_battleKey"];
 private _battlefield   = SFSM_Battles get _battleKey;
 if(isNil "_battlefield")exitWith{"BattleField not found" call SFSM_fnc_debugMessage};
 private _markers         = _battlefield get "markers";
+private _gridVar         = _battlefield get "grid";
 private _unitVar         = _battlefield get "units";
 private _vehicleVar      = _battlefield get "vehicles";
 private _mapObjVarName   = _battlefield get "mapObjects";
@@ -25,6 +26,7 @@ private _endText = ["Battle ", (_battlefield get "name"), " ended."] joinString 
 {[_x, "currentBattle", "none"] call SFSM_fnc_groupData} forEach _groups;
 {deleteMarker _x} forEach _markers;
 
+missionNamespace setVariable [_gridVar, nil, true];
 missionNamespace setVariable [_unitVar, nil, true];
 missionNamespace setVariable [_vehicleVar, nil, true];
 missionNamespace setVariable [_mapObjVarName, nil, true];

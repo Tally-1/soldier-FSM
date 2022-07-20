@@ -4,7 +4,7 @@ Private _mapObjects    = missionNamespace getVariable (_battlefield get "mapObje
 Private _hunkerObjData = _mapObjects get "hunkerObjData";
 private _hnkObjects    = missionNamespace getVariable (_battlefield get "hunkerObjects");
 
-if(isNil "_hnkObjects")exitWith{"no hunker objects found. nil value" call sfsm_fnc_debugmessage; objNull};
+if(isNil "_hnkObjects")exitWith{"no hunker objects yet, loading data" call sfsm_fnc_debugmessage; objNull};
 
 private _nearObjects     = _hnkObjects inAreaArray [(getPos _man), SFSM_DodgeDistance, SFSM_DodgeDistance];
 private _approvedObjects = [_side, _battlefield, _hunkerObjData, _hnkObjects] call SFSM_fnc_filterHunkerObjects;

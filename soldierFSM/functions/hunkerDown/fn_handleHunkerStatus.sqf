@@ -48,6 +48,24 @@ _man doSuppressiveFire _target;
 sleep 1;
 waitUntil {sleep 0.5; !(currentCommand _man == "Suppress")};
 
+_enemies = [_man, _maxDistance, 'enemies']call Tcore_fnc_nearKnownEnemies;
+_target  = [_man, _enemies, true] call Tcore_fnc_getLosTarget;
+if!(isNull _target)
+then{
+		for "_i" from 1 to 10 do
+		{
+			_enemies = [_man, _maxDistance, 'enemies']call Tcore_fnc_nearKnownEnemies;
+			_target  = [_man, _enemies, true] call Tcore_fnc_getLosTarget;
+
+			if(alive _target)
+			then{_man doFire _target; sleep 0.3};
+
+		};
+		sleep 2;
+	};
+
+
+
 _man setUnitPos "DOWN";
 
 sleep 2;
