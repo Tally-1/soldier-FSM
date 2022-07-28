@@ -5,7 +5,7 @@ if(isNil '_group')exitWith{};
 if(isNull _group) exitWith{};
 
 private _canTakeCover = [_group] call SFSM_fnc_groupCanDodge;
-if!(_canTakeCover)    exitWith{"taking cover blocked, playerGroup" call dbgmsg};
+if!(_canTakeCover)    exitWith{[["taking cover blocked", _group]] call dbgmsg}; 
 
 
 if(isNil '_coverPos')exitWith{'cover-pos is undefined, cannot take cover' call SFSM_fnc_debugMessage};

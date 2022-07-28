@@ -1,3 +1,4 @@
+private _timer = time + 5;
 params["_man", "_timer"];
 
 private _action   = [_man, "action"] call SFSM_fnc_unitData;

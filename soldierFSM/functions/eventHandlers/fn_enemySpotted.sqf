@@ -11,6 +11,7 @@ if(time - _lastSpotting < 30)exitWith{objNull};
 if(!alive _leader)			 exitWith{objNull};
 
 private _currentEnemy   = _leader findNearestEnemy _leader;
+private _knowledge      = _leader knowsAbout _currentEnemy;
 private _lastKnownEnemy = _group getVariable "SFSM_lastKnownEnemy";
 
 
@@ -22,6 +23,7 @@ if!(_currentEnemy isKindOf "land")		  exitWith{objNull};
 if((count crew _currentEnemy)<1)		  exitWith{objNull};
 if(_currentEnemy == _lastKnownEnemy)	  exitWith{objNull};
 if(_currentEnemy distance2D _leader > 600)exitWith{objNull};
+if(_knowledge < SFSM_KnowledgeToFight)    exitWith{objNull};
 
  [_group, "lastSpotting", time] call SFSM_fnc_groupData;
 

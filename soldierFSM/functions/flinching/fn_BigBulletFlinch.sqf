@@ -1,5 +1,5 @@
 params ["_man"];
-_man disableAI "FSM";
+
 [_man, "action", "flinch"] call SFSM_fnc_unitData;
 
 private _move 		= "";

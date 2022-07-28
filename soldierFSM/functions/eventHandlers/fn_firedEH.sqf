@@ -8,6 +8,6 @@ _man addEventHandler ["Fired", {
 	[_unit] 							call SFSM_fnc_soundReaction;
 	[_unit, "last_bullet_fired", time] 	call SFSM_fnc_unitData;
 	
-	SFSM_lastShotFired = time;
+	SFSM_lastShotFired = time; 
 	true;
 }];

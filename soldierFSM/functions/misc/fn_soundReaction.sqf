@@ -1,5 +1,5 @@
 params["_shooter"];
-if(time - SFSM_lastSoundCheck < 120)exitWith{true;};
+if(time - SFSM_lastSoundCheck < 10)exitWith{false};
 
 private _weapon = ([(currentWeapon _shooter)] call BIS_fnc_itemType)#1;
 private _distance = 300;
@@ -21,12 +21,12 @@ private _nearMen = _shooter nearEntities ["Man", _distance];
 	then{
 			private _coverPos = [_x] call Tcore_fnc_coverPosSimple;
 			if(isNil "_coverPos")exitWith{};
-			[_x, _coverPos] call SFSM_fnc_takeCover;
+			[_x, _coverPos] spawn SFSM_fnc_takeCover;
 		};
 
 } forEach _nearMen;
 
 
-SFSM_lastSoundCheck = time;
+SFSM_lastSoundCheck = time; 
 
 true; 

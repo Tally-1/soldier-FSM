@@ -1,4 +1,4 @@
-missionNamespace setVariable ["SFSM_Version", 0.291];
+missionNamespace setVariable ["SFSM_Version", 0.294];
 private _versionName = ["DCO soldier FSM V. ", SFSM_Version] joinString "";
 
 
@@ -34,6 +34,14 @@ private _versionName = ["DCO soldier FSM V. ", SFSM_Version] joinString "";
 	["Dodge", "Units will dodge (change position) when incoming fire reaches the dodge-trigger-treshHold (SFSM_RpsDodgeTrigger)."],
 	_versionName,
 	true
+] call cba_settings_fnc_init;
+
+[
+	"SFSM_flinchStopDodge",
+	"CHECKBOX",
+	["flinch Stops Dodge", "if this is toggled then the unit will stop running towards cover and instead flinch"],
+	_versionName,
+	false
 ] call cba_settings_fnc_init;
 
 [
@@ -113,6 +121,23 @@ private _versionName = ["DCO soldier FSM V. ", SFSM_Version] joinString "";
 	true
 ] call cba_settings_fnc_init;
 
+
+[
+	"SFSM_KnowledgeToFight",
+	"SLIDER",
+	["Knowledge needed to engage", "the amount of knowledge needed to start a battle upon enemy spotted."],
+	_versionName,
+	[
+		0,   	//minimum 
+		4, 		//max
+		1, 		//default
+		2,		//decimals
+		false
+	],
+	1
+] call cba_settings_fnc_init;
+
+
 [
 	"SFSM_FlinchTreshHold",
 	"SLIDER",
@@ -121,7 +146,7 @@ private _versionName = ["DCO soldier FSM V. ", SFSM_Version] joinString "";
 	[
 		0.1,   	//minimum 
 		2, 		//max
-		0.8, 	//default
+		1, 		//default
 		2,		//decimals
 		false
 	],
@@ -164,6 +189,38 @@ private _versionName = ["DCO soldier FSM V. ", SFSM_Version] joinString "";
 	1
 ] call cba_settings_fnc_init;
 
+[
+	"SFSM_stayCoverPosTime",
+	"SLIDER",
+	["Stay in cover time", "the amount of seconds the soldier will stay in his position upon taking cover."],
+	_versionName,
+	[
+		0,   	//minimum 
+		40, 	//max
+		20,		//default
+		0,		//decimals
+		false
+	],
+	1
+] call cba_settings_fnc_init;
+
+[
+	"SFSM_sprintSpeed",
+	"SLIDER",
+	["Sprint Speed", "speed coef for dodging / taking cover / hiding. 1 = vanilla. 2 = twice the normal speed"],
+	_versionName,
+	[
+		1,   	//minimum 
+		2.4,    //max
+		1.2, 	//default
+		1,		//decimals
+		false
+	],
+	1
+] call cba_settings_fnc_init;
+
+
+
 
 [
 	"SFSM_DodgeCoolDown",
@@ -189,7 +246,7 @@ private _versionName = ["DCO soldier FSM V. ", SFSM_Version] joinString "";
 	[
 		30,   	//minimum 
 		80, 	//max
-		50, 	//default
+		60, 	//default
 		0,		//decimals
 		false
 	],
@@ -214,7 +271,7 @@ private _versionName = ["DCO soldier FSM V. ", SFSM_Version] joinString "";
 [
 	"SFSM_DodgeTimer",
 	"SLIDER",
-	["Dodge Timer", "Max time before ending a dodge."],
+	["Dodge Timer", "Max time before ending a dodge / sprint."],
 	_versionName,
 	[
 		10,   	//minimum 
@@ -237,6 +294,23 @@ private _versionName = ["DCO soldier FSM V. ", SFSM_Version] joinString "";
 		2, 		//max
 		0.7, 	//default
 		2,		//decimals
+		false
+	],
+	1
+] call cba_settings_fnc_init;
+
+
+
+[
+	"SFSM_panicCoef",
+	"SLIDER",
+	["panic Coef", "chance that a man will panic upon start of engagement if he cannot see a cover-position"],
+	_versionName,
+	[
+		0,   	//minimum 
+		1, 		//max
+		0.5, 	//default
+		1,		//decimals
 		false
 	],
 	1

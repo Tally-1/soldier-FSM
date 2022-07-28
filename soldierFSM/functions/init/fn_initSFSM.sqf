@@ -1,3 +1,5 @@
+if(is3DEN)exitWith{};
+
 if((!isNil "SFSM_disableSoldierFSM")
 &&{SFSM_disableSoldierFSM})
 exitWith{

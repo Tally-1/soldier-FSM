@@ -15,6 +15,8 @@ else{_rps = 1};
 [_man, "Last_Close_Bullet", time] 			call SFSM_fnc_unitData;
 [_man, "current suppression", _suppression]	call SFSM_fnc_unitData;
 
+if(_suppression > SFSM_ProneTreshHold)
+then{_man setUnitPos "DOWN"};
 
 //Select course of action
 [_man, _ammoCFG, _shooter] call SFSM_fnc_initReaction;

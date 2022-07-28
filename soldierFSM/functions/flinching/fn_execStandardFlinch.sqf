@@ -2,7 +2,7 @@ params ['_man', '_reactionTime'];
 sleep _reactionTime;
 
 [_man, "action", "flinch"] call SFSM_fnc_unitData;
-_man disableAI "FSM"; 
+
 switch (stance _man) do
 	{
 		case "STAND" :	{ _man setUnitPos "MIDDLE" };

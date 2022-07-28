@@ -1,4 +1,0 @@
-This folder contains functions related to the initial stage of a battle.
-1) find cover.
-2) move to cover.
-3) end initial take cover move.

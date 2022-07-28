@@ -16,6 +16,7 @@ private _coverRadius = SFSM_DodgeDistance / 2;
 private _coverLatPos = [_man, _enemy, _coverRadius] call SFSM_fnc_getLateralPos;
 private _coverPos    = [_man, _coverLatPos, _coverRadius, false] call SFSM_fnc_getCoverPos;
 private _coverFound  = (!isNil "_coverPos" && {typeName _coverPos == 'ARRAY'});
+private _group       = group _man;
 
 if(_coverFound)
 then{
@@ -29,7 +30,6 @@ then{
 
 if(SFSM_forceDodge)
 then{
-	//_man disableAI "FSM";
 	_man disableAI "TARGET";
 	_man disableAI "AUTOCOMBAT";
 	_man disableAI "AUTOTARGET";
@@ -37,13 +37,13 @@ then{
 	_man doTarget objNull;
 
 if(stance _man == "prone")then{_man setUnitPos "MIDDLE"};
-	//_man setUnitPos "AUTO";
-	//_man setBehaviourStrong "CARELESS";
 };
 
 [_man, "currentDestination", _dodgePos] call SFSM_fnc_unitData;
 [_man, "action", _action]	call SFSM_fnc_unitData;
-//_man moveTo _dodgePos;
+
+_man setAnimSpeedCoef SFSM_sprintSpeed;
+_group setSpeedMode 'FULL';
 _man doMove _dodgePos;
 
 [_man, _dodgePos, _timer, _target, _behaviour] spawn SFSM_fnc_EndDodge;

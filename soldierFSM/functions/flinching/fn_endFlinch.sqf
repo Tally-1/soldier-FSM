@@ -8,7 +8,6 @@ then{_actionTime = _actionTime + _reactionTime};
 	sleep _actionTime;
 	[_man, "flinching", false] 	call SFSM_fnc_unitData;
 	[_man, "action", "none"] 	call SFSM_fnc_unitData;
-	_man enableAI "FSM";
 
 if ((stance _man) == "PRONE"
 &&{(animationState _man) in _sideStances})

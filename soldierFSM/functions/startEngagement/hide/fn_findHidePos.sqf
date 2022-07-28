@@ -39,7 +39,7 @@ private _maxDeviation   = 75;
 
 
 
-if(_finalSelection isEqualTo [])exitWith{"No hidden position found" call dbgmsg};
+if(_finalSelection isEqualTo [])exitWith{"final selection empty" call dbgmsg};
 
 private _targetPosition = selectRandom _finalSelection;
 

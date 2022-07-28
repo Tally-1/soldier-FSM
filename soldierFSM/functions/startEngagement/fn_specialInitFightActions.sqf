@@ -13,16 +13,27 @@ if(_player)              exitWith{false};
 if(_special == "regular")exitWith{false};
 if(_special == "medic")  exitWith{false};
 
-if(_special == "machineGunner")
+private _grpCanDodge = ([_group] call SFSM_fnc_groupCanDodge);
+private _machineGunner = _special == "machineGunner";
+private _at_Specialist = _special == "AT-specialist";
+
+if((! _grpCanDodge)
+&&{_machineGunner or _at_Specialist})
+exitWith{'specialist in playerGroup / zeus' call dbgmsg; false};
+
+
+
+if(_machineGunner)
 exitWith{
 			[_man] spawn SFSM_fnc_machineGunInitFight;
 			true;
 };
 
-if(_special == "AT-specialist")
+if(_at_Specialist)
 exitWith{
 			[_man] spawn SFSM_fnc_AtSpecialistInitFight;
 			true;
 };
 
-false
+
+false;
