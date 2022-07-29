@@ -1,13 +1,13 @@
 params ["_man", "_battleField"];
 
 private _action = [_man, "action"] call SFSM_fnc_unitData;
-private _occupied = ("Hiding" in _action || "Targeting" in _action);
+private _occupied = ("Hiding" in _action || "Targeting" in _action || "weapon" in _action);
 private _playerLead = ((leader (group _man)) in allPlayers);
 
 
 if(_occupied)exitWith{false};
 
-//get nearest high-level enemy vehicle
+//get nearest high-level enemy vehicle [_x] call SFSM_fnc_emergencyRearm;
 private _majorThreat = [_man, _battleField] call SFSM_fnc_unkillableEnemyVehicle;
 
 
@@ -26,6 +26,16 @@ exitWith{
 		};
 
 
+//try to pick up launcher
+private _atSpecialist    = ([_man] call SFSM_fnc_squadAsset) == "AT-specialist";
+private _hasAtAmmo       = [_man, (secondaryWeapon _man)] call SFSM_fnc_hasAmmoForWeapon;
+private _rearming        = false;
+
+if!(_atSpecialist)
+then{_rearming = [_man] call SFSM_fnc_emergencyRearm};
+if  (_rearming) exitWith{true};
+
+
 //check visibility
 private _manPos          = eyePos _man;
 private _enemyPos        = eyePos _majorThreat;
@@ -35,8 +45,6 @@ private _visibleToThreat = ([_man, "VIEW", _majorThreat] checkVisibility [_manPo
 //proceed as normal if man cannot be seen by enemy vehicle
 if!(_visibleToThreat)exitWith{false};
 
-private _atSpecialist = ([_man] call SFSM_fnc_squadAsset) == "AT-specialist";
-private _hasAtAmmo    = [_man, (secondaryWeapon _man)] call SFSM_fnc_hasAmmoForWeapon;
 
 //if a vehicle is found and the man has a AT launcher, then repeat init-fight actions
 if(_atSpecialist

@@ -17,6 +17,7 @@ class CfgFunctions
 			class manAvailable          {file = "\soldierFSM\functions\misc\fn_manAvailable.sqf"};
 			class soundReaction         {file = "\soldierFSM\functions\misc\fn_soundReaction.sqf"};
 			class forceMoveToPos		{file = "\soldierFSM\functions\misc\fn_forceMoveToPos.sqf"};
+			
 		};
 
 		class curator
@@ -34,6 +35,7 @@ class CfgFunctions
 			class curatorEH             {file = "\soldierFSM\functions\eventHandlers\fn_curatorEH.sqf"};
 			class spottedCustomEH		{file = "\soldierFSM\functions\eventHandlers\fn_spottedCustomEH.sqf"};
 			class enemySpotted          {file = "\soldierFSM\functions\eventHandlers\fn_enemySpotted.sqf"};
+			class unitKilled            {file = "\soldierFSM\functions\eventHandlers\fn_unitKilled.sqf"};
 		};
 
 		class dodging
@@ -136,31 +138,37 @@ class CfgFunctions
 		};
 		class battlefield
 		{
-			class InitBattlefield		{file = "\soldierFSM\functions\battlefield\fn_InitBattlefield.sqf"};
-			class battlefieldPostInit	{file = "\soldierFSM\functions\battlefield\fn_battlefieldPostInit.sqf"};
-			class battlefieldEnd		{file = "\soldierFSM\functions\battlefield\fn_battlefieldEnd.sqf"};
-			class getZones				{file = "\soldierFSM\functions\battlefield\fn_getZones.sqf"};
-			class getZone				{file = "\soldierFSM\functions\battlefield\fn_getZone.sqf"};
-			class getCoverPositionsLight{file = "\soldierFSM\functions\battlefield\fn_getCoverPositionsLight.sqf"};
-			class clusterCoverPosLight  {file = "\soldierFSM\functions\battlefield\fn_clusterCoverPosLight.sqf"};
-			class battlefieldRadius     {file = "\soldierFSM\functions\battlefield\fn_battlefieldRadius.sqf"};
-			class nearestBattle			{file = "\soldierFSM\functions\battlefield\fn_nearestBattle.sqf"};
-			class battleInitType        {file = "\soldierFSM\functions\battlefield\fn_battleInitType.sqf"};
-			class battlefieldVariables  {file = "\soldierFSM\functions\battlefield\fn_battlefieldVariables.sqf"};
-			class updateBattlefield     {file = "\soldierFSM\functions\battlefield\fn_updateBattlefield.sqf"};
-			class sidesFromString       {file = "\soldierFSM\functions\battlefield\fn_sidesFromString.sqf"};
-			class battlingUnits         {file = "\soldierFSM\functions\battlefield\fn_battlingUnits.sqf"};
-			class battleEnded           {file = "\soldierFSM\functions\battlefield\fn_battleEnded.sqf"};
-			class battleFieldUpdater    {file = "\soldierFSM\functions\battlefield\fn_battleFieldUpdater.sqf"};
-			class triggerBattleOnShot	{file = "\soldierFSM\functions\battlefield\fn_triggerBattleOnShot.sqf"};
-			class canTriggerBattleShot	{file = "\soldierFSM\functions\battlefield\fn_canTriggerBattleShot.sqf"};
-			class canSpotInitBattle     {file = "\soldierFSM\functions\battlefield\fn_canSpotInitBattle.sqf"};
-			class excludeCpos  			{file = "\soldierFSM\functions\battlefield\fn_excludeCpos.sqf"};
-			class getBattlefield		{file = "\soldierFSM\functions\battlefield\fn_getBattlefield.sqf"};
-			class getEnemyPositions		{file = "\soldierFSM\functions\battlefield\fn_getEnemyPositions.sqf"};
-			class updateHunkerObjects	{file = "\soldierFSM\functions\battlefield\fn_updateHunkerObjects.sqf"};
-			class initGrid              {file = "\soldierFSM\functions\battlefield\fn_initGrid.sqf"};
-			class updateGrid            {file = "\soldierFSM\functions\battlefield\fn_updateGrid.sqf"};
+			class InitBattlefield		  {file = "\soldierFSM\functions\battlefield\fn_InitBattlefield.sqf"};
+			class battlefieldPostInit	  {file = "\soldierFSM\functions\battlefield\fn_battlefieldPostInit.sqf"};
+			class battlefieldEnd		  {file = "\soldierFSM\functions\battlefield\fn_battlefieldEnd.sqf"};
+			class getZones				  {file = "\soldierFSM\functions\battlefield\fn_getZones.sqf"};
+			class getZone				  {file = "\soldierFSM\functions\battlefield\fn_getZone.sqf"};
+			class getCoverPositionsLight  {file = "\soldierFSM\functions\battlefield\fn_getCoverPositionsLight.sqf"};
+			class clusterCoverPosLight    {file = "\soldierFSM\functions\battlefield\fn_clusterCoverPosLight.sqf"};
+			class battlefieldRadius       {file = "\soldierFSM\functions\battlefield\fn_battlefieldRadius.sqf"};
+			class nearestBattle			  {file = "\soldierFSM\functions\battlefield\fn_nearestBattle.sqf"};
+			class battleInitType          {file = "\soldierFSM\functions\battlefield\fn_battleInitType.sqf"};
+			class battlefieldVariables    {file = "\soldierFSM\functions\battlefield\fn_battlefieldVariables.sqf"};
+			class updateBattlefield       {file = "\soldierFSM\functions\battlefield\fn_updateBattlefield.sqf"};
+			class sidesFromString         {file = "\soldierFSM\functions\battlefield\fn_sidesFromString.sqf"};
+			class battlingUnits           {file = "\soldierFSM\functions\battlefield\fn_battlingUnits.sqf"};
+			class battleEnded             {file = "\soldierFSM\functions\battlefield\fn_battleEnded.sqf"};
+			class battleFieldUpdater      {file = "\soldierFSM\functions\battlefield\fn_battleFieldUpdater.sqf"};
+			class triggerBattleOnShot	  {file = "\soldierFSM\functions\battlefield\fn_triggerBattleOnShot.sqf"};
+			class canTriggerBattleShot	  {file = "\soldierFSM\functions\battlefield\fn_canTriggerBattleShot.sqf"};
+			class canSpotInitBattle       {file = "\soldierFSM\functions\battlefield\fn_canSpotInitBattle.sqf"};
+			class excludeCpos  			  {file = "\soldierFSM\functions\battlefield\fn_excludeCpos.sqf"};
+			class getBattlefield		  {file = "\soldierFSM\functions\battlefield\fn_getBattlefield.sqf"};
+			class getEnemyPositions		  {file = "\soldierFSM\functions\battlefield\fn_getEnemyPositions.sqf"};
+			class updateHunkerObjects	  {file = "\soldierFSM\functions\battlefield\fn_updateHunkerObjects.sqf"};
+			class initGrid                {file = "\soldierFSM\functions\battlefield\fn_initGrid.sqf"};
+			class updateGrid              {file = "\soldierFSM\functions\battlefield\fn_updateGrid.sqf"};
+			class AddWeaponsToBattlefield {file = "\soldierFSM\functions\battlefield\fn_AddWeaponsToBattlefield.sqf"};
+			class emergencyRearm          {file = "\soldierFSM\functions\battlefield\fn_emergencyRearm.sqf"};
+			class getBattlefieldWeapon    {file = "\soldierFSM\functions\battlefield\fn_getBattlefieldWeapon.sqf"};
+			class pickUpWeapon            {file = "\soldierFSM\functions\battlefield\fn_pickUpWeapon.sqf"};
+			class canPickUpWeapon         {file = "\soldierFSM\functions\battlefield\fn_canPickUpWeapon.sqf"};
+			class endWeaponPickup         {file = "\soldierFSM\functions\battlefield\fn_endWeaponPickup.sqf"};
 		};
 		
 		class markers
@@ -269,7 +277,7 @@ class CfgFunctions
 			class isPlayer				{file = "\soldierFSM\functions\core\fn_isPlayer.sqf"};
 
 			class toggleAiMoveInhibitors{file = "\soldierFSM\functions\core\fn_toggleAiMoveInhibitors.sqf"};
-
+			class deadMenInArea         {file = "\soldierFSM\functions\core\fn_deadMenInArea.sqf"};
 		};
 	};
 };

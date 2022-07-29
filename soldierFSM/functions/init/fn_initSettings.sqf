@@ -24,10 +24,11 @@ then{
 		SFSM_reactFireCoolDown	= 180; 	 // Time between each returnFire-response		
 		SFSM_panicCoef          = 0.5;   // chance that a man will panic upon start of engagement if he cannot see a cover-position
 
-		SFSM_KnowledgeToFight   = 1;     // the amount of knowledge needed to start a battle between 2 units.
+		SFSM_KnowledgeToFight   = 0;     // the amount of knowledge needed to start a battle between 2 units.
 		SFSM_sprintSpeed        = 1.3;   // speed coef for dodging / taking cover / hiding. 1 = vanilla. 2 = twice the normal speed
 		SFSM_stayCoverPosTime   = 15;    // the amount of time the soldier will stay in his position upon taking cover.
 		SFSM_flinchStopDodge    = true;  // if this is toggled then the unit will stop running towards cover and instead flinch
+		SFSM_emergencyRearm     = true   // Soldiers pick up launchers from killed squad-mates, or off the ground if a vehicle is nearby
 };
 
 
@@ -57,5 +58,6 @@ missionNamespace setVariable ["SFSM_allowDodging",      SFSM_allowDodging,      
 missionNamespace setVariable ["SFSM_panicCoef",         SFSM_panicCoef,         true];
 missionNamespace setVariable ["SFSM_KnowledgeToFight",  SFSM_KnowledgeToFight,  true];
 missionNamespace setVariable ["SFSM_sprintSpeed",       SFSM_sprintSpeed,       true];
+missionNamespace setVariable ["SFSM_emergencyRearm",    SFSM_emergencyRearm,       true];
 
 true;

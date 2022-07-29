@@ -7,6 +7,7 @@
 
 [] spawn SFSM_fnc_TaskManager;
 [] spawn SFSM_fnc_spottedCustomEH;
+[] call  SFSM_fnc_unitKilled;
 
 
 

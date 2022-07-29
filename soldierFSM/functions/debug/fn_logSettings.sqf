@@ -46,6 +46,7 @@ private _hintText = parseText
 		_green,
 		"panic-coef ",          SFSM_panicCoef, "<br/>",
 		"no-Cover-Panic ",      SFSM_noCoverPanic, "<br/>",
+		"emergency Rearm ",     SFSM_emergencyRearm, "<br/>",
 		"Knowledge needed for battle ", SFSM_KnowledgeToFight,"<br/>","<br/>",
 		_end,
 
@@ -85,6 +86,7 @@ diag_log ([_signature, "no-Cover-Panic ",               SFSM_noCoverPanic]      
 diag_log ([_signature, "react-fire coolDown ",          SFSM_reactFireCoolDown] joinString "");
 diag_log ([_signature, "panic-coef ",                   SFSM_panicCoef]         joinString "");
 diag_log ([_signature, "Knowledge To Fight ",           SFSM_KnowledgeToFight]  joinString "");
-diag_log ([_signature, "Sprint speed ",                  SFSM_sprintSpeed]      joinString "");
+diag_log ([_signature, "Sprint speed ",                 SFSM_sprintSpeed]       joinString "");
+diag_log ([_signature, "emergency Rearm ",              SFSM_emergencyRearm]    joinString "");
 
 true;

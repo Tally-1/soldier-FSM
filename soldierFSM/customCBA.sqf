@@ -1,4 +1,4 @@
-missionNamespace setVariable ["SFSM_Version", 0.294];
+missionNamespace setVariable ["SFSM_Version", 0.295];
 private _versionName = ["DCO soldier FSM V. ", SFSM_Version] joinString "";
 
 
@@ -86,20 +86,20 @@ private _versionName = ["DCO soldier FSM V. ", SFSM_Version] joinString "";
 ] call cba_settings_fnc_init;
 
 [
+	"SFSM_emergencyRearm",
+	"CHECKBOX",
+	["Emergency rearm", "Soldiers pick up launchers from killed soldiers if a enemy vehicle is nearby."],
+	_versionName,
+	true
+] call cba_settings_fnc_init;
+
+[
 	"SFSM_mgSuppressClusters",
 	"CHECKBOX",
 	["MG suppression", "MachineGunners will spray enemy positions upon initial contact."],
 	_versionName,
 	true
 ] call cba_settings_fnc_init;
-
-
-
-
-
-
-
-
 
 
 
@@ -131,7 +131,7 @@ private _versionName = ["DCO soldier FSM V. ", SFSM_Version] joinString "";
 		0,   	//minimum 
 		4, 		//max
 		1, 		//default
-		2,		//decimals
+		0.1,	//decimals
 		false
 	],
 	1

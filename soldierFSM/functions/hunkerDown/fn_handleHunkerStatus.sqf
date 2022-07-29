@@ -35,7 +35,6 @@ private _nearDistance = _man distance2D _nearest;
 if(_nearDistance <= 70)exitWith{[_man, "action", "displace, enemy close to hunker-pos"] call SFSM_fnc_unitData};
 
 private _target = [_man, _enemies, true] call Tcore_fnc_getLosTarget;
-
 if(isNull _target)exitWith{[_man, "action", "wait, cannot aquire target from hunker-pos"] call SFSM_fnc_unitData};
 
 [_man, "action", "fire at target from hunker-pos"] call SFSM_fnc_unitData;

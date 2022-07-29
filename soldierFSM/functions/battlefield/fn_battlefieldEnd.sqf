@@ -4,8 +4,10 @@ if(isNil "_battlefield")exitWith{"BattleField not found" call SFSM_fnc_debugMess
 private _markers         = _battlefield get "markers";
 private _gridVar         = _battlefield get "grid";
 private _unitVar         = _battlefield get "units";
+private _deadVar         = _battlefield get "deadMen";
 private _vehicleVar      = _battlefield get "vehicles";
 private _mapObjVarName   = _battlefield get "mapObjects";
+private _weaponsVarName  = _battlefield get "weapons";
 private _groupsVarName   = _battlefield get "groups";
 private _ClustersVarName = _battlefield get "clusterData";
 
@@ -28,14 +30,16 @@ private _endText = ["Battle ", (_battlefield get "name"), " ended."] joinString 
 
 missionNamespace setVariable [_gridVar, nil, true];
 missionNamespace setVariable [_unitVar, nil, true];
+missionNamespace setVariable [_deadVar, nil, true];
 missionNamespace setVariable [_vehicleVar, nil, true];
 missionNamespace setVariable [_mapObjVarName, nil, true];
 missionNamespace setVariable [_groupsVarName, nil, true];
+missionNamespace setVariable [_weaponsVarName, nil, true];
 missionNamespace setVariable [_ClustersVarName, nil, true];
 
-{_battlefield set [_x, nil]}forEach _battlefield;
+{_battlefield deleteAt _X}forEach _battlefield;
 
-SFSM_Battles set [_battleKey, nil];
+// SFSM_Battles deleteAt [_battleKey, nil];
 SFSM_Battles deleteAt _battleKey;
 _battlefield = nil;
 

@@ -21,8 +21,6 @@ _battlefield set ["Started", 		_startTime];
 _battlefield set ["lastDataUpdate", -300];
 _battlefield set ["radius", 		_radius];
 _battlefield set ["gridLoaded", 	false];
-// _battlefield set ["grid", 		    ];
-
 
 SFSM_Battles set [_battleKey, _battlefield];
 
@@ -49,11 +47,20 @@ private _groups          = [_clustersData] call Tcore_fnc_clusterGroups;
 private _units           = [_clustersData] call Tcore_fnc_clusterUnits;
 private _vehicles        = [_clustersData] call Tcore_fnc_clusterVehicles;
 private _areaName        = _battlefield get "name";
+private _deadMen         = [_centerPos, _radius] call Tcore_fnc_deadMenInArea;
 
+
+private _weapons         = _centerPos nearObjects ["WeaponHolderSimulated", _radius];
+private _placedWeapons   = _centerPos nearObjects ["WeaponHolder", _radius];
+_weapons append _placedWeapons;
+
+//store the variables that are not included in the "battlefield"-hashmap itself.
 [
 	_battlefield, 
 	_clustersData, 
-	_units, 
+	_weapons,
+	_units,
+	_deadMen,
 	_vehicles, 
 	_groups, 
 	_areaName, 
