@@ -1,4 +1,4 @@
-missionNamespace setVariable ["SFSM_Version", 0.295];
+missionNamespace setVariable ["SFSM_Version", 0.296];
 private _versionName = ["DCO soldier FSM V. ", SFSM_Version] joinString "";
 
 
@@ -130,8 +130,8 @@ private _versionName = ["DCO soldier FSM V. ", SFSM_Version] joinString "";
 	[
 		0,   	//minimum 
 		4, 		//max
-		1, 		//default
-		0.1,	//decimals
+		0.1,    //default
+		2,	    //decimals
 		false
 	],
 	1
@@ -144,9 +144,9 @@ private _versionName = ["DCO soldier FSM V. ", SFSM_Version] joinString "";
 	["Flinch TreshHold", "unit will not flinch if suppression is higher than this value"],
 	_versionName,
 	[
-		0.1,   	//minimum 
+		0,   	//minimum 
 		2, 		//max
-		1, 		//default
+		0.1,    //default
 		2,		//decimals
 		false
 	],

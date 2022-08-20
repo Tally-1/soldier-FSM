@@ -25,4 +25,6 @@ if(_highThreatVehicles isEqualTo []) exitWith {objNull};
 
 _unkillableVehicle = [_man, _highThreatVehicles] call Tcore_fnc_nearestPos;
 
+if(typeName _unkillableVehicle == "SCALAR")exitWith{objNull};
+
 _unkillableVehicle;

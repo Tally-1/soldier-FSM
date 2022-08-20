@@ -1,4 +1,4 @@
-private _dodgeDir = selectRandom ["right", "left"];
+private _dodgeDir = selectRandom ["right", "left"]; 
 params ["_man", "_enemy", "_dodgeDir"];
 private _XX 			= (getPos _man) # 0;
 private _YY 			= (getPos _man) # 1;

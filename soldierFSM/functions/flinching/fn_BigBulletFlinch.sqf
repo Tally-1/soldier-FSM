@@ -20,6 +20,6 @@ switch (stance _man) do {
 	case "PRONE": 	{_move = selectRandom _proneMoves};
 }; 
 
-_man playMove _move;
+_man playMove _move; 
 
 0;

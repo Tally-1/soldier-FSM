@@ -1,0 +1,30 @@
+private _smallTxt = "<t size='0.75'>";
+private _bigTxt   = "<t size='2'>";
+private _versionName = ["soldier FSM V. ", SFSM_Version] joinString "";
+private _signature = ["--> ", _versionName, " setting: "] joinString "";
+private _outLine  = "<t shadow='2'>";
+private _aqua     = "<t color='#00ffff'>";
+private _khaki    = "<t color='#acffa4'>";
+private _green    = "<t color='#83ff7f'>";
+private _red      = "<t color='#e51313'>";
+private _end      = "</t>";
+private _newLine  = "<br/>";
+
+private _curatorDeleted = _warningType == "curator";
+
+private _warningText = parseText 
+([
+	_outLine,
+	_bigTxt,_red, "!!Warning!!", _end,_end,_newLine,
+	_green, "Do not delete units while they are engaged in a fight,",
+	        "This might cause errors.", _end, _newLine,_newLine,
+	_khaki,	"First kill them using the [end] button.", _newLine,
+			"Then wait 2-5 seconds before deleting them.", _newLine,
+			"This will allow the engine to properly exit the scripts.", _newLine,
+			_newLine,_end,
+			_smallTxt, _versionName,_end,
+	_end
+
+] joinString "");
+
+[_warningText] remoteExec ["Hint", 0];

@@ -28,10 +28,18 @@ if!(_canPickUp)exitWith{[_man, false] spawn SFSM_fnc_endWeaponPickup};
 
 
 //make sure unit is available before executing move
-private _timer  = time + 10;
+private _timer  = time + 20;
 private _available = [_man, _timer] call SFSM_fnc_manAvailable;
-if!(_available)then{waitUntil {sleep 0.1; [_man, _timer] call SFSM_fnc_manAvailable}};
+if!(_available)
+then{
+	waitUntil {
+		if(isNil "_man")exitWith{true};
+		sleep 0.1; 
+		[_man, _timer] call SFSM_fnc_manAvailable;
+		};
+	};
 
+if(isNil "_man")exitWith{};
 
 _available = [_man, (time + 5)] call SFSM_fnc_manAvailable;
 _canPickUp = [_man, _weaponObject] call SFSM_fnc_canPickUpWeapon;
@@ -53,6 +61,7 @@ private _weaponPos = getPos _weaponObject;
 private _script = [_man, _weaponPos, 40, 1.5] spawn SFSM_fnc_forceMoveToPos;
 waitUntil{sleep 0.1; scriptDone _script};
 
+if(isNil "_man")exitWith{};
 
 _canPickUp      = [_man, _weaponObject] call SFSM_fnc_canPickUpWeapon;
 private _tooFar = (_weaponPos distance2D _man) > 3;

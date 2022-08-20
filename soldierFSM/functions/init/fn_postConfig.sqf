@@ -40,4 +40,4 @@ then{
 
 //make sure the version-var is declared in case it has not loaded yet 
 //(there is a difference between the load-order when developing and running the finished mod).
-if(isNil "SFSM_Version")then{missionNamespace setVariable ["SFSM_Version", 0.293]};
+if(isNil "SFSM_Version")then{missionNamespace setVariable ["SFSM_Version", 0.296]};

@@ -13,7 +13,7 @@ if("emergency heal" 	      == _action)	exitWith{[0.9,0.1,0.1,1]};
 if("taking cover" 	          == _action)	exitWith{[0.5,0.25,0,1]};
 if("dodging to cover"         == _action)	exitWith{[0.5,0.25,0,1]};
 if("No cover panic!"          == _action)	exitWith{[0.9,0.1,0.1,1]};
-if("Picking up weapon"        == _action)	exitWith{[0,0,1,1]};
+if("Picking up weapon"        == _action)	exitWith{[0.85,0.4,0,1]};
 
 
 if("Hiding"             in _action) exitWith{[0.5,0.25,0,1]};

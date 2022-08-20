@@ -24,6 +24,8 @@ private _action = [_man, "action"] call SFSM_fnc_unitData;
 if(_action in ["reacting", "flinch"])exitWith{};
 
 
+_man doMove (getPos _man);
+
 [_man, "action", 	"none"]	call SFSM_fnc_unitData;
 
 

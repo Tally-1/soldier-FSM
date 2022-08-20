@@ -29,6 +29,8 @@ _man setVariable["SFSM_UnitData", 		_unitData, true];
 [_man] call SFSM_fnc_firedEH;
 [_man] call SFSM_fnc_hitEH;
 
+_man addEventHandler ["Deleted", {diag_log "Soldier FSM ==> unit was deleted"}];
+
 
 
 true;

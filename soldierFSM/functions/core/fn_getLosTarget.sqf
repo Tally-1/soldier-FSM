@@ -9,6 +9,8 @@ then{_startPos = [_startPos#0, _startPos#1, 1.7]};
 _startPos = AGLToASL _startPos;
 
 private _nearest  = [_man, _enemies] call Tcore_fnc_nearestPos;
+if(typeName _nearest == "SCALAR")exitWith{objNull};
+
 private _canSee = [_man, "VIEW", _nearest] checkVisibility [_startPos, aimPos _nearest];
 
 if(_canSee > 0.3)exitWith{_nearest};

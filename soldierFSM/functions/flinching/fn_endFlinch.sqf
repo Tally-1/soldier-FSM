@@ -14,6 +14,13 @@ if ((stance _man) == "PRONE"
 then{
 		_man playMove "AmovPercMstpSrasWrflDnon_AmovPpneMstpSrasWrflDnon";
 	};
+sleep 1;
+if(isNil "_man")exitWith{};
+
+[_man] call SFSM_fnc_normalizeStance;
+
+sleep 2;
+if(isNil "_man")exitWith{};
 
 private _canReactFire = [_man] call SFSM_fnc_canReactFire;
 

@@ -1,4 +1,5 @@
-params ["_man", "_enemy"];
+private _seekCover = true;
+params ["_man", "_enemy", "_seekCover"];
 
 /*Set values to the unitData hashmap */
 private _coolDown = (time + SFSM_DodgeCoolDown);
@@ -18,7 +19,8 @@ private _coverPos    = [_man, _coverLatPos, _coverRadius, false] call SFSM_fnc_g
 private _coverFound  = (!isNil "_coverPos" && {typeName _coverPos == 'ARRAY'});
 private _group       = group _man;
 
-if(_coverFound)
+if(_coverFound
+&&{_seekCover})
 then{
 		_dodgePos = _coverPos;
 		_action   = "dodging to cover";

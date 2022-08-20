@@ -30,6 +30,8 @@ private _enemies = [_man, _maxDistance, 'enemies']call Tcore_fnc_nearKnownEnemie
 If(count _enemies < 1)exitWith{[_man, "action", "end hunkering, no enemies"] call SFSM_fnc_unitData};
 
 private _nearest      = [_man, _enemies] call Tcore_fnc_nearestPos;
+if(typeName _nearest == "SCALAR")exitWith{[_man, "action", "end hunkering, no enemies"] call SFSM_fnc_unitData};
+
 
 private _nearDistance = _man distance2D _nearest;
 if(_nearDistance <= 70)exitWith{[_man, "action", "displace, enemy close to hunker-pos"] call SFSM_fnc_unitData};

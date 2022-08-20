@@ -37,3 +37,17 @@ _this addEventHandler ["CuratorWaypointDeleted", {
 	if!(SFSM_ExcludeZcommand)exitWith{};
 	_this call SFSM_fnc_zWPdeleted;
 }];
+
+_this addEventHandler ["CuratorObjectDeleted", {
+	params ["_curator", "_entity"];
+	private _unitData = _entity getVariable "SFSM_UnitData";
+	if(isNil "_unitData")exitWith{};
+	if!(_entity isKindOf "man")exitWith{};
+
+	"Unit was deleted by curator" call dbgmsg;
+
+	private _currentBattle = [_entity, "currentBattle"] call SFSM_fnc_unitData;
+	if(_currentBattle == "none")exitWith{};
+	[] call SFSM_fnc_deleteWarning;
+	
+}];
