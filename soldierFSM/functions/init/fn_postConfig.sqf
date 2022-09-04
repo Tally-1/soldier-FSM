@@ -7,9 +7,11 @@ missionNamespace setVariable ["SFSM_TestMode", 		  false, 	     true];
 missionNamespace setVariable ["SFSM_customEH_Timer",  0.2, 	         true];
 
 
-//variables used in the sound reaction function
-SFSM_lastShotFired  = -300;
-SFSM_lastSoundCheck = -300;
+//variables used in the sound reaction / bulletImpact functions
+SFSM_lastShotFired     = -300;
+SFSM_lastSoundCheck    = -300;
+SFSM_lastImpactHandler = -300;
+SFSM_lastCrater        = -300;
 
 //How often the battlefield-data is updated
 SFSM_BattleUpdateSec = 10;
@@ -31,6 +33,40 @@ SFSM_treeTypes = [
 					"t_oleae1s_f"
 				];
 
+//used when a "light areaScan is needed"
+SFSM_lightScanTypes=[
+					"BUILDING",
+					"BUNKER",
+					"BUSH",
+					"BUSSTOP",
+					"CHAPEL",
+					"CHURCH",
+					"CROSS",
+					"FENCE",
+					"FORTRESS",
+					"FOUNTAIN",
+					"FUELSTATION",
+					"HOSPITAL",
+					"HOUSE",
+					"LIGHTHOUSE",
+					"POWER LINES",
+					"POWERSOLAR",
+					"POWERWIND",
+					"RAILWAY",
+					"ROCK",
+					"ROCKS",
+					"RUIN",
+					"SMALL TREE",
+					"STACK",
+					"TOURISM",
+					"TRANSMITTER",
+					"TREE",
+					"VIEW-TOWER",
+					"WALL",
+					"WATERTOWER"
+				];
+
+
 //deactivate group-reset on vehicle FSM
 if(!isNil "DCOnoGroupReset")
 then{
@@ -40,4 +76,4 @@ then{
 
 //make sure the version-var is declared in case it has not loaded yet 
 //(there is a difference between the load-order when developing and running the finished mod).
-if(isNil "SFSM_Version")then{missionNamespace setVariable ["SFSM_Version", 0.296]};
+if(isNil "SFSM_Version")then{missionNamespace setVariable ["SFSM_Version", 0.297]};

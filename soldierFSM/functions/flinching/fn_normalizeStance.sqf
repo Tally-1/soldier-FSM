@@ -1,6 +1,12 @@
 params["_man"];
-private _lockedAnims = ["aadjppnemstpsraswrfldleft", "aadjppnemstpsraswrflddown", "aadjppnemstpsraswrfldright"];
-_man setUnitPos "AUTO";
-if(animationState _man in _lockedAnims
+private _sideStances = [
+	"aadjppnemstpsraswrfldleft",
+	"aadjppnemwlksraswrfldleft_f",
+	"aadjppnemstpsraswrfldright",
+	"aadjppnemwlksraswrfldright_f", 
+	"aadjppnemstpsraswrflddown_amovppnemstpsraswrfldnon"
+];
+// _man setUnitPos "AUTO";
+if(animationState _man in _sideStances
 && {stance _man == "PRONE"})
-then{_man playMove "AadjPpneMstpSrasWrflDleft_AmovPknlMstpSrasWrflDnon"};
+then{_man playMoveNow "amovppnemstpsraswrfldnon"};

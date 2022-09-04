@@ -10,16 +10,9 @@ then{
 
 		if(_soldiersInPosition > 1)exitWith{_positionIsAvailable = false};
 		
-		_man disableAI "PATH";
-		[_man, "pathEnabeled", false]	call SFSM_fnc_unitData;
-		[_man, "action", "Holding cover position"]	call SFSM_fnc_unitData;
-		
-		sleep SFSM_stayCoverPosTime;
+		private _script = [_man, _endPos] spawn SFSM_fnc_stayInCover;
+		waitUntil {sleep 1; scriptDone _script};
 
-
-		_man enableAI "PATH";
-		[_man, "pathEnabeled", true]call SFSM_fnc_unitData;
-		[_man, "action", "none"]	call SFSM_fnc_unitData;
     };
 
 if!(_positionIsAvailable)exitWith{[_man, _endPos] call SFSM_fnc_forceCoverDodge};

@@ -9,6 +9,7 @@ private _coverObjects = nearestTerrainObjects
 
 if(_coverObjects isEqualTo []) exitWith {};
 
+_coverObjects deleteAt (_coverObjects findIf {isHidden _x});
 private _coverObject = selectRandom _coverObjects;
 
 _coverPos = (getPos _coverObject);

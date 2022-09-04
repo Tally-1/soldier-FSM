@@ -27,6 +27,6 @@ if(_knowledge < SFSM_KnowledgeToFight)    exitWith{objNull};
 
  [_group, "lastSpotting", time] call SFSM_fnc_groupData;
 
-"Enemy spotted" call dbgmsg;
+"Enemy spotted" call dbgmsg; 
 
 _currentEnemy;

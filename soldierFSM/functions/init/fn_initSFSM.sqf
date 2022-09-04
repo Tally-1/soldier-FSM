@@ -15,6 +15,12 @@ then{dbgmsg = SFSM_fnc_debugMessage};
 if(isServer)	then{[] spawn SFSM_fnc_serverInit};
 if(hasInterface)then{[] call SFSM_fnc_initClient};
 
+
+
 if(isNil 'ObjScan_Fnc_average')
-then{hint "DCO unitScanner not detected, Soldier FSM will not function properly."};
+then{
+		private _noScanText = "DCO unitScanner not detected, Soldier FSM will not function properly.";
+		[_noScanText] remoteExecCall ["hint", 0];
+		diag_log _noScanText;
+	};
 

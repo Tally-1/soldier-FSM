@@ -8,7 +8,7 @@ then{
 		SFSM_hideFromVehicles   = true;  // Units will run away / hide from vehicles they cannot hurt.
 		SFSM_AtSpecHuntVehicles = true;  // Units with launchers will target enemy vehicles instead of hiding.
         SFSM_mgSuppressClusters = true;  // MachineGunners will spray enemy positions upon initial contact
-		SFSM_enableCustomEH     = true;  // disable custom eventhandler for enemy-spotted. Deactivating this is VERY good for performance.
+		SFSM_enableCustomEH     = false;  // disable custom eventhandler for enemy-spotted. Deactivating this is VERY good for performance.
 		SFSM_ExcludeZcommand    = false; // stop units that have been given waypoints by a curator from dodging
 		SFSM_PlayerGrpDodge     = false; // Allows units in a group lead by a player to dodge / hide, dodging can be frustrating for players who like to micro-manage their AI
 
@@ -28,7 +28,10 @@ then{
 		SFSM_sprintSpeed        = 1.3;   // speed coef for dodging / taking cover / hiding. 1 = vanilla. 2 = twice the normal speed
 		SFSM_stayCoverPosTime   = 15;    // the amount of time the soldier will stay in his position upon taking cover.
 		SFSM_flinchStopDodge    = true;  // if this is toggled then the unit will stop running towards cover and instead flinch
-		SFSM_emergencyRearm     = true   // Soldiers pick up launchers from killed squad-mates, or off the ground if a vehicle is nearby
+		SFSM_emergencyRearm     = true;  // Soldiers pick up launchers from killed squad-mates, or off the ground if a vehicle is nearby
+		SFSM_explosionCoverRad  = 200;   // if munition explodes within this distance from the soldier he will run for cover.
+		SFSM_breakCoverOnHit    = true;  // if hit while in cover the unit will move away from current position
+		SFSM_explosionCrater    = true;  // Creates a dent in the terrain upon exploding ammo(the size varies according to ammo-type)
 };
 
 
@@ -52,7 +55,7 @@ missionNamespace setVariable ["SFSM_hideFromVehicles", 	SFSM_hideFromVehicles, 	
 missionNamespace setVariable ["SFSM_AtSpecHuntVehicles",SFSM_AtSpecHuntVehicles,true];
 missionNamespace setVariable ["SFSM_mgSuppressClusters",SFSM_mgSuppressClusters,true];
 missionNamespace setVariable ["SFSM_disableSoldierFSM", SFSM_disableSoldierFSM, true];
-missionNamespace setVariable ["SFSM_enableCustomEH",    SFSM_enableCustomEH,    true];
+missionNamespace setVariable ["SFSM_enableCustomEH",    false,    				true];//using the A3 2.10 eventhandler, this setting is here for legacy reasons
 missionNamespace setVariable ["SFSM_allowFlinching",    SFSM_allowFlinching,    true];
 missionNamespace setVariable ["SFSM_allowDodging",      SFSM_allowDodging,      true];
 missionNamespace setVariable ["SFSM_panicCoef",         SFSM_panicCoef,         true];

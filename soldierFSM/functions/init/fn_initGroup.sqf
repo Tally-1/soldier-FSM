@@ -14,3 +14,7 @@ _group setVariable["SFSM_groupData", _groupData, true];
 _group setVariable["SFSM_lastKnownEnemy", objNull, true];
 
 _group setVariable["SFSM_ZeusWaypoints", [], true];
+
+if!(SFSM_enableCustomEH)
+then{[_group] call SFSM_fnc_enemyDetected};
+

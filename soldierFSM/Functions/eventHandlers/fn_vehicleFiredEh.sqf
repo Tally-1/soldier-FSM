@@ -1,6 +1,5 @@
-params ["_man"];
-
-_man addEventHandler ["Fired", {
+params ["_vehicle"];
+_vehicle addEventHandler ["Fired", {
 	params [
 				"_unit", 
 				"_weapon", 
@@ -12,10 +11,7 @@ _man addEventHandler ["Fired", {
 				"_gunner"
 			];
 	
-	[_unit] 							 call SFSM_fnc_triggerBattleOnShot;
-	[_unit, _muzzle, _weapon] 			 call SFSM_fnc_multiplyReactionFire;
 	[_unit] 							 call SFSM_fnc_soundReaction;
-	[_unit, "last_bullet_fired", time] 	 call SFSM_fnc_unitData;
 	[_projectile, _ammo, _unit, _gunner] call SFSM_fnc_projectileEH;
 	
 

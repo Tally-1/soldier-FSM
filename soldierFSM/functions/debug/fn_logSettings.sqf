@@ -44,6 +44,8 @@ private _hintText = parseText
 		_end,
 
 		_green,
+		"explosion Cover Radius ",SFSM_explosionCoverRad, "<br/>",
+		"break Cover when Hit ",SFSM_breakCoverOnHit, "<br/>",
 		"panic-coef ",          SFSM_panicCoef, "<br/>",
 		"no-Cover-Panic ",      SFSM_noCoverPanic, "<br/>",
 		"emergency Rearm ",     SFSM_emergencyRearm, "<br/>",

@@ -1,12 +1,18 @@
 params ["_man", "_battleField"];
 
 private _action = [_man, "action"] call SFSM_fnc_unitData;
+if(isNil "_action")
+exitWith{
+	"reactToVehicles, action undefined" call dbgmsg;
+	false;
+	};
+
 private _occupied = ("Hiding" in _action || "Targeting" in _action || "weapon" in _action);
 private _playerLead = ((leader (group _man)) in allPlayers);
 
 
 if(_occupied)exitWith{false};
-
+ 
 //get nearest high-level enemy vehicle [_x] call SFSM_fnc_emergencyRearm;
 private _majorThreat = [_man, _battleField] call SFSM_fnc_unkillableEnemyVehicle;
 

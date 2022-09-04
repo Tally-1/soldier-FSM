@@ -3,6 +3,9 @@ params["_terrainObjects", "_includeAll"];
 // private _allTypes = [];
 private _approvedObjects = [];
 
+//delete mapObjects that are hidden, from the array.
+_terrainObjects deleteAt (_terrainObjects findIf {isHidden _x});
+
 {
 	private _excluded = [_x] call SFSM_fnc_excludedMapObject;
 	

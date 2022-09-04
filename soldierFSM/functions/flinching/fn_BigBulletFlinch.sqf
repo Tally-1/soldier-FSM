@@ -5,14 +5,16 @@ params ["_man"];
 private _move 		= "";
 private _standmoves = [	"AmovPercMstpSrasWrflDnon_AadjPpneMstpSrasWrflDright",
 						"AmovPercMstpSrasWrflDnon_AadjPpneMstpSrasWrflDleft",
-						"AmovPercMstpSrasWrflDnon_AmovPpneMstpSrasWrflDnon"];
+						"AmovPercMstpSrasWrflDnon_AmovPpneMstpSrasWrflDnon"
+						];
 
 private _kneelMoves = [	"AmovPknlMstpSrasWrflDnon_AadjPpneMstpSrasWrflDleft",
 						"AmovPknlMstpSrasWrflDnon_AadjPpneMstpSrasWrflDright"];
 
-private _proneMoves = [	"AmovPpneMstpSrasWrflDnon_AadjPpneMstpSrasWrflDdown",
+private _proneMoves = [	//"AmovPpneMstpSrasWrflDnon_AadjPpneMstpSrasWrflDdown",
 						"AmovPpneMstpSrasWrflDnon_AadjPpneMstpSrasWrflDleft",
-						"AmovPpneMstpSrasWrflDnon_AadjPpneMstpSrasWrflDRight"];
+						"AmovPpneMstpSrasWrflDnon_AadjPpneMstpSrasWrflDRight"
+						];
 
 switch (stance _man) do {
 	case "STAND": 	{_move = selectRandom _standmoves};

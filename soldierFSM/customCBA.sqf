@@ -1,4 +1,4 @@
-missionNamespace setVariable ["SFSM_Version", 0.296];
+missionNamespace setVariable ["SFSM_Version", 0.297];
 private _versionName = ["DCO soldier FSM V. ", SFSM_Version] joinString "";
 
 
@@ -37,11 +37,27 @@ private _versionName = ["DCO soldier FSM V. ", SFSM_Version] joinString "";
 ] call cba_settings_fnc_init;
 
 [
+	"SFSM_explosionCrater",
+	"CHECKBOX",
+	["Explosion-craters", "Creates a dent in the terrain upon exploding ammo(the size varies according to ammo-type)."],
+	_versionName,
+	true
+] call cba_settings_fnc_init;
+
+[
 	"SFSM_flinchStopDodge",
 	"CHECKBOX",
 	["flinch Stops Dodge", "if this is toggled then the unit will stop running towards cover and instead flinch"],
 	_versionName,
 	false
+] call cba_settings_fnc_init;
+
+[
+	"SFSM_breakCoverOnHit",
+	"CHECKBOX",
+	["Hit stops cover-holding", "If hit while in cover the unit will move away from current position. (does not affect hunker-down mechanism)"],
+	_versionName,
+	true
 ] call cba_settings_fnc_init;
 
 [
@@ -111,8 +127,9 @@ private _versionName = ["DCO soldier FSM V. ", SFSM_Version] joinString "";
 	false
 ] call cba_settings_fnc_init;
 
-
-
+/*
+Deactivated as of version 0.297, we are now using the vanilla EH that came with
+A3 #2.10
 [
 	"SFSM_enableCustomEH",
 	"CHECKBOX",
@@ -121,6 +138,7 @@ private _versionName = ["DCO soldier FSM V. ", SFSM_Version] joinString "";
 	true
 ] call cba_settings_fnc_init;
 
+*/
 
 [
 	"SFSM_KnowledgeToFight",
@@ -252,6 +270,22 @@ private _versionName = ["DCO soldier FSM V. ", SFSM_Version] joinString "";
 	],
 	1
 ] call cba_settings_fnc_init;
+
+[
+	"SFSM_explosionCoverRad",
+	"SLIDER",
+	["explosion Cover Radius", "if munition explodes within this distance from the soldier he will run for cover."],
+	_versionName,
+	[
+		70,   	//minimum 
+		200, 	//max
+		120, 	//default
+		0,		//decimals
+		false
+	],
+	1
+] call cba_settings_fnc_init;
+
 
 [
 	"SFSM_reactFireCoolDown",

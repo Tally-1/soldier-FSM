@@ -28,6 +28,7 @@ _man setAnimSpeedCoef SFSM_sprintSpeed;
 [_man, "action", "taking cover"]	call SFSM_fnc_unitData;
 
 
+
 _script = [_man, _coverPos, SFSM_dodgeTimer, 2.5] spawn SFSM_fnc_forceMoveToPos;
 waitUntil{sleep 0.1; scriptDone _script};
 
@@ -37,6 +38,7 @@ _man doMove (getPos _man);
 
 _man setAnimSpeedCoef 1;
 [_man, "action", "none"] call SFSM_fnc_unitData;
+[_man, "last_time_in_cover", time]	call SFSM_fnc_unitData;
 
 
 [_man, _coverPos] spawn SFSM_fnc_endTakeCover;

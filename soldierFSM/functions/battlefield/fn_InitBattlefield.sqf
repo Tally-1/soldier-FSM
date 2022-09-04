@@ -37,11 +37,12 @@ private _clustersData = [
 [["Loaded clusterPositions in ",(time - _startTime)," seconds."]] call SFSM_fnc_debugMessage;
 
 private _mapObjsData = createHashmap;
+
 //the following function will get all the info on the map-objects in the area.
 //it will get the objects inside the cluster-zones using a unscheduled call
 //then it will use a scheduled call (spawn) to aquire all of the map-objects within the battlefield radius.
 //This might take some time depending on the amount of objects in the area.
-[_centerPos, _radius, _battlefield, _clustersData, _mapObjsData, true] call SFSM_fnc_areaData;
+[_centerPos, _radius, _battlefield, _clustersData, _mapObjsData, true] call SFSM_fnc_areaData; 
 
 private _groups          = [_clustersData] call Tcore_fnc_clusterGroups;
 private _units           = [_clustersData] call Tcore_fnc_clusterUnits;

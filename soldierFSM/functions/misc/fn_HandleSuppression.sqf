@@ -12,9 +12,11 @@ then{[_man, "roundsPrSecond", 0] call SFSM_fnc_unitData};
 
 [_man, "current suppression", (getSuppression _man)] call SFSM_fnc_unitData;
 
-if!(_action == "none")exitWith{};
+
 
 if((getSuppression _man) < SFSM_ProneTreshHold)exitwith{[_man] call SFSM_fnc_normalizeStance};
+if!(_action == "none")exitWith{};
+
 
 _man setUnitPos "DOWN";
 

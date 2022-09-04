@@ -50,6 +50,7 @@ _weapons append _placedWeapons;
 	true
 ] call SFSM_fnc_areaData;
 
+
 //store the variables that are not included in the "battlefield"-hashmap itself.
 [
 	_battlefield, 
@@ -83,9 +84,7 @@ _battlefield set ["zones", ([_battlefield] call SFSM_fnc_getZones)];
 
 
 {[_x, "currentBattle", _battleKey] call SFSM_fnc_groupData} forEach _groups;
-
 {deleteMarker _x} forEach _markers;
-
 [_battlefield] call SFSM_fnc_bfDebugMarkers;
 
 

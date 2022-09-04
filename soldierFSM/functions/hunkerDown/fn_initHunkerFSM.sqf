@@ -1,8 +1,14 @@
 params ["_man", "_battlefield", "_objectHash"];
 
+if(isNil "_man")exitWith{};
+if(isNull _man)exitWith{};
+
 private _side           = side _man;
 private _lastName      = ((name _man) splitString " ")#1;
 private _enemyPositions = [_side, _battlefield] call SFSM_fnc_getEnemyPositions;
+
+if(isNil "_lastName")then{_lastName = hashValue _man};
+if(isNil "_lastName")exitWith{};
 
 [_objectHash, _enemyPositions] call SFSM_fnc_setHobjPositions;
 _objectHash set ["owner", _lastName];

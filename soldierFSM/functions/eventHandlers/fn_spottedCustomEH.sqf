@@ -1,6 +1,7 @@
-if!(SFSM_enableCustomEH)exitWith{"custom eventhandler deactivated" call SFSM_fnc_debugMessage};
-
 waitUntil {time > 2};
+
+if!(SFSM_enableCustomEH)
+exitWith{"custom eventhandler deactivated, using vanilla enemy-detected EH" call dbgmsg};
 
 while {true} do {
 sleep SFSM_customEH_Timer;
@@ -12,9 +13,8 @@ sleep SFSM_customEH_Timer;
 		then{
 				private _startBattle = [_leader, _enemy] call SFSM_fnc_canSpotInitBattle;
 				if!(_startBattle)exitWith{};
-				["Enemy spotted, starting battle"] call SFSM_fnc_debugMessage;
+				"Enemy spotted, starting battle" call dbgmsg;
 				[_leader, _enemy] call SFSM_fnc_InitBattlefield;
-				
 			};
 	} forEach allGroups;
 };

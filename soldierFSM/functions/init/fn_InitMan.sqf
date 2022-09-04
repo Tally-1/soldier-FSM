@@ -9,12 +9,14 @@ private _unitData = createHashMap;
 // proper reactions from the start of the game  
 
 
+_unitData set 	["Last_Hit", 	        -300];
 _unitData set 	["Last_Close_Bullet", 	-300];
 _unitData set 	["last_bullet_fired", 	-300];
 _unitData set 	["flinchTimer", 		-300];
 _unitData set 	["dodgeTimer", 			-300];
 _unitData set 	["reactFireTimer",		-300];
 _unitData set 	["lastBattle",		    -300];
+_unitData set   ["last_time_in_cover",  -300];
 _unitData set 	["roundsPrSecond", 		0];
 _unitData set 	["action", 				"none"];
 _unitData set 	["currentBattle",		"none"];

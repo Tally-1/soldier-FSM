@@ -3,6 +3,7 @@
 	called from battlefieldPostInit, sends units to nearest coverPos if available.
 */
 params ["_man", "_battlefield"];
+if!([_man] call SFSM_fnc_manLoaded)exitwith{};
 
 private _enemy         = ([_man, nil, 'enemies'] call Tcore_fnc_nearKnownEnemies)#0;
 private _pathEnabeled  = [_man, 'pathEnabeled'] 	call SFSM_fnc_unitData;

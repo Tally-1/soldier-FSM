@@ -11,7 +11,6 @@ private _startTime      = time;
 private _terrainObjects = nearestTerrainObjects [_pos, _types, _radius, false, true];
 		_terrainObjects = [_terrainObjects, _scheduled] call SFSM_fnc_filterMapObjects;  
 private _count 			= (count _terrainObjects);
-// private _objTypes       = [];
 
 {	
 	if(!isNull _x)
@@ -26,6 +25,7 @@ private _count 			= (count _terrainObjects);
 			
 			_mapObjectsData  set [_position, _objData];
 			
+			//
 			if(!isNil "_mapObjsData")
 			then{_mapObjsData set [_position, _objData]};
 
@@ -35,7 +35,6 @@ private _count 			= (count _terrainObjects);
 					_hunkerObjects pushBackUnique _x;
 				};
 
-	// _objTypes pushBackUnique (_objData get "type");
 }} forEach _terrainObjects;
 
 _mapObjectsData set ["objectCount", _count];

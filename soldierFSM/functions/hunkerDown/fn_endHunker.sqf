@@ -6,7 +6,9 @@ _man enableAI "PATH";
 _man setUnitPos "AUTO";
 _man doFollow leader(group _man);
 
-if(!isNil "_objectHash")then{_objectHash set ["owner", "none"]};
+if((!isNil "_objectHash")
+&&{(typeName _objectHash == "HASHMAP")})
+then{_objectHash set ["owner", "none"]};
 
 
 [["Hunker FSM ended for: ", (name _man), " ", _reason]] call SFSM_fnc_debugMessage;

@@ -37,7 +37,7 @@ then{
 		_sides = [_clustersData] 						call Tcore_fnc_ClusterSides;
 		
 		if!(_update)
-		then{[_mapObjsData, _clustersData] call Tcore_fnc_ClusterTerrainObjects};		
+		then{[_mapObjsData, _clustersData] call Tcore_fnc_ClusterTerrainObjects};		 
 };
 
 
@@ -46,11 +46,22 @@ _allPositions set ["west", _westPositions];
 _allPositions set ["east", _eastPositions];
 _allPositions set ["independent", _guerPositions];
 
+private _areaName = [_pos] call Tcore_fnc_areaName;
+
+//see comments at fn_useLightScan.sqf, for an explanation of this part.
+private _types = [];
+private _lightScan = [_pos, _areaName, _radius] call SFSM_fnc_useLightScan;
+private _lightScanText = ["Light area-scan being used at ", _areaName] joinString "";
+
+if(_lightScan)then{_types = SFSM_lightScanTypes};
 
 if(_getAllmapObjects)
-then{[_pos, _radius, _mapObjsData, _areaData] spawn SFSM_fnc_getMapObjects};
+then{
+		if(_lightScan)then{_lightScanText call dbgmsg};
+		[_pos, _radius, _mapObjsData, _areaData, _types] spawn SFSM_fnc_getMapObjects;
+	}; 
 
-private _areaName = [_pos] call Tcore_fnc_areaName;
+
 
 _areaData set ["name", 				_areaName];
 _areaData set ["radius", 			_radius];

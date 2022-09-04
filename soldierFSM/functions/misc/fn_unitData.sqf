@@ -4,7 +4,7 @@ _man is the object containing the hashmap-variable
 _item is the key-value in the hashmap
 _value (optional) is the value to assign to the hashmap-key.
 */
-params ["_man", "_item", "_value"];
+params ["_man", "_item", "_value"]; 
 
 if!(_man isKindOf "man")exitwith{};
 
