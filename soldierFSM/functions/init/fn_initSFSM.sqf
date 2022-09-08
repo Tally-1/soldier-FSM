@@ -24,3 +24,12 @@ then{
 		diag_log _noScanText;
 	};
 
+
+if (!isMultiplayer) then
+{
+	[] spawn {
+		sleep 30;
+		private _text= [] call SFSM_fnc_gameLoadedWarning;
+		hint _text;
+	};
+}

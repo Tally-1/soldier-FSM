@@ -12,7 +12,13 @@ Supressed params documentation.
 */
 
 Params ["_man"];
-private _unitData 		= (_man getVariable "SFSM_UnitData");
+private _unitData = (_man getVariable "SFSM_UnitData");
+
+//exit on all unwanted object-types (_man);
+if(isNil "_unitData")exitWith{[_man] call SFSM_fnc_InitMan};
+if([(group _man)] call Tcore_fnc_nilNull)exitWith{};
+if([_man] call Tcore_fnc_nilNull)exitWith{};
+if([_man] call Tcore_fnc_isPlayer)exitWith{};
 
 //overWrite previous EH.
 if("SuppressedEH" in _unitData) then{_man removeEventHandler ["Suppressed", (_unitData get "SuppressedEH")]};

@@ -1,6 +1,13 @@
 private _seekCover = true;
 params ["_man", "_enemy", "_seekCover"];
 
+//I would normally prefer putting this codeBlock in the "canDodge" function,
+//But since "unitInDoor" is using the "lineIntersectsSurfaces" command I have to put it here
+//for performance reasons.
+if(_man call SFSM_fnc_unitInDoor 
+&&{(! SFSM_dodgeIndoors)})
+exitWith{"indoor dodge blocked" call dbgmsg};
+
 /*Set values to the unitData hashmap */
 private _coolDown = (time + SFSM_DodgeCoolDown);
 [_man, "dodgeTimer", _coolDown] call SFSM_fnc_unitData;

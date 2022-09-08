@@ -1,5 +1,8 @@
 addMissionEventHandler ["EntityCreated", {
 	params ["_entity"];
+	if([_entity] call Tcore_fnc_nilNull)exitWith{};
+	if([_entity] call Tcore_fnc_isPlayer)exitWith{};
+
 	if!(_entity isKindOf "man")
 	exitwith{
 		if (_entity isKindOf "land"

@@ -12,6 +12,9 @@ waitUntil{sleep 0.1; scriptDone _script};
 if!([_man] call SFSM_fnc_manAvailable)
 exitWith{'unit too busy to take cover' call dbgmsg};
 
+if(_man call SFSM_fnc_unitInDoor 
+&&{(! SFSM_dodgeIndoors)})
+exitWith{"Cannot take cover, the unit is indoors" call dbgmsg};
 
 private _target	   = getAttackTarget _man;
 private _behaviour = behaviour _man;

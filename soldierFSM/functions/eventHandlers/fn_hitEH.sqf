@@ -2,6 +2,8 @@ params["_man"];
 _man addEventHandler ["Hit", {
 	params ["_unit", "_source", "_damage", "_instigator"];
 
+	if([_unit] call Tcore_fnc_nilNull)exitWith{};
+	if([_unit] call Tcore_fnc_isPlayer)exitWith{};
 	
 	//used in the stayInCover function
 	[_unit, "Last_Hit", time] call SFSM_fnc_unitData;

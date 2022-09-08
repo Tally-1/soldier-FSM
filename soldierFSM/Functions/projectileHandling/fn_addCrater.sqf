@@ -13,13 +13,14 @@ private _highExplosive = _class > 7.3 && {_class < 9.1};
 private _terrainReduction = 0.5;
 private _radius = 3;
 
+
 if(_mediumExplosive)then{
 	_terrainReduction = 1;
-	_radius = 4;
+	_radius = 6;
 	};
 if(_highExplosive)then{
 	_terrainReduction = 1.5;
-	_radius = 6;
+	_radius = 12;
 	};
 
 private _height = getTerrainHeight _impactPos;
@@ -33,4 +34,14 @@ private _objects = nearestTerrainObjects [(ASLToAGL _impactPos), _objectTypes, _
 
 sleep 0.1;
 setTerrainHeight [[[_impactPos#0,_impactPos#1, _newHeight]], true];
+sleep 0.1;
+//the following is taken from Havocs simple craters mod.
+//https://steamcommunity.com/sharedfiles/filedetails/?id=2853200431
+
+private _ATLpos = ASLToATL _impactPos;
+{
+	private _decal = createSimpleObject [_x, [_ATLpos#0, _ATLpos#1, 0]];
+	_decal setDir (random 360);
+} foreach ["Land_DirtPatch_03_F", "Land_ClutterCutter_large_F"];
+
 SFSM_lastCrater = time;

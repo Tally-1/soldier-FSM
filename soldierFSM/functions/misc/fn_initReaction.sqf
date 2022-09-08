@@ -19,9 +19,9 @@ private _canDodge       = [_man] call SFSM_fnc_canDodge;
 if(_canDodge)
 exitWith{
 			[_man, _shooter] spawn SFSM_fnc_Dodge;
-			private _group = group _man;
-			private _grpDodgeDisabeled = [_group, 'dodgeDisabeled'] call SFSM_fnc_groupData;
-			if(_grpDodgeDisabeled)then{'dodge response is blocked by zeus waypoint' call dbgmsg};
+			//private _group = group _man;
+			//private _grpDodgeDisabeled = [_group, 'dodgeDisabeled'] call SFSM_fnc_groupData;
+			//if(_grpDodgeDisabeled)then{'dodge response is blocked by zeus waypoint' call dbgmsg};
 		};
 
 //Any projectile from 9.3mm up to a GBU

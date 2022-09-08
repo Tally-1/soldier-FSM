@@ -8,10 +8,8 @@ then{
 		SFSM_hideFromVehicles   = true;  // Units will run away / hide from vehicles they cannot hurt.
 		SFSM_AtSpecHuntVehicles = true;  // Units with launchers will target enemy vehicles instead of hiding.
         SFSM_mgSuppressClusters = true;  // MachineGunners will spray enemy positions upon initial contact
-		SFSM_enableCustomEH     = false;  // disable custom eventhandler for enemy-spotted. Deactivating this is VERY good for performance.
 		SFSM_ExcludeZcommand    = false; // stop units that have been given waypoints by a curator from dodging
 		SFSM_PlayerGrpDodge     = false; // Allows units in a group lead by a player to dodge / hide, dodging can be frustrating for players who like to micro-manage their AI
-
 		SFSM_FlinchTreshHold 	= 1;	 // unit will not flinch if suppression is higher than this value
 		SFSM_ProneTreshHold 	= 0.8;	 // unit will stay prone if suppression is higher than this value
 		SFSM_FlinchCoolDown		= 5;	 // Minimum Time between each flinch-response
@@ -23,7 +21,6 @@ then{
 		SFSM_noCoverPanic       = true;  // unit will panic upon initiating a battle if no cover is found
 		SFSM_reactFireCoolDown	= 180; 	 // Time between each returnFire-response		
 		SFSM_panicCoef          = 0.5;   // chance that a man will panic upon start of engagement if he cannot see a cover-position
-
 		SFSM_KnowledgeToFight   = 0;     // the amount of knowledge needed to start a battle between 2 units.
 		SFSM_sprintSpeed        = 1.3;   // speed coef for dodging / taking cover / hiding. 1 = vanilla. 2 = twice the normal speed
 		SFSM_stayCoverPosTime   = 15;    // the amount of time the soldier will stay in his position upon taking cover.
@@ -32,6 +29,9 @@ then{
 		SFSM_explosionCoverRad  = 200;   // if munition explodes within this distance from the soldier he will run for cover.
 		SFSM_breakCoverOnHit    = true;  // if hit while in cover the unit will move away from current position
 		SFSM_explosionCrater    = true;  // Creates a dent in the terrain upon exploding ammo(the size varies according to ammo-type)
+		
+		SFSM_legHealingOn       = true;  // If a soldier is hit in the legs, he will inmediately go prone and heal himself, to allow for running.
+		SFSM_dodgeIndoors       = false; // If a soldier is inside a house the "dodge" function will activate if the unit is taking heavy fire.
 };
 
 
@@ -45,7 +45,6 @@ missionNamespace setVariable ["SFSM_DodgeCoolDown", 	SFSM_DodgeCoolDown, 	true];
 missionNamespace setVariable ["SFSM_DodgeDistance", 	SFSM_DodgeDistance, 	true];
 missionNamespace setVariable ["SFSM_DodgeTimer", 		SFSM_DodgeTimer, 		true];
 missionNamespace setVariable ["SFSM_forceDodge", 		SFSM_forceDodge, 		true]; 
- 
 missionNamespace setVariable ["SFSM_Debugger", 			SFSM_Debugger, 			true]; 
 missionNamespace setVariable ["SFSM_noCoverPanic", 		SFSM_noCoverPanic, 		true];
 missionNamespace setVariable ["SFSM_reactFireCoolDown", SFSM_reactFireCoolDown, true];
@@ -61,6 +60,13 @@ missionNamespace setVariable ["SFSM_allowDodging",      SFSM_allowDodging,      
 missionNamespace setVariable ["SFSM_panicCoef",         SFSM_panicCoef,         true];
 missionNamespace setVariable ["SFSM_KnowledgeToFight",  SFSM_KnowledgeToFight,  true];
 missionNamespace setVariable ["SFSM_sprintSpeed",       SFSM_sprintSpeed,       true];
-missionNamespace setVariable ["SFSM_emergencyRearm",    SFSM_emergencyRearm,       true];
+missionNamespace setVariable ["SFSM_emergencyRearm",    SFSM_emergencyRearm,    true];
+missionNamespace setVariable ["SFSM_explosionCoverRad", SFSM_explosionCoverRad, true];
+missionNamespace setVariable ["SFSM_breakCoverOnHit",   SFSM_breakCoverOnHit,   true];
+missionNamespace setVariable ["SFSM_explosionCrater",   SFSM_explosionCrater,   true];
+
+missionNamespace setVariable ["SFSM_legHealingOn",      SFSM_legHealingOn,      true];
+missionNamespace setVariable ["SFSM_dodgeIndoors",      SFSM_dodgeIndoors,      true];
+
 
 true;

@@ -23,9 +23,11 @@ private _unitsReacted = 0;
 	private _action      = [_X, "action"]        call SFSM_fnc_unitData;
 	private _lastCover   = [_x, "last_time_in_cover"] call SFSM_fnc_unitData;
 	private _noCoverSpam = (time - _lastCover) > (SFSM_stayCoverPosTime + 60);
+	private _notInBattle = (([_X, "currentBattle"] call SFSM_fnc_unitData) == "none");
 
 	if(_action == "none"
-	&&{_noCoverSpam})
+	&&{_noCoverSpam
+	&&{_notInBattle}})
 	then{
 			[_x, _launchPos] call SFSM_fnc_eventTriggeredCover;
 			_unitsReacted = _unitsReacted+1;
@@ -33,7 +35,7 @@ private _unitsReacted = 0;
 
 } forEach _nearMen;
 
-if(_unitsReacted > 0)then{"units hiding from bulletImpac" call dbgmsg};
+if(_unitsReacted > 0)then{[[_unitsReacted, "units hiding from bulletImpac"]] call dbgmsg};
 
 //update impactHandler to avoid overflow / performance issues.
 SFSM_lastImpactHandler = time;

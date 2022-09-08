@@ -1,0 +1,20 @@
+SOLDIER FSM 0.298 hotfix
+**DONE** 1) Emergency heal on player controlled units fix. [free]
+**DONE** 2) Disclaimer on Single player hashmap error [Free]
+**DONE** 3) Exit hold cover  with Automatic stance [Free]
+          -observations: 
+          There are NO sqf commands that controls a units stance as a whole,
+          when clicking on a group in zeus the "group-stance" shown is not representative
+          of the whole group, some of the group-members can have their "unitPos" as Automatic
+          and others as crouch, but the zeus-menu will show it as if the whole group is crouched.
+          Be aware of this before complaining about it not working. 
+          Take the time to observe before complaining.
+
+          I have made 2 functions that triggers every 10 seconds in order to deal with the issue.
+          Read "fn_handleGroupStance.sqf" && "fn_handleSuppression.sqf"
+          They will spam the auto-stance on every individual unit that is not under fire or performing an action.
+
+
+**POSPONED** 4) delete crater-function [Free]
+**DONE** 5) Disable Emergency heal param. [5 USD]
+**DONE** 6) No dodge when inside buildings [10 USD]

@@ -1,4 +1,4 @@
-missionNamespace setVariable ["SFSM_Version", 0.297];
+missionNamespace setVariable ["SFSM_Version", 0.298];
 private _versionName = ["DCO soldier FSM V. ", SFSM_Version] joinString "";
 
 
@@ -37,25 +37,9 @@ private _versionName = ["DCO soldier FSM V. ", SFSM_Version] joinString "";
 ] call cba_settings_fnc_init;
 
 [
-	"SFSM_explosionCrater",
+	"SFSM_dodgeIndoors",
 	"CHECKBOX",
-	["Explosion-craters", "Creates a dent in the terrain upon exploding ammo(the size varies according to ammo-type)."],
-	_versionName,
-	true
-] call cba_settings_fnc_init;
-
-[
-	"SFSM_flinchStopDodge",
-	"CHECKBOX",
-	["flinch Stops Dodge", "if this is toggled then the unit will stop running towards cover and instead flinch"],
-	_versionName,
-	false
-] call cba_settings_fnc_init;
-
-[
-	"SFSM_breakCoverOnHit",
-	"CHECKBOX",
-	["Hit stops cover-holding", "If hit while in cover the unit will move away from current position. (does not affect hunker-down mechanism)"],
+	["Dodge indoors", "Toggle if a soldier can dodge / take cover while indoors."],
 	_versionName,
 	true
 ] call cba_settings_fnc_init;
@@ -84,6 +68,37 @@ private _versionName = ["DCO soldier FSM V. ", SFSM_Version] joinString "";
 	true
 ] call cba_settings_fnc_init;
 
+[
+	"SFSM_explosionCrater",
+	"CHECKBOX",
+	["Explosion-craters", "Creates a dent in the terrain upon exploding ammo(the size varies according to ammo-type)."],
+	_versionName,
+	true
+] call cba_settings_fnc_init;
+
+[
+	"SFSM_legHealingOn",
+	"CHECKBOX",
+	["Emergency heal", "If a soldier is hit in the legs, he will inmediately go prone and heal himself, to allow for running."],
+	_versionName,
+	true
+] call cba_settings_fnc_init;
+
+[
+	"SFSM_flinchStopDodge",
+	"CHECKBOX",
+	["flinch Stops Dodge", "if this is toggled then the unit will stop running towards cover and instead flinch"],
+	_versionName,
+	false
+] call cba_settings_fnc_init;
+
+[
+	"SFSM_breakCoverOnHit",
+	"CHECKBOX",
+	["Hit stops cover-holding", "If hit while in cover the unit will move away from current position. (does not affect hunker-down mechanism)"],
+	_versionName,
+	true
+] call cba_settings_fnc_init;
 
 [
 	"SFSM_hideFromVehicles",

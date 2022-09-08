@@ -21,24 +21,3 @@ other fixes / bonuses / daydreaming:
 **DONE** Use group-created eventHandler (replace with zeus-grp-placed)
 **DONE** check out terrain-deformer (if easy implement deformation on explosion)
 **DONE** use light-scan when fighting in Urban areas / near wineyards / on Tanoa
-
-1) Some suppression errors were reported, these could not be recreated in Vanilla, so I chose to read through the RPT file of one of the users and implement Exception handling where the error occured.
-
-2) Use the new eventhandlers to initialize script-spawned units and groups
-
-3) Change distance for Sound-reaction on silenced weapons
-
-4) Eventhandler employed to trigger "take cover" when a bullet impacts near the soldier.
-
-5) Combat mode is set to "stealth" when holding cover.
-
-6) If a soldier is hit / injured while holding cover he will change position
-
-7) When ammo explodes within 70m of a soldier he will do a "heavy-flinch".
-
-8) When ammo explodes within 120m(adjustable)  of a soldier he will run for cover.
-
-9) the custom event-handler has been switched with the new "enemyDetected" eventhandler from bohemia(very good for performance since we no longer need a contant loop).
-
-10) Craters are being created upon exploding ammo, size is according to ammo-type, can be deactivated in the settings
-

@@ -73,7 +73,3 @@ then{
 		missionNamespace setVariable ["DCOnoGroupReset", true, true];
 		"DCO soldier FSM deactivated group-reset for DCO vehicle FSM" call dbgmsg;
 	};
-
-//make sure the version-var is declared in case it has not loaded yet 
-//(there is a difference between the load-order when developing and running the finished mod).
-if(isNil "SFSM_Version")then{missionNamespace setVariable ["SFSM_Version", 0.297]};
