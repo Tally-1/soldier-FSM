@@ -16,7 +16,8 @@ switch (_weapon) do {
 
 if(_hasSilencer)then{_distance = 100};
 
-private _nearMen = _shooter nearEntities ["Man", _distance];
+private _nearMen = [_shooter, _distance] call Tcore_fnc_nearSoldiers;
+
 {
 	private _action = [_X, "action"]        call SFSM_fnc_unitData;
 	private _battle = [_X, "currentBattle"] call SFSM_fnc_unitData;

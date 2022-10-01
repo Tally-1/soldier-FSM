@@ -28,7 +28,7 @@ then{
 		SFSM_emergencyRearm     = true;  // Soldiers pick up launchers from killed squad-mates, or off the ground if a vehicle is nearby
 		SFSM_explosionCoverRad  = 200;   // if munition explodes within this distance from the soldier he will run for cover.
 		SFSM_breakCoverOnHit    = true;  // if hit while in cover the unit will move away from current position
-		SFSM_explosionCrater    = true;  // Creates a dent in the terrain upon exploding ammo(the size varies according to ammo-type)
+		//SFSM_explosionCrater    = true;  // Creates a dent in the terrain upon exploding ammo(the size varies according to ammo-type)
 		
 		SFSM_legHealingOn       = true;  // If a soldier is hit in the legs, he will inmediately go prone and heal himself, to allow for running.
 		SFSM_dodgeIndoors       = false; // If a soldier is inside a house the "dodge" function will activate if the unit is taking heavy fire.
@@ -63,7 +63,7 @@ missionNamespace setVariable ["SFSM_sprintSpeed",       SFSM_sprintSpeed,       
 missionNamespace setVariable ["SFSM_emergencyRearm",    SFSM_emergencyRearm,    true];
 missionNamespace setVariable ["SFSM_explosionCoverRad", SFSM_explosionCoverRad, true];
 missionNamespace setVariable ["SFSM_breakCoverOnHit",   SFSM_breakCoverOnHit,   true];
-missionNamespace setVariable ["SFSM_explosionCrater",   SFSM_explosionCrater,   true];
+// missionNamespace setVariable ["SFSM_explosionCrater",   SFSM_explosionCrater,   true];
 
 missionNamespace setVariable ["SFSM_legHealingOn",      SFSM_legHealingOn,      true];
 missionNamespace setVariable ["SFSM_dodgeIndoors",      SFSM_dodgeIndoors,      true];

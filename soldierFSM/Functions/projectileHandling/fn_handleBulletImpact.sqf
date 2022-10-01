@@ -14,7 +14,7 @@ _impactPos = ASLToAGL _impactPos;
 
 //get necesary data and near units.
 private _radius = 20;
-private _nearMen = _impactPos nearEntities ["man", _radius];
+private _nearMen = [_shooter, _distance] call Tcore_fnc_nearSoldiers;
 if(_nearMen isEqualTo [])exitWith{};
 
 //Send all units within set radius into cover / run away from impact

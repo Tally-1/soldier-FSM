@@ -6,7 +6,7 @@ _projectile setVariable ["ammoType", _ammoType];
 
 _projectile addEventHandler ["Explode", {
 	params ["_projectile", "_pos", "_velocity"];
-	_projectile removeAllEventHandlers "Explode";
+	_projectile removeEventHandler [_thisEvent, _thisEventHandler];
 	private _launchPos = _projectile getVariable "launchPos";
 	private _shooter = _projectile getVariable "shooter";
 	private _ammoType = _projectile getVariable "ammoType";

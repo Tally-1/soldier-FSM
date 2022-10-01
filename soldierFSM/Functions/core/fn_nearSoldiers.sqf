@@ -7,11 +7,10 @@ private _nearMen = _man nearEntities _radius;
 		{
 			private _isPlayer = [_x] call Tcore_fnc_isPlayer;
 			private _isThisUnit = (_x == _man);
-			private _isMan      = _x isKindOf "man";
-
+			private _valid = [_x] call SFSM_fnc_isRealMan;
 			if((! _isPlayer)
 			&&{(! _isThisUnit)
-			&&{_isMan}})
+			&&{   _valid}})
 			then{_nearSoldiers pushBack _x};
 			
 		} forEach _nearMen;

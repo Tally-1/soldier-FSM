@@ -1,6 +1,7 @@
 params ["_man", "_ammoCFG", "_shooter"];
 if(isPlayer _man)exitwith{};
 if!(typeOf (vehicle _man) == typeOf _man)exitwith{};//if man is in a vehicle
+if!([_man] call SFSM_fnc_isRealMan)exitWith{};
 
 private _rps 		 = [_man, "roundsPrSecond"] call SFSM_fnc_unitData;
 private _suppression = (getSuppression _man);

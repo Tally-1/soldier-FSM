@@ -32,7 +32,8 @@ do {
 		private _side = side _unit;
 		
 		if((!(_unit in _excludedUnits))
-		&&{_side in _sides})
+		&&{_side in _sides
+		&& {[_unit] call SFSM_fnc_isRealMan}})
 		then{
 				private _clusterData    = [	_unit, 
 											_clusterRadius, 

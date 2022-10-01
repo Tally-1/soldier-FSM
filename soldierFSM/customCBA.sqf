@@ -1,4 +1,4 @@
-missionNamespace setVariable ["SFSM_Version", 0.298];
+missionNamespace setVariable ["SFSM_Version", 0.2991, true];
 private _versionName = ["DCO soldier FSM V. ", SFSM_Version] joinString "";
 
 
@@ -67,7 +67,7 @@ private _versionName = ["DCO soldier FSM V. ", SFSM_Version] joinString "";
 	_versionName,
 	true
 ] call cba_settings_fnc_init;
-
+/*
 [
 	"SFSM_explosionCrater",
 	"CHECKBOX",
@@ -75,7 +75,7 @@ private _versionName = ["DCO soldier FSM V. ", SFSM_Version] joinString "";
 	_versionName,
 	true
 ] call cba_settings_fnc_init;
-
+*/
 [
 	"SFSM_legHealingOn",
 	"CHECKBOX",
