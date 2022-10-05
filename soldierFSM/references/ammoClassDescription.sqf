@@ -9,7 +9,7 @@ if(_class < 1
 
 if(_class == 1) 	exitWith{"Pistol round"};
 
-if(_class == 2) 	    exitWith{"~ 5.56 / 5.8"};					/*Light Rifle round */
+if(_class == 2) 	exitWith{"~ 5.56 / 5.8"};					/*Light Rifle round */
 if(_class == 2.1)	exitWith{"~ 6.5 / 7.62x39"};				/*Light medium Rifle round */
 if(_class == 2.2)	exitWith{"~ 7.62x51"};						/*Medium Rifle round */
 if(_class == 2.3)	exitWith{"~ 9.3x64 - .338"};				/*Medium heavy Rifle round */

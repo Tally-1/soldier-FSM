@@ -18,9 +18,18 @@ private _endText = ["Battle ", (_battlefield get "name"), " ended."] joinString 
 
 
 {
+	private _currentBuilding = [_x, "currentBuilding"] call SFSM_fnc_unitData;
+	private _pathEnabeled = [_x, "pathEnabeled"] call SFSM_fnc_unitData;
+	if!(_currentBuilding == "none")
+	then{
+          missionNamespace setVariable [_currentBuilding, nil, true];
+          [_x, "currentBuilding", "none"] call SFSM_fnc_unitData;
+	};
+
+
 	[_x, "currentBattle", "none"] call SFSM_fnc_unitData;
 	[_x, "lastBattle", time]      call SFSM_fnc_unitData;
-	_x enableAI "all";
+	if(_pathEnabeled)then{_x enableAI "all";};
 	_x setUnitPos "AUTO";
 	_x doFollow leader (group _x);
 }  forEach _units;
@@ -39,7 +48,6 @@ missionNamespace setVariable [_ClustersVarName, nil, true];
 
 {_battlefield deleteAt _X}forEach _battlefield;
 
-// SFSM_Battles deleteAt [_battleKey, nil];
 SFSM_Battles deleteAt _battleKey;
 _battlefield = nil;
 

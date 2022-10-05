@@ -1,4 +1,5 @@
-params ["_fromPos", "_toPosArr", "_ignoreObj"];
+private _targetZ = 2;
+params ["_fromPos", "_toPosArr", "_ignoreObj", "_targetZ"];
 
 private _visibility = [];
 private _startPos = AGLToASL _fromPos;
@@ -6,7 +7,7 @@ private _startPos = AGLToASL _fromPos;
 if(count _toPosArr < 1)exitWith{/*"no entries found in _toPosArr (visibleFromPositions)" call Tcore_fnc_debugMessage;*/ false}; 
 
 {
-	private _targetPos = AGLToASL [_x # 0, _x # 1, 2];
+	private _targetPos = AGLToASL [_x # 0, _x # 1, _targetZ];
 	private _targetObj = (nearestObjects [[_targetPos#0,_targetPos#1], ["Land"], 3]) # 0;
 
 	if(isNil "_targetObj")then{_targetObj = objNull};

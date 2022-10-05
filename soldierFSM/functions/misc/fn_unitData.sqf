@@ -6,6 +6,7 @@ _value (optional) is the value to assign to the hashmap-key.
 */
 params ["_man", "_item", "_value"]; 
 
+if(isNil "_man")exitwith{};
 if!(_man isKindOf "man")exitwith{};
 
 private _unitData = (_man getVariable "SFSM_UnitData");

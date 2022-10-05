@@ -13,6 +13,12 @@ do 	{
 		private _script = [_battleField] spawn SFSM_fnc_updateGrid;
 		waitUntil {scriptDone _script};
 
+		// private _script = [_battleField] spawn SFSM_fnc_assignAllBuildings;
+		// waitUntil {scriptDone _script};
+
+		private _script = [_battleField] spawn SFSM_fnc_battleFieldCQB;
+		waitUntil {scriptDone _script};
+
 		sleep SFSM_BattleUpdateSec;
 	};
 

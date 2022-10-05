@@ -12,7 +12,7 @@ if(isNil "dbgmsg")
 then{dbgmsg = SFSM_fnc_debugMessage};
 
 
-if(isNil "SFSM_Version")then{missionNamespace setVariable ["SFSM_Version", 0.2991, true]};
+if(isNil "SFSM_Version")then{missionNamespace setVariable ["SFSM_Version", 0.3, true]};
 
 
 if(isServer)	then{[] spawn SFSM_fnc_serverInit};

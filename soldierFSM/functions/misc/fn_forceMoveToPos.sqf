@@ -1,6 +1,7 @@
 private _maxTime = 30;
 private _maxDistance = 1.1;
-params ["_man", "_pos", "_maxTime", "_maxDistance"];
+private _CQB = false;
+params ["_man", "_pos", "_maxTime", "_maxDistance", "_CQB"];
 
 
 
@@ -23,7 +24,7 @@ while {sleep 0.5; _distance > _maxDistance} do {
 	if!(_hasMovedCloser)
 	then{
 			_man doMove _pos;
-			_man doTarget objNull;
+			if!(_CQB)then{_man doTarget objNull};
 		};
 	
 	if(_distance < _maxDistance)exitWith{false};

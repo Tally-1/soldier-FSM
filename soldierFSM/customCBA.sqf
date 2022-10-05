@@ -67,15 +67,7 @@ private _versionName = ["DCO soldier FSM V. ", SFSM_Version] joinString "";
 	_versionName,
 	true
 ] call cba_settings_fnc_init;
-/*
-[
-	"SFSM_explosionCrater",
-	"CHECKBOX",
-	["Explosion-craters", "Creates a dent in the terrain upon exploding ammo(the size varies according to ammo-type)."],
-	_versionName,
-	true
-] call cba_settings_fnc_init;
-*/
+
 [
 	"SFSM_legHealingOn",
 	"CHECKBOX",
@@ -154,6 +146,36 @@ A3 #2.10
 ] call cba_settings_fnc_init;
 
 */
+[
+	"SFSM_CQBdistance",
+	"SLIDER",
+	["Init CQB distance", "Distance to enemy inside a building needed to activate CQB-mode."],
+	_versionName,
+	[
+		15,   	//minimum 
+		90, 		//max
+		30,    //default
+		0,	    //decimals
+		false
+	],
+	1
+] call cba_settings_fnc_init;
+
+[
+	"SFSM_CQBunitCap",
+	"SLIDER",
+	["CQB unit-cap", "The maximum amount of units that can clear the same house at the same time. For a challenge set it to 4 and over."],
+	_versionName,
+	[
+		1,   	//minimum 
+		10,		//max
+		2,      //default
+		0,	    //decimals
+		false
+	],
+	1
+] call cba_settings_fnc_init;
+
 
 [
 	"SFSM_KnowledgeToFight",

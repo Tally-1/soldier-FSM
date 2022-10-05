@@ -29,9 +29,11 @@ then{
 		SFSM_explosionCoverRad  = 200;   // if munition explodes within this distance from the soldier he will run for cover.
 		SFSM_breakCoverOnHit    = true;  // if hit while in cover the unit will move away from current position
 		//SFSM_explosionCrater    = true;  // Creates a dent in the terrain upon exploding ammo(the size varies according to ammo-type)
-		
 		SFSM_legHealingOn       = true;  // If a soldier is hit in the legs, he will inmediately go prone and heal himself, to allow for running.
 		SFSM_dodgeIndoors       = false; // If a soldier is inside a house the "dodge" function will activate if the unit is taking heavy fire.
+		
+		SFSM_CQBdistance        = 30;    // Distance to enemy inside a building needed to activate CQB-mode.
+		SFSM_CQBunitCap         = 2;     // The maximum amount of units that can clear the same house at the same time. (Yip wanted 2 as a default, I recomend 4).
 };
 
 

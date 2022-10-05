@@ -3,7 +3,11 @@ addMissionEventHandler ["EntityKilled", {
 
 	private _unitData = _unit getVariable "SFSM_UnitData";
 	if(isNil "_unitData")    exitWith{};
-	if!(_unit isKindOf "man")exitWith{};
+	if!([_unit] call SFSM_fnc_isRealMan)exitWith{};
+
+	private _building = _unitData get "currentBuilding";
+	if!(_building == "none")
+	then{missionNamespace setVariable [_building, nil, true];};
 
 	private _battleKey = _unitData get "currentBattle";
 	if(_battleKey == "none")exitWith{};

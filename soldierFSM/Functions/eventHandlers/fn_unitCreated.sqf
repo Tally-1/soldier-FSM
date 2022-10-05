@@ -10,6 +10,8 @@ addMissionEventHandler ["EntityCreated", {
 		then {[_entity] call SFSM_fnc_vehicleFiredEh};
 	};
 	
+	if!([_entity] call SFSM_fnc_isRealMan)exitWith{};
+
 	[_entity] call SFSM_fnc_initMan;
 	"Unit spawned in" call dbgmsg;
 }];

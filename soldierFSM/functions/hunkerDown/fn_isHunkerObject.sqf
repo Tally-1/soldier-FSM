@@ -8,7 +8,7 @@ private _minSize     = (selectMin _xAndY);
 
 private _canCover    = _height > 0.35;
 private _squareish   = _XYratio > 0.69 && {_XYratio < 1.4};
-private _mediumSize  = _maxSize < 8 && {_minSize >= 0.7 && {_height < 4}};
+private _mediumSize  = _maxSize < 4 && {_minSize >= 0.7 && {_height < 4}};
 private _notbush     = !((_objData get "type") in SFSM_treeTypes);
 
 private _isHunkerObject = (

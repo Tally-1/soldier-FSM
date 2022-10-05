@@ -1,4 +1,5 @@
-params ["_man"];
+private _noRpsParam = false;
+params ["_man", "_noRpsParam"];
 if!(SFSM_allowDodging)exitWith{false};
 
 private _group             = group _man;
@@ -9,7 +10,7 @@ private _pathEnabeled 	   = [_man, 'pathEnabeled'] 	call SFSM_fnc_unitData;
 private _rps			   = [_man, "roundsPrSecond"] 	call SFSM_fnc_unitData;
 private _coolDownEnded     = _dodgeTimer < time;
 private _lowSuppression	   = getSuppression _man < SFSM_ProneTreshHold;
-private _highRPS		   = _rps > SFSM_RpsDodgeTrigger;
+private _highRPS		   = (_rps > SFSM_RpsDodgeTrigger) || _noRpsParam;
 
 private _canDodge = (_coolDownEnded
 					&&{(_action == 'none')

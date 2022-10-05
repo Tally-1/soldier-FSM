@@ -74,8 +74,14 @@ _battlefield set ["zones", ([_battlefield] call SFSM_fnc_getZones)];
 {[_x, "currentBattle", _battleKey] call SFSM_fnc_groupData} forEach _groups; 
 
 
+//initGrid will create a hashmap containing 100 positions, and 3 arrays containing positions hidden from clusters divided by side.
+[_battlefield] spawn SFSM_fnc_initGrid;
 
-[_battlefield] spawn SFSM_fnc_initGrid;//initGrid will create a hashmap containing 100 positions, and 3 arrays containing positions hidden from clusters divided by side.
+//Records the house a soldier is inside, in said units hashmap.
+// [_battleField] spawn SFSM_fnc_assignAllBuildings;
+
+
+
 [_battlefield] call SFSM_fnc_getCoverPositionsLight;
  
 [["Battle at ", _areaName, " initialized in ", (time - _startTime), " seconds"]] call SFSM_fnc_debugMessage;

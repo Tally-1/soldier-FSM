@@ -8,7 +8,9 @@
 params ["_man", "_battlefield"];
 private _special = [_man] call SFSM_fnc_squadAsset;
 private _player  = [_man] call Tcore_fnc_isPlayer;
+private _pathEnabeled = [_man, "pathEnabeled"] call SFSM_fnc_unitData;
 
+if!(_pathEnabeled)       exitWith{false};
 if(_player)              exitWith{false};
 if(_special == "regular")exitWith{false};
 if(_special == "medic")  exitWith{false};
