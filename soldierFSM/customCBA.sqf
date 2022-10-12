@@ -1,4 +1,4 @@
-missionNamespace setVariable ["SFSM_Version", 0.341, true];
+missionNamespace setVariable ["SFSM_Version", 0.343, true];
 private _versionName = ["DCO soldier FSM V. ", SFSM_Version] joinString "";
 
 
@@ -102,6 +102,14 @@ private _versionName = ["DCO soldier FSM V. ", SFSM_Version] joinString "";
 ] call cba_settings_fnc_init;
 
 [
+	"SFSM_hearingHide",
+	"CHECKBOX",
+	["Hide by hearing vehicle", "A Vehicle with engine ON is detected within hearing-distance"],
+	_versionName,
+	false
+] call cba_settings_fnc_init;
+
+[
 	"SFSM_AtSpecHuntVehicles",
 	"CHECKBOX",
 	["Hunt vehicles", "Units with launchers will target enemy vehicles instead of hiding."],
@@ -131,14 +139,6 @@ private _versionName = ["DCO soldier FSM V. ", SFSM_Version] joinString "";
 	"SFSM_noCoverPanic",
 	"CHECKBOX",
 	["panic upon lack of cover", "Yip's much wanted eyelid trench, if no cover is found upon battle-start the unit panics for about 2 seconds"],
-	_versionName,
-	false
-] call cba_settings_fnc_init;
-
-[
-	"SFSM_hearingHide",
-	"CHECKBOX",
-	["Hide by hearing vehicle", "A Vehicle with engine ON is detected within hearing-distance"],
 	_versionName,
 	false
 ] call cba_settings_fnc_init;

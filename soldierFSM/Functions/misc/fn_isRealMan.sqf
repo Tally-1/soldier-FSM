@@ -7,8 +7,8 @@ private _group = group _man;
 if(isNil "_group")exitWith{false};
 if(isNull _group)exitWith{false};
 
-private _excludeVar = _man getVariable 'SFSM_excluded';
-if((!isNil '_excludeVar')
-&&{_excludeVar})exitWith{false};
+// private _excludeVar = _man getVariable 'SFSM_excluded';
+// if((!isNil '_excludeVar')
+// &&{_excludeVar})exitWith{false};
 
 true;
