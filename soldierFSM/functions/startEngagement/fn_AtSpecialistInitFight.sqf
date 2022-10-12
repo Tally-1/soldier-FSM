@@ -64,6 +64,8 @@ do{
 		if!([_man, _targetVehicle] call SFSM_fnc_targetVisible)
 		then{
 				private _hiddenPos = (_targetVehicle getVariable "SFSM_vehicleData")get "hiddenPos";
+				if(isNil '_hiddenPos')exitWith{};
+				if(typeName _hiddenPos != 'ARRAY')exitWith{};
 				private _firePositions = _gridPositions select {! (_x in _hiddenPos)};
 				private _nearest =  ([_firePositions, [], {_man distance _x }, "ASCEND"] call BIS_fnc_sortBy)#0;
 				

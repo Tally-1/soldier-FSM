@@ -18,7 +18,7 @@ exitWith{
 			private _enemyPos = getPos (_man getVariable "SFSM_enemy");
 			if(!isNil "_enemyPos")then{_evadePos = _enemyPos};
 			
-			_unit setVariable ["SFSM_enemy", nil];
+			_man setVariable ["SFSM_enemy", nil];
 			[_man, _evadePos, false] call SFSM_fnc_Dodge;
 	true;
 };
