@@ -28,11 +28,11 @@ then{
 	};
 
 
-if (!isMultiplayer) then
-{
-	[] spawn {
+// if (!isMultiplayer) then
+// {
+// 	[] spawn {
 		
-		private _text= [] call SFSM_fnc_gameLoadedWarning;
-		hint _text;
-	};
-}
+// 		private _text= [] call SFSM_fnc_gameLoadedWarning;
+// 		hint _text;
+// 	};
+// }

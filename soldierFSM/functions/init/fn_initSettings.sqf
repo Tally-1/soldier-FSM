@@ -1,5 +1,5 @@
 //Set default settings unless previously defined
-if(isNil "SFSM_FlinchTreshHold")
+if(isNil "SFSM_allowFlinching")
 then{
 		SFSM_disableSoldierFSM  = false; // disable soldier FSM
 		SFSM_Debugger			= true;  // show debug-info, and 3D markers

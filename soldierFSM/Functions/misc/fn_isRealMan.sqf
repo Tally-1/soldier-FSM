@@ -11,4 +11,4 @@ private _excludeVar = _man getVariable 'SFSM_excluded';
 if((!isNil '_excludeVar')
 &&{_excludeVar})exitWith{false};
 
-true; 
+true;
