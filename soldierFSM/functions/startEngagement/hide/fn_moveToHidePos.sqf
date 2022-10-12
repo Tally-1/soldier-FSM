@@ -1,5 +1,6 @@
 params["_man", "_hidePos", "_enemyVehicle"];
 
+_hidePos = [_hidePos#0,_hidePos#1,0];
 private _timer = time + SFSM_DodgeTimer;
 private _distance = round(_man distance2d _hidePos);
 
@@ -10,12 +11,13 @@ then{[_man, false] call Tcore_fnc_toggleAiMoveInhibitors};
 _man setAnimSpeedCoef SFSM_sprintSpeed;
 [_man, "action", "Hiding from enemy vehicle"] call SFSM_fnc_unitData;
 
+_man doMove (getPos _man);
 _man doMove _hidePos;
 _man doTarget objNull;
 
 
 
-while {sleep 2; _distance > 1.1} do {
+while {sleep 1; _distance > 3} do {
 	
 	private _manPos          = eyePos _man;
 	private _enemyPos        = eyePos _enemyVehicle;
@@ -38,7 +40,6 @@ while {sleep 2; _distance > 1.1} do {
 	if!(_visibleToThreat)exitWith{false};
 	if(_destroyed)	     exitWith{false};
 
-
 };
 
 if(SFSM_forceDodge)
@@ -48,11 +49,13 @@ _man setAnimSpeedCoef 1;
 [_man, "action", "none"] call SFSM_fnc_unitData;
 
 
-private _group = group _man;
-private _leader = leader _group;
-private _manPos = getPos _man;
+_man doMove (getPos _man);
+_man doFollow (leader (group _man));
 
-_man doFollow _leader;
-_man doMove   _manPos;
+private _operational = !([_enemyVehicle]call Tcore_fnc_deadCrew);
+
+if(_operational
+&&{alive _man})
+exitWith{[_man, _enemyVehicle, false]spawn SFSM_fnc_doHide};
 
 true;

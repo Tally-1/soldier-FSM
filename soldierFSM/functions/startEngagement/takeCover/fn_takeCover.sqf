@@ -45,3 +45,4 @@ _man setAnimSpeedCoef 1;
 
 
 [_man, _coverPos] spawn SFSM_fnc_endTakeCover;
+true;

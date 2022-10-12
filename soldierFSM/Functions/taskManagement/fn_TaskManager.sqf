@@ -1,4 +1,4 @@
-private _tenSecondTasks = [(SFSM_fnc_unitTasks), (SFSM_fnc_groupTasks)];
+// private _tenSecondTasks = [(SFSM_fnc_unitTasks), (SFSM_fnc_groupTasks)];
 private _tenSecondTimer = 0;
 
 while {true}

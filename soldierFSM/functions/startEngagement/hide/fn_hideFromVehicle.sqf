@@ -13,6 +13,6 @@ if(!alive _man)					            exitWith{"cannot hide, man died" call dbgmsg};
 if(time > _timer)					        exitWith{"cannot hide, timed out" call dbgmsg};
 
 
-[_man, _hidePos, _enemyVehicle] spawn SFSM_fnc_moveToHidePos; 
+[_man, _hidePos, _enemyVehicle] spawn SFSM_fnc_moveToHidePos;
 
 true;

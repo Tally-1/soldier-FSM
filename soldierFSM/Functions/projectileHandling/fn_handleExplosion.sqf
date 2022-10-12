@@ -15,9 +15,6 @@ if(_nearMen isEqualTo [])exitWith{"Nobody insde range of explosion" call dbgmsg}
 
 } forEach _nearMen;
 
-
-
-
-
-private _text = ["projectile exploded ", (_launchPos distance2D _impactPos), "m from launch position"] joinString "";
-_text call dbgmsg;
+// private _text = ["projectile exploded ", (_launchPos distance2D _impactPos), "m from launch position"] joinString "";
+// _text call dbgmsg;
+true;

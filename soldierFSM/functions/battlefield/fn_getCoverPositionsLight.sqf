@@ -11,11 +11,16 @@ private _coverPositionsWest = [];
 private _coverPositionsEast = [];
 private _coverPositionsGuer = [];
 private _allPositions       = []; 
+private _isBuilding = {_x isKindOf "house" && {count ([_x] call BIS_fnc_buildingPositions) > 3}};
+
+// private _buildings = _mapObjects select _isBuilding;
 
 {
 	private _sideAndPos  = [_x, _mapObjects, _clusterPositions] call SFSM_fnc_clusterCoverPosLight;
 	private _side      = _sideAndPos#0;
 	private _positions = _sideAndPos#1;
+
+
 
 	_allPositions append _positions;
 
@@ -39,5 +44,6 @@ _coverPositionsLight set ["east", 		 _coverPositionsEast];
 _coverPositionsLight set ["independent", _coverPositionsGuer];
 
 _battlefield set ["coverPositions", _coverPositionsLight];
+// _battlefield set ["buildings", _buildings];
 
 _coverPositionsLight

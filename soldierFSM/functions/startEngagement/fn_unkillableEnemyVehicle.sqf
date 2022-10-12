@@ -11,7 +11,7 @@ private _highThreatVehicles = [];
 	private _chassisClass  = (_vehicleData get "chassis") get "chassisID";
 	private _weaponClasses = _vehicleData get "weaponTypes";
 	private _bestWeapon    = selectMax _weaponClasses;
-	private _operational   = ! ([_x] call Tcore_fnc_deadCrew);
+	private _operational   = !([_x] call Tcore_fnc_deadCrew);
 
 	if(_operational
 	&&{_bestWeapon >= 3

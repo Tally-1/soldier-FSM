@@ -7,7 +7,7 @@ addMissionEventHandler ["EntityCreated", {
 	exitwith{
 		if (_entity isKindOf "land"
 		|| _entity isKindOf "air") 
-		then {[_entity] call SFSM_fnc_vehicleFiredEh};
+		then {[_vehicle] call SFSM_fnc_initVehicle;};
 	};
 	
 	if!([_entity] call SFSM_fnc_isRealMan)exitWith{};

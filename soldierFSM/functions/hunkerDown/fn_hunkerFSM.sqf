@@ -39,7 +39,7 @@ while {true} do {
 	private _status = (_action splitString " ")#0;
 	
 	
-
+	if('hiding' in _action)exitWith{_endText = "hiding from vehicle"};
 	if(_status == "end")exitWith{_endText = "no enemies"};
 
 	if(_status == "displace,")exitWith{_endText = "displacing"};

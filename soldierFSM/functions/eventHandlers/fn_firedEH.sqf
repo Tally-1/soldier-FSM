@@ -18,10 +18,7 @@ _man addEventHandler ["Fired", {
 	[_unit, "last_bullet_fired", time] 	 call SFSM_fnc_unitData;
 	[_projectile, _ammo, _unit, _gunner] call SFSM_fnc_projectileEH;
 	
-
-	
-
-
-	SFSM_lastShotFired = time; 
+	SFSM_lastShotFired = time;
+    
 	true;
 }];

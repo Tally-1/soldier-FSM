@@ -4,7 +4,7 @@ private _areaName      = _battlefield get "name";
 private _hashmap       = createHashmap;
 private _gridVarName   = [_areaName, "Battle_", "_Grid"] call Tcore_fnc_stringToVarName;
 private _centerPos     = _battlefield get "center";
-private _size          = (_battlefield get "radius")*3;
+private _size          = (_battlefield get "radius")*2.5;
 private _gridPositions = [_centerPos, _size] call Tcore_fnc_grid100Pos;
 
 private _clusterHash   = _battlefield get "clusterPositions";

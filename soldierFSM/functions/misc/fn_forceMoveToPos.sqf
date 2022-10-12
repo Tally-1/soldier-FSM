@@ -24,7 +24,7 @@ while {sleep 0.5; _distance > _maxDistance} do {
 	if!(_hasMovedCloser)
 	then{
 			_man doMove _pos;
-			if!(_CQB)then{_man doTarget objNull};
+			_man doTarget objNull;
 		};
 	
 	if(_distance < _maxDistance)exitWith{false};

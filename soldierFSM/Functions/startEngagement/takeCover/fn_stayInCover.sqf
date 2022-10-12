@@ -2,7 +2,7 @@ params["_man", "_endPos"];
 private _timer = time + SFSM_stayCoverPosTime;
 private _stayInCover = true;
 private _hitByBullet = false;
-
+private _overrun     = false;
 
 //disable some ai, and update state
 _man disableAI "PATH";
@@ -11,15 +11,19 @@ _man disableAI "PATH";
 _man setCombatBehaviour "STEALTH";
 
 while {sleep 0.5; _stayInCover} do {
-	private _timeSinceLastHit = time - ([_man, "Last_Hit"]	call SFSM_fnc_unitData);
-	private _hitByBullet      = (_timeSinceLastHit < 1.1 && SFSM_breakCoverOnHit);
 	private _timedOut         = time > _timer;
+	private _timeSinceLastHit = time - ([_man, "Last_Hit"]	call SFSM_fnc_unitData);
+	        _hitByBullet      = (_timeSinceLastHit < 1.1 && SFSM_breakCoverOnHit);
+	        _overrun          = !isNull ([_man] call SFSM_fnc_manOverrunBy);
+	
 
-	if(_timedOut || _hitByBullet)
+	if(_timedOut 
+	|| _hitByBullet
+	|| _overrun)
 	then{_stayInCover = false};
 };
 
-[_man, _endPos, _hitByBullet]call SFSM_fnc_endStayInCover;
+[_man, _endPos, _hitByBullet, _overrun]call SFSM_fnc_endStayInCover;
 
 
 true;

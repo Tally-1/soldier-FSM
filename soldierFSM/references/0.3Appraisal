@@ -1,4 +1,5 @@
 'Current appraisal:'
+
 c) [150 USD]
 Hide by hearing vehicle:
     A Vehicle with engine ON is detected by distance from average infantry  group position set by param. 
@@ -19,6 +20,8 @@ e) [100 USD]
 Take cover in buildings.
     If a building that has more than 2 positions is within X param distance the soldier take up positions in said building.
     (added on to the Take-Cover function?)
+    - If a Take cover conditions are met a unit will move to take cover and hold cover inside nearby buildings that are within "Building dodge param" distance.
+    - When taking cover in buildings second floor positions will be prioritized to avoid positions outside the building. 
 
 i) [50 USD]
 - Singleman clearing
@@ -27,5 +30,8 @@ i) [50 USD]
 
 ToDo:
 
-1) Singleman clearing:
-    see: references\SingleMan clearing.txt
+**DONE** 1) Singleman clearing:
+            see: references\SingleMan clearing.txt
+
+2) Build hiding function.
+

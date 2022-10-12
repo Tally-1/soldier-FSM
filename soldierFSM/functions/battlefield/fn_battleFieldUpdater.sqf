@@ -1,5 +1,5 @@
 params ['_battleField'];
-sleep SFSM_BattleUpdateSec;
+// sleep SFSM_BattleUpdateSec;
 
 while {!isNil "_battleField"} 
 do 	{

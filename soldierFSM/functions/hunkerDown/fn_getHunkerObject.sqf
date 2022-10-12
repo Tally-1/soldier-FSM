@@ -8,6 +8,7 @@ if(isNil "_hnkObjects")exitWith{"no hunker objects yet, loading data" call sfsm_
 
 private _nearObjects     = _hnkObjects inAreaArray [(getPos _man), SFSM_DodgeDistance, SFSM_DodgeDistance];
 private _approvedObjects = [_side, _battlefield, _hunkerObjData, _hnkObjects] call SFSM_fnc_filterHunkerObjects;
+_approvedObjects = _approvedObjects select {_x in _nearObjects};
 private _objCount        = count _approvedObjects;
 if(_objCount == 0)exitWith{"no hunker objects found" call sfsm_fnc_debugmessage; objNull};
 

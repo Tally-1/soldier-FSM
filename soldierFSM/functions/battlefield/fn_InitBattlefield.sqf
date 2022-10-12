@@ -19,8 +19,10 @@ _battlefield set ["center",	        _centerPos];
 _battlefield set ["markers",		_markers];
 _battlefield set ["Started", 		_startTime];
 _battlefield set ["lastDataUpdate", -300];
+_battlefield set ["lastGunshot",    -300];
 _battlefield set ["radius", 		_radius];
 _battlefield set ["gridLoaded", 	false];
+_battlefield set ["terrainLoaded", 	false];
 
 SFSM_Battles set [_battleKey, _battlefield];
 
@@ -70,6 +72,7 @@ _weapons append _placedWeapons;
 
 _battlefield set ["zones", ([_battlefield] call SFSM_fnc_getZones)];
 
+{[_x, "currentBattle", _battleKey] call SFSM_fnc_vehicleData;} forEach _vehicles;
 {[_x, "currentBattle", _battleKey] call SFSM_fnc_unitData} forEach _units;
 {[_x, "currentBattle", _battleKey] call SFSM_fnc_groupData} forEach _groups; 
 

@@ -80,7 +80,7 @@ _battlefield set ["zones", ([_battlefield] call SFSM_fnc_getZones)];
 	[_x, _battleField] call SFSM_fnc_reactToVehicles;
 } forEach _units;
 
-
+{[_x, "currentBattle", _battleKey] call SFSM_fnc_vehicleData;} forEach _vehicles;
 
 
 {[_x, "currentBattle", _battleKey] call SFSM_fnc_groupData} forEach _groups;

@@ -1,6 +1,7 @@
 params["_man"];
 private _data = _man getVariable "SFSM_UnitData";
 if(!isNil "_data")exitWith{};
+// if!([_man] call SFSM_fnc_isRealMan)exitWith{};
 
 // if(isPlayer _man)exitwith{};
 if([(group _man)] call Tcore_fnc_nilNull)exitWith{};

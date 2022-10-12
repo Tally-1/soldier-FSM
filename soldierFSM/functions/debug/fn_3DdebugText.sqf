@@ -18,12 +18,15 @@ private _suppColor 	= [_supp, 0.4, 0.4, 1];
 private _actionPos 	= [(_3dPos # 0), (_3dPos # 1), ((_3dPos # 2) + 2.3)];
 private _supPos 	= [(_3dPos # 0), (_3dPos # 1), ((_3dPos # 2) + 2.1)];
 private _incPos 	= [(_3dPos # 0), (_3dPos # 1), ((_3dPos # 2) + 1.9)];
-
-if(isNil "_action")				then{_actionTxt = "not initialized"};
-if(_action == "none")			then{_actionTxt = ""};
-if(_supp > SFSM_ProneTreshHold)	then{_actionTxt = "! Suppressed !"};
+private _excluded   = _man getVariable ['SFSM_excluded', false];
+//
+if(_excluded && _action == "none")then{_actionTxt = "Excluded"};
+if(isNil "_action")				  then{_actionTxt = "not initialized"};
+if(_action == "none")			  then{_actionTxt = ""};
+if(_supp > SFSM_ProneTreshHold)	  then{_actionTxt = "! Suppressed !"};
 if(fleeing _man
-&&{!("hunker" in  _action)})	then{_actionTxt = "Fleeing"};
+&&{!("hunker" in  _action)
+&&{_action == "none"}})	then{_actionTxt = "Fleeing"};
 
 private _actColor	= [_actionTxt] call SFSM_fnc_actionColor;
 

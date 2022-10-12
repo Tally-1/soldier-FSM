@@ -8,6 +8,19 @@ if(_man call SFSM_fnc_unitInDoor
 &&{(! SFSM_dodgeIndoors)})
 exitWith{"indoor dodge blocked" call dbgmsg};
 
+private _dodgeToHouse = false;
+//random chance to init CQB cover (50%)
+if(random 1 > 0.5)
+then{
+	  private _house = [(getPos _man), SFSM_DodgeDistance] call SFSM_fnc_nearestAvailableHouse;
+	  if (isNil '_house') exitWith {};
+	  private _coverPos = [_man, _house, true] call SFSM_fnc_moveIntoHouseInit;
+	  if!(_coverPos isEqualTo [0,0,0])
+	  then{_dodgeToHouse = true};
+};
+
+if(_dodgeToHouse)exitWith{};
+
 /*Set values to the unitData hashmap */
 private _coolDown = (time + SFSM_DodgeCoolDown);
 [_man, "dodgeTimer", _coolDown] call SFSM_fnc_unitData;

@@ -2,7 +2,7 @@ private _maxTime = 10;
 private _maxDistance = 1.1;
 params ["_man", "_pos", "_maxTime", "_maxDistance"];
 private _timer = time + _maxTime;
-private _distance = round(_man distance2d _pos);
+private _distance = round(_man distance _pos);
 
 //disable ai functions that disturbs movement
 [_man, false] call Tcore_fnc_toggleAiMoveInhibitors;
@@ -23,7 +23,8 @@ private _killEnemies = [_man, _maxTime] spawn SFSM_fnc_CQBTargetEnemies;
 waitUntil{scriptDone _killEnemies};
 
 
-  private _currentDistance = ((eyePos _man) distance2d _pos);
+//   private _currentDistance = ((eyePos _man) distance2d _pos);
+	private _currentDistance = ((getPos _man) distance _pos);
 	private _hasMovedCloser = _distance > _currentDistance;
 	if(! _hasMovedCloser)
 	then{

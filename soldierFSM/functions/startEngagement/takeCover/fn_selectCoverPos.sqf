@@ -24,7 +24,7 @@ private _coverPos = nil;
 } forEach _coverPositions;
 
 if!(count _availablePositions > 0)
-then{							  //had to change this, cuz Yip is bitching....
+then{							  
 		_coverPos = [_man, _availablePositions] call Tcore_fnc_nearestPos;
 	};
 

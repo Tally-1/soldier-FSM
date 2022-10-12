@@ -1,4 +1,4 @@
-params["_man", "_endPos", "_hitByBullet"];
+params["_man", "_endPos", "_hitByBullet", "_overrun"];
 
 
 private _action = [_man, "action"]	call SFSM_fnc_unitData;
@@ -22,3 +22,12 @@ exitWith{
 			[_man, _evadePos, false] call SFSM_fnc_Dodge;
 	true;
 };
+
+if(_overrun
+&&{[_man, true] call SFSM_fnc_canDodge})
+then{
+	  private _ovEnemy = [_man] call SFSM_fnc_manOverrunBy;
+	  [_man, _ovEnemy] spawn SFSM_fnc_Dodge;
+};
+
+true;

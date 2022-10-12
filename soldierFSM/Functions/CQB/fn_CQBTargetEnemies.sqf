@@ -1,7 +1,16 @@
 params ["_man", "_maxTime"];
 private _action = [_man, "action"] call SFSM_fnc_unitData;
 private _enemies = [_man, 8, true] call Tcore_fnc_nearSoldiers;
-_enemies = _enemies select {([_man, _x] call SFSM_fnc_targetVisible);};
+
+if(count _enemies > 0)
+then{
+      _enemies = _enemies select {
+                                  (([_man, _x] call SFSM_fnc_targetVisible)
+                                  &&
+                                  {!([(side _man), (side _x)] call BIS_fnc_sideIsFriendly)});
+                                 };
+};
+
 
 if(count _enemies > 0)
 then{

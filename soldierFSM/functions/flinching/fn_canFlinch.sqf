@@ -10,7 +10,7 @@ private _available      = _action == 'none'
 
 
 if(_stopDodge)
-then{"stopping dodge" call dbgmsg};
+then{/*"stopping dodge" call dbgmsg*/};
 
 (true//_lastSupression == 0 /*unknown intention from the designers, need clarification*/
 &&{_flinchTimer < time

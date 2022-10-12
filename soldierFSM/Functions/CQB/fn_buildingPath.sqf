@@ -9,7 +9,7 @@ private _pathPosArr = [];
 if(count _floorPositions > 1)
 then{{_pathPosArr pushBackUnique _x;} forEach (_floorPositions#1);};
 
-_pathPosArr=([_pathPosArr, [], {_x#2}, "ASCEND"] call BIS_fnc_sortBy);
+_pathPosArr=([_pathPosArr, [], {(AGLToASL _x)#2}, "ASCEND"] call BIS_fnc_sortBy);
 
 
 

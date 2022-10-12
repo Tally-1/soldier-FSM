@@ -7,7 +7,13 @@ exitWith{
 	false;
 	};
 
-private _occupied = ("Hiding" in _action || "Targeting" in _action || "weapon" in _action);
+private _occupied = ("Hiding" in _action 
+                  || "hiding" in _action
+				  || "hide" in _action
+                  || "Targeting" in _action 
+                  || "weapon" in _action 
+                  || "holding" in _action);
+
 private _playerLead = ((leader (group _man)) in allPlayers);
 
 
@@ -42,14 +48,18 @@ then{_rearming = [_man] call SFSM_fnc_emergencyRearm};
 if  (_rearming) exitWith{true};
 
 
-//check visibility
+//check visibility / hearing
 private _manPos          = eyePos _man;
 private _enemyPos        = eyePos _majorThreat;
 private _visibleToThreat = ([_man, "VIEW", _majorThreat] checkVisibility [_manPos, _enemyPos]) > 0.1;
+private _vehicleHeard    = ([_man, _majorThreat] call SFSM_fnc_vehicleHeard);
+private _detected        = (_visibleToThreat || _vehicleHeard);
 
+if(_vehicleHeard)
+then{["A vehicle was detected by hearing", 2] call dbgmsg};
 
 //proceed as normal if man cannot be seen by enemy vehicle
-if!(_visibleToThreat)exitWith{false};
+if!(_detected)exitWith{false};
 
 
 //if a vehicle is found and the man has a AT launcher, then repeat init-fight actions
@@ -62,6 +72,25 @@ exitWith{[_man] spawn SFSM_fnc_AtSpecialistInitFight; true};
 //if there is a high-level threat present and the man has no launcher or no misiles.
 
 if!(SFSM_hideFromVehicles)exitWith{"Man will not hide, hiding has been deactivated" call dbgmsg; false;};
+
+
+
+
+//check for near available houses to hide in.
+private _takeCoverIndoors = false;
+private _canDodge = [_man, true] call SFSM_fnc_canDodge;
+private _house = [(getPos _man), SFSM_DodgeDistance] call SFSM_fnc_nearestAvailableHouse;
+if(_canDodge
+&&{!isNil '_house'})
+then{
+	  
+	  private _coverPos = [_man, _house, false, _majorThreat] call SFSM_fnc_moveIntoHouseInit;
+	  _takeCoverIndoors = !(_coverPos isEqualTo [0,0,0]);
+};
+
+//If house can be used as cover exit here.
+if(_takeCoverIndoors)exitWith{true;};
+
 
 private _hidePos = [_man, _majorThreat] call SFSM_fnc_findHidePos;
 private _posFound = typeName _hidePos == "ARRAY";

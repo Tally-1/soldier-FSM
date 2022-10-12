@@ -1,4 +1,4 @@
-missionNamespace setVariable ["SFSM_Version", 0.2991, true];
+missionNamespace setVariable ["SFSM_Version", 0.34, true];
 private _versionName = ["DCO soldier FSM V. ", SFSM_Version] joinString "";
 
 
@@ -60,13 +60,14 @@ private _versionName = ["DCO soldier FSM V. ", SFSM_Version] joinString "";
 	false
 ] call cba_settings_fnc_init;
 
-[
-	"SFSM_forceDodge",
-	"CHECKBOX",
-	["Force Dodge", "Override the Vanilla FSM in order to force the unit to move when dodging, if disabeled the unit will sometimes ignore incoming fire and just stay like an idiot."],
-	_versionName,
-	true
-] call cba_settings_fnc_init;
+//Deactivated as of version 0.34. The force dodge is necesary, no need to let the end-user mess things up
+// [
+// 	"SFSM_forceDodge",
+// 	"CHECKBOX",
+// 	["Force Dodge", "Override the Vanilla FSM in order to force the unit to move when dodging, if disabeled the unit will sometimes ignore incoming fire and just stay like an idiot."],
+// 	_versionName,
+// 	true
+// ] call cba_settings_fnc_init;
 
 [
 	"SFSM_legHealingOn",
@@ -134,6 +135,61 @@ private _versionName = ["DCO soldier FSM V. ", SFSM_Version] joinString "";
 	false
 ] call cba_settings_fnc_init;
 
+[
+	"SFSM_hearingHide",
+	"CHECKBOX",
+	["Hide by hearing vehicle", "A Vehicle with engine ON is detected within hearing-distance"],
+	_versionName,
+	false
+] call cba_settings_fnc_init;
+
+
+[
+	"SFSM_hearingDistance",
+	"SLIDER",
+	["Hearing distance", "Max distance a vehicle will be reacted to by hearing, (if in a urban area, half of this distance is used)."],
+	_versionName,
+	[
+		0,   	//minimum 
+		500, 	//max
+		250,    //default
+		0,	    //decimals
+		false
+	],
+	1
+] call cba_settings_fnc_init;
+
+[
+	"SFSM_hidingTimeOut",
+	"SLIDER",
+	["Hiding timeOut", "The max amount of time a unit will stay in a hiding-pos before returning to normal. (hiding is triggered by the presence of a enemy vehicle)"],
+	_versionName,
+	[
+		5,   	//minimum 
+		120, 	//max
+		30,    //default
+		0,	    //decimals
+		false
+	],
+	1
+] call cba_settings_fnc_init;
+
+
+[
+	"SFSM_overrunDistance",
+	"SLIDER",
+	["Overrun distance", "If an enemy comes within this range while holding cover / hiding the unit will try to evade the enemy, set to 0 to deactivate."],
+	_versionName,
+	[
+		0,   	//minimum 
+		80, 	//max
+		40,    //default
+		0,	    //decimals
+		false
+	],
+	1
+] call cba_settings_fnc_init;
+
 /*
 Deactivated as of version 0.297, we are now using the vanilla EH that came with
 A3 #2.10
@@ -192,21 +248,21 @@ A3 #2.10
 	1
 ] call cba_settings_fnc_init;
 
-
-[
-	"SFSM_FlinchTreshHold",
-	"SLIDER",
-	["Flinch TreshHold", "unit will not flinch if suppression is higher than this value"],
-	_versionName,
-	[
-		0,   	//minimum 
-		2, 		//max
-		0.1,    //default
-		2,		//decimals
-		false
-	],
-	1
-] call cba_settings_fnc_init;
+//Deactivated as of version 0.34. Not really needed. Removed to reduce confusion.
+// [
+// 	"SFSM_FlinchTreshHold",
+// 	"SLIDER",
+// 	["Flinch TreshHold", "unit will not flinch if suppression is higher than this value"],
+// 	_versionName,
+// 	[
+// 		0,   	//minimum 
+// 		2, 		//max
+// 		0.1,    //default
+// 		2,		//decimals
+// 		false
+// 	],
+// 	1
+// ] call cba_settings_fnc_init;
 
 
 
@@ -314,9 +370,9 @@ A3 #2.10
 	["explosion Cover Radius", "if munition explodes within this distance from the soldier he will run for cover."],
 	_versionName,
 	[
-		70,   	//minimum 
+		60,   	//minimum 
 		200, 	//max
-		120, 	//default
+		70, 	//default
 		0,		//decimals
 		false
 	],

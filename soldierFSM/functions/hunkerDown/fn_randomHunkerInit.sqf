@@ -4,6 +4,8 @@ sleep (random 15);
 
 if(!alive _man)exitWith{};
 
+
+
 private _weapon = ([(primaryWeapon _man)] call BIS_fnc_itemType)#1;
 private _launcher = ([(secondaryWeapon _man)] call BIS_fnc_itemType)#1;
 private _machineGunner = _weapon == "MachineGun";

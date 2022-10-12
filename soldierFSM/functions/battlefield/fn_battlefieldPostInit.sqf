@@ -12,7 +12,8 @@ waitUntil
 	false;
 };
 
-
+private _vehicles = missionNamespace getVariable (_battlefield get "vehicles");
+{[_x] call SFSM_fnc_updateVehicle;}forEach _vehicles;
 //loop through all units in the battle assigning start-battle actions.
 
 private _units = missionNamespace getVariable (_battlefield get "units");

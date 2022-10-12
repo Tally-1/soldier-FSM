@@ -4,20 +4,27 @@ class CfgFunctions
 	{
 		class CQB
 		{
-           class assignAllBuildings {file = "\soldierFSM\functions\CQB\fn_assignAllBuildings.sqf"};
-		   class assignBuilding     {file = "\soldierFSM\functions\CQB\fn_assignBuilding.sqf"};
-		   class currentBuilding    {file = "\soldierFSM\functions\CQB\fn_currentBuilding.sqf"};
-		   class unitIndoorPos      {file = "\soldierFSM\functions\CQB\fn_unitIndoorPos.sqf"};
-		   class floorPositions     {file = "\soldierFSM\functions\CQB\fn_floorPositions.sqf"};
-		   class buildingFloors     {file = "\soldierFSM\functions\CQB\fn_buildingFloors.sqf"};
-		   class unitsInBuilding    {file = "\soldierFSM\functions\CQB\fn_unitsInBuilding.sqf"};
-		   class CQBlimitReached    {file = "\soldierFSM\functions\CQB\fn_CQBlimitReached.sqf"};
-		   class initCQB            {file = "\soldierFSM\functions\CQB\fn_initCQB.sqf"};
-		   class buildingPath       {file = "\soldierFSM\functions\CQB\fn_buildingPath.sqf"};
-		   class buildingExits      {file = "\soldierFSM\functions\CQB\fn_buildingExits.sqf"};
-		   class CQBTargetEnemies   {file = "\soldierFSM\functions\CQB\fn_CQBTargetEnemies.sqf"};
-		   class clearCQBPos        {file = "\soldierFSM\functions\CQB\fn_clearCQBPos.sqf"};
-		   class clearBuilding      {file = "\soldierFSM\functions\CQB\fn_clearBuilding.sqf"};
+           class assignAllBuildings    {file = "\soldierFSM\functions\CQB\fn_assignAllBuildings.sqf"};
+		   class assignBuilding        {file = "\soldierFSM\functions\CQB\fn_assignBuilding.sqf"};
+		   class currentBuilding       {file = "\soldierFSM\functions\CQB\fn_currentBuilding.sqf"};
+		   class unitIndoorPos         {file = "\soldierFSM\functions\CQB\fn_unitIndoorPos.sqf"};
+		   class floorPositions        {file = "\soldierFSM\functions\CQB\fn_floorPositions.sqf"};
+		   class buildingFloors        {file = "\soldierFSM\functions\CQB\fn_buildingFloors.sqf"};
+		   class unitsInBuilding       {file = "\soldierFSM\functions\CQB\fn_unitsInBuilding.sqf"};
+		   class CQBlimitReached       {file = "\soldierFSM\functions\CQB\fn_CQBlimitReached.sqf"};
+		   class initCQB               {file = "\soldierFSM\functions\CQB\fn_initCQB.sqf"};
+		   class buildingPath          {file = "\soldierFSM\functions\CQB\fn_buildingPath.sqf"};
+		   class buildingExits         {file = "\soldierFSM\functions\CQB\fn_buildingExits.sqf"};
+		   class CQBTargetEnemies      {file = "\soldierFSM\functions\CQB\fn_CQBTargetEnemies.sqf"};
+		   class clearCQBPos           {file = "\soldierFSM\functions\CQB\fn_clearCQBPos.sqf"};
+		   class clearBuilding         {file = "\soldierFSM\functions\CQB\fn_clearBuilding.sqf"};
+		   class CQBposAvailable       {file = "\soldierFSM\functions\CQB\fn_CQBposAvailable.sqf"};
+		   class CQBcoverPosFilter     {file = "\soldierFSM\functions\CQB\fn_CQBcoverPosFilter.sqf"};
+		   class moveIntoHouseInit     {file = "\soldierFSM\functions\CQB\fn_moveIntoHouseInit.sqf"};
+		   class moveIntoHouseExec     {file = "\soldierFSM\functions\CQB\fn_moveIntoHouseExec.sqf"};
+		   class endMoveIntoHouse      {file = "\soldierFSM\functions\CQB\fn_endMoveIntoHouse.sqf"};
+		   class houseAvailable        {file = "\soldierFSM\functions\CQB\fn_houseAvailable.sqf"};
+		   class nearestAvailableHouse {file = "\soldierFSM\functions\CQB\fn_nearestAvailableHouse.sqf"};
 		};
 		
 		class misc
@@ -39,6 +46,10 @@ class CfgFunctions
 			class unitInDoor            {file = "\soldierFSM\functions\misc\fn_unitInDoor.sqf"};
 			class isRealMan             {file = "\soldierFSM\functions\misc\fn_isRealMan.sqf"};
 			class targetVisible         {file = "\soldierFSM\functions\misc\fn_targetVisible.sqf"};
+			class allCurrentDestinations{file = "\soldierFSM\functions\misc\fn_allCurrentDestinations.sqf"};
+			class vehicleData           {file = "\soldierFSM\functions\misc\fn_vehicleData.sqf"};
+			class vehicleHeard          {file = "\soldierFSM\functions\misc\fn_vehicleHeard.sqf"};
+			class manOverrunBy          {file = "\soldierFSM\functions\misc\fn_manOverrunBy.sqf"};
 		};
 		class taskManagement
 		{
@@ -46,6 +57,8 @@ class CfgFunctions
 			class TaskManager           {file = "\soldierFSM\functions\taskManagement\fn_TaskManager.sqf"};
 			class tenSecondTasks		{file = "\soldierFSM\functions\taskManagement\fn_tenSecondTasks.sqf"};
 			class unitTasks				{file = "\soldierFSM\functions\taskManagement\fn_unitTasks.sqf"};
+			class vehicleTasks          {file = "\soldierFSM\functions\taskManagement\fn_vehicleTasks.sqf"};
+			class updateVehicle         {file = "\soldierFSM\functions\taskManagement\fn_updateVehicle.sqf"};
 			class groupTasks			{file = "\soldierFSM\functions\taskManagement\fn_groupTasks.sqf"};
 			class handleGroupStance     {file = "\soldierFSM\functions\taskManagement\fn_handleGroupStance.sqf"};
 			
@@ -143,6 +156,9 @@ class CfgFunctions
 			class hideFromVehicle        {file = "\soldierFSM\functions\startEngagement\hide\fn_hideFromVehicle.sqf"};
 			class initHideFromVeh        {file = "\soldierFSM\functions\startEngagement\hide\fn_initHideFromVeh.sqf"};
 			class moveToHidePos          {file = "\soldierFSM\functions\startEngagement\hide\fn_moveToHidePos.sqf"};
+			class doHide                 {file = "\soldierFSM\functions\startEngagement\hide\fn_doHide.sqf"};
+			class doHideCQB              {file = "\soldierFSM\functions\startEngagement\hide\fn_doHideCQB.sqf"};
+			class execHiding             {file = "\soldierFSM\functions\startEngagement\hide\fn_execHiding.sqf"};
 
 			//this-folder
 			class AtSpecialistInitFight  {file = "\soldierFSM\functions\startEngagement\fn_AtSpecialistInitFight.sqf"};
@@ -165,6 +181,7 @@ class CfgFunctions
 			class initSFSM				{file = "\soldierFSM\functions\init\fn_initSFSM.sqf"; 		postInit = 1};
 			class InitMan				{file = "\soldierFSM\functions\init\fn_InitMan.sqf"};
 			class initGroup             {file = "\soldierFSM\functions\init\fn_initGroup.sqf"};
+			class initVehicle           {file = "\soldierFSM\functions\init\fn_initVehicle.sqf"};
 		};
 
 		class debug

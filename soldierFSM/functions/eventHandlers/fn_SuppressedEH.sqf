@@ -12,6 +12,8 @@ Supressed params documentation.
 */
 
 Params ["_man"];
+if!([_man] call SFSM_fnc_isRealMan)exitWith{};
+
 private _unitData = (_man getVariable "SFSM_UnitData");
 
 //exit on all unwanted object-types (_man);

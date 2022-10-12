@@ -1,5 +1,8 @@
 params ["_man"];
-if(!alive _man)exitWith{};
+if!([_man] call SFSM_fnc_isRealMan)exitWith{};
+
+
+if!(typeOf (vehicle _man) == typeOf _man)exitwith{};
 
 //if man is in a vehicle
 if!(typeOf (vehicle _man) == typeOf _man)exitwith{};
@@ -7,12 +10,6 @@ if!(typeOf (vehicle _man) == typeOf _man)exitwith{};
 //if the man has not been initialized.
 private _data 		= _man getVariable "SFSM_UnitData";
 if(isNil "_data")exitWith{[_man] call SFSM_fnc_InitMan};
-
-//if a null-var has been passed to the function.
-if([_man] call Tcore_fnc_nilNull)exitWith{};
-
-//if the group is nil/null (trying to weed out agents, and spawned objects)
-if([(group _man)] call Tcore_fnc_nilNull)exitWith{};
 
 //no players should be affected by this function
 if([_man] call Tcore_fnc_isPlayer)exitWith{};

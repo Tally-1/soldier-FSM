@@ -3,6 +3,7 @@ params ["_side", "_battlefield", "_hunkerObjData", "_hnkObjects"];
 private _enemyPositions = [_side, _battlefield] call SFSM_fnc_getEnemyPositions;
 
 if(count _enemyPositions < 1)exitWith{[]};
+if(count _hnkObjects < 1)exitWith{[]};
 
 private _approvedKeys   = [];
 private _counter = 0;

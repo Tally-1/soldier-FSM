@@ -4,18 +4,30 @@
 */
 params ["_man", "_battlefield"];
 if!([_man] call SFSM_fnc_manLoaded)exitwith{};
-
-private _enemy         = ([_man, nil, 'enemies'] call Tcore_fnc_nearKnownEnemies)#0;
 private _pathEnabeled  = [_man, 'pathEnabeled'] 	call SFSM_fnc_unitData;
-
 if!(_pathEnabeled)exitwith{"path disabeled, unit will not take cover" call SFSM_fnc_debugMessage};
 
-
+private _enemy       = ([_man, nil, 'enemies'] call Tcore_fnc_nearKnownEnemies)#0;
 private _coverPos    = [_man] call SFSM_fnc_getCoverPos;
 private _posFound    = ((!isNil "_coverPos") && {typeName _coverPos == "Array"});
 private _enemyFound  = ((!isNil '_enemy') && {(!isNull _enemy)});
 private _panic       = (random 1) < SFSM_panicCoef;
-private _canDodge    = [_man] call SFSM_fnc_canDodge;
+private _canDodge    = [_man, true] call SFSM_fnc_canDodge;
+private _takeCoverIndoors = false;
+
+//random chance to init CQB cover (50%)
+if(random 1 > 0.5
+&&{_canDodge})
+then{
+	  private _house = [(getPos _man), SFSM_DodgeDistance] call SFSM_fnc_nearestAvailableHouse;
+	  if (isNil '_house') exitWith {};
+	  private _coverPos = [_man, _house, false] call SFSM_fnc_moveIntoHouseInit;
+	  if!(_coverPos isEqualTo [0,0,0])
+	  then{_takeCoverIndoors = true};
+};
+
+if(_takeCoverIndoors)exitWith{};
+
 
 if((!(_posFound ))
 && {_panic 
