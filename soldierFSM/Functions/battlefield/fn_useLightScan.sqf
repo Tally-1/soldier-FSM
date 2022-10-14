@@ -23,5 +23,6 @@ if(_inUrbanArea)exitWith{true};
 private _distToWineYard = _pos distance2d getPos (nearestLocation [_pos, "VegetationVineyard"]);
 private _wineYardInArea = (_distToWineYard < _radius);
 if(_wineYardInArea)exitWith{true};
+if(_radius > 500)exitWith{true};
 
 false;

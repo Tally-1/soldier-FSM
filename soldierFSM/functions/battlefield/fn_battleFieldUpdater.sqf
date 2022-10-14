@@ -11,13 +11,21 @@ do 	{
 		if(_ended)exitWith{};
 
 		private _script = [_battleField] spawn SFSM_fnc_updateGrid;
-		waitUntil {scriptDone _script};
+		waitUntil {
+			private _finito = scriptDone _script;
+			if(isNil "_finito")exitWith{true;};
+			_finito; 
+		};
 
 		// private _script = [_battleField] spawn SFSM_fnc_assignAllBuildings;
 		// waitUntil {scriptDone _script};
 
 		private _script = [_battleField] spawn SFSM_fnc_battleFieldCQB;
-		waitUntil {scriptDone _script};
+		waitUntil {
+			private _finito = scriptDone _script;
+			if(isNil "_finito")exitWith{true;};
+			_finito; 
+		};
 
 		sleep SFSM_BattleUpdateSec;
 	};

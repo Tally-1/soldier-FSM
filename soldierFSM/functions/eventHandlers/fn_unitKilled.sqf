@@ -5,6 +5,8 @@ addMissionEventHandler ["EntityKilled", {
 	if(isNil "_unitData")    exitWith{};
 	if!([_unit] call SFSM_fnc_isRealMan)exitWith{};
 
+	_unit setVariable ['SFSM_killTime', time];
+
 	private _building = _unitData get "currentBuilding";
 	if!(_building == "none")
 	then{missionNamespace setVariable [_building, nil, true];};

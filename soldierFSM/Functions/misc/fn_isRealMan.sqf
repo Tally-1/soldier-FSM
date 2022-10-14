@@ -6,6 +6,7 @@ if ((_man) isKindOf "Logic")exitWith {false};
 private _group = group _man;
 if(isNil "_group")exitWith{false};
 if(isNull _group)exitWith{false};
+if(side _group == sideLogic)exitWith{false};
 
 // private _excludeVar = _man getVariable 'SFSM_excluded';
 // if((!isNil '_excludeVar')

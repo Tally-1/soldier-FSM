@@ -11,7 +11,8 @@ private _canCover    = _height > 0.35;
 private _squareish   = _XYratio > 0.69 && {_XYratio < 1.4};
 private _mediumSize  = _maxSize < 4 && {_minSize >= 0.7 && {_height < 4}};
 private _notbush     = !(_type in SFSM_treeTypes);
-private _notExcluded = !(_type in ['cargo_addon01_v1_f']);
+private _notExcluded = !(_type in SFSM_excludedMapObjs);
+
 
 private _isHunkerObject = (
 							_squareish 

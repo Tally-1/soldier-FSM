@@ -1,8 +1,8 @@
 params ["_man"];
 private _action = [_man, "action"] call SFSM_fnc_unitData;
 private _canDodge = [_man, true] call SFSM_fnc_canDodge;
+if(isNil "_action")exitWith{false;};
 if(_action != "none")exitWith{false;};
-
 if!(_canDodge)exitWith{false;};
 
 private   _target = getAttackTarget _man;

@@ -1,6 +1,7 @@
 params["_group"];
 private _noActionLowSuppression = true;
 private _units = (units _group) select {[_x] call SFSM_fnc_isRealMan};
+
 {
 	private _action = [_x, "action"] call SFSM_fnc_unitData;
 

@@ -1,6 +1,7 @@
 private _radius = 500;
 private _types  = [];
-params ["_pos", "_radius", "_mapObjsData", "_areaData", "_types"];
+private _lightScan = false;
+params ["_pos", "_radius", "_mapObjsData", "_areaData", "_types", "_lightScan"];
 
 private _mapObjectsData = createHashmap;
 private _hunkerObjData  = createHashmap;
@@ -10,8 +11,15 @@ private _posList        = [];
 private _hunkerObjects  = [];
 private _startTime      = time;
 private _terrainObjects = nearestTerrainObjects [_pos, _types, _radius, false, true];
-		_terrainObjects = [_terrainObjects, _scheduled] call SFSM_fnc_filterMapObjects;  
+if!(_lightScan)then{
+	  if(!isNil "_areaData")
+	  then{_areaData set ["currentAction", 'Filtering mapobjects'];};
+
+	  _terrainObjects = [_terrainObjects, _scheduled] call SFSM_fnc_filterMapObjects;
+	  
+	};
 private _count 			= 0;
+private _countAll = count _terrainObjects;
 
 {	
 	if(!isNull _x)
@@ -42,6 +50,14 @@ private _count 			= 0;
             
 
 			_count=_count+1;
+			
+			if(SFSM_debugger
+			&&{!isNil "_areaData"})
+			then{
+				 private _prcCompleted = round((_count/_countAll)*100);
+				 private _actionText = ['caching ',_countAll,' terrain-objects... ', _prcCompleted, '%'] joinString '';
+				 _areaData set ["currentAction", _actionText];
+			};
 }} forEach _terrainObjects;
 
 _mapObjectsData set ["objectCount", _count];

@@ -27,6 +27,7 @@ private _guerPositions = [];
 if(!isNil "_hashMap")then{_areaData = _hashMap}
 					 else{_areaData = createHashmap};
 
+//areaData here refers to the _battlefield, if called by SFSM_fnc_initBattlefield.
 _areaData set ["terrainLoaded", false];
 
 if(!isNil "_clustersData")
@@ -58,7 +59,7 @@ if(_lightScan)then{_types = SFSM_lightScanTypes};
 if(_getAllmapObjects)
 then{
 		if(_lightScan)then{_lightScanText call dbgmsg};
-		[_pos, _radius, _mapObjsData, _areaData, _types] spawn SFSM_fnc_getMapObjects;
+		[_pos, _radius, _mapObjsData, _areaData, _types, _lightScan] spawn SFSM_fnc_getMapObjects;
 	}; 
 
 

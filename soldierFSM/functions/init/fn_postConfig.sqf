@@ -35,37 +35,61 @@ SFSM_treeTypes = [
 
 //used when a "light areaScan is needed"
 SFSM_lightScanTypes=[
-					"BUILDING",
-					"BUNKER",
 					"BUSH",
-					"BUSSTOP",
-					"CHAPEL",
-					"CHURCH",
-					"CROSS",
-					"FENCE",
-					"FORTRESS",
-					"FOUNTAIN",
-					"FUELSTATION",
-					"HOSPITAL",
 					"HOUSE",
-					"LIGHTHOUSE",
-					"POWER LINES",
-					"POWERSOLAR",
-					"POWERWIND",
-					"RAILWAY",
 					"ROCK",
 					"ROCKS",
 					"RUIN",
 					"SMALL TREE",
-					"STACK",
-					"TOURISM",
-					"TRANSMITTER",
 					"TREE",
-					"VIEW-TOWER",
-					"WALL",
-					"WATERTOWER"
+					"WALL"
 				];
-
+SFSM_excludedMapObjs = [
+    'cargo_addon01_v1_f',
+    "setbig", 
+    "setsmall", 
+    "neriumo2d", 
+    "chair", 
+    "fence",
+    "rowboat",
+    "arundod",
+    "cages",
+    "bench",
+    "dangerbend",
+    "canisterplastic",
+    "lamp",
+    "sign",
+    "gate",
+    "sunshade",
+    "basket",
+    "swing",
+    "water",
+    "campingtable",
+    "pavement",
+    "coil",
+    "pallet",
+    "crates",
+    "roof",
+    "feed",
+    "atm_0",
+    "sacks_heap_f",
+    "kiosk_papers_f",
+    "pole",
+    "goal",
+    "calvary",
+    "tbox",
+    "bucket",
+    "slide",
+    "garbage_line_f",
+    "bluntstones_erosion",
+    "vergepost_f",
+    "ficusc2d",
+    "slums01_8m",
+    "slums01_pole",
+    "campingchair",
+    "tableplastic",
+    "garbagebin_01"
+];
 
 //deactivate group-reset on vehicle FSM
 if(!isNil "DCOnoGroupReset")
@@ -73,3 +97,10 @@ then{
 		missionNamespace setVariable ["DCOnoGroupReset", true, true];
 		"DCO soldier FSM deactivated group-reset for DCO vehicle FSM" call dbgmsg;
 	};
+
+//logic-side is causing issues, setting it as friendly to all.
+{
+	_x setFriend [sideLogic, 1];
+	sideLogic setFriend [_x, 1];
+
+} forEach [east, west, independent];

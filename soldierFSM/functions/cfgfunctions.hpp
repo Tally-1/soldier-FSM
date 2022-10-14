@@ -61,6 +61,7 @@ class CfgFunctions
 			class updateVehicle         {file = "\soldierFSM\functions\taskManagement\fn_updateVehicle.sqf"};
 			class groupTasks			{file = "\soldierFSM\functions\taskManagement\fn_groupTasks.sqf"};
 			class handleGroupStance     {file = "\soldierFSM\functions\taskManagement\fn_handleGroupStance.sqf"};
+			class deleteDeadData        {file = "\soldierFSM\functions\taskManagement\fn_deleteDeadData.sqf"};
 			
 		};
 
