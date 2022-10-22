@@ -11,6 +11,19 @@ private _posList        = [];
 private _hunkerObjects  = [];
 private _startTime      = time;
 private _terrainObjects = nearestTerrainObjects [_pos, _types, _radius, false, true];
+private _nonTerrainStructures = _pos nearObjects ["building", _radius];
+
+
+private _countAll = count _terrainObjects;
+_terrainObjects insert [0, _nonTerrainStructures, true];
+private _addedObjs = (count _terrainObjects) - _countAll;
+if(_addedObjs > 0)then{[[_addedObjs, " objects was added to battlefield"],2]call dbgmsg;};
+
+_countAll = count _terrainObjects;
+
+
+
+
 if!(_lightScan)then{
 	  if(!isNil "_areaData")
 	  then{_areaData set ["currentAction", 'Filtering mapobjects'];};
@@ -18,11 +31,13 @@ if!(_lightScan)then{
 	  _terrainObjects = [_terrainObjects, _scheduled] call SFSM_fnc_filterMapObjects;
 	  
 	};
+
+
 private _count 			= 0;
-private _countAll = count _terrainObjects;
 
 {	
-	if(!isNull _x)
+	if((!isNull _x)
+	&&{(!isObjectHidden _x)})
 	then{
 			private _objData   =  [_x] call SFSM_fnc_terrainObjData;
 			private _position  = (ASLToAGL (getPosASLVisual _x));
@@ -44,7 +59,7 @@ private _countAll = count _terrainObjects;
 				};
 			
 			if(_x isKindOf 'house'
-			&&{(!isHidden _x)
+			&&{true//(!isObjectHidden _x)
 			&&{count([_x] call BIS_fnc_buildingPositions)>3}})
 			then{_buildings pushBackUnique _x};
             

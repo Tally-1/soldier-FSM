@@ -1,4 +1,4 @@
-missionNamespace setVariable ["SFSM_Version", 0.344, true];
+missionNamespace setVariable ["SFSM_Version", 0.345, true];
 private _versionName = ["DCO soldier FSM V. ", SFSM_Version] joinString "";
 
 
@@ -106,7 +106,7 @@ private _versionName = ["DCO soldier FSM V. ", SFSM_Version] joinString "";
 	"CHECKBOX",
 	["Hide by hearing vehicle", "A Vehicle with engine ON is detected within hearing-distance"],
 	_versionName,
-	false
+	true
 ] call cba_settings_fnc_init;
 
 [

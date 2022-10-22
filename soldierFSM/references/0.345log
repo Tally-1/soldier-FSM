@@ -1,0 +1,7 @@
+-- papareaps HC added
+   * removed the exclusion for server with interface to be excluded from init-client
+-- added editor-placed-objects to the battlefield hashmap
+-- changed algo for getting available houses.
+-- fixed enviromental agents being reported as errors.
+
+-- removed all actions for units with "SFSM_Excluded" variable.

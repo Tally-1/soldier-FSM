@@ -27,7 +27,8 @@ private _unitsReacted = 0;
 
 	if(_action == "none"
 	&&{_noCoverSpam
-	&&{_notInBattle}})
+	&&{_notInBattle
+	&&{!(_man getVariable ['SFSM_excluded', false])}}})
 	then{
 			[_x, _launchPos] call SFSM_fnc_eventTriggeredCover;
 			_unitsReacted = _unitsReacted+1;

@@ -19,9 +19,12 @@ private _camPos = (positionCameraToWorld [0,0,0]);
 					private _eCovpos   = _covPosHash get "east";
 					private _gCovpos   = _covPosHash get "independent";
 					private _icon      = "\A3\ui_f\data\map\markers\handdrawn\end_CA.paa";
+					//private _hnkObjs   = missionNamespace getVariable (_y get "hunkerObjects");
+					//private _hnkPos    = [_hnkObjs] call Tcore_fnc_posFromObjArr;
 					
 					[_pos, nil, _name]call SFSM_fnc_drawObjectMarker;
 					[_positions] call SFSM_fnc_multiple3dmarkers;
+					//[_hnkPos] call SFSM_fnc_multiple3dmarkers;
 /*
 					[_wCovpos, [0,0.3,0.6,1], "", _icon, 0.5, 200] call SFSM_fnc_multiple3dmarkers;
 					[_eCovpos, [0.5,0,0,1], "",   _icon, 0.5, 200] call SFSM_fnc_multiple3dmarkers;

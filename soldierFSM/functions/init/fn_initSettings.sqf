@@ -37,7 +37,8 @@ then{
 		SFSM_hidingTimeOut      = 30;    // The max amount of time a unit will stay in a hiding-pos before returning to normal. (hiding is triggered by the presence of a enemy vehicle)
 		SFSM_hearingHide        = true;  // Hide by hearing vehicle: A Vehicle with engine ON is detected within hearing-distance
 		SFSM_hearingDistance    = 250;   // Max distance a vehicle will be reacted to by hearing, (if in a urban area, half of this distance is used).
-		SFSM_overrunDistance    = 50     // If an enemy comes within this range while holding cover / hiding the unit will try to evade the enemy, set to 0 to deactivate.
+		SFSM_overrunDistance    = 50;     // If an enemy comes within this range while holding cover / hiding the unit will try to evade the enemy, set to 0 to deactivate.
+		SFSM_Use_HC             = false;  // Use Headless Client to load AI
 };
 
 
@@ -80,6 +81,6 @@ missionNamespace setVariable ["SFSM_hidingTimeOut",     SFSM_hidingTimeOut,     
 missionNamespace setVariable ["SFSM_hearingHide",       SFSM_hearingHide,       true];
 missionNamespace setVariable ["SFSM_hearingDistance",   SFSM_hearingDistance,   true];
 missionNamespace setVariable ["SFSM_overrunDistance",   SFSM_overrunDistance,   true];
-
+missionNamespace setVariable ["SFSM_Use_HC",            SFSM_Use_HC,            true];
 
 true;

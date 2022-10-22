@@ -185,6 +185,14 @@ class CfgFunctions
 			class initVehicle           {file = "\soldierFSM\functions\init\fn_initVehicle.sqf"};
 		};
 
+		
+		//PapaReaps HC.
+		class headlessClient {
+            file = "\soldierFSM\functions\headlessClient";
+            class hcCheck { postInit = 1; description = "Headless Client check"; };
+            class hcTracker { description = "Monitors the state of Headless Clients"; };
+        };
+		
 		class debug
 		{
 			class 3dDebug				{file = "\soldierFSM\functions\debug\fn_3dDebug.sqf"};
@@ -357,6 +365,7 @@ class CfgFunctions
 			class posArrToPathPosArr    {file = "\soldierFSM\functions\core\fn_posArrToPathPosArr.sqf"};
 			class avgHeight             {file = "\soldierFSM\functions\core\fn_avgHeight.sqf"};
 			class unitArrAimPositions   {file = "\soldierFSM\functions\core\fn_unitArrAimPositions.sqf"};
+			class posFromObjArr         {file = "\soldierFSM\functions\core\fn_posFromObjArr.sqf"};
 		};
 	};
 };

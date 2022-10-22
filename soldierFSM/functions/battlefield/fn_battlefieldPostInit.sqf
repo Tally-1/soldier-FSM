@@ -21,8 +21,10 @@ private _units = missionNamespace getVariable (_battlefield get "units");
 	private _group          = group _x;
 	private _specialActions = [_x, _battlefield] call SFSM_fnc_specialInitFightActions;
 	private _grpCanDodge    = ([_group] call SFSM_fnc_groupCanDodge);
+	private _excluded       = _x getVariable ["SFSM_Excluded",false];
 	if(_grpCanDodge
-	&&{(! _specialActions)})
+	&&{(! _specialActions)
+	&&{! _excluded}})
 	then{
 			private _reacting = [_x, _battleField] call SFSM_fnc_reactToVehicles;
 			if!(_reacting)then{ [_x, _battlefield] call SFSM_fnc_fightInitCover};

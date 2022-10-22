@@ -1,6 +1,7 @@
 private _noRpsParam = false;
 params ["_man", "_noRpsParam"];
 if!(SFSM_allowDodging)exitWith{false};
+if(_man getVariable ["SFSM_Excluded",false])exitWith{false};
 
 private _group             = group _man;
 private _grpCanDodge       = [_group] call SFSM_fnc_groupCanDodge;

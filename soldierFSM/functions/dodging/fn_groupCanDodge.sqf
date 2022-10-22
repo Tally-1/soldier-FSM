@@ -1,7 +1,7 @@
 params["_group"];
 
 if(isNil "_group") exitWith{"Nil group" call dbgmsg; false};
-if(isNull  _group) exitWith{"Null group" call dbgmsg; false};
+if(isNull  _group) exitWith{"Null group, cannot dodge" call dbgmsg; false};
 
 private _grpDodgeDisabeled = [_group, 'dodgeDisabeled'] call SFSM_fnc_groupData;
 

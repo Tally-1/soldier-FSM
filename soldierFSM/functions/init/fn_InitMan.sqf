@@ -31,6 +31,8 @@ _unitData set   ['pathEnabeled',        (_man checkAIFeature "PATH")];
 _unitData set 	["hunkObjectHash", 	    []];
 _man setVariable["SFSM_UnitData", 		_unitData, true];
 
+if(_man getVariable ["SFSM_Excluded",false])exitWith{};
+
 [_man] call SFSM_fnc_SuppressedEH;
 [_man] call SFSM_fnc_firedEH;
 [_man] call SFSM_fnc_hitEH;

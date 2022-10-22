@@ -31,7 +31,7 @@ private _clustersData = [
 
 private _mapObjsData = missionNamespace getVariable (_battleField get "mapObjects");
 private _groups      = [_clustersData]       call Tcore_fnc_clusterGroups;
-private _units       = [_clustersData]       call Tcore_fnc_clusterUnits;
+private _units       = [_clustersData]       call Tcore_fnc_clusterUnits select {!(_x getVariable ["SFSM_Excluded",false])};
 private _vehicles    = [_clustersData]       call Tcore_fnc_clusterVehicles;
 private _deadMen     = missionNamespace getVariable (_battleField get "deadMen");
 

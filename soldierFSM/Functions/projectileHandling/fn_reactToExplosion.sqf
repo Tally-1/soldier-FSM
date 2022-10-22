@@ -1,5 +1,8 @@
 params ["_man", "_launchPos", "_impactPos", "_shooter"];
+
+if!(_man getVariable ['SFSM_excluded', false])exitWith{false;};
 if!([_man] call SFSM_fnc_isRealMan)exitWith{false;};
+
 private _minRadius = 10;
 private _flinchRadius = 60;
 private _notInBattle = (([_man, "currentBattle"] call SFSM_fnc_unitData) == "none");

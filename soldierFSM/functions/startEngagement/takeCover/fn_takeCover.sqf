@@ -1,7 +1,7 @@
 params ['_man', '_coverPos'];
 private _group = group _man;
 private _canTakeCover = [_group] call SFSM_fnc_groupCanDodge;
-
+if(_man getVariable ['SFSM_excluded', false])exitWith{};
 if!(_canTakeCover)    exitWith{[["taking cover blocked grp: ", _group]] call dbgmsg}; 
 if(isNil '_coverPos') exitWith{'cover-pos is undefined, cannot take cover' call dbgmsg};
 

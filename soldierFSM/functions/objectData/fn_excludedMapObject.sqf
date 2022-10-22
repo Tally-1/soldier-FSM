@@ -15,4 +15,4 @@ if (_typeName == "")exitWith{true};
 } forEach SFSM_excludedMapObjs;
 
 
-_excluded
+_excluded;

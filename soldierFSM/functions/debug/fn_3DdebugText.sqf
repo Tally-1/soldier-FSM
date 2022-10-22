@@ -19,8 +19,11 @@ private _actionPos 	= [(_3dPos # 0), (_3dPos # 1), ((_3dPos # 2) + 2.3)];
 private _supPos 	= [(_3dPos # 0), (_3dPos # 1), ((_3dPos # 2) + 2.1)];
 private _incPos 	= [(_3dPos # 0), (_3dPos # 1), ((_3dPos # 2) + 1.9)];
 private _excluded   = _man getVariable ['SFSM_excluded', false];
+private _excludedText = ["Excluded. Error: ", _action]joinString"";
 //
-if(_excluded && _action == "none")then{_actionTxt = "Excluded"};
+// if(_excluded && {isNil "_action"})then{_actionTxt = "Excluded"};
+if(_excluded && {_action == "none"})then{_actionTxt = "Excluded"};
+if(_excluded && {_action != "none"})then{_actionTxt = _excludedText};
 if(isNil "_action")				  then{_actionTxt = "not initialized"};
 if(_action == "none")			  then{_actionTxt = ""};
 if(_supp > SFSM_ProneTreshHold)	  then{_actionTxt = "! Suppressed !"};
@@ -82,6 +85,26 @@ drawIcon3D 	[
 				_actionTxt, 
 				2, 			
 				0.03		
+			];
+};
+
+if(_excluded)
+then{
+
+if(_action == "none")then{_actionTxt = ""}
+else{_actionTxt = _action};
+
+
+drawIcon3D 	[
+				"\a3\ui_f\data\igui\cfg\simpletasks\letters\x_ca.paa",			
+				[1,0,0,1],	
+				ASLToAGL(aimPos _man),	
+				0.5, 		
+				0.5, 		
+				0, 	 		
+				_actionTxt, 
+				2, 			
+				0.1		
 			];
 };
 

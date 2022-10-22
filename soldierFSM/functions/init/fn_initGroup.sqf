@@ -3,6 +3,7 @@ private _data = _group getVariable "SFSM_groupData";
 
 if(!isNil "_data") exitWith {_data};
 if!((side _group) in [east, west, independent])exitWith{};
+if(_group getVariable ["SFSM_Excluded",false])exitWith{};
 
 private _groupData = createHashmap;
 _groupData set ["currentBattle",	"none"];
@@ -14,6 +15,8 @@ _group setVariable["SFSM_groupData", _groupData, true];
 _group setVariable["SFSM_lastKnownEnemy", objNull, true];
 
 _group setVariable["SFSM_ZeusWaypoints", [], true];
+
+
 
 if!(SFSM_enableCustomEH)
 then{[_group] call SFSM_fnc_enemyDetected};

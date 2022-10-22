@@ -23,7 +23,8 @@ private _nearMen = [_shooter, _distance] call Tcore_fnc_nearSoldiers;
 	private _battle = [_X, "currentBattle"] call SFSM_fnc_unitData;
 
 	if(_action == "none"
-	&&{_battle == "none"})
+	&&{_battle == "none"
+	&&{!(_man getVariable ['SFSM_excluded', false])}})
 	then{
 			private _coverPos = [_x] call Tcore_fnc_coverPosSimple;
 			if(isNil "_coverPos")exitWith{};

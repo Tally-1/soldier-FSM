@@ -1,4 +1,5 @@
 params ["_man", "_enemyPos"];
+if(_man getVariable ['SFSM_excluded', false])exitWith{};
 private _takeCoverIndoors = false;
 private _canDodge    = [_man, true] call SFSM_fnc_canDodge;
 

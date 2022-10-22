@@ -14,8 +14,9 @@ exitwith{
 		  private _nearest = ([_buildings, [], {_pos distance _x }, "ASCEND"] call BIS_fnc_sortBy)#0;
 		  _nearest;
 };
+ 
 
-private _allBuildings = nearestTerrainObjects [_pos, ["House"], _radius];
+private _allBuildings = _pos nearObjects ["house", 20];
 _buildings = _allBuildings select _filter;
 if(count _buildings < 1)exitwith{};
 private _nearest = ([_buildings, [], {_pos distance _x }, "ASCEND"] call BIS_fnc_sortBy)#0;

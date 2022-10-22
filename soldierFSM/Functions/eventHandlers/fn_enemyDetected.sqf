@@ -7,9 +7,8 @@ _group addEventHandler ["EnemyDetected", {
 	private _knowledge  = _leader knowsAbout _newTarget;
 	private _knowsAboutEnemy = _knowledge > SFSM_KnowledgeToFight;
 	private _canInitBattle = [_leader, _newTarget] call SFSM_fnc_canSpotInitBattle;
-	private _debugText = "not enough knowledge to init battle";
 
-	if!(_knowsAboutEnemy)exitWith{_debugText call dbgmsg};
+	if!(_knowsAboutEnemy)exitWith{};
 	if!([_leader] call SFSM_fnc_isRealMan)exitWith{};
 	if!([_newTarget] call SFSM_fnc_isRealMan)exitWith{};
 	if!(_canInitBattle)exitWith{};
