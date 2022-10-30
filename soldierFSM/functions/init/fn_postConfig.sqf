@@ -91,6 +91,25 @@ SFSM_excludedMapObjs = [
     "garbagebin_01"
 ];
 
+SFSM_explosives = [
+  "SatchelCharge_Remote_Mag",
+  "IEDUrbanBig_Remote_Mag",
+  "IEDLandSmall_Remote_Mag",
+  "DemoCharge_Remote_Mag",
+  "ClaymoreDirectionalMine_Remote_Mag",
+  "IEDLandBig_Remote_Mag",
+  "IEDUrbanSmall_Remote_Mag"
+];
+
+SFSM_hijackVehicleTypes = [
+  "car (AA-AT combo launcher)",
+	"MRAP (HMG)",
+	"car (HMG)",
+	"MRAP (GMG)",
+	"car (GMG)",
+	"car (Rocket launcher)",
+	"BTR"];
+
 //deactivate group-reset on vehicle FSM
 if(!isNil "DCOnoGroupReset")
 then{

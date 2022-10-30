@@ -41,9 +41,14 @@ if (isServer && {_hcPresent}) exitWith { [] call SFSM_fnc_initSettings; };
 
 
 [] spawn SFSM_fnc_TaskManager;
-// [] spawn SFSM_fnc_spottedCustomEH;
 [] call  SFSM_fnc_unitKilled; 
 [] call SFSM_fnc_unitCreated;
+
+addMissionEventHandler ["BuildingChanged", {
+	params ["_from", "_to", "_isRuin"];
+    ["Building changed!", 2] call dbgmsg;
+
+}];
 
 /* --------comment by Tally----------
 unitKilled and unitCreated are mission eventhandlers.

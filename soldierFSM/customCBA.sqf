@@ -1,4 +1,4 @@
-missionNamespace setVariable ["SFSM_Version", 0.345, true];
+missionNamespace setVariable ["SFSM_Version", 0.4, true];
 private _versionName = ["DCO soldier FSM V. ", SFSM_Version] joinString "";
 
 
@@ -143,6 +143,29 @@ private _versionName = ["DCO soldier FSM V. ", SFSM_Version] joinString "";
 	false
 ] call cba_settings_fnc_init;
 
+[
+	"SFSM_houseDemolition",
+	"CHECKBOX",
+	["House Demolition", "Allow units with explosives in their backPack to blow up houses. (!DANGER!)"],
+	_versionName,
+	true
+] call cba_settings_fnc_init;
+
+[
+	"SFSM_rpgHouse",
+	"CHECKBOX",
+	["RPG houses", "Allow units with launchers to fire their launchers at buildings with enemies inside."],
+	_versionName,
+	true
+] call cba_settings_fnc_init;
+
+[
+	"SFSM_hijackVehicles",
+	"CHECKBOX",
+	["Hijack Vehicles", "Units will get in available vehicles as driver / gunner."],
+	_versionName,
+	true
+] call cba_settings_fnc_init;
 
 [
 	"SFSM_hearingDistance",

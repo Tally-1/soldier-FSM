@@ -46,8 +46,14 @@ private _mapObjsData = createHashmap;
 //This might take some time depending on the amount of objects in the area.
 [_centerPos, _radius, _battlefield, _clustersData, _mapObjsData, true] call SFSM_fnc_areaData; 
 
+private _unitFilter = {
+	(!(_x getVariable ["SFSM_Excluded",false]))
+	&&{(typeOf _x) == (typeOf (vehicle _x))}
+	};
+
+
 private _groups          = [_clustersData] call Tcore_fnc_clusterGroups;
-private _units           = ([_clustersData] call Tcore_fnc_clusterUnits) select {!(_x getVariable ["SFSM_Excluded",false])};
+private _units           = ([_clustersData] call Tcore_fnc_clusterUnits) select _unitFilter;
 private _vehicles        = [_clustersData] call Tcore_fnc_clusterVehicles;
 private _areaName        = _battlefield get "name";
 private _deadMen         = [_centerPos, _radius] call Tcore_fnc_deadMenInArea;

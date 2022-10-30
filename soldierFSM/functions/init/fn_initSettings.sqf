@@ -32,13 +32,16 @@ then{
 		SFSM_legHealingOn       = true;  // If a soldier is hit in the legs, he will inmediately go prone and heal himself, to allow for running.
 		SFSM_dodgeIndoors       = false; // If a soldier is inside a house the "dodge" function will activate if the unit is taking heavy fire.
 		
-		SFSM_CQBdistance        = 30;    // Distance to enemy inside a building needed to activate CQB-mode.
+		SFSM_CQBdistance        = 100;   // Distance to enemy inside a building needed to activate CQB-mode.
 		SFSM_CQBunitCap         = 2;     // The maximum amount of units that can clear the same house at the same time. (Yip wanted 2 as a default, I recomend 4).
 		SFSM_hidingTimeOut      = 30;    // The max amount of time a unit will stay in a hiding-pos before returning to normal. (hiding is triggered by the presence of a enemy vehicle)
 		SFSM_hearingHide        = true;  // Hide by hearing vehicle: A Vehicle with engine ON is detected within hearing-distance
 		SFSM_hearingDistance    = 250;   // Max distance a vehicle will be reacted to by hearing, (if in a urban area, half of this distance is used).
-		SFSM_overrunDistance    = 50;     // If an enemy comes within this range while holding cover / hiding the unit will try to evade the enemy, set to 0 to deactivate.
-		SFSM_Use_HC             = false;  // Use Headless Client to load AI
+		SFSM_overrunDistance    = 50;    // If an enemy comes within this range while holding cover / hiding the unit will try to evade the enemy, set to 0 to deactivate.
+		SFSM_Use_HC             = false; // Use Headless Client to load AI
+
+		SFSM_houseDemolition    = true;  // Allow units with explosives in their backpack to blow up houses instead of clearing them room by room.
+
 };
 
 

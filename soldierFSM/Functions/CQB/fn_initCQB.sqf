@@ -15,8 +15,25 @@ private _targetHouse = [_target] call SFSM_fnc_currentBuilding;
 if(isNil "_targetHouse")exitWith{false;};
 
 private _houseFull = [_man, _targetHouse] call SFSM_fnc_CQBlimitReached;
+private _rigged = _targetHouse getVariable ["SFSM_explosiveRigged", false];
+private _blowItUp = [_man, _targetHouse] call SFSM_fnc_canBlowUpHouse;
+private _sendIt = [_man, _targetHouse] call SFSM_fnc_canRpgHouse;
 
 if(_houseFull)exitWith{'House is already being cleared' call dbgmsg; false;};
+if(_rigged)exitWith{'House is about to explode' call dbgmsg; false;};
+
+if(_sendIt)
+exitWith{
+    [_man, _targetHouse] spawn SFSM_fnc_rpgHouse;
+    true;
+};
+
+if(_blowItUp)
+exitWith{
+  [_man, _targetHouse] spawn SFSM_fnc_blowUpHouse;
+  true;
+
+};
 
 _man doFire _target;
 [_man, _targetHouse, _target] spawn SFSM_fnc_ClearBuilding;

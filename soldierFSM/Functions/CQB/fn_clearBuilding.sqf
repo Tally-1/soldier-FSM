@@ -1,9 +1,11 @@
 params["_man", "_building", "_target"];
+private _startPos = getPos _man;
 private _buildingVarName = ["Occupied building ", (name _man), (getPos _building)] joinString "_";
-private _path = [_building, true, (getPos _man)] call SFSM_fnc_buildingPath;
+private _path = [_building, true, _startPos] call SFSM_fnc_buildingPath;
 private _cPos = 1;
 private _startSpeedMode = speedMode _man;
 private _startTime = time;
+private _rigged = _building getVariable ["SFSM_explosiveRigged", false];
 
 
 [_man, "action", "Initializing CQB"] call SFSM_fnc_unitData;
@@ -16,11 +18,19 @@ _man setUnitPos "UP";
 _man setAnimSpeedCoef SFSM_sprintSpeed;
 _man setSpeedMode "FULL";
 
-private _script = [_man,(_path#0), 6, 5] spawn SFSM_fnc_forceMoveToPos;
+private _script = [_man,(_path#0), 6, 5, 2] spawn SFSM_fnc_forceMoveToPos;
 waitUntil{scriptDone _script;};
+
 
 {
   private _endCQB = false;
+  
+  //if someone placed an explosive, get out!
+  if(_building getVariable ["SFSM_explosiveRigged", false])
+  then{
+    [_man, "action", "Get out! house is about to explode"] call SFSM_fnc_unitData;
+    _endCQB = true;
+  };
   
   //exit if the man for some reason is outside of the building after 30 sec.
   if((time-_startTime)>30
@@ -30,6 +40,8 @@ waitUntil{scriptDone _script;};
   //if for some reason the soldier runs away from the building
   if((_man distance2D _building)>100)then{_endCQB = true;};
   
+  if(((getPosATL _building)#3)<0)exitWith{_endCQB = true;};
+
   //exit if target is dead and there are no enemies near.
   if((time-_startTime)>15
   &&{(_man distance2D _building)<30
@@ -44,9 +56,9 @@ waitUntil{scriptDone _script;};
   };
   
   if(!alive _man)then{_endCQB = true;};
-
   if(_endCQB)exitWith{};
 
+  // if all checks passed then move to the next position.
   private _script = [_man, _x, 10, 2] spawn SFSM_fnc_clearCQBPos;
   waitUntil{sleep 1; scriptDone _script;};
   
@@ -56,7 +68,7 @@ waitUntil{scriptDone _script;};
   private _actionText = ["CQB: Clearing house ", _complPath, "%"] joinString "";
   [_man, "action", _actionText] call SFSM_fnc_unitData;
 
-  //positions cleared
+  //count positions cleared
   _cPos=_cPos+1;
 
 } forEach _path;

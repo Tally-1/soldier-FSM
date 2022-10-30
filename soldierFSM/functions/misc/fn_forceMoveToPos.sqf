@@ -1,7 +1,13 @@
 private _maxTime = 30;
 private _maxDistance = 1.1;
-private _CQB = false;
-params ["_man", "_pos", "_maxTime", "_maxDistance", "_CQB"];
+private _spamTimer = 0.5;
+params [
+	"_man", 
+	"_pos", 
+	"_maxTime", 
+	"_maxDistance", 
+	"_spamTimer"
+	];
 
 
 
@@ -15,7 +21,7 @@ _man doMove _pos;
 _man doTarget objNull;
 
 
-while {sleep 0.5; _distance > _maxDistance} do {
+while {sleep _spamTimer; _distance > _maxDistance} do {
 	
 
 	private _hasMovedCloser = _distance > ((eyePos _man) distance2d _pos);

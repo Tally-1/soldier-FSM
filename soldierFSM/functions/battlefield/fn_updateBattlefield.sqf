@@ -29,9 +29,15 @@ private _clustersData = [
 							false		// include terrainObjects
 						] call Tcore_fnc_allClustersInRadius;
 
+private _unitFilter = {
+	(!(_x getVariable ["SFSM_Excluded",false]))
+	&&{(typeOf _x) == (typeOf (vehicle _x))}
+	};
+
+
 private _mapObjsData = missionNamespace getVariable (_battleField get "mapObjects");
 private _groups      = [_clustersData]       call Tcore_fnc_clusterGroups;
-private _units       = [_clustersData]       call Tcore_fnc_clusterUnits select {!(_x getVariable ["SFSM_Excluded",false])};
+private _units       = [_clustersData]       call Tcore_fnc_clusterUnits select _unitFilter;
 private _vehicles    = [_clustersData]       call Tcore_fnc_clusterVehicles;
 private _deadMen     = missionNamespace getVariable (_battleField get "deadMen");
 
