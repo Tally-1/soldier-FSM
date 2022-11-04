@@ -1,4 +1,4 @@
-missionNamespace setVariable ["SFSM_Version", 0.4, true];
+missionNamespace setVariable ["SFSM_Version", 0.401, true];
 private _versionName = ["DCO soldier FSM V. ", SFSM_Version] joinString "";
 
 

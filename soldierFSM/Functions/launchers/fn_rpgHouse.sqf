@@ -58,7 +58,7 @@ _man setVariable ["SFSM_missileTarget", _buildingPos];
 sleep 1;
 private _dir = (_man getDir _building);
 _man setDir _dir;
-ddd doWatch objNull;
+_man doWatch objNull;
 private _doFire = [_man, nil, _dir] spawn SFSM_fnc_forceFireLauncher;
 waitUntil{scriptDone _doFire;};
 
