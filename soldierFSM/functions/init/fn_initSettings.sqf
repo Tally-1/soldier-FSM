@@ -38,7 +38,8 @@ then{
 		SFSM_hearingHide        = true;  // Hide by hearing vehicle: A Vehicle with engine ON is detected within hearing-distance
 		SFSM_hearingDistance    = 250;   // Max distance a vehicle will be reacted to by hearing, (if in a urban area, half of this distance is used).
 		SFSM_overrunDistance    = 50;    // If an enemy comes within this range while holding cover / hiding the unit will try to evade the enemy, set to 0 to deactivate.
-		SFSM_Use_HC             = false; // Use Headless Client to load AI
+        SFSM_Allow_HC           = false; // Allow Headless Client to process SFSM for AI
+        SFSM_Use_HC             = false; // Use Headless Client to process SFSM for AI
 
 		SFSM_houseDemolition    = true;  // Allow units with explosives in their backpack to blow up houses instead of clearing them room by room.
 
@@ -85,5 +86,6 @@ missionNamespace setVariable ["SFSM_hearingHide",       SFSM_hearingHide,       
 missionNamespace setVariable ["SFSM_hearingDistance",   SFSM_hearingDistance,   true];
 missionNamespace setVariable ["SFSM_overrunDistance",   SFSM_overrunDistance,   true];
 missionNamespace setVariable ["SFSM_Use_HC",            SFSM_Use_HC,            true];
+missionNamespace setVariable ["SFSM_Allow_HC",          SFSM_Allow_HC,          true];
 
 true;
