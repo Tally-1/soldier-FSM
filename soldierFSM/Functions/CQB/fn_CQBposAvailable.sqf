@@ -1,7 +1,7 @@
 params['_pos'];
 private _available = true;
 _pos = _pos vectorAdd [0, 0, 0.7];
-private _unitsPresent = (_pos nearEntities 2) select {[_x] call SFSM_fnc_isRealMan};
+private _unitsPresent = (_pos nearEntities ["CAManBase", 2]) select {[_x] call SFSM_fnc_isRealMan};
 private _destinations = [] call SFSM_fnc_allCurrentDestinations;
 private _nearest = [0,0,0];
 

@@ -2,7 +2,7 @@ params["_pos", '_baseRadius'];
 private _returnRadius = _baseRadius;
 private _checkRadius  = _baseRadius*2;
 if(_checkRadius < 300)then{_checkRadius = 300};
-private _units        = _pos nearEntities ['land', _checkRadius];
+private _units        = _pos nearEntities ['CAManBase', _checkRadius];
 private _filter = {
 	([_x] call SFSM_fnc_isRealMan
 	&&{(side _x) in [east,west,independent]
