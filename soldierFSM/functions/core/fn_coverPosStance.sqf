@@ -10,8 +10,8 @@ private _crouchPos      = AGLToASL [_coverPos # 0, _coverPos # 1, 1.1];
 private _pronePos       = AGLToASL [_coverPos # 0, _coverPos # 1, 0.4];
 private _coverPositions = [_standPos, _crouchPos, _pronePos];
 private _stances 		= ["ERECT", "CROUCH", "PRONE"];
-private _ignoreObj      = (nearestObjects [_coverPos, ["man"], 5]) # 0;
-private _ignoreObj2     = (nearestObjects [_coverPos, ["man"], 5]) # 0;
+private _ignoreObj      = (nearestObjects [_coverPos, ["CAManBase"], 5]) # 0;
+private _ignoreObj2     = (nearestObjects [_coverPos, ["CAManBase"], 5]) # 0;
 
 if(isNil "_ignoreObj")then {_ignoreObj = objNull};
 if(isNil "_ignoreObj2")then{_ignoreObj2 = objNull};

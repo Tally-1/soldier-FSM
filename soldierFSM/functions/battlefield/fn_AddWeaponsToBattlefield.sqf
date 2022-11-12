@@ -5,10 +5,7 @@ private _battlefield = SFSM_Battles get _battleKey;
 
 if(isNil "_battlefield")exitWith{};
 
-private _unitPos        = getPos _man;
-private _droppedWeapons = _unitPos nearObjects ["WeaponHolderSimulated", 5];
-private _placedWeapons  = _unitPos nearObjects ["WeaponHolder", 5];
-_droppedWeapons append _placedWeapons;
+private _droppedWeapons = nearestObjects [_man, ["WeaponHolder", "WeaponHolderSimulated"], 5];
 
 private _weaponCount    = count _droppedWeapons;
 

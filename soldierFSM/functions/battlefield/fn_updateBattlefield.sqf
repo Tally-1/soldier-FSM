@@ -41,9 +41,7 @@ private _units       = [_clustersData]       call Tcore_fnc_clusterUnits select 
 private _vehicles    = [_clustersData]       call Tcore_fnc_clusterVehicles;
 private _deadMen     = missionNamespace getVariable (_battleField get "deadMen");
 
-private _weapons         = _centerPos nearObjects ["WeaponHolderSimulated", _radius];
-private _placedWeapons   = _centerPos nearObjects ["WeaponHolder", _radius];
-_weapons append _placedWeapons;
+private _weapons = nearestObjects [_centerPos, ["WeaponHolder", "WeaponHolderSimulated"], _radius];
 
 //see comments at Fn_initBattlefield.sqf
 [
