@@ -60,7 +60,7 @@ private _count 			= 0;
 			
 			if(_x isKindOf 'house'
 			&&{true//(!isObjectHidden _x)
-			&&{count([_x] call BIS_fnc_buildingPositions)>3}})
+			&&{count(_x buildingPos -1)>3}})
 			then{_buildings pushBackUnique _x};
             
 

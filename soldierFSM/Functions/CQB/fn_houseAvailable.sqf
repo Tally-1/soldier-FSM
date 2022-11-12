@@ -1,6 +1,6 @@
 params ['_building'];
 private _occupants = [_building] call SFSM_fnc_unitsInBuilding;
-private _positions = [_building] call BIS_fnc_buildingPositions;
+private _positions = _building buildingPos -1;
 if(count _positions < 3)exitwith{false;};
 _positions = _positions select SFSM_fnc_CQBcoverPosFilter;
 if(count _positions == 0)exitwith{false;};
