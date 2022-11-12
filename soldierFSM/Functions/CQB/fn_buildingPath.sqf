@@ -1,6 +1,6 @@
 private _includeExits = false;
 params["_building", "_includeExits", "_startPos"];
-private _positions = [_building] call BIS_fnc_buildingPositions;
+private _positions = _building buildingPos -1;
 private _floorPositions = [_positions] call SFSM_fnc_floorPositions;
 private _pathPosArr = [];
 

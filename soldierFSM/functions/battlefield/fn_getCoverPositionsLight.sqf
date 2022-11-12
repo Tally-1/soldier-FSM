@@ -11,7 +11,7 @@ private _coverPositionsWest = [];
 private _coverPositionsEast = [];
 private _coverPositionsGuer = [];
 private _allPositions       = []; 
-private _isBuilding = {_x isKindOf "house" && {count ([_x] call BIS_fnc_buildingPositions) > 3}};
+private _isBuilding = {_x isKindOf "house" && {count (_x buildingPos -1) > 3}};
 
 // private _buildings = _mapObjects select _isBuilding;
 
