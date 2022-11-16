@@ -213,21 +213,7 @@ private _versionName = ["DCO soldier FSM V. ", SFSM_Version] joinString "";
 	1
 ] call cba_settings_fnc_init;
 
-[
-    "SFSM_Allow_HC",
-    "CHECKBOX",
-    ["Allow headlessclient", "Allow Headless Client to process SFSM for AI."],
-    _versionName,
-    false
-] call cba_settings_fnc_init;
-
-[
-    "SFSM_Use_HC",
-    "CHECKBOX",
-    ["Use headlessclient", "Use Headless Client to process SFSM for AI."],
-    _versionName,
-    false
-] call cba_settings_fnc_init;
+#include "\soldierFSM\functions\PR\customCBA.sqf"
 
 /*
 Deactivated as of version 0.297, we are now using the vanilla EH that came with
