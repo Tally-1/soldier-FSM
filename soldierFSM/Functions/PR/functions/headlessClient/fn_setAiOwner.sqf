@@ -11,7 +11,7 @@
 
 params ["_unitArray"];
 
-if (name PR_AI_SpawnOwner == name PR_HC) then {
+if (name PR_AI_SpawnOwner == name PR_HC1) then {
     { hcUnits pushBack _x } forEach _unitArray; publicVariable "hcUnits";
 } else {
     if (name PR_AI_SpawnOwner == name PR_HC2) then {
