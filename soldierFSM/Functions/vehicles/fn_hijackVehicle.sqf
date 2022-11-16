@@ -3,7 +3,8 @@ private _filter = {((_vehicle distance _x) < SFSM_DodgeDistance)
                 &&{[_x, "action"]call SFSM_fnc_unitData == "none"
 				&&{[_x, "pathEnabeled"]call SFSM_fnc_unitData
 				&&{(!(_x getVariable ["SFSM_Excluded",false]))
-				&&{typeOf _x == typeOf (vehicle _x)}}}}};
+				&&{typeOf _x == typeOf (vehicle _x)
+				&&{!(_x in allPlayers)}}}}}};
 
 _units = ([_units, [], {_vehicle distance _x }, "ASCEND"] call BIS_fnc_sortBy);
 _units = _units select _filter;

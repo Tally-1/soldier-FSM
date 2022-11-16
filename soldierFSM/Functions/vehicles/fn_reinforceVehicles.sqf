@@ -8,7 +8,7 @@ private _vehicleFilter = {
 	(_type in SFSM_hijackVehicleTypes
 	&&{[_x] call SFSM_fnc_vehicleNeedsCrew})
 };
-private _vehicles = (_pos nearObjects ["car", _radius]) select _vehicleFilter;
+private _vehicles = (_pos nearEntities ["car", _radius]) select _vehicleFilter;
 
 {
 	private _nearestVehicle = [_x, _vehicles] call Tcore_fnc_nearestPos;
@@ -25,9 +25,9 @@ private _vehicles = (_pos nearObjects ["car", _radius]) select _vehicleFilter;
             [_x, _nearestVehicle, _role] spawn SFSM_fnc_getInVehicle;
     };
 
-    if!(_found)then{"Vehicle not found (reinforce)"call dbgmsg;};
-	if!(_needsReinforcement)then{"Vehicle does not need reinforcement"call dbgmsg;};
-	if!(_sameSide)then{"Vehicle not the same side."call dbgmsg;};
+    // if!(_found)then{"Vehicle not found (reinforce)"call dbgmsg;};
+	// if!(_needsReinforcement)then{"Vehicle does not need reinforcement"call dbgmsg;};
+	// if!(_sameSide)then{"Vehicle not the same side."call dbgmsg;};
 
 	sleep 0.05;
 } forEach _units;

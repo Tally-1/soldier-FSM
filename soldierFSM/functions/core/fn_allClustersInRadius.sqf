@@ -21,7 +21,7 @@ params[
 
 if(typeName _sides == "SIDE")			then{_sides = [_sides]};
 
-private _allUnitsVeh 	= _center nearEntities ["Land", _radius];
+private _allUnitsVeh 	= _center nearEntities ["CAManBase", _radius];
 private _positions      = [];
 private _dataArr		= [];
 private _excludedUnits  = [];

@@ -3,7 +3,7 @@
 private _enemiesOnly = false;
 params["_man", "_radius", "_enemiesOnly"];
 private _nearSoldiers = [];
-private _nearMen = _man nearEntities _radius;
+private _nearMen = _man nearEntities ["CAManBase", _radius];
 		
 		{
 			private _isPlayer = [_x] call Tcore_fnc_isPlayer;

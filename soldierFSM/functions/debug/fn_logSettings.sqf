@@ -60,10 +60,13 @@ private _hintText = parseText
 
 if(SFSM_Debugger)
 then{hint _hintText};
+diag_log parseText("*************************************************************************");
 
 diag_log ([_signature, "Debugger ",                     SFSM_Debugger]           joinString "");
 diag_log ([_signature, "Flinching ",                    SFSM_allowFlinching]     joinString "");
 diag_log ([_signature, "Dodging ",                      SFSM_allowDodging]       joinString "");
+
+diag_log parseText("-------------------------------------------------------------------------");
 
 diag_log ([_signature, "Hiding ",                       SFSM_hideFromVehicles]   joinString "");
 diag_log ([_signature, "Hunt Vehicles ",                SFSM_AtSpecHuntVehicles] joinString "");
@@ -77,6 +80,8 @@ diag_log ([_signature, "flinchTreshHold ",              SFSM_FlinchTreshHold]   
 diag_log ([_signature, "flinchCoolDown ",               SFSM_FlinchCoolDown]    joinString "");
 diag_log ([_signature, "prone-treshHold ",              SFSM_ProneTreshHold]    joinString "");
 
+diag_log parseText("-------------------------------------------------------------------------");
+
 diag_log ([_signature, "dodge Trigger ",                SFSM_RpsDodgeTrigger]   joinString "");
 diag_log ([_signature, "dodge-CoolDown ",               SFSM_DodgeCoolDown]     joinString "");
 diag_log ([_signature, "dodge-distance ",               SFSM_DodgeDistance]     joinString "");
@@ -85,10 +90,18 @@ diag_log ([_signature, "dodge-timer ",                  SFSM_DodgeTimer]        
 diag_log ([_signature, "force-dodge ",                  SFSM_forceDodge]        joinString "");
 diag_log ([_signature, "no-Cover-Panic ",               SFSM_noCoverPanic]      joinString "");
 
+diag_log parseText("-------------------------------------------------------------------------");
+
 diag_log ([_signature, "react-fire coolDown ",          SFSM_reactFireCoolDown] joinString "");
 diag_log ([_signature, "panic-coef ",                   SFSM_panicCoef]         joinString "");
 diag_log ([_signature, "Knowledge To Fight ",           SFSM_KnowledgeToFight]  joinString "");
 diag_log ([_signature, "Sprint speed ",                 SFSM_sprintSpeed]       joinString "");
 diag_log ([_signature, "emergency Rearm ",              SFSM_emergencyRearm]    joinString "");
 
+diag_log parseText("-------------------------------------------------------------------------");
+
+diag_log ([_signature, "explosion Cover Radius",        SFSM_explosionCoverRad] joinString "");
+diag_log ([_signature, "break Cover when Hit",          SFSM_breakCoverOnHit]   joinString "");
+
+diag_log parseText("*************************************************************************");
 true;

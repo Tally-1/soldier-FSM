@@ -59,9 +59,7 @@ private _areaName        = _battlefield get "name";
 private _deadMen         = [_centerPos, _radius] call Tcore_fnc_deadMenInArea;
 
 
-private _weapons         = _centerPos nearObjects ["WeaponHolderSimulated", _radius];
-private _placedWeapons   = _centerPos nearObjects ["WeaponHolder", _radius];
-_weapons append _placedWeapons;
+private _weapons = nearestObjects [_centerPos, ["WeaponHolder", "WeaponHolderSimulated"], _radius];
 
 //store the variables that are not included in the "battlefield"-hashmap itself.
 [
