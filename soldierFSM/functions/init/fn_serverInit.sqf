@@ -14,10 +14,10 @@
 /*----------------papaReaps code--------------*/
 private _hcPresent = false;
 
-waitUntil { ( !(isNil "SFSM_HcCheckComplete") && { !(isNil "SFSM_Use_HC") } && { !(isNil "SFSM_HeadlessClients") } ) };
+waitUntil { !(isNil "PR_HC_CheckComplete") };
 
 
-if ( !(isNil "HC") && { !(isNull HC) } && { SFSM_Use_HC } ) then {
+if ( !(isNil "PR_HC1") && { (typeName PR_HC1 == "OBJECT") } && { !(isNull PR_HC1) } && { PR_Use_HC } ) then {
     if (isServer) exitWith { diag_log "***soldier FSM * server exited***"; _hcPresent = true; };
     if ( !hasInterface && {!isServer} ) exitWith { diag_log "***soldier FSM * Headless Client Loaded***"; };
 } else {

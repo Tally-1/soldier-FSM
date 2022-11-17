@@ -16,21 +16,21 @@ if(isNil "SFSM_Version")then{missionNamespace setVariable ["SFSM_Version", 0.33,
 
 
 if ( (isServer) || {( !hasInterface && { !isServer } )} ) then {
-    if (isNil "SFSM_Allow_HC") then { SFSM_Allow_HC = false; publicVariable "SFSM_Allow_HC"; };
+    //if (isNil "PR_Allow_HC") then { PR_Allow_HC = false; publicVariable "PR_Allow_HC"; };
 
-    if (SFSM_Allow_HC) then {
-        SFSM_HC_Present = false; publicVariable "SFSM_HC_Present"; //--- used for fn_hcTracker.sqf
-        SFSM_HC2_Present = false; publicVariable "SFSM_HC2_Present"; //--- used for fn_hcTracker.sqf
+/*     if (PR_Allow_HC) then {
+        if (isNil "PR_HC1_Present") then { PR_HC1_Present = false; publicVariable "PR_HC1_Present"; };// Used for fn_hcTracker.sqf
+        if (isNil "PR_HC2_Present") then { PR_HC2_Present = false; publicVariable "PR_HC2_Present"; };
 
-        [] spawn SFSM_fnc_hcTracker;
-    };
+        //[] spawn SFSM_fnc_hcTracker; // get this changed to a call
+    }; */
 
     [] spawn SFSM_fnc_serverInit;
 }; // PapaReap to let hc pass
 
 
 
-if(isServer)	then{[] spawn SFSM_fnc_serverInit};
+//if(isServer)	then{[] spawn SFSM_fnc_serverInit};
 if(hasInterface)then{[] spawn SFSM_fnc_initClient};
 
 
