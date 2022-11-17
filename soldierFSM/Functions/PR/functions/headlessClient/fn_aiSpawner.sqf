@@ -17,33 +17,33 @@ if (isNil "PR_HC1_Present") then { PR_HC1_Present = false; publicVariable "PR_HC
 if (isNil "PR_HC2_Present") then { PR_HC2_Present = false; publicVariable "PR_HC2_Present"; };
 if (isNil "PR_HC3_Present") then { PR_HC3_Present = false; publicVariable "PR_HC3_Present"; };
 
-if ( PR_Use_HC && { !(isNil "HC") } && { !(isNil "HC2") } ) then {
+if ( PR_Use_HC && { !(isNil "PR_HC1") } && { !(isNil "PR_HC2") } ) then {
     if ( PR_HC1_Present && { PR_HC2_Present } ) then {
         if (sCntr == 0) then {
-            PR_AI_SpawnOwner = HC; sCntr = 1;
+            PR_AI_SpawnOwner = PR_HC1; sCntr = 1;
         } else {
-            if (sCntr == 1) then { PR_AI_SpawnOwner = HC2; sCntr = 0 };
+            if (sCntr == 1) then { PR_AI_SpawnOwner = PR_HC2; sCntr = 0 };
         };
     } else {
         if (PR_HC1_Present) then {
-            if (sCntr == 0) then { PR_AI_SpawnOwner = HC; sCntr = 0 };
+            if (sCntr == 0) then { PR_AI_SpawnOwner = PR_HC1; sCntr = 0 };
         } else {
             if (PR_HC2_Present) then {
-                if (sCntr == 0) then { PR_AI_SpawnOwner = HC2; sCntr = 0 };
+                if (sCntr == 0) then { PR_AI_SpawnOwner = PR_HC2; sCntr = 0 };
             } else {
                 if (isServer) then { PR_AI_SpawnOwner = objNull; sCntr = 0 };
             };
         };
     };
 } else {
-    if ( PR_Use_HC && { ( !(isNil "HC") || { !(isNil "HC2") } ) } ) then {
+    if ( PR_Use_HC && { ( !(isNil "PR_HC1") || { !(isNil "PR_HC2") } ) } ) then {
         if (PR_HC1_Present) then {
             if (sCntr == 0) then {
-                PR_AI_SpawnOwner = HC; sCntr = 0;
+                PR_AI_SpawnOwner = PR_HC1; sCntr = 0;
             } else {
                 if (PR_HC2_Present) then {
                     if (sCntr == 0) then {
-                        PR_AI_SpawnOwner = HC2; sCntr = 0;
+                        PR_AI_SpawnOwner = PR_HC2; sCntr = 0;
                     } else {
                         if (isServer) then { PR_AI_SpawnOwner = objNull; sCntr = 0 };
                     };
@@ -51,7 +51,7 @@ if ( PR_Use_HC && { !(isNil "HC") } && { !(isNil "HC2") } ) then {
             };
         };
     } else {
-        if ( PR_Use_HC && { ( (isNil "HC") && { (isNil "HC2") } ) } ) then {
+        if ( PR_Use_HC && { ( (isNil "PR_HC1") && { (isNil "PR_HC2") } ) } ) then {
             PR_AI_SpawnOwner = objNull; sCntr = 0;
         } else {
             if (isServer && !PR_Use_HC) then {

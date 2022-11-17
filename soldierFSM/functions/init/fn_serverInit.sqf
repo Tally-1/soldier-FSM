@@ -17,7 +17,7 @@ private _hcPresent = false;
 waitUntil { !(isNil "PR_HC_CheckComplete") };
 
 
-if ( !(isNil "PR_HC1") && { !(isNull PR_HC1) } && { PR_Use_HC } ) then {
+if ( !(isNil "PR_HC1") && { (typeName PR_HC1 == "OBJECT") } && { !(isNull PR_HC1) } && { PR_Use_HC } ) then {
     if (isServer) exitWith { diag_log "***soldier FSM * server exited***"; _hcPresent = true; };
     if ( !hasInterface && {!isServer} ) exitWith { diag_log "***soldier FSM * Headless Client Loaded***"; };
 } else {

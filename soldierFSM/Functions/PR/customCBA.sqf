@@ -10,7 +10,10 @@ private _versionName = ["DCO soldier FSM V. ", (missionNamespace getVariable "SF
     "CHECKBOX",
     ["Allow Headless Client", "Allow Headless Client to process SFSM for AI."],
     _versionName,
-    false
+    false,
+    true,
+    {},
+    true
 ] call cba_settings_fnc_init;
 
 [
@@ -18,7 +21,10 @@ private _versionName = ["DCO soldier FSM V. ", (missionNamespace getVariable "SF
     "CHECKBOX",
     ["Use Headless Client", "Use Headless Client to process SFSM for AI."],
     _versionName,
-    false
+    false,
+    true,
+    {},
+    true
 ] call cba_settings_fnc_init;
 
 [
@@ -26,5 +32,8 @@ private _versionName = ["DCO soldier FSM V. ", (missionNamespace getVariable "SF
     "EDITBOX",
     ["Headless Client name", "Headless Client name, default HC"],
     _versionName,
-    "HC"
+    "HC",
+    true,
+    {},
+    true
 ] call cba_settings_fnc_init;
