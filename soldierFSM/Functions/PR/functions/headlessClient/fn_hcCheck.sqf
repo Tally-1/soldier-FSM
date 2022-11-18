@@ -12,7 +12,7 @@
     diag_log "*PR* fn_hcCheck.sqf has exited. You already have a version running on Soldier FSM.";
 }; */
 
-if ( hasInterface && { !isServer } ) exitWith {};
+if !(isServer) exitWith {};
 
 if (isNil "PR_Allow_HC") then { PR_Allow_HC = false; publicVariable "PR_Allow_HC"; };
 if (isNil "PR_Use_HC") then { PR_Use_HC = false; publicVariable "PR_Use_HC"; };
@@ -50,94 +50,44 @@ if (isNil "PR_HC3") then {
 publicVariable "PR_HC3";
 
 if ( ((["PR_HeadlessClient", 0] call BIS_fnc_getParamValue) == 1) || { ( PR_Allow_HC && !((["PR_HeadlessClient", 1] call BIS_fnc_getParamValue) == 0) ) } ) then {
-    if (isServer) then {
-        if (isNil "PR_HeadlessClients") then { PR_HeadlessClients = []; };
+    if (isNil "PR_HeadlessClients") then { PR_HeadlessClients = []; };
 
-        if !(isNil "PR_HC1") then {
-            if !(isNull PR_HC1) then {
-                PR_HeadlessClients pushBackUnique PR_HC1;
-                PR_HC1_Present = true; publicVariable "PR_HC1_Present";
-                PR_HC1_Proceed = true;
-            } else {
-                PR_HC1_Proceed = false;
-            };
-            publicVariable "PR_HC1_Proceed";
+    if !(isNil "PR_HC1") then {
+        if !(isNull PR_HC1) then {
+            PR_HeadlessClients pushBackUnique PR_HC1;
+            diag_log format ["*PR* %1 PR_Use_HC = %2", name PR_HC1, PR_Use_HC];
+            PR_HC1_Present = true; publicVariable "PR_HC1_Present";
         };
-        if !(isNil "PR_HC2") then {
-            if !(isNull PR_HC2) then {
-                PR_HeadlessClients pushBackUnique PR_HC2;
-                PR_HC2_Present = true; PublicVariable "PR_HC2_Present";
-                PR_HC2_Proceed = true;
-            } else {
-                PR_HC2_Proceed = false;
-            };
-            publicVariable "PR_HC2_Proceed";
-        };
-
-        if !(isNil "PR_HC3") then {
-            if !(isNull PR_HC3) then {
-                PR_HeadlessClients pushBackUnique PR_HC3;
-                PR_HC3_Present = true; PublicVariable "PR_HC3_Present";
-                PR_HC3_Proceed = true;
-            } else {
-                PR_HC3_Proceed = false;
-            };
-            publicVariable "PR_HC3_Proceed";
+    };
+    if !(isNil "PR_HC2") then {
+        if !(isNull PR_HC2) then {
+            PR_HeadlessClients pushBackUnique PR_HC2;
+            diag_log format ["*PR* %1 PR_Use_HC = %2", name PR_HC2, PR_Use_HC];
+            PR_HC2_Present = true; PublicVariable "PR_HC2_Present";
         };
     };
 
-    if ( !hasInterface && { !isServer } ) then {
-        [
-            {
-                ( !(isNil "PR_HC1_Proceed") && { (typeName PR_HC1 == "OBJECT") } )
-                || { ( !(isNil "PR_HC2_Proceed") && { (typeName PR_HC2 == "OBJECT") } ) }
-                || { ( !(isNil "PR_HC3_Proceed") && { (typeName PR_HC3 == "OBJECT") } ) }
-            },
-            {
-                if (PR_HC1_Proceed) then {
-                    if (name player == name PR_HC1) then {
-                        PR_Use_HC = true; publicVariable "PR_Use_HC";
-                        diag_log format ["*PR* %1 PR_Use_HC = %2", name player, PR_Use_HC];
-                    };
-                };
-
-                if (PR_HC2_Proceed) then {
-                    if (name player == name PR_HC2) then {
-                        PR_Use_HC = true; publicVariable "PR_Use_HC";
-                        diag_log format ["*PR* %1 PR_Use_HC = %2", name player, PR_Use_HC];
-                    };
-                };
-
-                if (PR_HC3_Proceed) then {
-                    if (name player == name PR_HC3) then {
-                        PR_Use_HC = true; publicVariable "PR_Use_HC";
-                        diag_log format ["*PR* %1 PR_Use_HC = %2", name player, PR_Use_HC];
-                    };
-                };
-            },
-        []
-        ] call CBA_fnc_waitUntilAndExecute;
-    };
-
-    if (isServer) then {
-        if (count PR_HeadlessClients == 0) then {
-            PR_Use_HC = false; publicVariable "PR_Use_HC";
-            diag_log format ["*PR* Server PR_Use_HC = %1", PR_Use_HC];
-        } else {
-            PR_Use_HC = true; publicVariable "PR_Use_HC";
-            diag_log format ["*PR* Server PR_Use_HC = %1", PR_Use_HC];
+    if !(isNil "PR_HC3") then {
+        if !(isNull PR_HC3) then {
+            PR_HeadlessClients pushBackUnique PR_HC3;
+            diag_log format ["*PR* %1 PR_Use_HC = %2", name PR_HC3, PR_Use_HC];
+            PR_HC3_Present = true; PublicVariable "PR_HC3_Present";
         };
     };
-} else {
-    if (isServer) then {
-        if (isNil "PR_HeadlessClients") then { PR_HeadlessClients = []; };
+
+    if (count PR_HeadlessClients == 0) then {
         PR_Use_HC = false; publicVariable "PR_Use_HC";
-
+        diag_log format ["*PR* Server PR_Use_HC = %1", PR_Use_HC];
+    } else {
+        PR_Use_HC = true; publicVariable "PR_Use_HC";
         diag_log format ["*PR* Server PR_Use_HC = %1", PR_Use_HC];
     };
-};
+} else {
+    if (isNil "PR_HeadlessClients") then { PR_HeadlessClients = []; };
+    PR_Use_HC = false; publicVariable "PR_Use_HC";
 
-if !(isServer) exitWith {};
+    diag_log format ["*PR* Server PR_Use_HC = %1", PR_Use_HC];
+};
 
 publicVariable "PR_HeadlessClients";
 
@@ -152,6 +102,9 @@ if (PR_Use_HC) then {
             )}
         },
         {
+            publicVariable "PR_HC1";
+            publicVariable "PR_HC2";
+            publicVariable "PR_HC3";
             [] call SFSM_PR_hc_fnc_hcTracker;
             [] call SFSM_PR_hc_fnc_passToHCs;
             [] call SFSM_PR_hc_fnc_aiSpawner;
@@ -162,4 +115,4 @@ if (PR_Use_HC) then {
 
 diag_log format ["*PR* Headless Clients = %1", PR_HeadlessClients];
 
-PR_HC_CheckComplete = true; publicVariable "PR_HC_CheckComplete";
+PR_HC_CheckComplete = true;
