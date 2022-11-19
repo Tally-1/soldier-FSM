@@ -14,11 +14,12 @@
 /*----------------papaReaps code--------------*/
 private _hcPresent = false;
 
-waitUntil { !(isNil "PR_HC_CheckComplete") };
+waitUntil { ( !(isNil "PR_HC_CheckComplete") && { !(isNil "PR_HeadlessClients")  } ) };
+publicVariable "PR_HC_CheckComplete";
+publicVariable "PR_HeadlessClients";
 
-
-if ( !(isNil "PR_HC1") && { (typeName PR_HC1 == "OBJECT") } && { !(isNull PR_HC1) } && { PR_Use_HC } ) then {
-    if (isServer) exitWith { diag_log "***soldier FSM * server exited***"; _hcPresent = true; };
+if ( (count PR_HeadlessClients > 0) && { (!(isNil "PR_HC1")) } ) then {
+    if (isServer) exitWith { diag_log "***soldier FSM * server exited, headless client used***"; _hcPresent = true; };
     if ( !hasInterface && {!isServer} ) exitWith { diag_log "***soldier FSM * Headless Client Loaded***"; };
 } else {
     diag_log "***soldier FSM * no HC active***";
