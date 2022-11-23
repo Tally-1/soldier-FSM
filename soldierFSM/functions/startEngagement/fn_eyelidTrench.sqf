@@ -1,7 +1,8 @@
-params["_man"];
+private _grenadePanic = false;
+params["_man", "_grenadePanic"];
 private _leader = ((leader (group _man)) == _man);
 
-if(_leader)exitWith{true};
+if(_leader&&{!(_grenadePanic)})exitWith{true};
 
 private _loadout = getUnitLoadout _man;
 

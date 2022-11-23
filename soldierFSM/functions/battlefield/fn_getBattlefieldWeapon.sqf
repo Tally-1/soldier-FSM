@@ -2,8 +2,7 @@ private _type = "launcher";
 params ["_man", "_battleField", "_type"];
 private _searchRadius  = selectMax [60, SFSM_DodgeDistance];
 private _unitPos       = getPos _man;
-private _weaponsVar    = (_battlefield get "weapons");
-private _weapons       = missionNamespace getVariable _weaponsVar;
+private _weapons       = missionNamespace getVariable (_battlefield get "weapons");
         _weapons       = _weapons inAreaArray [_unitPos, _searchRadius, _searchRadius];
 
 if(_weapons isEqualTo [])exitWith{};

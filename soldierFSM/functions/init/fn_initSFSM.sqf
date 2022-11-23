@@ -12,7 +12,7 @@ if(isNil "dbgmsg")
 then{dbgmsg = SFSM_fnc_debugMessage};
 
 
-if(isNil "SFSM_Version")then{missionNamespace setVariable ["SFSM_Version", 0.33, true]};
+if(isNil "SFSM_Version")then{missionNamespace setVariable ["SFSM_Version", 0.403, true]};
 
 
 if ( (isServer) || {( !hasInterface && { !isServer } )} ) then {
@@ -41,13 +41,3 @@ then{
 		[_noScanText] remoteExecCall ["hint", 0];
 		diag_log _noScanText;
 	};
-
-
-// if (!isMultiplayer) then
-// {
-// 	[] spawn {
-		
-// 		private _text= [] call SFSM_fnc_gameLoadedWarning;
-// 		hint _text;
-// 	};
-// }

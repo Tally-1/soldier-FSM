@@ -1,0 +1,4 @@
+1) simplify available function (no UD)+hashMap (use var attached to veh)
+2) Pickupscript for VFSM (mostly done in SFSM)
+3) evacuate from danger
+4) exclude units in vehicles from Battlefield FSM

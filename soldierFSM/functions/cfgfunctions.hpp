@@ -42,7 +42,6 @@ class CfgFunctions
 			class initReaction			{};
 			class groupData				{};
 			class manAvailable          {};
-			class soundReaction         {};
 			class forceMoveToPos		{};
 			class manLoaded             {};
 			class unitInDoor            {};
@@ -51,6 +50,8 @@ class CfgFunctions
 			class allCurrentDestinations{};
 			class manOverrunBy          {};
 			class firePosLite           {};
+			class killNearEnemies       {};
+			
 		};
 
         class vehicles
@@ -91,10 +92,14 @@ class CfgFunctions
 		class projectileHandling
 		{
 			file = "\soldierFSM\functions\projectileHandling";
+			class soundReaction         {};
 			class reactToExplosion      {};
 			class addCrater             {};
 			class handleBulletImpact    {};
 			class handleExplosion       {};
+			class handleGrenade         {};
+			class throwBackGrenade      {};
+			class evadeGrenade          {};
 		};
 
 		class curator
@@ -203,6 +208,8 @@ class CfgFunctions
             class specialInitFightActions{};
             class machineGunInitFight    {};
             class supressPositions       {};
+			class moveToFirePos          {};
+			class findFirePos            {};
         };
 
         class startEngagement_takeCover
@@ -424,8 +431,14 @@ class CfgFunctions
 			class avgHeight             {};
 			class unitArrAimPositions   {};
 			class posFromObjArr         {};
+
+			class getPos                {};
+			class straightPosArr        {};
+			class squareGrid            {};
+			class visibility            {};
+			class sortByDist            {};
 		};
 	};
 
-    #include "\soldierFSM\functions\PR\cfgFunctions.hpp"
+    #include "PR\cfgFunctions.hpp"
 };

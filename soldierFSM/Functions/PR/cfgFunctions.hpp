@@ -5,7 +5,7 @@
 
 class SFSM_PR_hc {
     class headlessClient {
-        file = "\soldierFSM\Functions\PR\functions\headlessClient";
+        file = "\soldierFSM\functions\PR\functions\headlessClient";
         // Main headless startup
         class hcCheck { postInit = 1; description = "Sets Headless Clients variables for the mission"; };
         class hcTracker { description = "Watches for headless client connect and disconnect durning mission"; };
@@ -20,7 +20,7 @@ class SFSM_PR_hc {
 
 class SFSM_PR_main {
     class main {
-        file = "\soldierFSM\Functions\PR\functions\main";
+        file = "\soldierFSM\functions\PR\functions\main";
         class getOwner { description = "Sever finds owner id"};
     };
 };

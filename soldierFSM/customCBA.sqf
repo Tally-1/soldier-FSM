@@ -1,4 +1,4 @@
-missionNamespace setVariable ["SFSM_Version", 0.403, true];
+missionNamespace setVariable ["SFSM_Version", 0.43, true];
 private _versionName = ["DCO soldier FSM V. ", SFSM_Version] joinString "";
 
 
@@ -16,6 +16,14 @@ private _versionName = ["DCO soldier FSM V. ", SFSM_Version] joinString "";
 	["Debugger", "show debug-info, and 3D markers"],
 	_versionName,
 	false
+] call cba_settings_fnc_init;
+
+[
+	"SFSM_globalUD",
+	"CHECKBOX",
+	["Global unit-data", "(experimental), Set this to false to reduce net-traffic. May affect client-players debug-mode."],
+	_versionName,
+	true
 ] call cba_settings_fnc_init;
 
 [

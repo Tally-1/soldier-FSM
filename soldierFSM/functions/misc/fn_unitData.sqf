@@ -24,6 +24,11 @@ private _returnVal = _unitData get _item;
 if(isNil "_value")exitwith{_returnVal};
 
 _unitData set [_item, _value];
-_man setVariable["SFSM_UnitData", _unitData, true];
+
+//experimental performance improvement
+if(SFSM_globalUD)
+then{_man setVariable["SFSM_UnitData", _unitData, true];}
+else{_man setVariable["SFSM_UnitData", _unitData];};
+
 
 _value;

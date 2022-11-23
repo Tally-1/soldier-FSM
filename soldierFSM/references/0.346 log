@@ -1,0 +1,25 @@
+1) added "blow up house"
+   -canBlowUpHouse
+   -carriedExplosives
+   -formatExplosiveName
+   -getChargeFromBackPack
+   -initHouseDemolition
+   -placeExplosive
+   -blowUpHouse
+   -putAnimDoneEH
+   -endCQBclearing
+
+2) added "rpg house"
+   -blowUpHouse
+   -forceFireLauncher
+   -canRpgHouse
+   -steerMissile
+   -guideMissile
+   -firePosLite
+
+3) "excluded" handling
+    -flinching
+    -dodging
+    -healing
+
+

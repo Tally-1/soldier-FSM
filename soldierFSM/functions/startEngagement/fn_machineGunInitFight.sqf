@@ -50,7 +50,7 @@ if(isNil "_battlefield")exitWith{[_man, "action", "none"] call SFSM_fnc_unitData
 //now suppress every single enemy individually
 private _radius = _battlefield get "radius";
 private _allEnemyPos = [_man, (_radius*2)] call Tcore_fnc_nearKnownEnemies;
-private _script = [_man, _enemyClusterPositions] spawn SFSM_fnc_supressPositions;
+private _script = [_man, _allEnemyPos] spawn SFSM_fnc_supressPositions;
 waitUntil {sleep 0.5; scriptDone _script};
 
 if(isNil "_battlefield")exitWith{[_man, "action", "none"] call SFSM_fnc_unitData};

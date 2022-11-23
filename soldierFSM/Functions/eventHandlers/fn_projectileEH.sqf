@@ -19,12 +19,15 @@ private _bullet      = _class > 1 && _class < 3;
 if((_handGrenade
 || _explosive))
 exitWith{
-			[_projectile, _launchPos, _shooter, _ammoType] call SFSM_fnc_explosionEH;
+            [_projectile, _launchPos, _shooter, _ammoType] call SFSM_fnc_explosionEH;
+            if(_handGrenade)then{[_projectile, _shooter] spawn SFSM_fnc_handleGrenade;};
 		};
 
 if(_bullet)
 exitwith{
 			[_projectile, _launchPos, _shooter] call SFSM_fnc_bulletEH;
 		};
+
+
 
 true;

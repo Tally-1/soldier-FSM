@@ -6,4 +6,5 @@ if(SFSM_Debugger)
 then{
 		[] call SFSM_fnc_man3dInfo;
 		[] call SFSM_fnc_battlefield3d;
+
 }}];

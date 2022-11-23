@@ -40,9 +40,7 @@ then{
 		SFSM_overrunDistance    = 50;    // If an enemy comes within this range while holding cover / hiding the unit will try to evade the enemy, set to 0 to deactivate.
 
 		SFSM_houseDemolition    = true;  // Allow units with explosives in their backpack to blow up houses instead of clearing them room by room.
-		SFSM_hijackVehicles     = true;  //
-		SFSM_rpgHouse           = true;  //
-        #include "\soldierFSM\Functions\PR\initSettings.sqf"//DEACTIVATED DURING DEVELOPEMENT
+        #include "\soldierFSM\Functions\PR\initSettings.sqf"
 };
 
 
@@ -85,9 +83,5 @@ missionNamespace setVariable ["SFSM_hidingTimeOut",     SFSM_hidingTimeOut,     
 missionNamespace setVariable ["SFSM_hearingHide",       SFSM_hearingHide,       true];
 missionNamespace setVariable ["SFSM_hearingDistance",   SFSM_hearingDistance,   true];
 missionNamespace setVariable ["SFSM_overrunDistance",   SFSM_overrunDistance,   true];
-
-missionNamespace setVariable ["SFSM_hijackVehicles",    SFSM_hijackVehicles,    true];
-missionNamespace setVariable ["SFSM_rpgHouse",          SFSM_rpgHouse,          true];
-
 
 true;

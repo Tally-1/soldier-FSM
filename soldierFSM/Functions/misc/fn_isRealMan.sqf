@@ -8,6 +8,7 @@ if !(_man isKindOf "CAManBase") exitWith {false};
 private _group = group _man;
 if (isNull _group) exitWith {false};
 if (side _group == sideLogic) exitWith {false};
-
+private _z = _man Getvariable ["bis_fnc_moduleRemoteControl_owner", ""];
+if !(_z isEqualTo "") exitwith {false};
 
 true
