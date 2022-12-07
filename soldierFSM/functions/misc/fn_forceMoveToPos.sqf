@@ -2,11 +2,11 @@ private _maxTime = 30;
 private _maxDistance = 1.1;
 private _spamTimer = 0.5;
 params [
-	"_man", 
-	"_pos", 
-	"_maxTime", 
-	"_maxDistance", 
-	"_spamTimer"
+	"_man",            // the man that will move.
+	"_pos",           //  target position
+	"_maxTime",      //   timeout (max time to attempt to reach said pos)
+	"_maxDistance", //    distance to wanted pos before aborting move.
+	"_spamTimer"   //     how often the doMove command is repeated.
 	];
 
 
