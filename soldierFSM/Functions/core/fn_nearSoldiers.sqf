@@ -13,12 +13,16 @@ private _nearMen = _pos nearEntities ["CAManBase", _radius];
 			private _isPlayer = [_x] call Tcore_fnc_isPlayer;
 			private _isThisUnit = (_x == _man);
 			private _valid = [_x] call SFSM_fnc_isRealMan;
-			private _include = ((! _enemiesOnly) || (!([(side _man), (side _x)] call BIS_fnc_sideIsFriendly)));
+			private _include = ((! _enemiesOnly) 
+							 || (!([(side _man), (side _x)] call BIS_fnc_sideIsFriendly)));
 			
+			private _noLogic = (side _x) != sideLogic;
+
 			if((! _isPlayer)
 			&&{(! _isThisUnit)
 			&&{_valid
-			&&{_include}}})
+			&&{_include
+			&&{_noLogic}}}})
 			then{_nearSoldiers pushBack _x};
 			
 		} forEach _nearMen;

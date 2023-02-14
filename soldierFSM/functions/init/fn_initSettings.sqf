@@ -10,7 +10,6 @@ then{
         SFSM_mgSuppressClusters = true;  // MachineGunners will spray enemy positions upon initial contact
 		SFSM_ExcludeZcommand    = false; // stop units that have been given waypoints by a curator from dodging
 		SFSM_PlayerGrpDodge     = false; // Allows units in a group lead by a player to dodge / hide, dodging can be frustrating for players who like to micro-manage their AI
-		// SFSM_FlinchTreshHold 	= 1;	 // unit will not flinch if suppression is higher than this value
 		SFSM_ProneTreshHold 	= 0.8;	 // unit will stay prone if suppression is higher than this value
 		SFSM_FlinchCoolDown		= 5;	 // Minimum Time between each flinch-response
 		SFSM_RpsDodgeTrigger	= 4;	 // Continous Incoming bullets with no less than 1 second break, to trigger Dodging
@@ -28,8 +27,6 @@ then{
 		SFSM_emergencyRearm     = true;  // Soldiers pick up launchers from killed squad-mates, or off the ground if a vehicle is nearby
 		SFSM_explosionCoverRad  = 200;   // if munition explodes within this distance from the soldier he will run for cover.
 		SFSM_breakCoverOnHit    = true;  // if hit while in cover the unit will move away from current position
-		//SFSM_explosionCrater    = true;  // Creates a dent in the terrain upon exploding ammo(the size varies according to ammo-type)
-		SFSM_legHealingOn       = true;  // If a soldier is hit in the legs, he will inmediately go prone and heal himself, to allow for running.
 		SFSM_dodgeIndoors       = false; // If a soldier is inside a house the "dodge" function will activate if the unit is taking heavy fire.
 		
 		SFSM_CQBdistance        = 100;   // Distance to enemy inside a building needed to activate CQB-mode.
@@ -42,6 +39,12 @@ then{
 		SFSM_houseDemolition    = true;  // Allow units with explosives in their backpack to blow up houses instead of clearing them room by room.
 		SFSM_hijackVehicles     = true;  //
 		SFSM_rpgHouse           = true;  //
+		SFSM_globalUD           = false;
+
+		SFSM_EmergencyHealing   = "whole-body";  // If a soldier is hit in the legs, he will inmediately go prone and heal himself, to allow for running.
+		SFSM_throwBackGrenade   = true;
+		SFSM_allowHunkerDown    = false;
+		SFSM_mgSuppression      = true;
         #include "\soldierFSM\Functions\PR\initSettings.sqf"//DEACTIVATED DURING DEVELOPEMENT
 };
 
@@ -74,8 +77,7 @@ missionNamespace setVariable ["SFSM_sprintSpeed",       SFSM_sprintSpeed,       
 missionNamespace setVariable ["SFSM_emergencyRearm",    SFSM_emergencyRearm,    true];
 missionNamespace setVariable ["SFSM_explosionCoverRad", SFSM_explosionCoverRad, true];
 missionNamespace setVariable ["SFSM_breakCoverOnHit",   SFSM_breakCoverOnHit,   true];
-// missionNamespace setVariable ["SFSM_explosionCrater",   SFSM_explosionCrater,   true];
-missionNamespace setVariable ["SFSM_legHealingOn",      SFSM_legHealingOn,      true];
+missionNamespace setVariable ["SFSM_EmergencyHealing",  SFSM_EmergencyHealing,  true];
 missionNamespace setVariable ["SFSM_dodgeIndoors",      SFSM_dodgeIndoors,      true];
 
 missionNamespace setVariable ["SFSM_CQBdistance",       SFSM_CQBdistance,       true];

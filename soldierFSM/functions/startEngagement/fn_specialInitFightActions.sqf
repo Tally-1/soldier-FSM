@@ -25,7 +25,8 @@ exitWith{'specialist in playerGroup / zeus' call dbgmsg; false};
 
 
 
-if(_machineGunner)
+if(_machineGunner
+&&{SFSM_mgSuppression})
 exitWith{
 			[_man] spawn SFSM_fnc_machineGunInitFight;
 			true;

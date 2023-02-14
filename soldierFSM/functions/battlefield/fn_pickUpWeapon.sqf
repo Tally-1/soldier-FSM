@@ -48,9 +48,10 @@ _canPickUp = [_man, _weaponObject] call SFSM_fnc_canPickUpWeapon;
 if!(_available)exitWith{[_man, false] spawn SFSM_fnc_endWeaponPickup};
 if!(_canPickUp)exitWith{[_man, false] spawn SFSM_fnc_endWeaponPickup};
 
+private _weaponName = ([(getWeaponCargo _weaponObject#0#0)] call ObjScan_fnc_weaponData) get "name";
+private _actionText = ["Picking up ", _weaponName]joinString"";
 
-
-[_man, "action", "Picking up weapon"] call SFSM_fnc_unitData;
+[_man, "action",  _actionText] call SFSM_fnc_unitData;
 
 
 //move to weapon

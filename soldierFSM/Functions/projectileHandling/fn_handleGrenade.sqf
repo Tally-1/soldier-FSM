@@ -18,7 +18,7 @@ private _nearSoldiers = ([_grenade, ([_grenade, 30] call Tcore_fnc_nearSoldiers)
 if(count _nearSoldiers == 0)exitWith{};
 
 private _nearest = _nearSoldiers#0;
-private _canThrowBack = (_nearest distance2D _grenade)<7;
+private _canThrowBack = SFSM_throwBackGrenade && {(_nearest distance2D _grenade)<7};
 
 if(_canThrowBack)
 then{

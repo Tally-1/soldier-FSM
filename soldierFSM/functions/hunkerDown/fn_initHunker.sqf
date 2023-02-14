@@ -1,4 +1,6 @@
 params ["_man"];
+if!(SFSM_allowHunkerDown)exitWith{false;};
+
 private _battlefield = [_man] call SFSM_fnc_getBattlefield;
 if(isNil "_battlefield")exitWith{false;};
 private _action = [_man, "action"] call SFSM_fnc_unitData;

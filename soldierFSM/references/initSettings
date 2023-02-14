@@ -40,7 +40,7 @@ then{
 		SFSM_overrunDistance    = 50;    // If an enemy comes within this range while holding cover / hiding the unit will try to evade the enemy, set to 0 to deactivate.
 
 		SFSM_houseDemolition    = true;  // Allow units with explosives in their backpack to blow up houses instead of clearing them room by room.
-        #include "\soldierFSM\Functions\PR\initSettings.sqf"
+        #include "Functions\PR\initSettings.sqf"
 };
 
 

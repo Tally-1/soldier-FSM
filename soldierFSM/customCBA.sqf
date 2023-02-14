@@ -1,6 +1,31 @@
-missionNamespace setVariable ["SFSM_Version", 0.43, true];
+missionNamespace setVariable ["SFSM_Version", 0.44, true];
 private _versionName = ["DCO soldier FSM V. ", SFSM_Version] joinString "";
 
+
+
+[
+	"SFSM_allowHunkerDown",
+	"CHECKBOX",
+	["Allow Hunker-Down", "Determine if a soldier should be able to hunker behind cover and shoot at visible enemies."],
+	_versionName,
+	false
+] call cba_settings_fnc_init;
+
+[
+	"SFSM_throwBackGrenade",
+	"CHECKBOX",
+	["Throw back Grenade", "Enables soldiers to throw back incoming handgrenades."],
+	_versionName,
+	true
+] call cba_settings_fnc_init;
+
+[
+	"SFSM_mgSuppression",
+	"CHECKBOX",
+	["MG's suppress enemy", "Enables mahcinegun suppression at the start of an engagement"],
+	_versionName,
+	true
+] call cba_settings_fnc_init;
 
 [
 	"SFSM_disableSoldierFSM",
@@ -68,21 +93,16 @@ private _versionName = ["DCO soldier FSM V. ", SFSM_Version] joinString "";
 	false
 ] call cba_settings_fnc_init;
 
-//Deactivated as of version 0.34. The force dodge is necesary, no need to let the end-user mess things up
-// [
-// 	"SFSM_forceDodge",
-// 	"CHECKBOX",
-// 	["Force Dodge", "Override the Vanilla FSM in order to force the unit to move when dodging, if disabeled the unit will sometimes ignore incoming fire and just stay like an idiot."],
-// 	_versionName,
-// 	true
-// ] call cba_settings_fnc_init;
-
 [
-	"SFSM_legHealingOn",
-	"CHECKBOX",
-	["Emergency heal", "If a soldier is hit in the legs, he will inmediately go prone and heal himself, to allow for running."],
+	"SFSM_EmergencyHealing",
+	"LIST",
+	["Emergency heal", "Determine if a soldier should heal himself when hit. (could be legs only, or whole body)"],
 	_versionName,
-	true
+	[
+		["disabeled", "legs-only", "whole-body"],
+		["disabeled", "legs-only", "whole-body"], 
+		1
+	]
 ] call cba_settings_fnc_init;
 
 [
@@ -128,7 +148,7 @@ private _versionName = ["DCO soldier FSM V. ", SFSM_Version] joinString "";
 [
 	"SFSM_emergencyRearm",
 	"CHECKBOX",
-	["Emergency rearm", "Soldiers pick up launchers from killed soldiers if a enemy vehicle is nearby."],
+	["Emergency rearm", "Soldiers pick up launchers, machineGuns and ammo from killed soldiers."],
 	_versionName,
 	true
 ] call cba_settings_fnc_init;
@@ -280,26 +300,6 @@ A3 #2.10
 	],
 	1
 ] call cba_settings_fnc_init;
-
-//Deactivated as of version 0.34. Not really needed. Removed to reduce confusion.
-// [
-// 	"SFSM_FlinchTreshHold",
-// 	"SLIDER",
-// 	["Flinch TreshHold", "unit will not flinch if suppression is higher than this value"],
-// 	_versionName,
-// 	[
-// 		0,   	//minimum 
-// 		2, 		//max
-// 		0.1,    //default
-// 		2,		//decimals
-// 		false
-// 	],
-// 	1
-// ] call cba_settings_fnc_init;
-
-
-
-
 
 [
 	"SFSM_FlinchCoolDown",

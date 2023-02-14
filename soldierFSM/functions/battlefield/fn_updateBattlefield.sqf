@@ -39,10 +39,11 @@ private _mapObjsData = missionNamespace getVariable (_battleField get "mapObject
 private _groups      = [_clustersData]       call Tcore_fnc_clusterGroups;
 private _units       = [_clustersData]       call Tcore_fnc_clusterUnits select _unitFilter;
 private _vehicles    = [_clustersData]       call Tcore_fnc_clusterVehicles;
-private _deadMen     = missionNamespace getVariable (_battleField get "deadMen");
+private _deadMen     = allDeadMen select {_centerPos distance2D _x < _radius;}; //missionNamespace getVariable (_battleField get "deadMen");
 
-private _weapons = nearestObjects [_centerPos, ["WeaponHolder", "WeaponHolderSimulated"], _radius];
-
+(str (count _deadMen))call dbgmsg;
+private _weapons  = nearestObjects [_centerPos, ["WeaponHolder", "WeaponHolderSimulated"], _radius];
+private _supplies = _centerPos nearSupplies _radius;
 //see comments at Fn_initBattlefield.sqf
 [
 	_centerPos, 
@@ -65,7 +66,8 @@ private _weapons = nearestObjects [_centerPos, ["WeaponHolder", "WeaponHolderSim
 	_vehicles, 
 	_groups, 
 	_areaName, 
-	_mapObjsData
+	_mapObjsData,
+	_supplies
 ] call SFSM_fnc_battlefieldVariables;
 
 

@@ -7,20 +7,23 @@ if(count _enemies > 0)
 then{
 		private _killTimer = time + 5;
 		[_man, "action", "!Targeting Enemy!"] call SFSM_fnc_unitData;
-		{
-			_man doFire _x;
+			{
+				if(side _x != side _man
+				&&{side _x != sideLogic})then{
+				_man doFire _x;
 
-			waitUntil{
-					sleep 0.5; 
-					_man doFire _x;
-					_man doMove (getPos _x);
-					((!alive _x)  || 
-					(!alive _man) || 
-					(time > _killTimer)) 
-					};
-          
-        } forEach _enemies;
+				waitUntil{
+						sleep 0.5; 
+						_man doFire _x;
+						_man doMove (getPos _x);
+						((!alive _x)  || 
+						(!alive _man) || 
+						(time > _killTimer)) 
+						};
+			
+			} forEach _enemies;
 
-		[_man, "action", _action] call SFSM_fnc_unitData;
+			[_man, "action", _action] call SFSM_fnc_unitData;
+		}
 	};
 true;

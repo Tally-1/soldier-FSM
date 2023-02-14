@@ -13,6 +13,8 @@ private _centerPos    = [([_posA, _posB] call Tcore_fnc_getMidpoint)] call Tcore
 private _battleKey    = (str _centerPos);
 private _sides        = [east, west, independent];
 private _markers      = [];
+private _supplies      = _centerPos nearSupplies _radius;
+
 
 _battlefield set ["currentAction",	"initializing"];
 _battlefield set ["center",	        _centerPos];
@@ -71,7 +73,8 @@ private _weapons = nearestObjects [_centerPos, ["WeaponHolder", "WeaponHolderSim
 	_vehicles, 
 	_groups, 
 	_areaName, 
-	_mapObjsData
+	_mapObjsData,
+	_supplies
 ] call SFSM_fnc_battlefieldVariables;
 
 _battlefield set ["zones", ([_battlefield] call SFSM_fnc_getZones)];

@@ -12,7 +12,7 @@ private _groupsVarName   = _battlefield get "groups";
 private _ClustersVarName = _battlefield get "clusterData";
 private _hunkObjVarName  = _battlefield get "hunkerObjects";
 private _buildingsVarName= _battlefield get "buildings";
-
+private _suppliesVarName = _battlefield get "supplies";
 
 private _vehicles= missionNamespace getVariable _vehicleVar;
 private _units   = missionNamespace getVariable _unitVar;
@@ -51,6 +51,7 @@ missionNamespace setVariable [_weaponsVarName,  nil, true];
 missionNamespace setVariable [_ClustersVarName, nil, true];
 missionNamespace setVariable [_hunkObjVarName,  nil, true];
 missionNamespace setVariable [_buildingsVarName,nil, true];
+missionNamespace setVariable [_suppliesVarName, nil, true];
 
 {_battlefield deleteAt _X}forEach _battlefield;
 

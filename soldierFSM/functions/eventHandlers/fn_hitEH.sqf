@@ -24,8 +24,14 @@ _man addEventHandler ["Hit", {
 	
 	private _legDamage = getAllHitPointsDamage _unit # 2 # 10;
 	
-	if(_legDamage > 0.4)
-	then{[_unit] spawn SFSM_fnc_proneHeal};
-			
+	if(_legDamage > 0.4)exitWith{[_unit] spawn SFSM_fnc_proneHeal;};
+
+	private _canHealBody = (damage _unit)>0.3 
+						 &&{SFSM_EmergencyHealing == "whole-body"
+						 &&{_action isEqualTo "none"}};
+	
+	if(_canHealBody)exitWith{[_unit] spawn SFSM_fnc_proneHeal;};
+
+	true;
 		
 }];

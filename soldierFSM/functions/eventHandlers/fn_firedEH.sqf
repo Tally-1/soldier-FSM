@@ -12,11 +12,13 @@ _man addEventHandler ["Fired", {
 				"_gunner"
 			];
 	
+	
 	[_unit] 							 call SFSM_fnc_triggerBattleOnShot;
 	[_unit, _muzzle, _weapon] 			 call SFSM_fnc_multiplyReactionFire;
 	[_unit] 							 call SFSM_fnc_soundReaction;
 	[_unit, "last_bullet_fired", time] 	 call SFSM_fnc_unitData;
 	[_projectile, _ammo, _unit, _gunner] call SFSM_fnc_projectileEH;
+	[_unit]                              call SFSM_fnc_rearm;
 	
 	SFSM_lastShotFired = time;
     
