@@ -13,7 +13,7 @@ then{
 	  _man doTarget objNull;
 	  [_man, "action", "moving to cover for hiding"] call SFSM_fnc_unitData;
 	  _man setAnimSpeedCoef SFSM_sprintSpeed;
-	  private _script = [_man, _coverPos, 30, 2] spawn SFSM_fnc_forceMoveToPos;
+	  private _script = [_man, _coverPos, 30, 2] spawn SFSM_fnc_forceMove2;
 	  waitUntil{sleep 0.1; scriptDone _script};
 	  _man setAnimSpeedCoef 1;
 };
@@ -37,6 +37,8 @@ while{_exitStatus == ""}do{
 	if ([_enemyVehicle] call Tcore_fnc_deadCrew)exitWith{_exitStatus = "Vehicle neutralized."};
 	_ovEnemy = [_man] call SFSM_fnc_manOverrunBy;
 	if!(isNull _ovEnemy)exitWith{_exitStatus = "overrun";};
+	if(_man getVariable ["ace_isunconscious", false])exitWith{_exitStatus = "man is unconscious";};
+
 
     private _script = [_man, 5] spawn SFSM_fnc_CQBTargetEnemies;
 	waitUntil {sleep 1; scriptDone _script; };

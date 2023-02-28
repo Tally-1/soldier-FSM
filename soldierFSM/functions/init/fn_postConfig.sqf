@@ -1,9 +1,8 @@
 // This file contains settings and global variables that I do not want the end-user to touch.
-
 missionNamespace setVariable ["SFSM_Battles",         createHashmap, true];
 missionNamespace setVariable ["SFSM_debugMarkers",    [],            true];
 missionNamespace setVariable ["SFSM_TaskCycleTimer",  10, 	         true];
-missionNamespace setVariable ["SFSM_TestMode", 		  false, 	     true];
+missionNamespace setVariable ["SFSM_TestMode", 		  false, 	         true];
 missionNamespace setVariable ["SFSM_customEH_Timer",  0.2, 	         true];
 
 
@@ -123,3 +122,11 @@ then{
 	sideLogic setFriend [_x, 1];
 
 } forEach [east, west, independent];
+
+private _addons = [] call SFSM_fnc_loadedAddons;
+SFSM_aceLoaded  = "@ace" in _addons;
+SFSM_sprinters  = [];
+
+if(!isNil "Tally_Dev"
+&&{Tally_Dev})
+then{execVm "devFile.sqf";};

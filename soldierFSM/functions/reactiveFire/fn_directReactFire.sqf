@@ -23,12 +23,9 @@ if("Full" in _weaponModes)	then{_fireMode = (_weaponModes get "Full") get "cfgNa
 if("Burst" in _weaponModes)	then{_fireMode = (_weaponModes get "Burst") get "cfgName"};
 if!(_fireMode == "")		then{_man selectWeaponTurret [_weapon, [], _weapon, _fireMode]};
 
-
-
-
-
 while{(alive _man
-&&{time < _actionTimer})}
+&&{time < _actionTimer
+&&{!(_man getVariable ["ace_isunconscious", false])}})}
 do	{
 		private _timeLeft = (_actionTimer - time);
 		[_man, _target, 1, _weapon, 1] spawn SFSM_fnc_unitTounitForcedFire;

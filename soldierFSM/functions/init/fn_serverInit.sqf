@@ -10,6 +10,8 @@
 	*papaReap*
 */
 
+// Tally: Will be updated in the post-config 
+SFSM_aceLoaded = false;
 
 /*----------------papaReaps code--------------*/
 private _hcPresent = false;
@@ -30,8 +32,10 @@ if (isServer && {_hcPresent}) exitWith { [] call SFSM_fnc_initSettings; };
 /*----------------papaReaps code end--------------*/
 
 
+
 [] call SFSM_fnc_initSettings;
 [] call SFSM_fnc_postConfig;
+
 
 
 
@@ -44,6 +48,7 @@ if (isServer && {_hcPresent}) exitWith { [] call SFSM_fnc_initSettings; };
 [] spawn SFSM_fnc_TaskManager;
 [] call  SFSM_fnc_unitKilled; 
 [] call SFSM_fnc_unitCreated;
+[] call SFSM_fnc_projectileCreated;
 
 addMissionEventHandler ["BuildingChanged", {
 	params ["_from", "_to", "_isRuin"];

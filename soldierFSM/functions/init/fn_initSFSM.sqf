@@ -1,5 +1,7 @@
 if(is3DEN)exitWith{};
 
+
+
 if((!isNil "SFSM_disableSoldierFSM")
 &&{SFSM_disableSoldierFSM})
 exitWith{
@@ -12,10 +14,11 @@ if(isNil "dbgmsg")
 then{dbgmsg = SFSM_fnc_debugMessage};
 
 
-if(isNil "SFSM_Version")then{missionNamespace setVariable ["SFSM_Version", 0.44, true]};
+if(isNil "SFSM_Version")then{missionNamespace setVariable ["SFSM_Version", 0.45, true]};
 
 
 if ( (isServer) || {( !hasInterface && { !isServer } )} ) then {
+	
     //if (isNil "PR_Allow_HC") then { PR_Allow_HC = false; publicVariable "PR_Allow_HC"; };
 
 /*     if (PR_Allow_HC) then {
@@ -31,7 +34,7 @@ if ( (isServer) || {( !hasInterface && { !isServer } )} ) then {
 
 
 //if(isServer)	then{[] spawn SFSM_fnc_serverInit};
-if(hasInterface)then{[] spawn SFSM_fnc_initClient};
+if(hasInterface)then{[] spawn SFSM_fnc_initClient;};
 
 
 

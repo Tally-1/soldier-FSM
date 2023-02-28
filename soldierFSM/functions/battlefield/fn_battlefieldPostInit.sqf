@@ -32,6 +32,9 @@ private _units = missionNamespace getVariable (_battlefield get "units");
 
 } forEach _units;
 
+sleep 1;
+
+
 
 //wait for the battlefield framework to register all map-objects in the area
 waitUntil
@@ -42,6 +45,16 @@ waitUntil
 	if(_terrainLoaded)			exitWith{true};
 	false;
 };
+
+//heal wounded
+// _battlefield set ["currentAction",	"Medical actions"];
+// private _script = [_battleField] spawn SFSM_fnc_battleFieldMedical;
+// waitUntil {
+// 	private _finito = scriptDone _script;
+// 	if(isNil "_finito")exitWith{true;};
+// 	_finito; 
+// };
+
 
 //update cover-positions
 _battlefield set ["currentAction",	"Loading cover positions"];

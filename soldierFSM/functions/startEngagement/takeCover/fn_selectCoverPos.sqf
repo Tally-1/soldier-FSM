@@ -18,12 +18,12 @@ private _coverPos = nil;
 	private _distance    = 3;
 	if(_found)then{_distance = (_X distance2D _nearestPos)};
 
-	if(_distance > 1)
+	if(_distance > 1 && {_found})
 	then{_availablePositions pushBackUnique _x};
 
 } forEach _coverPositions;
 
-if!(count _availablePositions > 0)
+if(count _availablePositions > 0)
 then{							  
 		_coverPos = [_man, _availablePositions] call Tcore_fnc_nearestPos;
 	};

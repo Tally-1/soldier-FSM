@@ -3,7 +3,9 @@ params ["_man", "_positions"];
 private _counter  = 1; 
 _positions = _positions select {(_man distance2D _x)<300};
 private _posCount = count _positions;
+
 if(_posCount == 0)exitWith{};
+if(_man getVariable ["ace_isunconscious", false])exitWith{};
 
 // change the format of all positions to ASL for visibility-check and supression-command.
 private _ASL_positions = [];
@@ -15,6 +17,9 @@ private _ASL_positions = [];
 _ASL_positions = [_man, _ASL_positions] call Tcore_fnc_sortByDist;
 
 {
+	if(_man getVariable ["ace_isunconscious", false])exitWith{};
+	if(!alive _man)exitWith{};
+
 	private _movePos = [_man, _x] call SFSM_fnc_findFirePos;
 	private _manPos  = _man call Tcore_fnc_getPos;
 
@@ -42,6 +47,7 @@ _ASL_positions = [_man, _ASL_positions] call Tcore_fnc_sortByDist;
 	waitUntil {sleep 0.1; ((!(currentCommand _man == "Suppress")) or time > _timer);};
 
 	if(!alive _man)exitWith{};
+	if(_man getVariable ["ace_isunconscious", false])exitWith{};
 
 	// reload
 	private _reloadNeeded = needReload _man > 0.9;

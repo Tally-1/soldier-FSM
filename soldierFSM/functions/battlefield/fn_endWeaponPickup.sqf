@@ -1,5 +1,12 @@
-params["_man", "_success", "_weapon"];
+params["_man", "_success", "_weapon", "_exitYa"];
 private _statusText = "failed picking up weapon";
+
+if((!isNil "_exitYa")&&{_exitYa})exitWith{
+	[_man, "action", "none"] call SFSM_fnc_unitData;
+	if((!isNil "_weapon")
+	&&{!isNull _weapon})
+	then{_weaponObject setVariable ["SFSM_newOwner", nil]}
+};
 
 if(_success)
 then{_statusText = "Picked up weapon successFully!"};

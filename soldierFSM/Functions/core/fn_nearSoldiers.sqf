@@ -17,12 +17,14 @@ private _nearMen = _pos nearEntities ["CAManBase", _radius];
 							 || (!([(side _man), (side _x)] call BIS_fnc_sideIsFriendly)));
 			
 			private _noLogic = (side _x) != sideLogic;
+			private _conscious = !(_x getVariable ["ace_isunconscious", false]);
 
 			if((! _isPlayer)
 			&&{(! _isThisUnit)
 			&&{_valid
 			&&{_include
-			&&{_noLogic}}}})
+			&&{_noLogic
+			&&{_conscious}}}}})
 			then{_nearSoldiers pushBack _x};
 			
 		} forEach _nearMen;

@@ -9,9 +9,6 @@ params	[
 			"_shooter"
 		];
 
-// private _action = [_man, "action"] call SFSM_fnc_unitData;
-// if!(_action == "none") exitWith{};
-
 private _lastBullet 	= [_man, "Last_Close_Bullet"] call SFSM_fnc_unitData;
 private _ammoClass		= ([_ammoCFG] call ObjScan_fnc_getAmmoData) get "class ID";
 private _canDodge       = [_man] call SFSM_fnc_canDodge;
@@ -19,9 +16,6 @@ private _canDodge       = [_man] call SFSM_fnc_canDodge;
 if(_canDodge)
 exitWith{
 			[_man, _shooter] spawn SFSM_fnc_Dodge;
-			//private _group = group _man;
-			//private _grpDodgeDisabeled = [_group, 'dodgeDisabeled'] call SFSM_fnc_groupData;
-			//if(_grpDodgeDisabeled)then{'dodge response is blocked by zeus waypoint' call dbgmsg};
 		};
 
 //Any projectile from 9.3mm up to a GBU

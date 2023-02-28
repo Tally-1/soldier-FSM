@@ -25,10 +25,6 @@ private _vehicles = (_pos nearEntities ["car", _radius]) select _vehicleFilter;
             [_x, _nearestVehicle, _role] spawn SFSM_fnc_getInVehicle;
     };
 
-    // if!(_found)then{"Vehicle not found (reinforce)"call dbgmsg;};
-	// if!(_needsReinforcement)then{"Vehicle does not need reinforcement"call dbgmsg;};
-	// if!(_sameSide)then{"Vehicle not the same side."call dbgmsg;};
-
 	sleep 0.05;
 } forEach _units;
 

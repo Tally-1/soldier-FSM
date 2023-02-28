@@ -20,6 +20,7 @@ _unitData set 	["reactFireTimer",		-300];
 _unitData set 	["lastBattle",		    -300];
 _unitData set   ["last_time_in_cover",  -300];
 _unitData set   ["last_AmmoCheck",      -300];
+_unitData set   ["lastSprintCheck",     -300];
 _unitData set 	["roundsPrSecond", 		0];
 _unitData set 	["action", 				"none"];
 _unitData set 	["currentBattle",		"none"];

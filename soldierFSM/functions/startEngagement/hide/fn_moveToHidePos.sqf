@@ -34,11 +34,12 @@ while {sleep 1; _distance > 3} do {
 		};
 	
 
-	if(_distance < 1.1)  exitWith{false};
-	if(time > _Timer)	 exitWith{false};
-	if(!alive _man)		 exitWith{false};
-	if!(_visibleToThreat)exitWith{false};
-	if(_destroyed)	     exitWith{false};
+	if(_distance < 1.1)  exitWith{false;};
+	if(time > _Timer)	 exitWith{false;};
+	if(!alive _man)		 exitWith{false;};
+	if!(_visibleToThreat)exitWith{false;};
+	if(_destroyed)	     exitWith{false;};
+	if(_man getVariable ["ace_isunconscious", false])exitWith{false;};
 
 };
 

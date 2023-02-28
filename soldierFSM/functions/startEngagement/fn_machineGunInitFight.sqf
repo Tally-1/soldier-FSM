@@ -1,12 +1,11 @@
 params ["_man"];
 
-if!(SFSM_mgSuppressClusters)
-exitWith{"initial suppression has been deactivated in CBA options" call dbgmsg};
-
 private _battleKey = [_man, "currentBattle"] call SFSM_fnc_unitData;
 private _battlefield = SFSM_Battles get _battleKey;
 
 if(isNil "_battlefield")exitWith{};
+
+if(_man getVariable ["ace_isunconscious", false])exitWith{};
 
 private _side          = side _man;
 private _allClusterPos = (_battlefield get "clusterPositions");
@@ -37,7 +36,7 @@ if(_coverPosFound
 &&{_man distance2D _coverPos > 2.5})
 then{
 		[_man, "action", "Suppressing and Moving"] call SFSM_fnc_unitData;
-		_script = [_man, _coverPos, 3] spawn SFSM_fnc_forceMoveToPos;
+		_script = [_man, _coverPos, 3] spawn SFSM_fnc_forceMove2;
 		waitUntil {sleep 1; scriptDone _script};
 	};
 	
@@ -56,10 +55,11 @@ waitUntil {sleep 0.5; scriptDone _script};
 if(isNil "_battlefield")exitWith{[_man, "action", "none"] call SFSM_fnc_unitData};
 
 if(_coverPosFound
-&&{_man distance2D _coverPos > 2.5})
+&&{_man distance2D _coverPos > 2.5
+&&{!(_man getVariable ["ace_isunconscious", false])}})
 then{
 		[_man, "action", "Suppressing and Moving"] call SFSM_fnc_unitData;
-		_script = [_man, _coverPos, 3] spawn SFSM_fnc_forceMoveToPos;
+		_script = [_man, _coverPos, 3] spawn SFSM_fnc_forceMove2;
 		waitUntil {sleep 1; scriptDone _script};
 	};
 

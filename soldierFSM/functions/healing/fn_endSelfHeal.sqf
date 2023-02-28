@@ -8,3 +8,10 @@ waitUntil { damage _man != _damage or time > _timeOut };
 if!("hunker" in _actionText)then{_man setUnitPos "AUTO"};
 
 _man removeEventHandler ["HandleHeal", _eh];
+
+private _vehicle = _man getVariable "SFSM_myVehicle";
+
+if(!isNil "_vehicle")then{
+_man action ["getInGunner", _vehicle];
+_man setVariable ["SFSM_myVehicle", nil];
+};

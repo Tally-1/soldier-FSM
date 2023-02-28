@@ -37,10 +37,12 @@ while {sleep 2; _distance > 3} do {
 		};
 	
 
-	if(_distance < 3)    exitWith{false};
-	if(time > _Timer)	 exitWith{false};
-	if(!alive _man)		 exitWith{false};
-	if(_visible)         exitWith{false};
+	if(_distance < 3)                                 exitWith{false};
+	if(time > _Timer)	                              exitWith{false};
+	if(!alive _man)		                              exitWith{false};
+	if(_visible)                                      exitWith{false};
+	if(_man getVariable ["ace_isunconscious", false]) exitWith{false};
+
 
 };
 

@@ -7,7 +7,6 @@ then{
 		SFSM_allowDodging       = true;  // Units will dodge(change position) when incoming fire reaches the treshHold (SFSM_RpsDodgeTrigger).
 		SFSM_hideFromVehicles   = true;  // Units will run away / hide from vehicles they cannot hurt.
 		SFSM_AtSpecHuntVehicles = true;  // Units with launchers will target enemy vehicles instead of hiding.
-        SFSM_mgSuppressClusters = true;  // MachineGunners will spray enemy positions upon initial contact
 		SFSM_ExcludeZcommand    = false; // stop units that have been given waypoints by a curator from dodging
 		SFSM_PlayerGrpDodge     = false; // Allows units in a group lead by a player to dodge / hide, dodging can be frustrating for players who like to micro-manage their AI
 		SFSM_ProneTreshHold 	= 0.8;	 // unit will stay prone if suppression is higher than this value
@@ -16,14 +15,14 @@ then{
 		SFSM_DodgeCoolDown		= 10;	 // Time between each dodge-response
 		SFSM_DodgeDistance		= 70;	 // How far the man will run when dodging
 		SFSM_DodgeTimer			= 30;	 // max time before ending a dodge.
-		SFSM_forceDodge			= true;  // Override the Vanilla FSM in order to force the unit to move when dodging
+		SFSM_forceDodge			= false;  // Override the Vanilla FSM in order to force the unit to move when dodging
 		SFSM_noCoverPanic       = true;  // unit will panic upon initiating a battle if no cover is found
 		SFSM_reactFireCoolDown	= 180; 	 // Time between each returnFire-response		
 		SFSM_panicCoef          = 0.5;   // chance that a man will panic upon start of engagement if he cannot see a cover-position
 		SFSM_KnowledgeToFight   = 0;     // the amount of knowledge needed to start a battle between 2 units.
 		SFSM_sprintSpeed        = 1.3;   // speed coef for dodging / taking cover / hiding. 1 = vanilla. 2 = twice the normal speed
 		SFSM_stayCoverPosTime   = 15;    // the amount of time the soldier will stay in his position upon taking cover.
-		SFSM_flinchStopDodge    = true;  // if this is toggled then the unit will stop running towards cover and instead flinch
+		SFSM_flinchStopDodge    = false;  // if this is toggled then the unit will stop running towards cover and instead flinch
 		SFSM_emergencyRearm     = true;  // Soldiers pick up launchers from killed squad-mates, or off the ground if a vehicle is nearby
 		SFSM_explosionCoverRad  = 200;   // if munition explodes within this distance from the soldier he will run for cover.
 		SFSM_breakCoverOnHit    = true;  // if hit while in cover the unit will move away from current position
@@ -45,8 +44,14 @@ then{
 		SFSM_throwBackGrenade   = true;
 		SFSM_allowHunkerDown    = false;
 		SFSM_mgSuppression      = true;
+
+		SFSM_dragWounded        = true;
+		SFSM_maxDragDistance    = 40;
+		SFSM_turretLeaderDist   = 40;
+		SFSM_maxSprinters       = 5;
         #include "\soldierFSM\Functions\PR\initSettings.sqf"//DEACTIVATED DURING DEVELOPEMENT
 };
+
 
 
 //Make sure settings are available globally.
@@ -66,7 +71,6 @@ missionNamespace setVariable ["SFSM_ExcludeZcommand", 	SFSM_ExcludeZcommand, 	tr
 missionNamespace setVariable ["SFSM_PlayerGrpDodge", 	SFSM_PlayerGrpDodge, 	true];
 missionNamespace setVariable ["SFSM_hideFromVehicles", 	SFSM_hideFromVehicles, 	true];
 missionNamespace setVariable ["SFSM_AtSpecHuntVehicles",SFSM_AtSpecHuntVehicles,true];
-missionNamespace setVariable ["SFSM_mgSuppressClusters",SFSM_mgSuppressClusters,true];
 missionNamespace setVariable ["SFSM_disableSoldierFSM", SFSM_disableSoldierFSM, true];
 missionNamespace setVariable ["SFSM_enableCustomEH",    false,    				true];//using the A3 2.10 eventhandler, this setting is here for legacy reasons
 missionNamespace setVariable ["SFSM_allowFlinching",    SFSM_allowFlinching,    true];
@@ -79,17 +83,22 @@ missionNamespace setVariable ["SFSM_explosionCoverRad", SFSM_explosionCoverRad, 
 missionNamespace setVariable ["SFSM_breakCoverOnHit",   SFSM_breakCoverOnHit,   true];
 missionNamespace setVariable ["SFSM_EmergencyHealing",  SFSM_EmergencyHealing,  true];
 missionNamespace setVariable ["SFSM_dodgeIndoors",      SFSM_dodgeIndoors,      true];
-
 missionNamespace setVariable ["SFSM_CQBdistance",       SFSM_CQBdistance,       true];
 missionNamespace setVariable ["SFSM_CQBunitCap",        SFSM_CQBunitCap,        true];
 missionNamespace setVariable ["SFSM_hidingTimeOut",     SFSM_hidingTimeOut,     true];
-
 missionNamespace setVariable ["SFSM_hearingHide",       SFSM_hearingHide,       true];
 missionNamespace setVariable ["SFSM_hearingDistance",   SFSM_hearingDistance,   true];
 missionNamespace setVariable ["SFSM_overrunDistance",   SFSM_overrunDistance,   true];
-
 missionNamespace setVariable ["SFSM_hijackVehicles",    SFSM_hijackVehicles,    true];
 missionNamespace setVariable ["SFSM_rpgHouse",          SFSM_rpgHouse,          true];
+missionNamespace setVariable ["SFSM_throwBackGrenade",  SFSM_throwBackGrenade,  true];
+missionNamespace setVariable ["SFSM_allowHunkerDown",   SFSM_allowHunkerDown,   true];
+missionNamespace setVariable ["SFSM_mgSuppression",     SFSM_mgSuppression,     true];
+
+missionNamespace setVariable ["SFSM_dragWounded",      SFSM_dragWounded,      true];
+missionNamespace setVariable ["SFSM_maxDragDistance",  SFSM_maxDragDistance,  true];
+missionNamespace setVariable ["SFSM_turretLeaderDist", SFSM_turretLeaderDist, true];
+missionNamespace setVariable ["SFSM_maxSprinters",     SFSM_maxSprinters,     true];
 
 
 true;

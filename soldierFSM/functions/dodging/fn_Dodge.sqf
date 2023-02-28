@@ -35,7 +35,7 @@ private _action      = "dodging";
 
 private _coverRadius = SFSM_DodgeDistance / 2;
 private _coverLatPos = [_man, _enemy, _coverRadius] call SFSM_fnc_getLateralPos;
-private _coverPos    = [_man, _coverLatPos, _coverRadius, false] call SFSM_fnc_getCoverPos;
+private _coverPos    = [_man, _coverLatPos, _coverRadius] call SFSM_fnc_getCoverPos;
 private _coverFound  = (!isNil "_coverPos" && {typeName _coverPos == 'ARRAY'});
 private _group       = group _man;
 

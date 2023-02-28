@@ -21,7 +21,7 @@ _man setUnitPos "UP";
 _man setAnimSpeedCoef SFSM_sprintSpeed;
 _man setSpeedMode "FULL";
 
-private _forcedMove = [_man,(_path#0), 6, 5] spawn SFSM_fnc_forceMoveToPos;
+private _forcedMove = [_man,(_path#0), 6, 5] spawn SFSM_fnc_forceMove2;//SFSM_fnc_forceMoveToPos;
 waitUntil{(scriptDone _forcedMove || _timer < time);};
 
 {

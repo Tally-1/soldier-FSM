@@ -1,8 +1,11 @@
 params["_man", "_house"];
 if!(SFSM_rpgHouse)exitWith{false;};
 if(isNil "_man")exitWith{false;};
+
 if!([_man] call SFSM_fnc_isRealMan)exitWith{ false;};
 if(_man getVariable ["SFSM_excluded", false])exitWith{false;};
+if(_man getVariable ["ace_isunconscious", false])exitWith{false;};
+
 private _action = [_man, "action"] call SFSM_fnc_unitData;
 if(isNil "_action")exitWith{false;};
 if(_action != "none")exitWith{false;};

@@ -1,6 +1,7 @@
 //unit 1 && unit 2 refers to the two units who first spot eachother.
 params ["_unitA", "_unitB"];
 
+
 "Initializing battle." call SFSM_fnc_debugMessage;
 
 private _battlefield  = createHashmap;
@@ -100,6 +101,10 @@ _battlefield set ["zones", ([_battlefield] call SFSM_fnc_getZones)];
 
 _battlefield set ["currentAction",	"loading terrain"];
 
+
+
 [_battlefield] spawn SFSM_fnc_battlefieldPostInit;
+[_battlefield] spawn SFSM_fnc_battleFieldMedicLoop;
+[_battlefield] spawn SFSM_fnc_assignBattlefieldTurrets;
 
 _battleKey; 

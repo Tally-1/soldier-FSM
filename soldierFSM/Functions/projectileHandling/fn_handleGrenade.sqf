@@ -1,7 +1,4 @@
 params ["_grenade", "_source"];
-
-["grenade thrown", 2] call dbgmsg;
-
 private _velocity = velocityModelSpace _grenade;
 // sleep 1;
 private _timer = time + 4;

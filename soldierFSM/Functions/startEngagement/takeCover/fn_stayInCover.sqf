@@ -11,6 +11,7 @@ _man disableAI "PATH";
 _man setCombatBehaviour "STEALTH";
 
 while {sleep 0.5; _stayInCover} do {
+	private _unconscious      = _man getVariable ["ace_isunconscious", false];
 	private _timedOut         = time > _timer;
 	private _timeSinceLastHit = time - ([_man, "Last_Hit"]	call SFSM_fnc_unitData);
 	        _hitByBullet      = (_timeSinceLastHit < 1.1 && SFSM_breakCoverOnHit);
@@ -19,7 +20,8 @@ while {sleep 0.5; _stayInCover} do {
 
 	if(_timedOut 
 	|| _hitByBullet
-	|| _overrun)
+	|| _overrun
+	|| _unconscious)
 	then{_stayInCover = false};
 };
 

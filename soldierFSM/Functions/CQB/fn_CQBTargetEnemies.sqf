@@ -6,8 +6,9 @@ if(count _enemies > 0)
 then{
       _enemies = _enemies select {
                                   (([_man, _x] call SFSM_fnc_targetVisible)
-                                  &&
-                                  {!([(side _man), (side _x)] call BIS_fnc_sideIsFriendly)});
+                                  &&{(!([(side _man), (side _x)] call BIS_fnc_sideIsFriendly))
+                                  &&{! (_man getVariable ["ace_isunconscious", false])
+                                  }});
                                  };
 };
 

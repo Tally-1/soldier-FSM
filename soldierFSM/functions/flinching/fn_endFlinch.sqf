@@ -32,6 +32,7 @@ if(isNil "_man")exitWith{};
 if ((animationState _man) in _sideStances)
 then{_man switchMove "amovppnemstpsraswrfldnon"};
 
-private _canReactFire = [_man] call SFSM_fnc_canReactFire;
+// if(isNull _shooter)exitWith{};
 
+private _canReactFire = [_man] call SFSM_fnc_canReactFire;
 if(_canReactFire)then{[_man, _shooter] spawn SFSM_fnc_reactFire};

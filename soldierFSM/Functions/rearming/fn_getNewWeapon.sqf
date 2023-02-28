@@ -7,7 +7,9 @@ private _supplies    = [_man, _battlefield, true] call SFSM_fnc_battleFieldSuppl
 _weapons = _weapons select {
 		private _canBeRearmed = [_x, _supplies] call SFSM_fnc_canRearmWeapon;
 		private _weaponType   = getWeaponCargo _x#0#0;
-		private _newType      = _weaponType != (primaryWeapon _man);
+		private _newType      = !isNil "_weaponType" && {_weaponType != (primaryWeapon _man)};
+
+		if(isNil "_newType")then{_newType = false;};
 
 		(_canBeRearmed && { _newType });
 	};

@@ -5,12 +5,15 @@ waitUntil{sleep 0.5; scriptDone _script};
 
 private _action = [_man, "action"] call SFSM_fnc_unitData;
 
-if(_action == "cannot reach hunker pos")
-exitWith{
-			sleep 1.5;
-			[_man, _objectHash, _action] call SFSM_fnc_endHunker;
-		};
+if(_action == "cannot reach hunker pos")exitWith{
+	sleep 1.5;
+	[_man, _objectHash, _action] call SFSM_fnc_endHunker;
+};
 
+if(_man getVariable ["ace_isunconscious", false])exitWith{
+	sleep 1.5;
+	[_man, _objectHash, _action] call SFSM_fnc_endHunker;
+};
 
 private _side = side _man;
 private _timer = time + 120;

@@ -14,7 +14,7 @@ then{
 		if(isNil "_battleField")exitWith{_weaponObject = nil};
 		_weaponObject = [_man, _battleField] call SFSM_fnc_getBattlefieldWeapon;
 	};
-if(isNil "_weaponObject")exitWith{[_man, false] spawn SFSM_fnc_endWeaponPickup};
+if(isNil "_weaponObject")exitWith{[_man, false, nil, true] spawn SFSM_fnc_endWeaponPickup};
 
 
 //set a variable to ensure no other units try to pick up the same weapon
@@ -55,17 +55,29 @@ private _actionText = ["Picking up ", _weaponName]joinString"";
 
 
 //move to weapon
-_man setAnimSpeedCoef SFSM_sprintSpeed;
 private _weaponPos = getPos _weaponObject;
-[_man, "currentDestination", _weaponPos] call SFSM_fnc_unitData;
+private _canSprint = [_man, _weaponPos, 40] call SFSM_fnc_canSprint;
 
-private _script = [_man, _weaponPos, 40, 1.5] spawn SFSM_fnc_forceMoveToPos;
-waitUntil{sleep 0.1; scriptDone _script};
+if(_canSprint)then{
+
+	private _sprint = [_man, _weaponPos] spawn SFSM_fnc_sprint;//SFSM_fnc_sprintToPos;
+	waitUntil{sleep 0.5; scriptDone _sprint;};
+
+}else{
+
+	_man setAnimSpeedCoef SFSM_sprintSpeed;
+	[_man, "currentDestination", _weaponPos] call SFSM_fnc_unitData;
+	private _script = [_man, _weaponPos, 40, 1.5] spawn SFSM_fnc_forceMove2;
+	waitUntil{sleep 0.1; scriptDone _script};
+
+};
+
 
 if(isNil "_man")exitWith{};
 
 _canPickUp      = [_man, _weaponObject] call SFSM_fnc_canPickUpWeapon;
 private _tooFar = (_weaponPos distance2D _man) > 3;
+if(_canSprint)then{_tooFar = (_weaponPos distance2D _man) > 5;};
 
 
 //check conditions again

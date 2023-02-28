@@ -11,7 +11,7 @@ _supplies = _supplies select {
 	private _liveMan     = _isMan && {alive _x};
 	private _vehicle     = _x isKindOf "land" && {(! _isMan)};
 	private _liveVehicle = _vehicle && {!([_x] call Tcore_fnc_deadCrew)};
-	private _inDistance  = (_man distance2D _x < 100) || _ignoreDistance;
+	private _inDistance  = (_man distance2D _x <= SFSM_DodgeDistance) || _ignoreDistance;
 
 	_inDistance
 	&&{(! _liveMan)

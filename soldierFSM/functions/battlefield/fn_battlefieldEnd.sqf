@@ -19,6 +19,8 @@ private _units   = missionNamespace getVariable _unitVar;
 private _groups  = missionNamespace getVariable _groupsVarName;
 private _endText = ["Battle ", (_battlefield get "name"), " ended."] joinString "";
 
+// force all assigned gunners to leave their turrets
+[_battlefield, true] call SFSM_fnc_leaveBattlefieldTurrets;
 
 {
 	private _currentBuilding = [_x, "currentBuilding"] call SFSM_fnc_unitData;

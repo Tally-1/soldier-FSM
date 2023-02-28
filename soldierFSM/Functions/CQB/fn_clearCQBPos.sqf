@@ -33,9 +33,10 @@ waitUntil{scriptDone _killEnemies};
 		};
   
 	_distance = _currentDistance;
-	if(_distance < _maxDistance)exitWith{false};
-	if(time > _Timer)	          exitWith{false};
-	if(!alive _man)		          exitWith{false};
+	if(_distance < _maxDistance)                     exitWith{false};
+	if(time > _Timer)	                             exitWith{false};
+	if(!alive _man)		                             exitWith{false};
+	if(_man getVariable ["ace_isunconscious", false])exitWith{false;};
 
 };
 

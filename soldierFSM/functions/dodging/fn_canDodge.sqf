@@ -1,7 +1,9 @@
 private _noRpsParam = false;
 params ["_man", "_noRpsParam"];
-if!(SFSM_allowDodging)exitWith{false};
-if(_man getVariable ["SFSM_Excluded",false])exitWith{false};
+if!(SFSM_allowDodging)                               exitWith{false};
+if(_man getVariable ["SFSM_Excluded",false])         exitWith{false};
+if(_man getVariable ["ace_isunconscious", false])    exitWith{false;};
+if(_man getVariable ["SFSM_Sprinting", false])       exitwith{false;};
 
 private _group             = group _man;
 private _grpCanDodge       = [_group] call SFSM_fnc_groupCanDodge;

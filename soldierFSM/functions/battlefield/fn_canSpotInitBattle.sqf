@@ -1,6 +1,9 @@
 params ["_unit", "_target"];
 if!([_unit] call SFSM_fnc_isRealMan)exitWith{false};
 if!([_target] call SFSM_fnc_isRealMan)exitWith{false};
+if(_unit getVariable ["ace_isunconscious", false])exitWith{false;};
+if(_target getVariable ["ace_isunconscious", false])exitWith{false;};
+
 private _lastBullet = [_unit, "last_bullet_fired"] call SFSM_fnc_unitData;
 if(time - _lastBullet < 2)exitwith{false};
 

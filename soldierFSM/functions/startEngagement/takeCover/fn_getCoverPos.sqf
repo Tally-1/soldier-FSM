@@ -8,7 +8,7 @@ if(isNil '_searchPos')then{_searchPos = getPos _man};
 
 private _side           = side _man;
 private _coverPositions = [];
-private _cPosData       = _battleField get "coverPositions";
+private _cPosData       = _battlefield get "coverPositions";
 
 if(isNil '_cPosData')   exitWith{[_man, _radius] call Tcore_fnc_coverPosSimple;};
 
@@ -23,7 +23,7 @@ if(isNil '_coverPositions')exitWith{[_man, _radius] call Tcore_fnc_coverPosSimpl
 _coverPositions = (_coverPositions inAreaArray [_searchPos, _radius, _radius]);
 
 
-private _coverPos = [_man, _coverPositions, _battleField] call SFSM_fnc_selectCoverPos;
+private _coverPos = [_man, _coverPositions, _battlefield] call SFSM_fnc_selectCoverPos;
 
 if(isNil '_coverPos')exitWith{[_man, _radius] call Tcore_fnc_coverPosSimple;};
 

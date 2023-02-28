@@ -1,10 +1,13 @@
 private __includeAll = false;
-params["_terrainObjects", "_includeAll"];
+params["_terrainObjects", "_includeAll", "_areaData"];
 // private _allTypes = [];
 private _approvedObjects = [];
 
 //delete mapObjects that are hidden, from the array.
 _terrainObjects deleteAt (_terrainObjects findIf {isObjectHidden _x});
+
+private _count = count _terrainObjects;
+private _i = 0;
 
 {
 	private _excluded = [_x] call SFSM_fnc_excludedMapObject;
@@ -22,6 +25,15 @@ _terrainObjects deleteAt (_terrainObjects findIf {isObjectHidden _x});
 			if(_push)
 			then{_approvedObjects pushBackUnique _x};
 		};
+
+	//debugText
+	if(SFSM_Debugger
+	&&{!isNil "_areaData"})then{
+		private _prcnt = round((_i / _count)*100);
+		private _actionText = ["Filtering ",_count," mapobjects ", _prcnt,"%"]joinString"";
+		_areaData set ["currentAction", _actionText];
+		_i=_i+1;
+	};
 	
 }forEach _terrainObjects;
 

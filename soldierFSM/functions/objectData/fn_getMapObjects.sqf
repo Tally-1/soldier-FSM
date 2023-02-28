@@ -26,9 +26,13 @@ _countAll = count _terrainObjects;
 
 if!(_lightScan)then{
 	  if(!isNil "_areaData")
-	  then{_areaData set ["currentAction", 'Filtering mapobjects'];};
+	  then{
+		_areaData set ["currentAction", 'Filtering mapobjects'];
+		_terrainObjects = [_terrainObjects, _scheduled, _areaData] call SFSM_fnc_filterMapObjects;		
+		}
+	  else{_terrainObjects = [_terrainObjects, _scheduled] call SFSM_fnc_filterMapObjects;};
 
-	  _terrainObjects = [_terrainObjects, _scheduled] call SFSM_fnc_filterMapObjects;
+	  
 	  
 	};
 

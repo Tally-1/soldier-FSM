@@ -22,7 +22,7 @@ then{
 			30,        //timeout (optional)
 			2,         //minimum distance to position in order to complete move. (optional)
 			3          // sleep between each repetition of doMove. (optional)
-			] spawn SFSM_fnc_forceMoveToPos;
+			] spawn SFSM_fnc_forceMove2;
 
 	waitUntil{sleep 1.5; scriptDone _move;};
 };

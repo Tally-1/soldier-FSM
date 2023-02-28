@@ -1,8 +1,9 @@
 params ["_man"];
 
 if!(SFSM_allowFlinching)exitWith{false}; 
-if(_man getVariable ["SFSM_Excluded",false])exitWith{false};
-
+if(_man getVariable ["SFSM_Excluded",false])     exitWith{false;};
+if(_man getVariable ["ace_isunconscious", false])exitWith{false;};
+if(_man getVariable ["SFSM_Sprinting", false])   exitwith{false;};
 
 private _flinchTimer 	= [_man, "flinchTimer"] 		call SFSM_fnc_unitData;
 private _action 	 	= [_man, "action"] 	 		    call SFSM_fnc_unitData;
@@ -14,7 +15,7 @@ private _available      = _action == 'none'
 
 //stopDodge needs love
 if(_stopDodge)
-then{"stopping dodge" call dbgmsg};
+then{/*"stopping dodge" call dbgmsg*/};
 
 private _canFlinch  = (_flinchTimer < time && {_available});
 

@@ -10,11 +10,16 @@ params[
 
 private _launchPos   = getPos _shooter;
 private _ammoData    = [_ammoType] call objScan_fnc_getAmmoData;
+private _splashR     = _ammoData get "splashRange";
 private _class       = _ammoData get "class ID";
 private _handGrenade = "Grenade" in (typeOf _projectile);
-private _explosive   = _class > 2.5 && (! (_class in [9.1, 9.2, 9.4]));
+private _explosive   = _splashR > 6;
 private _bullet      = _class > 1 && _class < 3;
 
+
+if(isNil "_launchPos")then{_launchPos = getPos _projectile};
+
+// [["explosive: ",_explosive]] call dbgmsg;
 
 if((_handGrenade
 || _explosive))

@@ -4,7 +4,7 @@ class CfgFunctions
 	{
 		class CQB
 		{
-           file = "\soldierFsm\functions\CQB";
+           file = "\soldierFSM\functions\CQB";
 		   class assignAllBuildings    {};
 		   class assignBuilding        {};
 		   class currentBuilding       {};
@@ -32,7 +32,7 @@ class CfgFunctions
 		class misc
 		{
 			
-			file = "\soldierFsm\functions\misc";
+			file = "\soldierFSM\functions\misc";
 			class StoreSuppression		{};
 			class onSuppression			{};
 			class Roll					{};
@@ -52,11 +52,29 @@ class CfgFunctions
 			class firePosLite           {};
 			class killNearEnemies       {};
 			
+			class loadedAddons          {};
+			class unitsInRangeSameSide  {};
+			class getNearestOrPlayer    {};
+			class relAimPos             {};
+			class objectsInPath         {};
+			class forceMove2            {};
+			class calculatePath         {};
+
+			class canSprint             {};
+			class sprint                {};
+			class sprintInit            {};
+			class sprintLooper          {};
+			class sprintVarRemoval      {};
+
+			class isPosition            {};
+			class availableRegulars     {};
+
+
 		};
 
         class vehicles
 		{
-            file = "\soldierFsm\functions\vehicles";
+            file = "\soldierFSM\functions\vehicles";
 			class vehicleData           {};
 			class vehicleHeard          {};
 			class availableVehicles     {};
@@ -70,13 +88,16 @@ class CfgFunctions
 			class getInVehicle          {};
 			class vehicleNeedsCrew      {};
 			class reinforceVehicles     {};
+			class vehicleActions        {};
+			class enableHijack          {};
+			class disableHijack         {};
 
 		};
 
 
 		class taskManagement
 		{
-			file = "\soldierFsm\functions\taskManagement";
+			file = "\soldierFSM\functions\taskManagement";
 			class HandleSuppression 	{};
 			class TaskManager           {};
 			class tenSecondTasks		{};
@@ -91,7 +112,7 @@ class CfgFunctions
 
 		class projectileHandling
 		{
-			file = "\soldierFsm\functions\projectileHandling";
+			file = "\soldierFSM\functions\projectileHandling";
 			class soundReaction         {};
 			class reactToExplosion      {};
 			class addCrater             {};
@@ -104,14 +125,14 @@ class CfgFunctions
 
 		class curator
 		{
-			file = "\soldierFsm\functions\curator";
+			file = "\soldierFSM\functions\curator";
 			class zWPplaced             {};
 			class zWPdeleted            {};
 		};
 		
 		class eventHandlers
 		{
-			file = "\soldierFsm\functions\eventHandlers";
+			file = "\soldierFSM\functions\eventHandlers";
 			class SuppressedEH			{};
 			class hitEH					{};
 			class firedEH				{};
@@ -121,19 +142,24 @@ class CfgFunctions
 			class enemySpotted          {};
 			class unitKilled            {};
 			class unitCreated           {};
+
+			class projectileCreated     {};
 			class projectileEH			{};
 			class explosionEH			{};
 			class bulletEH			    {};
+
 			class vehicleFiredEh        {};
 			class enemyDetected			{};
 			class gameLoaded            {preInit = 1};
 			class gameLoadedWarning     {};
 			class putAnimDoneEH         {};
+			class PathCalculated        {};
+			
 		};
 
 		class explosives 
 		{
-			file = "\soldierFsm\functions\explosives" 
+			file = "\soldierFSM\functions\explosives" 
 			class canBlowUpHouse        {};
 			class carriedExplosives     {};
 			class formatExplosiveName   {};
@@ -145,7 +171,7 @@ class CfgFunctions
 
 		class launchers
 		{
-			file = "\soldierFsm\functions\launchers" 
+			file = "\soldierFSM\functions\launchers" 
 			class rpgHouse          {};
 			class launcherHandler   {};
 			class forceFireLauncher {};
@@ -156,7 +182,7 @@ class CfgFunctions
 
 		class dodging
 		{
-			file = "\soldierFsm\functions\dodging";
+			file = "\soldierFSM\functions\dodging";
 			class dodgeEnded			{};
 			class EndDodge				{};
 			class Dodge					{};
@@ -171,7 +197,7 @@ class CfgFunctions
 		
 		class flinching 
 		{
-			file = "\soldierFsm\functions\flinching";
+			file = "\soldierFSM\functions\flinching";
 			class canFlinch				{};
 			class endFlinch				{};
 			class flinch 				{};
@@ -185,7 +211,7 @@ class CfgFunctions
 
 		class reactiveFire
 		{
-			file = "\soldierFsm\functions\reactiveFire";
+			file = "\soldierFSM\functions\reactiveFire";
 			class canReactFire			{};
 			class reactFire				{};
 			class endReactiveFire		{};
@@ -198,7 +224,7 @@ class CfgFunctions
 
 		class rearming
 		{
-			file = "\soldierFsm\functions\rearming";
+			file = "\soldierFSM\functions\rearming";
 			class rearm            {};
 			class canRearm         {};
 			class needMachinegun   {};
@@ -210,11 +236,12 @@ class CfgFunctions
 			class hasMagsForWeapon {};
 			class getBestSupply    {};
 			class primaryWeaponMags{};
+			class pickUpFreshAT    {};
 		};
 
         class startEngagement
         {
-            file = "\soldierFsm\functions\startEngagement";
+            file = "\soldierFSM\functions\startEngagement";
             class AtSpecialistInitFight  {};
             class targetInfWithLauncher  {};
             class reactTovehicles        {};
@@ -230,7 +257,7 @@ class CfgFunctions
 
         class startEngagement_takeCover
         {
-            file = "\soldierFsm\functions\startEngagement\takeCover";
+            file = "\soldierFSM\functions\startEngagement\takeCover";
             class getCoverPos            {};
             class fightInitCover         {};
             class takeCover              {};
@@ -245,7 +272,7 @@ class CfgFunctions
 
         class startEngagement_hide
 		{
-            file = "\soldierFsm\functions\startEngagement\hide";
+            file = "\soldierFSM\functions\startEngagement\hide";
             class findHidePos            {};
             class hideFromVehicle        {};
             class initHideFromVeh        {};
@@ -257,7 +284,7 @@ class CfgFunctions
 
 		class init
 		{
-			file = "\soldierFsm\functions\init";
+			file = "\soldierFSM\functions\init";
 			class serverInit			{};
 			class initSettings			{};
 			class postConfig			{};
@@ -270,7 +297,7 @@ class CfgFunctions
 
 		class debug
 		{
-			file = "\soldierFsm\functions\debug";
+			file = "\soldierFSM\functions\debug";
 			class 3dDebug				{};
 			class 3DdebugText			{};
 			class actionColor			{};
@@ -283,18 +310,36 @@ class CfgFunctions
 			class manInfo               {};
 			class logSettings           {};
 			class deleteWarning         {};
+			class custom3Dmarkers       {};
+
+			class flashAction           {};
 		};
 		
 		class healing
 		{
-			file = "\soldierFsm\functions\healing";
+			file = "\soldierFSM\functions\healing";
 			class proneHeal				{};
 			class endSelfHeal			{};
 			class canSelfHeal			{};
+			class hasMedkit             {};
+			class nearestHealer         {};
+			class initBuddyHeal         {};
+			class canBuddyHeal          {};
+			class buddyHeal             {};
+			class endBuddyHeal          {};
+			class reviveAnim            {};
+			class buddyRevive           {};
+			class endBuddyRevive        {};
+			class initDragMan           {};
+			class dragStatus            {};
+			class drag                  {};
+			class dragMan               {};
+			class endDragMan            {};
+			class dragPos               {};
 		};
 		class battlefield
 		{
-			file = "\soldierFsm\functions\battlefield";
+			file = "\soldierFSM\functions\battlefield";
 			class InitBattlefield		  {};
 			class battlefieldPostInit	  {};
 			class battlefieldEnd		  {};
@@ -330,11 +375,17 @@ class CfgFunctions
 			class battleFieldCQB          {};
 			class battleFieldSupplies     {};
 			class battleFieldMachineGuns  {};
+
+			class battleFieldMedical      {};
+			class battleFieldMedicLoop    {};
+			class getWoundedAndHealers    {};
+			class assignBattlefieldTurrets{};
+			class leaveBattlefieldTurrets {};
 		};
 		
 		class markers
 		{
-			file = "\soldierFsm\functions\markers";
+			file = "\soldierFSM\functions\markers";
 			class posMarker				{};
 			class drawCircle			{};
 			class bfDebugMarkers		{};
@@ -343,7 +394,7 @@ class CfgFunctions
 
 		class objectData
 		{
-			file = "\soldierFsm\functions\objectData";
+			file = "\soldierFSM\functions\objectData";
 			class glRifle				{};
 			class ObjStance				{};
 			class areaData				{};
@@ -357,7 +408,7 @@ class CfgFunctions
 		};
 		class hunkerDown
 		{
-			file = "\soldierFsm\functions\hunkerDown";
+			file = "\soldierFSM\functions\hunkerDown";
 			class getHunkerObject		{};
 			class initHunker			{};
 			class isHunkerObject        {};
@@ -376,13 +427,33 @@ class CfgFunctions
 			class randomHunkerInit		{};
 
 		};
+
+		class turrets
+		{
+			file = "\soldierFSM\functions\turrets";
+			class isTurret              {};
+			class getTurretsAndLeaders  {};
+			class assignTurret          {};
+			class canGetInTurret        {};
+			class turretAvailable       {};
+			class turretRunEnded        {};
+			class mountTurret           {};
+			class getInTurret           {};
+			class failTurretMount       {};
+			class removeTurretVars      {};
+			class onGetOutTurret        {};
+			class canStayInTurret       {};
+			class turretGetOut          {};
+			class groupLeaveTurrets     {};
+			class manAllTurrets         {};
+		};
 	};
 
 	class Tcore
 	{
 		class core
 		{
-			file = "\soldierFsm\functions\core";
+			file = "\soldierFSM\functions\core";
 			class average				{};
 			class decimals				{};
 			class addZ					{};
@@ -460,4 +531,5 @@ class CfgFunctions
 	};
 
     #include "PR\cfgFunctions.hpp"
+	#include "PR\medFunctions.hpp"
 };

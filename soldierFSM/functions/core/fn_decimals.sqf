@@ -1,6 +1,7 @@
 private _maxDecimals = 0;
 params ["_number", "_maxDecimals"];
 // Old method
+// Who fixed this?
 /*
 private _multiPlier = 0;
 if(_maxDecimals == 1)then{_multiPlier = 10};

@@ -1,7 +1,13 @@
-missionNamespace setVariable ["SFSM_Version", 0.44, true];
+missionNamespace setVariable ["SFSM_Version", 0.45, true];
 private _versionName = ["DCO soldier FSM V. ", SFSM_Version] joinString "";
 
-
+[
+	"SFSM_disableSoldierFSM",
+	"CHECKBOX",
+	["Disable soldier FSM", "Disables all functions upon mission-init"],
+	_versionName,
+	false
+] call cba_settings_fnc_init;
 
 [
 	"SFSM_allowHunkerDown",
@@ -27,13 +33,7 @@ private _versionName = ["DCO soldier FSM V. ", SFSM_Version] joinString "";
 	true
 ] call cba_settings_fnc_init;
 
-[
-	"SFSM_disableSoldierFSM",
-	"CHECKBOX",
-	["Disable soldier FSM", "Disables all functions upon mission-init"],
-	_versionName,
-	false
-] call cba_settings_fnc_init;
+
 
 [
 	"SFSM_Debugger",
@@ -59,7 +59,20 @@ private _versionName = ["DCO soldier FSM V. ", SFSM_Version] joinString "";
 	true
 ] call cba_settings_fnc_init;
 
-
+[
+	"SFSM_maxSprinters",
+	"SLIDER",
+	["Max simultaneous sprinters", "Max amount of sprinters allowed at one instance."],
+	_versionName,
+	[
+		3,   	//minimum 
+		40, 	//max
+		6,      //default
+		0,	    //decimals
+		false
+	],
+	1
+] call cba_settings_fnc_init;
 
 [
 	"SFSM_allowDodging",
@@ -104,6 +117,31 @@ private _versionName = ["DCO soldier FSM V. ", SFSM_Version] joinString "";
 		1
 	]
 ] call cba_settings_fnc_init;
+
+
+[
+	"SFSM_dragWounded",
+	"CHECKBOX",
+	["Drag wounded", "ACE medical implementation. When a man is unconscious the medic will drag him to safety before reviving him"],
+	_versionName,
+	true
+] call cba_settings_fnc_init;
+
+[
+	"SFSM_maxDragDistance",
+	"SLIDER",
+	["Max drag distance", "Max distance a medic can drag a wounded before reviving him"],
+	_versionName,
+	[
+		20,   	//minimum 
+		70, 	//max
+		40,    //default
+		0,	   //decimals
+		false
+	],
+	1
+] call cba_settings_fnc_init;
+
 
 [
 	"SFSM_flinchStopDodge",
@@ -154,16 +192,6 @@ private _versionName = ["DCO soldier FSM V. ", SFSM_Version] joinString "";
 ] call cba_settings_fnc_init;
 
 [
-	"SFSM_mgSuppressClusters",
-	"CHECKBOX",
-	["MG suppression", "MachineGunners will spray enemy positions upon initial contact."],
-	_versionName,
-	true
-] call cba_settings_fnc_init;
-
-
-
-[
 	"SFSM_noCoverPanic",
 	"CHECKBOX",
 	["panic upon lack of cover", "Yip's much wanted eyelid trench, if no cover is found upon battle-start the unit panics for about 2 seconds"],
@@ -185,6 +213,23 @@ private _versionName = ["DCO soldier FSM V. ", SFSM_Version] joinString "";
 	["RPG houses", "Allow units with launchers to fire their launchers at buildings with enemies inside."],
 	_versionName,
 	true
+] call cba_settings_fnc_init;
+
+
+
+[
+	"SFSM_turretLeaderDist",
+	"SLIDER",
+	["Turret to leader distance", "Max distance between a turret and a squad-leader. If within this range grunts from the squad will man the turret if available."],
+	_versionName,
+	[
+		0,   	//minimum 
+		100, 	//max
+		40,    //default
+		0,	    //decimals
+		false
+	],
+	1
 ] call cba_settings_fnc_init;
 
 [

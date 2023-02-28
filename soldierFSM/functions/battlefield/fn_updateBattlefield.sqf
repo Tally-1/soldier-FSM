@@ -41,7 +41,12 @@ private _units       = [_clustersData]       call Tcore_fnc_clusterUnits select 
 private _vehicles    = [_clustersData]       call Tcore_fnc_clusterVehicles;
 private _deadMen     = allDeadMen select {_centerPos distance2D _x < _radius;}; //missionNamespace getVariable (_battleField get "deadMen");
 
-(str (count _deadMen))call dbgmsg;
+{
+	if(((getPosATL _x)#2)<-1)then{
+	deleteVehicle _x;
+}} forEach _deadMen;
+
+// (str (count _deadMen))call dbgmsg;
 private _weapons  = nearestObjects [_centerPos, ["WeaponHolder", "WeaponHolderSimulated"], _radius];
 private _supplies = _centerPos nearSupplies _radius;
 //see comments at Fn_initBattlefield.sqf

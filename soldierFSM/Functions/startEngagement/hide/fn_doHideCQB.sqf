@@ -19,6 +19,7 @@ while{_exitStatus == ""}do{
 	if ([_enemyVehicle] call Tcore_fnc_deadCrew)exitWith{_exitStatus = "Vehicle neutralized."};
 	_ovEnemy = [_man] call SFSM_fnc_manOverrunBy;
 	if!(isNull _ovEnemy)exitWith{_exitStatus = "overrun";};
+	if(_man getVariable ["ace_isunconscious", false])exitWith{_exitStatus = "man is unconscious";};
 
 	private _script = [_man, 5] spawn SFSM_fnc_CQBTargetEnemies;
 	waitUntil {sleep 5; scriptDone _script; };

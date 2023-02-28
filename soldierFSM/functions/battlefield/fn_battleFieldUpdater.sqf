@@ -1,5 +1,4 @@
 params ['_battleField'];
-// sleep SFSM_BattleUpdateSec;
 
 while {!isNil "_battleField"} 
 do 	{
@@ -10,15 +9,21 @@ do 	{
 		if(isNil "_ended")exitWith{};
 		if(_ended)exitWith{};
 
+		// _battlefield set ["currentAction",	"Medical actions"];
+		// private _script = [_battleField] spawn SFSM_fnc_battleFieldMedical;
+		// waitUntil {
+		// 	private _finito = scriptDone _script;
+		// 	if(isNil "_finito")exitWith{true;};
+		// 	_finito; 
+		// };
+		
+
 		private _script = [_battleField] spawn SFSM_fnc_updateGrid;
 		waitUntil {
 			private _finito = scriptDone _script;
 			if(isNil "_finito")exitWith{true;};
 			_finito; 
 		};
-
-		// private _script = [_battleField] spawn SFSM_fnc_assignAllBuildings;
-		// waitUntil {scriptDone _script};
 
 		private _script = [_battleField] spawn SFSM_fnc_battleFieldCQB;
 		waitUntil {
@@ -34,7 +39,6 @@ do 	{
 			if(isNil "_finito")exitWith{true;};
 			_finito; 
 		};
-		_battlefield set ["currentAction",	"none"];
 
 		
 		_battlefield set ["currentAction",	"Reinforcing vehicles"];
@@ -44,6 +48,15 @@ do 	{
 			if(isNil "_finito")exitWith{true;};
 			_finito; 
 		};
+
+		// _battlefield set ["currentAction",	"Medical actions"];
+		// private _script = [_battleField] spawn SFSM_fnc_battleFieldMedical;
+		// waitUntil {
+		// 	private _finito = scriptDone _script;
+		// 	if(isNil "_finito")exitWith{true;};
+		// 	_finito; 
+		// };
+
 		_battlefield set ["currentAction",	"none"];
 
 		sleep SFSM_BattleUpdateSec;

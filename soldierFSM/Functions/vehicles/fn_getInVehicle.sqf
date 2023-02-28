@@ -12,7 +12,7 @@ private _move = [
 			30,   //timeout (optional)
 			5,    //minimum distance to position in order to complete move. (optional)
 			2     // sleep between each repetition of doMove. (optional)
-			] spawn SFSM_fnc_forceMoveToPos;
+			] spawn SFSM_fnc_forceMove2;
 
 waitUntil{sleep 0.1; scriptDone _move;};
 

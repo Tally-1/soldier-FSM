@@ -32,7 +32,7 @@ _man setAnimSpeedCoef SFSM_sprintSpeed;
 
 
 
-_script = [_man, _coverPos, SFSM_dodgeTimer, 2.5] spawn SFSM_fnc_forceMoveToPos;
+_script = [_man, _coverPos, SFSM_dodgeTimer, 2.5] spawn SFSM_fnc_forceMove2;
 waitUntil{sleep 0.1; scriptDone _script};
 
 _man doTarget _target;

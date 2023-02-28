@@ -21,8 +21,8 @@ private _hintText = parseText
 
 		_khaki,
 		"Hunt Vehicles ",         SFSM_AtSpecHuntVehicles, "<br/>",
-		"MG suppress clusters  ", SFSM_mgSuppressClusters, "<br/>",
-		"Custom EH ",             SFSM_enableCustomEH, "<br/>","<br/>",
+		"MG suppress clusters  ", SFSM_mgSuppression,      "<br/>",
+		"Custom EH ",             SFSM_enableCustomEH,     "<br/>","<br/>",
 		_end,
 
 		_green,
@@ -70,7 +70,7 @@ diag_log parseText("------------------------------------------------------------
 
 diag_log ([_signature, "Hiding ",                       SFSM_hideFromVehicles]   joinString "");
 diag_log ([_signature, "Hunt Vehicles ",                SFSM_AtSpecHuntVehicles] joinString "");
-diag_log ([_signature, "MG suppress clusters ",         SFSM_mgSuppressClusters] joinString "");
+diag_log ([_signature, "MG suppression ",               SFSM_mgSuppression]      joinString "");
 
 diag_log ([_signature, "Custom EH ",                    SFSM_enableCustomEH]    joinString "");
 diag_log ([_signature, "Exclude Zeus commanded units ", SFSM_ExcludeZcommand]   joinString "");
