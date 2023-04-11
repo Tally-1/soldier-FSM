@@ -50,8 +50,13 @@ private _mapObjsData = createHashmap;
 [_centerPos, _radius, _battlefield, _clustersData, _mapObjsData, true] call SFSM_fnc_areaData; 
 
 private _unitFilter = {
+
+	private _action = [_x, "action"] call SFSM_fnc_unitData;
+
 	(!(_x getVariable ["SFSM_Excluded",false]))
-	&&{(typeOf _x) == (typeOf (vehicle _x))}
+	&&{(typeOf _x) == (typeOf (vehicle _x))
+	&&{!isNil "_action"}}
+
 	};
 
 

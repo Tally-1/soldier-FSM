@@ -1,6 +1,8 @@
 private _dir = "random";
 params ["_man", "_dir"];
 
+if!(_man checkAIFeature "PATH")exitWith{};
+
 private _rollMoves = ["AmovPpneMstpSrasWrflDnon_AmovPpneMevaSlowWrflDl", "AmovPpneMstpSrasWrflDnon_AmovPpneMevaSlowWrflDr"];
 private _rollMove  = "AmovPpneMstpSrasWrflDnon_AmovPpneMevaSlowWrflDl";//roll left.
 

@@ -336,6 +336,7 @@ class CfgFunctions
 			class dragMan               {};
 			class endDragMan            {};
 			class dragPos               {};
+			class searchAndRevive       {};
 		};
 		class battlefield
 		{

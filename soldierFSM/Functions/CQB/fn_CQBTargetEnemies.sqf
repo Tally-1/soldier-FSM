@@ -8,6 +8,7 @@ then{
                                   (([_man, _x] call SFSM_fnc_targetVisible)
                                   &&{(!([(side _man), (side _x)] call BIS_fnc_sideIsFriendly))
                                   &&{! (_man getVariable ["ace_isunconscious", false])
+                                  &&{! (_man getVariable ["dam_ignore_injured0",false])}
                                   }});
                                  };
 };

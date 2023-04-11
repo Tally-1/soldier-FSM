@@ -4,11 +4,14 @@ if!(SFSM_allowDodging)                               exitWith{false};
 if(_man getVariable ["SFSM_Excluded",false])         exitWith{false};
 if(_man getVariable ["ace_isunconscious", false])    exitWith{false;};
 if(_man getVariable ["SFSM_Sprinting", false])       exitwith{false;};
+if(_man getVariable ["dam_ignore_injured0",false])   exitWith{false;};
+
+private _action = [_man, "action"] call SFSM_fnc_unitData;
+if(isNil "_action")exitWith{false;};
 
 private _group             = group _man;
 private _grpCanDodge       = [_group] call SFSM_fnc_groupCanDodge;
 private _dodgeTimer 	   = [_man, "dodgeTimer"] 		call SFSM_fnc_unitData;
-private _action 	 	   = [_man, "action"] 	 		call SFSM_fnc_unitData;
 private _pathEnabeled 	   = [_man, 'pathEnabeled'] 	call SFSM_fnc_unitData;
 private _rps			   = [_man, "roundsPrSecond"] 	call SFSM_fnc_unitData;
 private _coolDownEnded     = _dodgeTimer < time;

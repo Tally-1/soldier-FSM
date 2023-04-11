@@ -38,6 +38,7 @@ exitWith{
 };
 
 if(_target getVariable ["ace_isunconscious", false])exitWith{false;};
+if(_target getVariable ["dam_ignore_injured0",false])exitWith{false;};
 
 _man doFire _target;
 [_man, _targetHouse, _target] spawn SFSM_fnc_ClearBuilding;

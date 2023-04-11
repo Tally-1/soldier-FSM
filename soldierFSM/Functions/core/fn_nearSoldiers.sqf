@@ -18,13 +18,15 @@ private _nearMen = _pos nearEntities ["CAManBase", _radius];
 			
 			private _noLogic = (side _x) != sideLogic;
 			private _conscious = !(_x getVariable ["ace_isunconscious", false]);
+			private _PIRallowed = !(_x getVariable ["dam_ignore_injured0",false]);
 
 			if((! _isPlayer)
 			&&{(! _isThisUnit)
 			&&{_valid
 			&&{_include
 			&&{_noLogic
-			&&{_conscious}}}}})
+			&&{_conscious
+			&&{_PIRallowed}}}}}})
 			then{_nearSoldiers pushBack _x};
 			
 		} forEach _nearMen;

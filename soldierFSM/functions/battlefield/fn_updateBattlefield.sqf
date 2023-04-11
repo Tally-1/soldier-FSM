@@ -29,9 +29,14 @@ private _clustersData = [
 							false		// include terrainObjects
 						] call Tcore_fnc_allClustersInRadius;
 
-private _unitFilter = {
+private _unitFilter = { 
+
+	private _action = [_x, "action"] call SFSM_fnc_unitData;
+
 	(!(_x getVariable ["SFSM_Excluded",false]))
-	&&{(typeOf _x) == (typeOf (vehicle _x))}
+	&&{(typeOf _x) == (typeOf (vehicle _x))
+	&&{!isNil "_action"}}
+
 	};
 
 

@@ -9,7 +9,7 @@ private _units   = [];
 	do{
 		private _object = _objects#_I;
 
-		if(_object isKindOf "man")
+		if(_object isKindOf "CAManBase")
 		then{_units pushBackUnique _object};
 	};
 

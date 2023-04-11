@@ -12,16 +12,21 @@ _man setCombatBehaviour "STEALTH";
 
 while {sleep 0.5; _stayInCover} do {
 	private _unconscious      = _man getVariable ["ace_isunconscious", false];
+	private _injured          = (_man getVariable ["dam_ignore_injured0",false]);
 	private _timedOut         = time > _timer;
 	private _timeSinceLastHit = time - ([_man, "Last_Hit"]	call SFSM_fnc_unitData);
-	        _hitByBullet      = (_timeSinceLastHit < 1.1 && SFSM_breakCoverOnHit);
-	        _overrun          = !isNull ([_man] call SFSM_fnc_manOverrunBy);
+
+	if(isNil "_timeSinceLastHit")then{_stayInCover = false};
+
+	_hitByBullet      = (_timeSinceLastHit < 1.1 && SFSM_breakCoverOnHit);
+	_overrun          = !isNull ([_man] call SFSM_fnc_manOverrunBy);
 	
 
 	if(_timedOut 
 	|| _hitByBullet
 	|| _overrun
-	|| _unconscious)
+	|| _unconscious
+	|| _injured)
 	then{_stayInCover = false};
 };
 

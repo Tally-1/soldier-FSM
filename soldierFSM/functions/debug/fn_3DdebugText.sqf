@@ -16,6 +16,7 @@ private _suppColor 	 = [_supp, 0.4, 0.4, 1];
 
 private _sprinting   = _man getVariable ["SFSM_Sprinting", false];
 private _unconscious = _man getVariable ["ace_isunconscious", false];
+private _injured     = (_man getVariable ["dam_ignore_injured0",false]);
 private _actionPos 	 = [(_3dPos # 0), (_3dPos # 1), ((_3dPos # 2) + 2.3)];
 private _supPos 	 = [(_3dPos # 0), (_3dPos # 1), ((_3dPos # 2) + 2.1)];
 private _incPos 	 = [(_3dPos # 0), (_3dPos # 1), ((_3dPos # 2) + 1.9)];
@@ -26,9 +27,9 @@ private _excludedText = ["Excluded. Error: ", _action]joinString"";
 // if(_excluded && {isNil "_action"})then{_actionTxt = "Excluded"};
 if(_excluded && {_action == "none"})then{_actionTxt = "Excluded"};
 if(_excluded && {_action != "none"})then{_actionTxt = _excludedText};
-if(isNil "_action")				  then{_actionTxt = "not initialized"};
-if(_action == "none")			  then{_actionTxt = ""};
-if(_supp > SFSM_ProneTreshHold)	  then{_actionTxt = "! Suppressed !"};
+if(isNil "_action")				    then{_actionTxt = "not initialized"};
+if(_action == "none")			    then{_actionTxt = ""};
+if(_supp > SFSM_ProneTreshHold)	    then{_actionTxt = "! Suppressed !"};
 
 if(fleeing _man
 &&{!("hunker" in  _action)
@@ -128,7 +129,21 @@ if (_unconscious) then {
 				];
 };
 
-If(_sprinting)then {
+if (_injured) then {
+	drawIcon3D 	[
+					"\a3\ui_f\data\igui\cfg\simpletasks\types\Heal_ca.paa",		
+					[0.49, 0.12, 0.12, 1],	
+					ASLToAGL(eyePos _man),	
+					1, 		
+					1, 		
+					0, 	 		
+					"injured", 
+					2, 			
+					0.03		
+				];
+};
+
+if(_sprinting)then {
 	drawIcon3D 	[
 					"\A3\ui_f\data\map\markers\military\ambush_CA.paa",		
 					[0.2, 0.8, 0.2, 1],	

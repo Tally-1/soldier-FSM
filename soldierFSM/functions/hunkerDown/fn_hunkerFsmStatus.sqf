@@ -19,7 +19,7 @@ then{_objPos = [_objPos, 0.5] call Tcore_fnc_AddZ};
 
 private _canShoot    = [_objPos, _enemyPositions, _man] call Tcore_fnc_visibleFromPositions;
 private _verySafe    = !([(ASLToAGL aimPos _man), _enemyPositions, _man] call Tcore_fnc_visibleFromPositions);
-private _needHealing = ((getDammage _man) > 0.25);
+private _needHealing = ((damage _man) > 0.25);
 private _safe        =  (_man distance2d _safePos) <= 0.6;
 
 _statusData set ["canShoot",     _canShoot];

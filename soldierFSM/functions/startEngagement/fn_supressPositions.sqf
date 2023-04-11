@@ -6,6 +6,7 @@ private _posCount = count _positions;
 
 if(_posCount == 0)exitWith{};
 if(_man getVariable ["ace_isunconscious", false])exitWith{};
+if(_man getVariable ["dam_ignore_injured0",false])exitWith{};
 
 // change the format of all positions to ASL for visibility-check and supression-command.
 private _ASL_positions = [];
@@ -18,6 +19,7 @@ _ASL_positions = [_man, _ASL_positions] call Tcore_fnc_sortByDist;
 
 {
 	if(_man getVariable ["ace_isunconscious", false])exitWith{};
+	if(_man getVariable ["dam_ignore_injured0",false])exitWith{};
 	if(!alive _man)exitWith{};
 
 	private _movePos = [_man, _x] call SFSM_fnc_findFirePos;
@@ -48,6 +50,7 @@ _ASL_positions = [_man, _ASL_positions] call Tcore_fnc_sortByDist;
 
 	if(!alive _man)exitWith{};
 	if(_man getVariable ["ace_isunconscious", false])exitWith{};
+	if(_man getVariable ["dam_ignore_injured0",false])exitWith{};
 
 	// reload
 	private _reloadNeeded = needReload _man > 0.9;

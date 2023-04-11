@@ -40,6 +40,7 @@ while {sleep 1; _distance > 3} do {
 	if!(_visibleToThreat)exitWith{false;};
 	if(_destroyed)	     exitWith{false;};
 	if(_man getVariable ["ace_isunconscious", false])exitWith{false;};
+	if(_man getVariable ["dam_ignore_injured0",false])exitWith{false;};
 
 };
 

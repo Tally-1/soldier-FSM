@@ -4,20 +4,21 @@ params ["_man", "_pos", "_maxDist", "_minDist"];
 if(isNil "_man")                                   exitwith{false;};
 if(isNil "_pos")                                   exitwith{false;};
 if(_man in allPlayers)                             exitwith{false;};
-if(count SFSM_sprinters >= SFSM_maxSprinters)      exitWith{false;};
 if(_man distance2D _pos < _minDist)                exitWith{false;};
 if(_man distance2D _pos > _maxDist)                exitWith{false;};
 if(! ([_man] call SFSM_fnc_isRealMan))             exitwith{false;};
+if(count SFSM_sprinters >= SFSM_maxSprinters)      exitWith{false;};
 if(_man getVariable ["SFSM_Sprinting", false])     exitwith{false;};
 if(_man getVariable ["ace_isunconscious", false])  exitWith{false;};
+if(_man getVariable ["dam_ignore_injured0",false])exitWith{false;};
 if!([_man, "pathEnabeled"] call SFSM_fnc_unitData) exitWith{false;};
 
 private _action = [_man, "action"] call SFSM_fnc_unitData;
-if(isNil "_action") exitWith{false;};
-if("CQB" in _action)exitWith{false;};
+if(isNil "_action")                                exitWith{false;};
+if("CQB" in _action)                               exitWith{false;};
 
 private _lastLosCheck = [_man, "lastSprintCheck"] call SFSM_fnc_unitData;
-if(time - _lastLosCheck < 5)exitWith{false;};
+if(time - _lastLosCheck < 2)exitWith{false;};
 
 
 

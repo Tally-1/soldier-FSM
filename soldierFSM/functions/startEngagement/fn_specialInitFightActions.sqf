@@ -5,11 +5,12 @@
 	Hence in order to have the unit execute a special action then make sure you spawn the new action 
 	and return true. See lines 19-23 for an example.
 */
-params ["_man", "_battlefield"];
+params ["_man"];
 private _special = [_man] call SFSM_fnc_squadAsset;
 private _player  = [_man] call Tcore_fnc_isPlayer;
 private _pathEnabeled = [_man, "pathEnabeled"] call SFSM_fnc_unitData;
 
+if(isNil "_pathEnabeled")exitWith{false};
 if!(_pathEnabeled)       exitWith{false};
 if(_player)              exitWith{false};
 if(_special == "regular")exitWith{false};

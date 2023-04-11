@@ -25,7 +25,8 @@ if!(_fireMode == "")		then{_man selectWeaponTurret [_weapon, [], _weapon, _fireM
 
 while{(alive _man
 &&{time < _actionTimer
-&&{!(_man getVariable ["ace_isunconscious", false])}})}
+&&{(!(_man getVariable ["ace_isunconscious", false]))
+&&{!(_man getVariable ["dam_ignore_injured0",false])}}})}
 do	{
 		private _timeLeft = (_actionTimer - time);
 		[_man, _target, 1, _weapon, 1] spawn SFSM_fnc_unitTounitForcedFire;

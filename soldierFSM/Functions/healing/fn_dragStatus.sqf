@@ -6,6 +6,8 @@ if(!alive _draggedMan)exitWith{"wounded died" call dbgmsg; true;};
 private _unconscious  = _dragger getVariable ["ace_isunconscious", false];
 if(_unconscious)exitWith{"Dragger knocked out" call dbgmsg; true;};
 
+if(_dragger getVariable ["dam_ignore_injured0",false])exitWith{"Dragger injured." call dbgmsg; true;};
+
 private _conscious  = !(_draggedMan getVariable ["ace_isunconscious", false]);
 if(_conscious)exitWith{"Wounded woke up" call dbgmsg; true;};
 

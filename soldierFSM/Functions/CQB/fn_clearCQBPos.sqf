@@ -37,6 +37,7 @@ waitUntil{scriptDone _killEnemies};
 	if(time > _Timer)	                             exitWith{false};
 	if(!alive _man)		                             exitWith{false};
 	if(_man getVariable ["ace_isunconscious", false])exitWith{false;};
+	if(_man getVariable ["dam_ignore_injured0",false])exitWith{false;};
 
 };
 

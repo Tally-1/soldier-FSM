@@ -14,4 +14,9 @@ sleep 2;
 [_healer, "action", "none"] call SFSM_fnc_unitData;
 [_unconscious, "action", "none"] call SFSM_fnc_unitData;
 
+private _asset = [_healer] call SFSM_fnc_squadAsset;
+if(_asset isEqualTo "medic")then{
+	[_healer] call SFSM_fnc_searchAndRevive;
+};
+
 true;

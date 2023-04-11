@@ -20,9 +20,10 @@ _man addEventHandler ["AnimDone", {
 	private _arrived      = _remainDist < 3;
 	private _dead         = !alive _man;
 	private _unconscious  = _man getVariable ["ace_isunconscious", false];
+	private _injured      = (_man getVariable ["dam_ignore_injured0",false]);
 
 	//check if any of the exit conditions has been fulfilled
-	private _endLoop      = _segMaxed || _timedOut || _arrived || _dead || _unconscious;
+	private _endLoop      = _segMaxed || _timedOut || _arrived || _dead || _unconscious || _injured;
 	
 	//end sprint
 	if(_endLoop)exitWith{

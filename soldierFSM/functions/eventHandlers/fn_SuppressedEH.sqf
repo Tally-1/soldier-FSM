@@ -1,13 +1,13 @@
 /*
 Supressed params documentation.
 
-* unit: Object - Unit to which the event is assigned
-* distance: Number - Distance of the projectile pass-by
-* shooter: Object - Who (or what) fired - vehicle or drone
-* instigator: Object - Who pressed the trigger. Instigator is different from the shooter when player is operator of UAV for example
-* ammoObject: Object - The ammunition itself
+* unit:          Object - Unit to which the event is assigned
+* distance:      Number - Distance of the projectile pass-by
+* shooter:       Object - Who (or what) fired - vehicle or drone
+* instigator:    Object - Who pressed the trigger. Instigator is different from the shooter when player is operator of UAV for example
+* ammoObject:    Object - The ammunition itself
 * ammoClassName: String - The ammunition's classname
-* ammoConfig: Config - The ammunition's CfgAmmo config path
+* ammoConfig:    Config - The ammunition's CfgAmmo config path
 
 */
 

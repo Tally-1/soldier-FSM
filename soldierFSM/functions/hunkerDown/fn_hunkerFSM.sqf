@@ -15,6 +15,11 @@ if(_man getVariable ["ace_isunconscious", false])exitWith{
 	[_man, _objectHash, _action] call SFSM_fnc_endHunker;
 };
 
+if(_man getVariable ["dam_ignore_injured0",false])exitWith{
+	sleep 1.5;
+	[_man, _objectHash, _action] call SFSM_fnc_endHunker;
+};
+
 private _side = side _man;
 private _timer = time + 120;
 private _endText = "";

@@ -14,8 +14,11 @@ waitUntil {
 private _nearSoldiers = ([_grenade, ([_grenade, 30] call Tcore_fnc_nearSoldiers)] call Tcore_fnc_sortByDist);
 if(count _nearSoldiers == 0)exitWith{};
 
-private _nearest = _nearSoldiers#0;
-private _canThrowBack = SFSM_throwBackGrenade && {(_nearest distance2D _grenade)<7};
+private _nearest      = _nearSoldiers#0;
+private _action       = [_nearest, "action"] call SFSM_fnc_unitData;
+private _canThrowBack = SFSM_throwBackGrenade 
+                      && {(_nearest distance2D _grenade)<7
+					  && {!isNil "_action"}};
 
 if(_canThrowBack)
 then{
@@ -26,7 +29,8 @@ then{
 if(count _nearSoldiers == 0)exitWith{};
 
 {
-	[_grenade, _x, 30, true] spawn SFSM_fnc_evadeGrenade;
+	private _action = [_x, "action"] call SFSM_fnc_unitData;
+	if(!isNil "_action")then{[_grenade, _x, 30, true] spawn SFSM_fnc_evadeGrenade;};
 	
 } forEach _nearSoldiers;
 

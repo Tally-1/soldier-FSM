@@ -6,7 +6,9 @@ if!(_target isKindOf "man")	                         exitWith{};
 if!(_man isKindOf "man")	                         exitWith{};
 if(_man distance2D _target > 400)                    exitWith{};
 if(_man getVariable ["ace_isunconscious", false])    exitWith{};
+if(_man getVariable ["dam_ignore_injured0",false])   exitWith{};
 if(_target getVariable ["ace_isunconscious", false]) exitWith{};
+if(_target getVariable ["dam_ignore_injured0",false])exitWith{};
 if(!alive _target)                                   exitWith{};
 
 private _knowledge		    = _man knowsAbout _target;

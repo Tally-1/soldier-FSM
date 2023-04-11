@@ -1,9 +1,10 @@
 params["_man", "_weaponObject"];
-if(isNil "_man")                                 exitwith{false;};
-if(isNil "_weaponObject")                        exitwith{false;};
-if(isNull _weaponObject)                         exitwith{false;};
-if(!alive _man)                                  exitwith{false;};
-if(_man getVariable ["ace_isunconscious", false])exitWith{false;};
+if(isNil "_man")                                   exitwith{false;};
+if(isNil "_weaponObject")                          exitwith{false;};
+if(isNull _weaponObject)                           exitwith{false;};
+if(!alive _man)                                    exitwith{false;};
+if(_man getVariable ["ace_isunconscious", false])  exitWith{false;};
+if(_man getVariable ["dam_ignore_injured0",false])exitWith{false;};
 
 private _special     = !(([_man] call SFSM_fnc_squadAsset) isEqualTo "regular");
 private _weaponType  = (getWeaponCargo _weaponObject#0#0);

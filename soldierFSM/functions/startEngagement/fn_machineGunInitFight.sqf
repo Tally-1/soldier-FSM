@@ -6,6 +6,7 @@ private _battlefield = SFSM_Battles get _battleKey;
 if(isNil "_battlefield")exitWith{};
 
 if(_man getVariable ["ace_isunconscious", false])exitWith{};
+if(_man getVariable ["dam_ignore_injured0",false])exitWith{};
 
 private _side          = side _man;
 private _allClusterPos = (_battlefield get "clusterPositions");
@@ -56,7 +57,9 @@ if(isNil "_battlefield")exitWith{[_man, "action", "none"] call SFSM_fnc_unitData
 
 if(_coverPosFound
 &&{_man distance2D _coverPos > 2.5
-&&{!(_man getVariable ["ace_isunconscious", false])}})
+&&{(!(_man getVariable ["ace_isunconscious", false]))
+&&{if(_man getVariable ["dam_ignore_injured0",false])exitWith{false}
+}}})
 then{
 		[_man, "action", "Suppressing and Moving"] call SFSM_fnc_unitData;
 		_script = [_man, _coverPos, 3] spawn SFSM_fnc_forceMove2;
