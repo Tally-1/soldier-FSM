@@ -1,0 +1,1 @@
+{[_x] call SFSM_fnc_drawTrajectory} forEach SFSM_trajectories;

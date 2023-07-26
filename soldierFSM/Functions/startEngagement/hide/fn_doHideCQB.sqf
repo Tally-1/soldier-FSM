@@ -1,3 +1,11 @@
+// Copyright: Erlend Kristensen(c) 2023, learnbymistake@gmail.com
+// BSD 3-Clause License     
+// Author:         Leo Hartgen (Tally-1)
+// Author links:   
+//              https://github.com/Tally-1, 
+//              https://thehartgen.web.app/projects/, 
+//              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
+
 params ["_man", "_enemyVehicle"];
 private _text = "CQB: holding hide-position "; 
 private _timer = time + SFSM_hidingTimeOut;
@@ -15,17 +23,17 @@ _man setUnitPos "DOWN";
 
 while{_exitStatus == ""}do{
     if (time > _timer)exitWith{_exitStatus = "timed out";};
-	if (!alive _man)exitWith{_exitStatus = "man died";};
-	if ([_enemyVehicle] call Tcore_fnc_deadCrew)exitWith{_exitStatus = "Vehicle neutralized."};
-	_ovEnemy = [_man] call SFSM_fnc_manOverrunBy;
-	if!(isNull _ovEnemy)exitWith{_exitStatus = "overrun";};
-	if(_man getVariable ["ace_isunconscious", false])exitWith{_exitStatus = "man is unconscious";};
-	if(_man getVariable ["dam_ignore_injured0",false])exitWith{_exitStatus = "man is injured";};
+    if (!alive _man)exitWith{_exitStatus = "man died";};
+    if ([_enemyVehicle] call Tcore_fnc_deadCrew)exitWith{_exitStatus = "Vehicle neutralized."};
+    _ovEnemy = [_man] call SFSM_fnc_manOverrunBy;
+    if!(isNull _ovEnemy)exitWith{_exitStatus = "overrun";};
+    if(_man getVariable ["ace_isunconscious", false])exitWith{_exitStatus = "man is unconscious";};
+    if(_man getVariable ["dam_ignore_injured0",false])exitWith{_exitStatus = "man is injured";};
 
-	private _script = [_man, 5] spawn SFSM_fnc_CQBTargetEnemies;
-	waitUntil {sleep 5; scriptDone _script; };
-	_man setUnitPos "DOWN";
-	_man doTarget objNull;
+    private _script = [_man, 5] spawn SFSM_fnc_CQBTargetEnemies;
+    waitUntil {sleep 5; scriptDone _script; };
+    _man setUnitPos "DOWN";
+    _man doTarget objNull;
 };
 
 _text = ["leaving hide-position, ", _exitStatus]joinString"";

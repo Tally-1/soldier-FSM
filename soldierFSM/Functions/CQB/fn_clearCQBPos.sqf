@@ -1,3 +1,11 @@
+//Copyright: Erlend Kristensen(c) 2023, learnbymistake@gmail.com
+// BSD 3-Clause License     
+// Author:         Leo Hartgen (Tally-1)
+// Author links:   
+//              https://github.com/Tally-1, 
+//              https://thehartgen.web.app/projects/, 
+//              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
+
 private _maxTime = 10;
 private _maxDistance = 1.1;
 params ["_man", "_pos", "_maxTime", "_maxDistance"];
@@ -24,20 +32,19 @@ waitUntil{scriptDone _killEnemies};
 
 
 //   private _currentDistance = ((eyePos _man) distance2d _pos);
-	private _currentDistance = ((getPos _man) distance _pos);
-	private _hasMovedCloser = _distance > _currentDistance;
-	if(! _hasMovedCloser)
-	then{
-			_man doMove _pos;
-			_man doTarget objNull;
-		};
+    private _currentDistance = ((getPos _man) distance _pos);
+    private _hasMovedCloser = _distance > _currentDistance;
+    if(! _hasMovedCloser)
+    then{
+            _man doMove _pos;
+            _man doTarget objNull;
+        };
   
-	_distance = _currentDistance;
-	if(_distance < _maxDistance)                     exitWith{false};
-	if(time > _Timer)	                             exitWith{false};
-	if(!alive _man)		                             exitWith{false};
-	if(_man getVariable ["ace_isunconscious", false])exitWith{false;};
-	if(_man getVariable ["dam_ignore_injured0",false])exitWith{false;};
+    _distance = _currentDistance;
+    if(_distance < _maxDistance)                     exitWith{false};
+    if(time > _Timer)                                 exitWith{false};
+    if(!alive _man)                                     exitWith{false};
+    if!([_man, true] call SFSM_fnc_canRun)           exitWith{false};
 
 };
 

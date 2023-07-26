@@ -3,7 +3,7 @@
 *  Author: PapaReap
 */
 
-private _versionName = ["DCO soldier FSM V. ", (missionNamespace getVariable "SFSM_Version")] joinString "";
+private _versionName = "DCO soldier FSM | Headless Client";
 
 [
     "PR_Allow_HC",

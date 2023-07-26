@@ -1,3 +1,11 @@
+// Copyright: Erlend Kristensen(c) 2023, learnbymistake@gmail.com
+// BSD 3-Clause License     
+// Author:         Leo Hartgen (Tally-1)
+// Author links:   
+//              https://github.com/Tally-1, 
+//              https://thehartgen.web.app/projects/, 
+//              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
+
 params["_man"];
 private _battleKey   = [_man, "currentBattle"] call SFSM_fnc_unitData;
 private _battlefield = SFSM_Battles get _battleKey;
@@ -5,14 +13,14 @@ private _weapons     = missionNamespace getVariable (_battlefield get "weapons")
 private _supplies    = [_man, _battlefield, true] call SFSM_fnc_battleFieldSupplies;
 
 _weapons = _weapons select {
-		private _canBeRearmed = [_x, _supplies] call SFSM_fnc_canRearmWeapon;
-		private _weaponType   = getWeaponCargo _x#0#0;
-		private _newType      = !isNil "_weaponType" && {_weaponType != (primaryWeapon _man)};
+        private _canBeRearmed = [_x, _supplies] call SFSM_fnc_canRearmWeapon;
+        private _weaponType   = getWeaponCargo _x#0#0;
+        private _newType      = !isNil "_weaponType" && {_weaponType != (primaryWeapon _man)};
 
-		if(isNil "_newType")then{_newType = false;};
+        if(isNil "_newType")then{_newType = false;};
 
-		(_canBeRearmed && { _newType });
-	};
+        (_canBeRearmed && { _newType });
+    };
 
 if(count _weapons < 1)exitWith{};
 

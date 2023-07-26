@@ -1,3 +1,16 @@
+//Copyright: Erlend Kristensen(c) 2023, learnbymistake@gmail.com
+// BSD 3-Clause License     
+// Author:         Leo Hartgen (Tally-1)
+// Author links:   
+//              https://github.com/Tally-1, 
+//              https://thehartgen.web.app/projects/, 
+//              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
+
+// Description:  Sends a man to pick up a weapon from the battlefield
+// Params:       [_man: object, _weaponObject: object]
+// Return value: scriptHandle (number)
+// Example: [_man, _weaponObject] spawn SFSM_fnc_pickUpWeapon;
+
 params["_man", "_weaponObject"];
 
 
@@ -9,11 +22,11 @@ private _weaponAvailable = (isNil "_weaponOwner");
 if!(_weaponAvailable)then{_weaponAvailable = (!alive _weaponOwner)};
 if!(_weaponAvailable)
 then{
-		private _battleKey   = [_man, "currentBattle"] call SFSM_fnc_unitData;
-		private _battleField =  SFSM_Battles get _battleKey;
-		if(isNil "_battleField")exitWith{_weaponObject = nil};
-		_weaponObject = [_man, _battleField] call SFSM_fnc_getBattlefieldWeapon;
-	};
+        private _battleKey   = [_man, "currentBattle"] call SFSM_fnc_unitData;
+        private _battleField =  SFSM_Battles get _battleKey;
+        if(isNil "_battleField")exitWith{_weaponObject = nil};
+        _weaponObject = [_man, _battleField] call SFSM_fnc_getBattlefieldWeapon;
+    };
 if(isNil "_weaponObject")exitWith{[_man, false, nil, true] spawn SFSM_fnc_endWeaponPickup};
 
 
@@ -32,12 +45,12 @@ private _timer  = time + 20;
 private _available = [_man, _timer] call SFSM_fnc_manAvailable;
 if!(_available)
 then{
-	waitUntil {
-		if(isNil "_man")exitWith{true};
-		sleep 0.1; 
-		[_man, _timer] call SFSM_fnc_manAvailable;
-		};
-	};
+    waitUntil {
+        if(isNil "_man")exitWith{true};
+        sleep 0.1; 
+        [_man, _timer] call SFSM_fnc_manAvailable;
+        };
+    };
 
 if(isNil "_man")exitWith{};
 
@@ -60,15 +73,15 @@ private _canSprint = [_man, _weaponPos, 40] call SFSM_fnc_canSprint;
 
 if(_canSprint)then{
 
-	private _sprint = [_man, _weaponPos] spawn SFSM_fnc_sprint;//SFSM_fnc_sprintToPos;
-	waitUntil{sleep 0.5; scriptDone _sprint;};
+    private _sprint = [_man, _weaponPos] spawn SFSM_fnc_sprint;//SFSM_fnc_sprintToPos;
+    waitUntil{sleep 0.5; scriptDone _sprint;};
 
 }else{
 
-	_man setAnimSpeedCoef SFSM_sprintSpeed;
-	[_man, "currentDestination", _weaponPos] call SFSM_fnc_unitData;
-	private _script = [_man, _weaponPos, 40, 1.5] spawn SFSM_fnc_forceMove2;
-	waitUntil{sleep 0.1; scriptDone _script};
+    _man setAnimSpeedCoef SFSM_sprintSpeed;
+    [_man, "currentDestination", _weaponPos] call SFSM_fnc_unitData;
+    private _script = [_man, _weaponPos, 40, 1.5] spawn SFSM_fnc_forceMove2;
+    waitUntil{sleep 0.1; scriptDone _script};
 
 };
 

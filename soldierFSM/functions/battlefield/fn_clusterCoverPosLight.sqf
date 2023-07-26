@@ -1,3 +1,11 @@
+//Copyright: Erlend Kristensen(c) 2023, learnbymistake@gmail.com
+// BSD 3-Clause License     
+// Author:         Leo Hartgen (Tally-1)
+// Author links:   
+//              https://github.com/Tally-1, 
+//              https://thehartgen.web.app/projects/, 
+//              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
+
 Params["_clusterData", "_mapObjects", "_clusterPositions"];
 
 private _clusterPos   = _clusterData#0;
@@ -14,18 +22,18 @@ if(_side == east)       then{_enemyPosArr = (_clusterPositions get "west") + (_c
 if(_side == independent)then{_enemyPosArr = (_clusterPositions get "east") + (_clusterPositions get "west")};
 
 {
-	private _key = str _X;
-	private _objectShape = (_mapObjects get _key) get "3dData";
-	private _coverPosArr = [_enemyPosArr, _objectShape] call Tcore_fnc_objCoverPosLight;
-	private _coverPos    = _coverPosArr#0;
-	private _nearestPos  = [_coverPos, _coverPositions] call Tcore_fnc_nearestPos; 
-	private _found       = !(typeName _nearestPos == "SCALAR");
-	private _distance    = 3;
+    private _key = str _X;
+    private _objectShape = (_mapObjects get _key) get "3dData";
+    private _coverPosArr = [_enemyPosArr, _objectShape] call Tcore_fnc_objCoverPosLight;
+    private _coverPos    = _coverPosArr#0;
+    private _nearestPos  = [_coverPos, _coverPositions] call Tcore_fnc_nearestPos; 
+    private _found       = !(typeName _nearestPos == "SCALAR");
+    private _distance    = 3;
 
-	if(_found)then{_distance = (_coverPos distance2D _nearestPos)};
+    if(_found)then{_distance = (_coverPos distance2D _nearestPos)};
 
-	if(_distance > 1.2)
-	then{_coverPositions pushback _coverPos};	
+    if(_distance > 1.2)
+    then{_coverPositions pushback _coverPos};    
 
 } forEach _nearObjPos;
 

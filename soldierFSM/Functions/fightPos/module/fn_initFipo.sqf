@@ -1,0 +1,18 @@
+params["_fipo"];
+[_fipo] call SFSM_fnc_fipoDefineSides;
+// [_fipo] call SFSM_fnc_fipoMarker;
+[_fipo] call SFSM_fnc_moveInFipoSynced;
+
+
+if(SFSM_debugger)then{
+	private _low  = _fipo getVariable "coverstance";
+	private _high = _fipo getVariable "shootingStance";
+
+	if(_low isEqualTo _high)then{
+		"Fighting position with equal low and high stances detected" call dbgmsg;
+	};
+
+	if(_low > _high)then{
+		"Fighting position with cover-pos higher than shooting-pos detected" call dbgmsg;
+	};
+};

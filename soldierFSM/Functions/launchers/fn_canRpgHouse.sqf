@@ -1,29 +1,19 @@
-params["_man", "_house"];
-if!(SFSM_rpgHouse)exitWith{false;};
-if(isNil "_man")exitWith{false;};
+// Copyright: Erlend Kristensen(c) 2023, learnbymistake@gmail.com
+// BSD 3-Clause License     
+// Author:         Leo Hartgen (Tally-1)
+// Author links:   
+//              https://github.com/Tally-1, 
+//              https://thehartgen.web.app/projects/, 
+//              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
 
-if!([_man] call SFSM_fnc_isRealMan)exitWith{ false;};
-if(_man getVariable ["SFSM_excluded", false])exitWith{false;};
-if(_man getVariable ["ace_isunconscious", false])exitWith{false;};
-if(_man getVariable ["dam_ignore_injured0",false])exitWith{false;};
-
-
-private _action = [_man, "action"] call SFSM_fnc_unitData;
-if(isNil "_action")exitWith{false;};
-if(_action != "none")exitWith{false;};
-private _launcher = secondaryWeapon _man;
-if(_launcher == "")exitWith{false;};
-
+params["_man"];
+private _launcher     = secondaryWeapon _man;
 private _launcherType = ([_launcher] call objScan_fnc_weaponData) get "description";
-if(_launcherType == "AA misile launcher")exitWith{false;};
-if!([_man, _launcher] call SFSM_fnc_hasAmmoForWeapon)exitWith{false;};
-private _launchPos = [_man, _house] call SFSM_fnc_firePosLite;
-if(isNil "_launchPos")
-exitWith{
-        "could not find a position to launch missile at house" call dbgmsg;
-		false;
-	};
+if!(SFSM_rpgHouse)                                    exitWith{false;};
+if!([_man] call SFSM_fnc_availableAiSoldier)          exitWith{false;};
+if(_launcher isEqualTo "")                            exitWith{false;};
+if(_launcherType == "AA misile launcher")             exitWith{false;};
+if!([_man, _launcher] call SFSM_fnc_hasAmmoForWeapon) exitWith{false;};
 
-[_man, "currentDestination", _launchPos] call SFSM_fnc_unitData;
 
 true;

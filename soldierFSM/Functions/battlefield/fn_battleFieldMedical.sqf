@@ -1,47 +1,66 @@
+//Copyright: Erlend Kristensen(c) 2023, learnbymistake@gmail.com
+// BSD 3-Clause License     
+// Author:         Leo Hartgen (Tally-1)
+// Author links:   
+//              https://github.com/Tally-1, 
+//              https://thehartgen.web.app/projects/, 
+//              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
+
+// Description: Gets all wounded / incapacitated units on the field, and assigns medics to heal them.
+
+// Params: [_battlefield]  -(hashmap)  The battlefield to get wounded and healers from.
+
+// Return value: true
+
+// Example: [_battlefield] call SFSM_fnc_battleFieldMedical;
+
+
 params["_battlefield"];
 if(isNil "_battlefield")exitWith{};
 
 private _categorizedUnits  = [_battlefield] call SFSM_fnc_getWoundedAndHealers;
+
+// Data undefined? (battle may have ended)
 if(isNil "_categorizedUnits")exitWith{};
 
-private _healers           = _categorizedUnits#0;
-private _wounded           = _categorizedUnits#1;
-private _incapacitated     = _categorizedUnits#2;
+private _medics           = _categorizedUnits#0;
+private _fipoMedics       = _categorizedUnits#1;
+private _healers          = _categorizedUnits#2;
+private _availSpecialists = _categorizedUnits#3;
+private _wounded          = _categorizedUnits#4;
+private _incapacitated    = _categorizedUnits#5;
 
+// Data corrupted? (battle may have ended)
 if(isNil "_incapacitated")exitWith{};
 
-if(_healers isEqualTo [])exitWith{"Nobody is available for buddy-healing" call dbgmsg;};
+private _maxHealCount = (count _medics) + (count _fipoMedics) + (count _healers) + (count _availSpecialists);
 
-if(_wounded isEqualTo []
-&&{_incapacitated     isEqualTo []})exitWith{"Nobody is wounded and unable to heal" call dbgmsg;};
+// if no healers were found then exit
+if(_maxHealCount isEqualTo 0)exitWith{"Nobody is available for buddy-healing" call dbgmsg;};
+
+// if no wounded or incapacitated units were found then exit
+if(_wounded       isEqualTo []
+&&{_incapacitated isEqualTo []})exitWith{"Nobody is wounded and unable to heal" call dbgmsg;};
 
 
+// Debug message detaling the number of wounded and incapacitated units on the field
 [[(count _wounded), " wounded and ", (count _incapacitated), " incapacitated on the field"]] call dbgmsg;
+[[(count _healers), " healers available..."]] call dbgmsg;
 
-if(count _incapacitated > 0)exitWith{
 
-	for "_i"from 0 to (count _incapacitated -1)do{
-		private _woundedMan = _incapacitated#_i;
-		private _pos = getPosATL _woundedMan;
-
-		if(_pos#2 < 0)then{_woundedMan setPos [_pos#0, _pos#1, 0.2];};
-
-		_healers = _healers select {[_x, _woundedMan] call SFSM_fnc_canBuddyHeal};
-		private _reviver = (([_healers, [], {_woundedMan distance _x }, "ASCEND"] call BIS_fnc_sortBy))#0;
-		
-		if!(isNil "_reviver")then{
-			[_reviver, _woundedMan] spawn SFSM_fnc_buddyRevive;
-		};
-
-		sleep 0.3;
-	};
+// Assign medic to incapacitated units.
+if(_incapacitated isNotEqualTo [])exitWith{
+    [_categorizedUnits, _maxHealCount] spawn SFSM_fnc_battlefieldRevives; 
 };
 
 
+// Loop through all wounded units and assign a healer to them.
+_medics append _healers;
 {
-	[_x, _wounded, _incapacitated, _healers] call SFSM_fnc_initBuddyHeal;
-	sleep 0.3;
-	
-} forEach _healers;
+    [_x, _wounded, _incapacitated, _medics] call SFSM_fnc_initBuddyHeal;
+    sleep 0.3;
+    
+} forEach _medics;
 
+//end battlefield medical action.
 true;

@@ -1,0 +1,229 @@
+[
+  [
+    "gearRanking",
+    [
+      ["armor", 5],
+      ["weaponry", 8],
+      ["strength", 6.5]
+    ]
+  ],
+  [
+    "capacities",
+    [
+      ["anti infantry", 7],
+      ["anti vehicle", 7.7],
+      ["anti air", 0.7]
+    ]
+  ],
+  [
+    "armorData",
+    [
+      [
+        "vest",
+        [
+          ["description", "Level 4 vest"],
+          ["Armor value", 100],
+          ["Armor level", 4]
+        ]
+      ],
+      [
+        "uniform",
+        [
+          ["Armored", false],
+          ["description", "Non-protective uniform"],
+          ["Armor value", 1.25]
+        ]
+      ],
+      [
+        "helmet",
+        [
+          ["description", "Level 2 helmet"],
+          ["Armor value", 12],
+          ["Armor level", 2],
+          ["Facial protection", false]
+        ]
+      ]
+    ]
+  ],
+  [
+    "weaponData",
+    [
+      ["scope range", 200],
+      [
+        "sideArm",
+        [
+          ["ammoClasses", [1]],
+          ["name", "P99"],
+          ["cursor", "hgun"],
+          ["RPS", 8],
+          ["cursor-aim", "cursorAim"],
+          ["description", "Pistol"],
+          ["max-Ammo-Cap", 30],
+          [
+            "ammoNames",
+            [
+              "B_9x21_Ball",
+              "B_9x21_Ball_Tracer_Red",
+              "B_9x21_Ball_Tracer_Green",
+              "B_9x21_Ball_Tracer_Yellow"
+            ]
+          ],
+          ["muzzles", []],
+          [
+            "fire-Modes",
+            [
+              ["auto", false],
+              ["artillery", false],
+              ["burst", false],
+              ["single", true]
+            ]
+          ],
+          ["max-Ammo-speed", 430],
+          ["min-Ammo-speed", 402],
+          [
+            "weapon-modes",
+            [
+              [
+                "Semi",
+                [
+                  ["cfgName", "Single"],
+                  ["reloadTime", 0.12],
+                  ["artyDispersion", 1],
+                  ["burst", 1],
+                  ["autoFire", 0],
+                  ["artyCharge", 1]
+                ]
+              ]
+            ]
+          ],
+          ["min-Ammo-Cap", 17],
+          ["class ID", 1],
+          [
+            "magazines",
+            [
+              "16Rnd_9x21_Mag",
+              "16Rnd_9x21_red_Mag",
+              "16Rnd_9x21_green_Mag",
+              "16Rnd_9x21_yellow_Mag",
+              "30Rnd_9x21_Mag",
+              "30Rnd_9x21_Red_Mag",
+              "30Rnd_9x21_Yellow_Mag",
+              "30Rnd_9x21_Green_Mag"
+            ]
+          ]
+        ]
+      ],
+      [
+        "primary",
+        [
+          ["ammoClasses", [2.1]],
+          ["name", "MX"],
+          ["cursor", "arifle"],
+          ["RPS", 13],
+          ["cursor-aim", "CursorAim"],
+          ["description", "Light assault rifle"],
+          ["max-Ammo-Cap", 30],
+          ["ammoNames", ["B_65x39_Caseless"]],
+          ["muzzles", []],
+          [
+            "fire-Modes",
+            [
+              ["auto", true],
+              ["artillery", false],
+              ["burst", false],
+              ["single", true]
+            ]
+          ],
+          ["max-Ammo-speed", 774],
+          ["min-Ammo-speed", 774],
+          [
+            "weapon-modes",
+            [
+              [
+                "Full",
+                [
+                  ["cfgName", "FullAuto"],
+                  ["reloadTime", 0.075],
+                  ["artyDispersion", 1],
+                  ["burst", 1],
+                  ["autoFire", 1],
+                  ["artyCharge", 1]
+                ]
+              ],
+              [
+                "Semi",
+                [
+                  ["cfgName", "Single"],
+                  ["reloadTime", 0.075],
+                  ["artyDispersion", 1],
+                  ["burst", 1],
+                  ["autoFire", 0],
+                  ["artyCharge", 1]
+                ]
+              ]
+            ]
+          ],
+          ["min-Ammo-Cap", 30],
+          ["class ID", 1.3],
+          ["magazines", ["30Rnd_65x39_caseless_mag"]]
+        ]
+      ],
+      [
+        "secondary",
+        [
+          ["ammoClasses", [7.1, 7.2]],
+          ["name", "Titan MPRL Compact (Sand)"],
+          ["cursor", "missile"],
+          ["RPS", 10],
+          ["cursor-aim", "EmptyCursor"],
+          ["description", "AT misile launcher"],
+          ["max-Ammo-Cap", 1],
+          ["ammoNames", ["ACE_Javelin_FGM148", "M_Titan_AP"]],
+          ["muzzles", []],
+          [
+            "fire-Modes",
+            [
+              ["auto", false],
+              ["artillery", false],
+              ["burst", false],
+              ["single", true]
+            ]
+          ],
+          ["max-Ammo-speed", 18],
+          ["min-Ammo-speed", 18],
+          [
+            "weapon-modes",
+            [
+              [
+                "Semi",
+                [
+                  ["cfgName", "Single"],
+                  ["reloadTime", 0.1],
+                  ["artyDispersion", 1],
+                  ["burst", 1],
+                  ["autoFire", 0],
+                  ["artyCharge", 1]
+                ]
+              ],
+              [
+                "Top-down Attack",
+                [
+                  ["cfgName", "TopDown"],
+                  ["reloadTime", 0.1],
+                  ["artyDispersion", 1],
+                  ["burst", 1],
+                  ["autoFire", 0],
+                  ["artyCharge", 1]
+                ]
+              ]
+            ]
+          ],
+          ["min-Ammo-Cap", 1],
+          ["class ID", 4.1],
+          ["magazines", ["Titan_AT", "Titan_AP"]]
+        ]
+      ]
+    ]
+  ],
+  ["description", "Armored AT-misile rifleMan"]
+]

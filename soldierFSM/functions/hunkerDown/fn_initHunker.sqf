@@ -1,3 +1,11 @@
+// Copyright: Erlend Kristensen(c) 2023, learnbymistake@gmail.com
+// BSD 3-Clause License     
+// Author:         Leo Hartgen (Tally-1)
+// Author links:   
+//              https://github.com/Tally-1, 
+//              https://thehartgen.web.app/projects/, 
+//              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
+
 params ["_man"];
 if!(SFSM_allowHunkerDown)exitWith{false;};
 
@@ -23,9 +31,9 @@ if(isNil "_objData")exitWith{false;};
 private _enemyVehicles = [];
 private _vehicles = missionNamespace getVariable (_battlefield get "vehicles");
 _enemyVehicles = _vehicles select 
-		               {((side _x) != (side _man))
-		               &&{(!([(side _x), (side _man)] call BIS_fnc_sideIsFriendly))
-					   &&{!([_x] call Tcore_fnc_deadCrew)}}};
+                       {((side _x) != (side _man))
+                       &&{(!([(side _x), (side _man)] call BIS_fnc_sideIsFriendly))
+                       &&{!([_x] call Tcore_fnc_deadCrew)}}};
 
 
 if(count _enemyVehicles > 0)

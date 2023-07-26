@@ -1,3 +1,11 @@
+// Copyright: Erlend Kristensen(c) 2023, learnbymistake@gmail.com
+// BSD 3-Clause License     
+// Author:         Leo Hartgen (Tally-1)
+// Author links:   
+//              https://github.com/Tally-1, 
+//              https://thehartgen.web.app/projects/, 
+//              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
+
 //--------comment by papaReap----------
 /*
 *  fn_serverInit.sqf
@@ -7,7 +15,7 @@
     I will be using my fn_hcTracker.sqf to accomplish this for the time being
     if hc gets disconnected we need to have server run these to take command.
     Note only 1 hc can be used for the moment!!!
-	*papaReap*
+    *papaReap*
 */
 
 // Tally: Will be updated in the post-config 
@@ -36,25 +44,19 @@ if (isServer && {_hcPresent}) exitWith { [] call SFSM_fnc_initSettings; };
 [] call SFSM_fnc_initSettings;
 [] call SFSM_fnc_postConfig;
 
-
-
-
-{[_x] call SFSM_fnc_InitMan} 	forEach allUnits;
-{[_x] call SFSM_fnc_InitGroup} 	forEach allGroups;
+{[_x] call SFSM_fnc_InitMan}     forEach allUnits;
+{[_x] call SFSM_fnc_InitGroup}     forEach allGroups;
 {[_x] call SFSM_fnc_initVehicle}forEach vehicles;
 {_x   call SFSM_fnc_curatorEH}  forEach allCurators;
 
 
 [] spawn SFSM_fnc_TaskManager;
 [] call  SFSM_fnc_unitKilled; 
-[] call SFSM_fnc_unitCreated;
-[] call SFSM_fnc_projectileCreated;
-
-addMissionEventHandler ["BuildingChanged", {
-	params ["_from", "_to", "_isRuin"];
-    ["Building changed!", 2] call dbgmsg;
-
-}];
+[] call  SFSM_fnc_unitCreated;
+[] call  SFSM_fnc_projectileCreated;
+[] call  SFSM_fnc_initCustomEvents;
+[] call  SFSM_fnc_initFiPositions;
+[] call  SFSM_fnc_antiRubberBand;
 
 /* --------comment by Tally----------
 unitKilled and unitCreated are mission eventhandlers.
@@ -67,10 +69,14 @@ function will execute as normal, if not then the function will be executed by
 the HC.
 */
 
+// this fnc is run locally, hence a global declaration is needed for those clients
+// that does not have SFSM loaded
+missionNamespace setVariable ["Tcore_fnc_setTextTexture",Tcore_fnc_setTextTexture, true];
 
 diag_log "***soldier FSM * server loaded***";
 
-
-
-
+// ["new_battle", {}] call CBA_fnc_addEventHandler;
 [] call SFSM_fnc_logSettings;
+
+//Making sure all VR indicators are deleted 
+{if(_x getVariable ['fipo_ind', false])then{deleteVehicle _x}} forEach allUnits;

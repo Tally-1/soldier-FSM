@@ -1,3 +1,11 @@
+// Copyright: Erlend Kristensen(c) 2023, learnbymistake@gmail.com
+// BSD 3-Clause License     
+// Author:         Leo Hartgen (Tally-1)
+// Author links:   
+//              https://github.com/Tally-1, 
+//              https://thehartgen.web.app/projects/, 
+//              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
+
 params["_impactPos", "_ammoType"];
 private _touchingGround = (ASLToAGL _impactPos)#2 < 0.5;
 private _recentCrater = (time - SFSM_lastCrater) < 1;
@@ -15,13 +23,13 @@ private _radius = 3;
 
 
 if(_mediumExplosive)then{
-	_terrainReduction = 1;
-	_radius = 6;
-	};
+    _terrainReduction = 1;
+    _radius = 6;
+    };
 if(_highExplosive)then{
-	_terrainReduction = 1.5;
-	_radius = 12;
-	};
+    _terrainReduction = 1.5;
+    _radius = 12;
+    };
 
 private _height = getTerrainHeight _impactPos;
 private _newHeight = _height - _terrainReduction;
@@ -40,8 +48,8 @@ sleep 0.1;
 
 private _ATLpos = ASLToATL _impactPos;
 {
-	private _decal = createSimpleObject [_x, [_ATLpos#0, _ATLpos#1, 0]];
-	_decal setDir (random 360);
+    private _decal = createSimpleObject [_x, [_ATLpos#0, _ATLpos#1, 0]];
+    _decal setDir (random 360);
 } foreach ["Land_DirtPatch_03_F", "Land_ClutterCutter_large_F"];
 
 SFSM_lastCrater = time;

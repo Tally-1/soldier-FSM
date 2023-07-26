@@ -1,3 +1,11 @@
+// Copyright: Erlend Kristensen(c) 2023, learnbymistake@gmail.com
+// BSD 3-Clause License     
+// Author:         Leo Hartgen (Tally-1)
+// Author links:   
+//              https://github.com/Tally-1, 
+//              https://thehartgen.web.app/projects/, 
+//              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
+
 params ["_man", "_supplyObject"];
 
 if(isNil "_supplyObject")exitWith {[_man, false] spawn SFSM_fnc_endRearm;};
@@ -16,8 +24,8 @@ _pos = [_pos#0,_pos#1, (_pos getDir _man), 1] call SFSM_fnc_sinCosPos;
 private _run = [_man, _pos, 60, 5] spawn SFSM_fnc_forceMove2;
 
 waitUntil{
-		sleep 0.1; 
-		scriptDone _run;
+        sleep 0.1; 
+        scriptDone _run;
 };
 
 private _stillValid = [_man, _supplyObject] call SFSM_fnc_validRearm;

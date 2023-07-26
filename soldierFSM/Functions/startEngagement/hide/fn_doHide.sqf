@@ -1,3 +1,11 @@
+// Copyright: Erlend Kristensen(c) 2023, learnbymistake@gmail.com
+// BSD 3-Clause License     
+// Author:         Leo Hartgen (Tally-1)
+// Author links:   
+//              https://github.com/Tally-1, 
+//              https://thehartgen.web.app/projects/, 
+//              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
+
 //this whole file should probably be cleaned up, it is basically a clone of doHideCQB.
 params ["_man", "_enemyVehicle", "_CQB"];
 if(_CQB)exitWith{[_man, _enemyVehicle] spawn SFSM_fnc_doHideCQB;};
@@ -9,13 +17,13 @@ then{sleep 20; ["double action", 2] call dbgmsg};
 private _coverPos = [_man] call SFSM_fnc_getCoverPos;
 if(!isNil "_coverPos")
 then{
-	  _man doMove (getPos _man);
-	  _man doTarget objNull;
-	  [_man, "action", "moving to cover for hiding"] call SFSM_fnc_unitData;
-	  _man setAnimSpeedCoef SFSM_sprintSpeed;
-	  private _script = [_man, _coverPos, 30, 2] spawn SFSM_fnc_forceMove2;
-	  waitUntil{sleep 0.1; scriptDone _script};
-	  _man setAnimSpeedCoef 1;
+      _man doMove (getPos _man);
+      _man doTarget objNull;
+      [_man, "action", "moving to cover for hiding"] call SFSM_fnc_unitData;
+      _man setAnimSpeedCoef SFSM_sprintSpeed;
+      private _script = [_man, _coverPos, 30, 2] spawn SFSM_fnc_forceMove2;
+      waitUntil{sleep 0.1; scriptDone _script};
+      _man setAnimSpeedCoef 1;
 };
 
 private _timer = time + SFSM_hidingTimeOut;
@@ -30,23 +38,22 @@ _man setUnitCombatMode "WHITE";
 _man setUnitPos "DOWN";
 
 [_man, "action", 'holding hide-position'] call SFSM_fnc_unitData;
+["hiding_start", [_man, _enemyVehicle]]   call CBA_fnc_localEvent;
 
 while{_exitStatus == ""}do{
-    if (time > _timer)exitWith{_exitStatus = "timed out";};
-	if (!alive _man)exitWith{_exitStatus = "man died";};
-	if ([_enemyVehicle] call Tcore_fnc_deadCrew)exitWith{_exitStatus = "Vehicle neutralized."};
-	_ovEnemy = [_man] call SFSM_fnc_manOverrunBy;
-	if!(isNull _ovEnemy)exitWith{_exitStatus = "overrun";};
-	if(_man getVariable ["ace_isunconscious", false])exitWith{_exitStatus = "man is unconscious";};
-	if(_man getVariable ["dam_ignore_injured0",false])exitWith{_exitStatus = "man is injured";};
+    if (time > _timer)                              exitWith{_exitStatus = "timed out";};
+    if (!alive _man)                                exitWith{_exitStatus = "man died";};
+    if ([_enemyVehicle] call Tcore_fnc_deadCrew)    exitWith{_exitStatus = "Vehicle neutralized."};
+    if!(isNull ([_man] call SFSM_fnc_manOverrunBy)) exitWith{_exitStatus = "overrun";};
+    if([_man]call SFSM_fnc_isUncon)                 exitWith{_exitStatus = "man is unconscious";};
 
 
     private _script = [_man, 5] spawn SFSM_fnc_CQBTargetEnemies;
-	waitUntil {sleep 1; scriptDone _script; };
-	_man setCombatBehaviour "STEALTH";
-	_man setUnitCombatMode "WHITE";
-	_man setUnitPos "DOWN";
-	_man doTarget objNull;
+    waitUntil {sleep 1; scriptDone _script; };
+    _man setCombatBehaviour "STEALTH";
+    _man setUnitCombatMode "WHITE";
+    _man setUnitPos "DOWN";
+    _man doTarget objNull;
 };
 
 _text = ["leaving hide-position, ", _exitStatus]joinString"";
@@ -54,6 +61,7 @@ _text = ["leaving hide-position, ", _exitStatus]joinString"";
 sleep 2;
 
 [_man, "action", "none"] call SFSM_fnc_unitData;
+["hiding_end", [_man, _enemyVehicle]]   call CBA_fnc_localEvent;
 
 _man enableAI 'path';
 _man setCombatBehaviour _behaviour;

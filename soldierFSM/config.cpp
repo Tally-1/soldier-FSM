@@ -1,6 +1,6 @@
 #include "BIS_AddonInfo.hpp"
 #include "\soldierFSM\functions\cfgFunctions.hpp"
-
+#include "\soldierFSM\sounds\cfgRadio.hpp"
 
 class CfgPatches
 {
@@ -8,7 +8,7 @@ class CfgPatches
 	{
 		
 		name 				= "soldier FSM";
-		author 				= "YipMan, Jihem, Deebs, Tally";
+		author 				= "YipMan(design / funds), Jihem(funds), Deebs(design / funds), Blazingfire(funds), Tally(code)";
 		requiredVersion 	= 1.60;
 		requiredAddons[] 	= { "A3_Functions_F", "CBA_settings" };
 		units[] 			= {};
@@ -26,6 +26,6 @@ class CfgSurfaces {
 
 class Extended_PreInit_EventHandlers {
     class CBApreInit_SFSM {
-        init = "call compile preprocessFileLineNumbers '\soldierFSM\customCBA.sqf'";
+        init = "call compile preprocessFileLineNumbers '\soldierFSM\CBA_Options\main.sqf'";
     };
 };

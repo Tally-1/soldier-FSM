@@ -1,6 +1,14 @@
+// Copyright: Erlend Kristensen(c) 2023, learnbymistake@gmail.com
+// BSD 3-Clause License     
+// Author:         Leo Hartgen (Tally-1)
+// Author links:   
+//              https://github.com/Tally-1, 
+//              https://thehartgen.web.app/projects/, 
+//              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
+
 params ["_man",  "_objectHash", "_battlefield"];
-private _action 	= + [_man, "action"] call SFSM_fnc_unitData;
-private _lastIn 	= + [_man, "Last_Close_Bullet"] call SFSM_fnc_unitData;
+private _action     = + [_man, "action"] call SFSM_fnc_unitData;
+private _lastIn     = + [_man, "Last_Close_Bullet"] call SFSM_fnc_unitData;
 private _statusData = _objectHash get "status";
 private _canShoot   = _statusData get "canShoot";
 private _needHeal   = _statusData get "needHeal";
@@ -11,16 +19,16 @@ private _maxDistance = (_battlefield get "radius")*2;
 
 if(_canHeal
 &&{_needHeal})
-then{	
-		[_man, _action] spawn SFSM_fnc_proneHeal;
-		private _timer = time + 20;
-		waitUntil {
-					sleep 1; 
-					if(([_man, "action"] call SFSM_fnc_unitData) == _action)exitWith{true};
-					if(time > _timer)exitWith{true};
-					false;
-					};
-	};
+then{    
+        [_man, _action] spawn SFSM_fnc_proneHeal;
+        private _timer = time + 20;
+        waitUntil {
+                    sleep 1; 
+                    if(([_man, "action"] call SFSM_fnc_unitData) == _action)exitWith{true};
+                    if(time > _timer)exitWith{true};
+                    false;
+                    };
+    };
 
 If!(_canShoot)exitWith{[_man, "action", "displace from hunker-pos, cannot reach enemy"] call SFSM_fnc_unitData};
 
@@ -53,17 +61,17 @@ _enemies = [_man, _maxDistance, 'enemies']call Tcore_fnc_nearKnownEnemies;
 _target  = [_man, _enemies, true] call Tcore_fnc_getLosTarget;
 if!(isNull _target)
 then{
-		for "_i" from 1 to 10 do
-		{
-			_enemies = [_man, _maxDistance, 'enemies']call Tcore_fnc_nearKnownEnemies;
-			_target  = [_man, _enemies, true] call Tcore_fnc_getLosTarget;
+        for "_i" from 1 to 10 do
+        {
+            _enemies = [_man, _maxDistance, 'enemies']call Tcore_fnc_nearKnownEnemies;
+            _target  = [_man, _enemies, true] call Tcore_fnc_getLosTarget;
 
-			if(alive _target)
-			then{_man doFire _target; sleep 0.3};
+            if(alive _target)
+            then{_man doFire _target; sleep 0.3};
 
-		};
-		sleep 2;
-	};
+        };
+        sleep 2;
+    };
 
 
 

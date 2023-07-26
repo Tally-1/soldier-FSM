@@ -1,3 +1,11 @@
+//Copyright: Erlend Kristensen(c) 2023, learnbymistake@gmail.com
+// BSD 3-Clause License     
+// Author:         Leo Hartgen (Tally-1)
+// Author links:   
+//              https://github.com/Tally-1, 
+//              https://thehartgen.web.app/projects/, 
+//              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
+
 params["_battlefield"];
 private _startTime     = time;
 private _areaName      = _battlefield get "name";
@@ -6,6 +14,8 @@ private _gridVarName   = [_areaName, "Battle_", "_Grid"] call Tcore_fnc_stringTo
 private _centerPos     = _battlefield get "center";
 private _size          = (_battlefield get "radius")*2.5;
 private _gridPositions = [_centerPos, _size] call Tcore_fnc_grid100Pos;
+// private _gridPositions = [_centerPos, _size, 300] call Tcore_fnc_availablePositions;
+
 
 private _clusterHash   = _battlefield get "clusterPositions";
 
@@ -18,13 +28,13 @@ private _hiddenFromEast = [];
 private _hiddenFromGuer = [];
 
 {
-	private _westVisible = [_x, _westPositions] call Tcore_fnc_visibleFromPositions;
-	private _eastVisible = [_x, _eastPositions] call Tcore_fnc_visibleFromPositions;
-	private _guerVisible = [_x, _guerPositions] call Tcore_fnc_visibleFromPositions;
+    private _westVisible = [_x, _westPositions] call Tcore_fnc_visibleFromPositions;
+    private _eastVisible = [_x, _eastPositions] call Tcore_fnc_visibleFromPositions;
+    private _guerVisible = [_x, _guerPositions] call Tcore_fnc_visibleFromPositions;
 
-	if!(_westVisible)then{_hiddenFromWest pushBackUnique _x};
-	if!(_eastVisible)then{_hiddenFromEast pushBackUnique _x};
-	if!(_guerVisible)then{_hiddenFromGuer pushBackUnique _x};
+    if!(_westVisible)then{_hiddenFromWest pushBackUnique _x};
+    if!(_eastVisible)then{_hiddenFromEast pushBackUnique _x};
+    if!(_guerVisible)then{_hiddenFromGuer pushBackUnique _x};
 
 } forEach _gridPositions;
 

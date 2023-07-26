@@ -6,9 +6,9 @@ params["_posArr", "_relPos", "_maxMin"];
 private _relDirs   = [];
 
 {
-	
-			_relDirs pushBackUnique (_x getDir _relPos) call Tcore_fnc_formatDir;
-	
+    
+            _relDirs pushBackUnique (_x getDir _relPos) call Tcore_fnc_formatDir;
+    
 } forEach _posArr;
 
 private _avgDir = ([_relDirs] call Tcore_fnc_average);//[([_relDirs] call Tcore_fnc_average)] call Tcore_fnc_formatDir;

@@ -1,0 +1,1 @@
+typeOf _this isNotEqualTo (typeOf vehicle _this);

@@ -1,15 +1,23 @@
+// Copyright: Erlend Kristensen(c) 2023, learnbymistake@gmail.com
+// BSD 3-Clause License     
+// Author:         Leo Hartgen (Tally-1)
+// Author links:   
+//              https://github.com/Tally-1, 
+//              https://thehartgen.web.app/projects/, 
+//              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
+
 params ["_man", "_battleField"];
 
 private _action = [_man, "action"] call SFSM_fnc_unitData;
 if(isNil "_action")
 exitWith{
-	"reactToVehicles, action undefined" call dbgmsg;
-	false;
-	};
+    "reactToVehicles, action undefined" call dbgmsg;
+    false;
+    };
 
 private _occupied = ("Hiding" in _action 
                   || "hiding" in _action
-				  || "hide" in _action
+                  || "hide" in _action
                   || "Targeting" in _action 
                   || "weapon" in _action 
                   || "holding" in _action);
@@ -33,9 +41,9 @@ if(isNull _majorThreat)exitWith{false};
 if(_playerLead 
 && {!(SFSM_PlayerGrpDodge)})
 exitWith{
-			"player groups blocked from dodging, will not hide from vehicles" call dbgmsg; 
-			false;
-		};
+            "player groups blocked from dodging, will not hide from vehicles" call dbgmsg; 
+            false;
+        };
 
 
 //try to pick up launcher
@@ -83,9 +91,9 @@ private _house = [(getPos _man), SFSM_DodgeDistance] call SFSM_fnc_nearestAvaila
 if(_canDodge
 &&{!isNil '_house'})
 then{
-	  
-	  private _coverPos = [_man, _house, false, _majorThreat] call SFSM_fnc_moveIntoHouseInit;
-	  _takeCoverIndoors = !(_coverPos isEqualTo [0,0,0]);
+      
+      private _coverPos = [_man, _house, false, _majorThreat] call SFSM_fnc_moveIntoHouseInit;
+      _takeCoverIndoors = !(_coverPos isEqualTo [0,0,0]);
 };
 
 //If house can be used as cover exit here.
@@ -97,9 +105,9 @@ private _posFound = typeName _hidePos == "ARRAY";
 
 if(_posFound)
 exitWith{
-			[_man, _hidePos, _majorThreat] spawn SFSM_fnc_hideFromVehicle;
-			true;
-		}; 
+            [_man, _hidePos, _majorThreat] spawn SFSM_fnc_hideFromVehicle;
+            true;
+        }; 
 
 
 //If no hidden positions are found in the battlefield-grid, a standard coverPosition will be used
@@ -112,9 +120,9 @@ _posFound = (!isNil "_hidePos" && {typeName _hidePos == "ARRAY"});
 
 if(_posFound)
 exitWith{
-			[_man, _hidePos, _majorThreat] spawn SFSM_fnc_hideFromVehicle;
-			true;
-		};
+            [_man, _hidePos, _majorThreat] spawn SFSM_fnc_hideFromVehicle;
+            true;
+        };
 
 
 "No place to hide found, running away from vehicle" call dbgmsg;

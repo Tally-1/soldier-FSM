@@ -1,15 +1,23 @@
+// Copyright: Erlend Kristensen(c) 2023, learnbymistake@gmail.com
+// BSD 3-Clause License     
+// Author:         Leo Hartgen (Tally-1)
+// Author links:   
+//              https://github.com/Tally-1, 
+//              https://thehartgen.web.app/projects/, 
+//              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
+
 Params ["_man", "_wounded"]; 
 private _timer = time + 30;
 // private _leftPos = _wounded modelToWorldVisualWorld [0.7,0.5,0];
 
 _man addEventHandler ["AnimDone", {
-	params ["_unit", "_anim"];
+    params ["_unit", "_anim"];
 
-	if("medicend" in _anim)then{
-		_unit removeEventHandler [_thisEvent, _thisEventHandler]; 
-		_unit setVariable ["SFSM_reviveDone", true];
+    if("medicend" in _anim)then{
+        _unit removeEventHandler [_thisEvent, _thisEventHandler]; 
+        _unit setVariable ["SFSM_reviveDone", true];
 
-	};
+    };
 }];
 
 _man attachTo [_wounded, [0,1.2,0], "face", true];
@@ -26,10 +34,10 @@ _man playMove "AinvPknlMstpSnonWrflDnon_medic4";
 _man playMove "AinvPknlMstpSnonWrflDnon_medicEnd";
 
 waitUntil { sleep 1; 
-	(_man getVariable ["SFSM_reviveDone", false] 
-	|| _timer < time
-	|| (!([_man, _wounded, true, 7] call SFSM_fnc_canBuddyHeal))
-	)
+    (_man getVariable ["SFSM_reviveDone", false] 
+    || _timer < time
+    || (!([_man, _wounded, true, 7] call SFSM_fnc_canBuddyHeal))
+    )
 };
 
 // private _posMan = getPosASLVisual _man;

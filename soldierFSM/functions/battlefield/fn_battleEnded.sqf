@@ -1,3 +1,20 @@
+//Copyright: Erlend Kristensen(c) 2023, learnbymistake@gmail.com
+// BSD 3-Clause License     
+// Author:         Leo Hartgen (Tally-1)
+// Author links:   
+//              https://github.com/Tally-1, 
+//              https://thehartgen.web.app/projects/, 
+//              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
+
+// Description: This function is used to determine if a battle should end. It is called by the SFSM_fnc_battlefieldLoop function.
+
+// Params: _battleField (hashMap) - The battlefield object to check.
+
+// Return value: (boolean) - True if the battle should end, false if not.
+
+// Example: [_battleField] call SFSM_fnc_battleEnded;
+
+
 params ['_battleField'];
 private _timePassed = time - (_battlefield get "Started");
 private _name       = _battlefield get 'name';
@@ -9,9 +26,9 @@ if(_timePassed < 60)exitwith{false};
 private  _sides = (_battlefield get "sides") call SFSM_fnc_sidesFromString;
 if(count _sides < 2)
 exitWith{
-			[[str (_sides#0), ' Has won battle at ', _name, '!']] call dbgmsg;
-			true;
-		};
+            [[str (_sides#0), ' Has won battle at ', _name, '!']] call dbgmsg;
+            true;
+        };
 
 
 //Get the last unit who fired his weapon, and measure the time since he shot.
@@ -27,8 +44,8 @@ private  _unitsFighting = [_battleField] call SFSM_fnc_battlingUnits;
 if(count _unitsFighting < 2
 &&{_lastShotTime > 120})
 exitWith{
-			[['Ending battle at ', _name, '. ', _lastShotTime, ' Seconds since last shot']] call dbgmsg;
-			true;
-		}; 
+            [['Ending battle at ', _name, '. ', _lastShotTime, ' Seconds since last shot']] call dbgmsg;
+            true;
+        }; 
 
 false;

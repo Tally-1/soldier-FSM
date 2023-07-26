@@ -9,12 +9,12 @@ private _distToNextPos = _iterationDist;
 
 for "_i" from 1 to _posCount do 
 {
-	private _newPos = [_start#0, _start#1, _dir, _distToNextPos] call Tcore_fnc_sinCosPos;
+    private _newPos = [_start#0, _start#1, _dir, _distToNextPos] call Tcore_fnc_sinCosPos;
 
-	if!(isNil "_zValue")then{_newPos = [_newPos#0, _newPos#1, _zValue]};
+    if!(isNil "_zValue")then{_newPos = [_newPos#0, _newPos#1, _zValue]};
 
-	_positions pushBack _newPos;
-	_distToNextPos = _distToNextPos + _iterationDist;
+    _positions pushBack _newPos;
+    _distToNextPos = _distToNextPos + _iterationDist;
 };
 
 if!(_includeEnds)exitWith{_positions;};

@@ -1,22 +1,28 @@
+// Copyright: Erlend Kristensen(c) 2023, learnbymistake@gmail.com
+// BSD 3-Clause License     
+// Author:         Leo Hartgen (Tally-1)
+// Author links:   
+//              https://github.com/Tally-1, 
+//              https://thehartgen.web.app/projects/, 
+//              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
+
 private _time = 1;
 params["_man", "_flashText", "_time"];
 
-private _flashActions = [
-	"Path calculated", 
-	"Sprinting!!", 
-	"Calculating path", 
-	"Turret-mount failed!"
-	];
+private _flashAction = [_man, "flashAction"] call SFSM_fnc_unitData;
 
+if(isNil "_flashAction")         exitWith{};
+if(_flashAction isNotEqualTo "") then{
+	private _startTime = time;
+	waitUntil{([_man, "flashAction"] call SFSM_fnc_unitData) isEqualTo ""};
+	private _timeSpent = time - _startTime;
+	private _time = _time - _timeSpent;
+	if(_time < 0.2)then{_time = 0.2;};
+};
 
-private _action = [_man, "action"] call SFSM_fnc_unitData;
-
-if(isNil "_action")         exitWith{};
-if(_action in _flashActions)exitWith{};
-
-[_man, "action", _flashText] call SFSM_fnc_unitData;
+[_man, "flashAction", _flashText] call SFSM_fnc_unitData;
 
 sleep _time; 
-[_man, "action", _action] call SFSM_fnc_unitData;
+[_man, "flashAction", ""] call SFSM_fnc_unitData;
 
 true;

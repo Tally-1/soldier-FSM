@@ -1,3 +1,11 @@
+// Copyright: Erlend Kristensen(c) 2023, learnbymistake@gmail.com
+// BSD 3-Clause License     
+// Author:         Leo Hartgen (Tally-1)
+// Author links:   
+//              https://github.com/Tally-1, 
+//              https://thehartgen.web.app/projects/, 
+//              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
+
 private _smallTxt = "<t size='0.75'>";
 private _bigTxt   = "<t size='2'>";
 private _versionName = ["soldier FSM V. ", SFSM_Version] joinString "";
@@ -10,20 +18,20 @@ private _red      = "<t color='#e51313'>";
 private _end      = "</t>";
 private _newLine  = "<br/>";
 
-private _curatorDeleted = _warningType == "curator";
+// private _curatorDeleted = _warningType == "curator";
 
 private _warningText = parseText 
 ([
-	_outLine,
-	_bigTxt,_red, "!!Warning!!", _end,_end,_newLine,
-	_green, "Do not delete units while they are engaged in a fight,",
-	        "This might cause errors.", _end, _newLine,_newLine,
-	_khaki,	"First kill them using the [end] button.", _newLine,
-			"Then wait 2-5 seconds before deleting them.", _newLine,
-			"This will allow the engine to properly exit the scripts.", _newLine,
-			_newLine,_end,
-			_smallTxt, _versionName,_end,
-	_end
+    _outLine,
+    _bigTxt,_red, "!!Warning!!", _end,_end,_newLine,
+    _green, "Do not delete units while they are engaged in a fight,",
+            "This might cause errors.", _end, _newLine,_newLine,
+    _khaki,    "First kill them using the [end] button.", _newLine,
+            "Then wait 2-5 seconds before deleting them.", _newLine,
+            "This will allow the engine to properly exit the scripts.", _newLine,
+            _newLine,_end,
+            _smallTxt, _versionName,_end,
+    _end
 
 ] joinString "");
 

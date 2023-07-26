@@ -1,3 +1,20 @@
+//Copyright: Erlend Kristensen(c) 2023, learnbymistake@gmail.com
+// BSD 3-Clause License     
+// Author:         Leo Hartgen (Tally-1)
+// Author links:   
+//              https://github.com/Tally-1, 
+//              https://thehartgen.web.app/projects/, 
+//              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
+
+// Description: AI clears a building room by room.
+
+// Params: [_man:object (the attacker), _building:object, _target:object (the defender)]
+
+// Return value: none
+
+// Example: [_unitA, _building, _unitB] spawn SFSM_fnc_clearBuilding;
+
+
 params["_man", "_building", "_target"];
 private _startPos = getPos _man;
 private _buildingVarName = ["Occupied building ", (name _man), (getPos _building)] joinString "_";
@@ -41,6 +58,7 @@ waitUntil{scriptDone _script;};
   if((_man distance2D _building)>100)then{_endCQB = true;};
   
   if(((getPosATL _building)#3)<0)exitWith{_endCQB = true;};
+  if ([_man] call SFSM_fnc_isUncon)exitWith{_endCQB = true;};
 
   //exit if target is dead and there are no enemies near.
   if((time-_startTime)>15
@@ -50,6 +68,7 @@ waitUntil{scriptDone _script;};
   }}})
   then{
     [_man, "action", "CQB: House is clear!."] call SFSM_fnc_unitData;
+    ["CQB_houseClear", [_man, _building]] call CBA_fnc_localEvent;
     private _script = [_man, _path#((count _path)-1), 6, 5] spawn SFSM_fnc_forceMoveToPos;
     waitUntil{sleep 1; scriptDone _script;};
     _endCQB = true;
@@ -75,6 +94,7 @@ waitUntil{scriptDone _script;};
 
 
 [_man, "action", "CQB: Clearing House finished."] call SFSM_fnc_unitData;
+["CQB_clearingEnded", [_man, _building]] call CBA_fnc_localEvent;
 sleep 1;
 [_man, "action", "none"] call SFSM_fnc_unitData;
 [_man, "targetBuilding", "none"] call SFSM_fnc_unitData;

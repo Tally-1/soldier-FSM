@@ -1,3 +1,11 @@
+// Copyright: Erlend Kristensen(c) 2023, learnbymistake@gmail.com
+// BSD 3-Clause License     
+// Author:         Leo Hartgen (Tally-1)
+// Author links:   
+//              https://github.com/Tally-1, 
+//              https://thehartgen.web.app/projects/, 
+//              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
+
 params ["_launchPos", "_impactPos"];
 //handle overflow
 if(time - SFSM_lastImpactHandler < 10)exitWith{};
@@ -20,19 +28,19 @@ if(_nearMen isEqualTo [])exitWith{};
 //Send all units within set radius into cover / run away from impact
 private _unitsReacted = 0;
 {
-	private _action      = [_X, "action"]        call SFSM_fnc_unitData;
-	private _lastCover   = [_x, "last_time_in_cover"] call SFSM_fnc_unitData;
-	private _noCoverSpam = (time - _lastCover) > (SFSM_stayCoverPosTime + 60);
-	private _notInBattle = (([_X, "currentBattle"] call SFSM_fnc_unitData) == "none");
+    private _action      = [_X, "action"]        call SFSM_fnc_unitData;
+    private _lastCover   = [_x, "last_time_in_cover"] call SFSM_fnc_unitData;
+    private _noCoverSpam = (time - _lastCover) > (SFSM_stayCoverPosTime + 120);
+    private _notInBattle = (([_X, "currentBattle"] call SFSM_fnc_unitData) == "none");
 
-	if(_action == "none"
-	&&{_noCoverSpam
-	&&{_notInBattle
-	&&{!(_x getVariable ['SFSM_excluded', false])}}})
-	then{
-			[_x, _launchPos] call SFSM_fnc_eventTriggeredCover;
-			_unitsReacted = _unitsReacted+1;
-		};
+    if(_action == "none"
+    &&{_noCoverSpam
+    &&{_notInBattle
+    &&{!(_x getVariable ['SFSM_excluded', false])}}})
+    then{
+            [_x, _launchPos] call SFSM_fnc_eventTriggeredCover;
+            _unitsReacted = _unitsReacted+1;
+        };
 
 } forEach _nearMen;
 

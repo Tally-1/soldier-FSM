@@ -1,3 +1,12 @@
+//Copyright: Erlend Kristensen(c) 2023, learnbymistake@gmail.com
+// BSD 3-Clause License     
+// Author:         Leo Hartgen (Tally-1)
+// Author links:   
+//              https://github.com/Tally-1, 
+//              https://thehartgen.web.app/projects/, 
+//              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
+
+
 params["_unitA", "_unitB"];
 if!([_unitA] call SFSM_fnc_isRealMan)exitWith{[("logic detected" call dbgmsg), ""]};
 if!([_unitB] call SFSM_fnc_isRealMan)exitWith{[("logic detected" call dbgmsg), ""]};
@@ -19,8 +28,8 @@ private _distToBattle = _midPos distance2D _battlePos;
 
 
 private _insideBattle = ((_distanceA < _battleRadius
-					  &&{_distanceB < _battleRadius})
-					  || _distToBattle < _battleRadius);
+                      &&{_distanceB < _battleRadius})
+                      || _distToBattle < _battleRadius);
 
 if(_insideBattle)exitWith{["join", _battleKey]};
 

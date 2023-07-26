@@ -1,3 +1,11 @@
+// Copyright: Erlend Kristensen(c) 2023, learnbymistake@gmail.com
+// BSD 3-Clause License     
+// Author:         Leo Hartgen (Tally-1)
+// Author links:   
+//              https://github.com/Tally-1, 
+//              https://thehartgen.web.app/projects/, 
+//              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
+
 private _action = "placing explosive";
 params["_man", "_action"];
 private _explosive = [_man] call SFSM_fnc_getChargeFromBackPack;
@@ -6,11 +14,7 @@ if(_explosive isEqualTo [])exitWith{};
 [_man, "action", _action] call SFSM_fnc_unitData;
 _man playMoveNow "AinvPercMstpSrasWrflDnon_Putdown_AmovPercMstpSrasWrflDnon";
 [_man] call SFSM_fnc_putAnimDoneEH;
-// waitUntil{
-// 	// [_man, "action"] call SFSM_fnc_unitData == "none";
-// 	   private _animDone = _unit getVariable ["SFSM_animDone", false];
-// 	   _animDone;
-// 	};
+
 sleep 1;
 // the name of the inventory item is different from
 // the CFG_name used to create the explosive.

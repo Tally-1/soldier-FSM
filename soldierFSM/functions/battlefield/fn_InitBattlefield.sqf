@@ -1,45 +1,62 @@
+//Copyright: Erlend Kristensen(c) 2023, learnbymistake@gmail.com
+// BSD 3-Clause License     
+// Author:         Leo Hartgen (Tally-1)
+// Author links:   
+//              https://github.com/Tally-1, 
+//              https://thehartgen.web.app/projects/, 
+//              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
+
+
+// Description:   This function will initialize a battlefield, and store all the data in a hashmap.
+
+// params: _unitA (object), _unitB (object)
+
+// returnValue: battleKey (string)- the key used to access the battlefield hashmap in the SFSM_Battles hashmap.
+
+//Example: ["unit1", "unit2"] call SFSM_fnc_initBattlefield;
+
+
 //unit 1 && unit 2 refers to the two units who first spot eachother.
 params ["_unitA", "_unitB"];
 
 
 "Initializing battle." call SFSM_fnc_debugMessage;
 
-private _battlefield  = createHashmap;
-private _startTime    = time;
-private _posA         = [([_unitA] call Tcore_fnc_clusterPos)] call Tcore_fnc_roundPos;
-private _posB         = [([_unitB] call Tcore_fnc_clusterPos)] call Tcore_fnc_roundPos;
-private _radius       = round((_posA distance2D _posB) / 1.8);
-private _centerPos    = [([_posA, _posB] call Tcore_fnc_getMidpoint)] call Tcore_fnc_roundPos;
-		_radius       = [_centerPos, _radius] call SFSM_fnc_battlefieldRadius;
-private _battleKey    = (str _centerPos);
-private _sides        = [east, west, independent];
-private _markers      = [];
-private _supplies      = _centerPos nearSupplies _radius;
+private _battlefield = createHashmap;
+private _startTime   = time;
+private _dimensions  = [_unitA, _unitB] call SFSM_fnc_battlefieldDimensions;
+private _centerPos   = _dimensions#0;
+private _radius      = _dimensions#1;
+private _battleKey   = (str _centerPos);
+private _sides       = [east, west, independent];
+private _markers     = [];
+private _supplies    = _centerPos nearSupplies _radius;
 
 
-_battlefield set ["currentAction",	"initializing"];
-_battlefield set ["center",	        _centerPos];
-_battlefield set ["markers",		_markers];
-_battlefield set ["Started", 		_startTime];
+_battlefield set ["currentAction",  "initializing"];
+_battlefield set ["center",         _centerPos];
+_battlefield set ["markers",        _markers];
+_battlefield set ["Started",         _startTime];
 _battlefield set ["lastDataUpdate", -300];
 _battlefield set ["lastGunshot",    -300];
-_battlefield set ["radius", 		_radius];
-_battlefield set ["gridLoaded", 	false];
-_battlefield set ["terrainLoaded", 	false];
+_battlefield set ["radius",         _radius];
+_battlefield set ["gridLoaded",     false];
+_battlefield set ["terrainLoaded",  false];
 
 SFSM_Battles set [_battleKey, _battlefield];
 
 private _clustersData = [
-							_centerPos,	// center of area
-							_sides, 	// sides
-							true,		// return all data
-							_radius,	// AreaRadius
-							50,			// ClusterRadius
-							2,			// height of returned positions (AGL)
-							true		// include terrainObjects
-						] call Tcore_fnc_allClustersInRadius;
+                            _centerPos,    // center of area
+                            _sides,     // sides
+                            true,        // return all data
+                            _radius,    // AreaRadius
+                            50,            // ClusterRadius
+                            2,            // height of returned positions (AGL)
+                            false        // include terrainObjects
+                        ] call Tcore_fnc_allClustersInRadius;
 
 [["Loaded clusterPositions in ",(time - _startTime)," seconds."]] call SFSM_fnc_debugMessage;
+// if(true) exitWith {};
 
 private _mapObjsData = createHashmap;
 
@@ -51,36 +68,33 @@ private _mapObjsData = createHashmap;
 
 private _unitFilter = {
 
-	private _action = [_x, "action"] call SFSM_fnc_unitData;
+    private _action = [_x, "action"] call SFSM_fnc_unitData;
 
-	(!(_x getVariable ["SFSM_Excluded",false]))
-	&&{(typeOf _x) == (typeOf (vehicle _x))
-	&&{!isNil "_action"}}
+    (!(_x getVariable ["SFSM_Excluded",false]))
+    &&{(typeOf _x) == (typeOf (vehicle _x))
+    &&{!isNil "_action"}}
 
-	};
-
+    };
 
 private _groups          = [_clustersData] call Tcore_fnc_clusterGroups;
 private _units           = ([_clustersData] call Tcore_fnc_clusterUnits) select _unitFilter;
 private _vehicles        = [_clustersData] call Tcore_fnc_clusterVehicles;
 private _areaName        = _battlefield get "name";
 private _deadMen         = [_centerPos, _radius] call Tcore_fnc_deadMenInArea;
-
-
-private _weapons = nearestObjects [_centerPos, ["WeaponHolder", "WeaponHolderSimulated"], _radius];
+private _weapons         = nearestObjects [_centerPos, ["WeaponHolder", "WeaponHolderSimulated"], _radius];
 
 //store the variables that are not included in the "battlefield"-hashmap itself.
 [
-	_battlefield, 
-	_clustersData, 
-	_weapons,
-	_units,
-	_deadMen,
-	_vehicles, 
-	_groups, 
-	_areaName, 
-	_mapObjsData,
-	_supplies
+    _battlefield, 
+    _clustersData, 
+    _weapons,
+    _units,
+    _deadMen,
+    _vehicles, 
+    _groups, 
+    _areaName, 
+    _mapObjsData,
+    _supplies
 ] call SFSM_fnc_battlefieldVariables;
 
 _battlefield set ["zones", ([_battlefield] call SFSM_fnc_getZones)];
@@ -104,12 +118,17 @@ _battlefield set ["zones", ([_battlefield] call SFSM_fnc_getZones)];
 
 [_battlefield] call SFSM_fnc_bfDebugMarkers;
 
-_battlefield set ["currentAction",	"loading terrain"];
+_battlefield set ["currentAction",    "loading terrain"];
 
 
 
-[_battlefield] spawn SFSM_fnc_battlefieldPostInit;
+[_battlefield] spawn SFSM_fnc_battlefieldMarksmen;
 [_battlefield] spawn SFSM_fnc_battleFieldMedicLoop;
 [_battlefield] spawn SFSM_fnc_assignBattlefieldTurrets;
+[_battlefield] spawn SFSM_fnc_BffOverRunLoop;
+// [_battlefield] spawn SFSM_fnc_battlefieldRescueLoop;
+[_battlefield] spawn SFSM_fnc_battlefieldPostInit;
+
+["new_battle", _battlefield] call CBA_fnc_localEvent;
 
 _battleKey; 

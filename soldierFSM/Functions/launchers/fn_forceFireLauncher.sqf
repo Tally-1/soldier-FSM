@@ -1,5 +1,17 @@
+// Copyright: Erlend Kristensen(c) 2023, learnbymistake@gmail.com
+// BSD 3-Clause License     
+// Author:         Leo Hartgen (Tally-1)
+// Author links:   
+//              https://github.com/Tally-1, 
+//              https://thehartgen.web.app/projects/, 
+//              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
+
 private _actionTxt = "firing launcher!";
-params["_man", "_actionTxt", "_wantedDir"];
+params[
+    "_man", 
+    "_actionTxt", 
+    "_wantedDir"
+];
 
 [_man, "action", _actionTxt] call SFSM_fnc_unitData;
 
@@ -11,15 +23,17 @@ private _timer = time +5;
 
 waitUntil {
 
-	if(!isNil "_wantedDir"
-	&&{(round _wantedDir) != (round(getDir _man))
-	&&{(_timer -  time)>= 1}})
-	then{_man setDir _wantedDir};
+    if(!isNil "_wantedDir"
+    &&{(round _wantedDir) != (round(getDir _man))
+    &&{(_timer -  time)>= 1}})
+    then{_man setDir _wantedDir};
 
-	_man forceWeaponFire [_launcher, _mode];
-	_fired = (_man getVariable ["SFSM_launched", false]);
-	((time > _timer) || _fired);
-	};
+    if(isNil "_mode")then{_mode = "this"};
+
+    _man forceWeaponFire [_launcher, _mode];
+    _fired = (_man getVariable ["SFSM_launched", false]);
+    ((time > _timer) || _fired);
+    };
 
 sleep 1;
 

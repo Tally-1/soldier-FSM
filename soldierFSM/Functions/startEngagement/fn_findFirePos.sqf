@@ -1,8 +1,16 @@
+// Copyright: Erlend Kristensen(c) 2023, learnbymistake@gmail.com
+// BSD 3-Clause License     
+// Author:         Leo Hartgen (Tally-1)
+// Author links:   
+//              https://github.com/Tally-1, 
+//              https://thehartgen.web.app/projects/, 
+//              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
+
 params ["_man", "_targetPosASL"];
 
 if(typeName _targetPosASL == "object")
 then{
-	    _targetPosASL = [(getPosASLVisual "object"), 1.5] call Tcore_fnc_addZ;
+        _targetPosASL = [(getPosASLVisual "object"), 1.5] call Tcore_fnc_addZ;
 
 };
 
@@ -17,10 +25,10 @@ _searchPositions = [_man, _searchPositions] call Tcore_fnc_sortByDist;
 private _firePos = [0,0,0];
 
 {
-	private _searchPos = AGLToASL _x;
-	private _visibility = ([_searchPos, _targetPosASL] call Tcore_fnc_visibility);
-	if(_visibility >= 0.4)exitWith{_firePos = _searchPos;};
-	
+    private _searchPos = AGLToASL _x;
+    private _visibility = ([_searchPos, _targetPosASL] call Tcore_fnc_visibility);
+    if(_visibility >= 0.4)exitWith{_firePos = _searchPos;};
+    
 } forEach _searchPositions;
 
 _firePos;

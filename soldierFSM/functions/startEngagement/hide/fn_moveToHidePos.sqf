@@ -1,3 +1,11 @@
+// Copyright: Erlend Kristensen(c) 2023, learnbymistake@gmail.com
+// BSD 3-Clause License     
+// Author:         Leo Hartgen (Tally-1)
+// Author links:   
+//              https://github.com/Tally-1, 
+//              https://thehartgen.web.app/projects/, 
+//              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
+
 params["_man", "_hidePos", "_enemyVehicle"];
 
 _hidePos = [_hidePos#0,_hidePos#1,0];
@@ -18,29 +26,29 @@ _man doTarget objNull;
 
 
 while {sleep 1; _distance > 3} do {
-	
-	private _manPos          = eyePos _man;
-	private _enemyPos        = eyePos _enemyVehicle;
-	private _hasMovedCloser  = _distance > (_manPos distance2d _hidePos);
-	private _visibleToThreat = ([_man, "VIEW", _enemyVehicle] checkVisibility [_manPos, _enemyPos]) > 0.1;
-	private _destroyed       = [_enemyVehicle]call Tcore_fnc_deadCrew;
+    
+    private _manPos          = eyePos _man;
+    private _enemyPos        = eyePos _enemyVehicle;
+    private _hasMovedCloser  = _distance > (_manPos distance2d _hidePos);
+    private _visibleToThreat = ([_man, "VIEW", _enemyVehicle] checkVisibility [_manPos, _enemyPos]) > 0.1;
+    private _destroyed       = [_enemyVehicle]call Tcore_fnc_deadCrew;
 
-	_distance = ((eyePos _man) distance2d _hidePos);
+    _distance = ((eyePos _man) distance2d _hidePos);
 
-	if!(_hasMovedCloser)
-	then{
-			_man doMove _hidePos;
-			_man doTarget objNull;
-		};
-	
+    if!(_hasMovedCloser)
+    then{
+            _man doMove _hidePos;
+            _man doTarget objNull;
+        };
+    
 
-	if(_distance < 1.1)  exitWith{false;};
-	if(time > _Timer)	 exitWith{false;};
-	if(!alive _man)		 exitWith{false;};
-	if!(_visibleToThreat)exitWith{false;};
-	if(_destroyed)	     exitWith{false;};
-	if(_man getVariable ["ace_isunconscious", false])exitWith{false;};
-	if(_man getVariable ["dam_ignore_injured0",false])exitWith{false;};
+    if(_distance < 1.1)  exitWith{false;};
+    if(time > _Timer)     exitWith{false;};
+    if(!alive _man)         exitWith{false;};
+    if!(_visibleToThreat)exitWith{false;};
+    if(_destroyed)         exitWith{false;};
+    if(_man getVariable ["ace_isunconscious", false])exitWith{false;};
+    if(_man getVariable ["dam_ignore_injured0",false])exitWith{false;};
 
 };
 

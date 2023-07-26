@@ -1,9 +1,17 @@
+// Copyright: Erlend Kristensen(c) 2023, learnbymistake@gmail.com
+// BSD 3-Clause License     
+// Author:         Leo Hartgen (Tally-1)
+// Author links:   
+//              https://github.com/Tally-1, 
+//              https://thehartgen.web.app/projects/, 
+//              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
+
 params[
-		"_projectile",  
-		"_ammoType", 
-		"_shooter", //the object that fired the projectile
-		"_gunner"   //If the projectile was fired from a vehicle, then _gunner would be the one pulling the trigger
-	];
+        "_projectile",  
+        "_ammoType", 
+        "_shooter", //the object that fired the projectile
+        "_gunner"   //If the projectile was fired from a vehicle, then _gunner would be the one pulling the trigger
+    ];
 
 //see: "references/ammoClassDescription.sqf"
 //for more info on the ammo classes.
@@ -26,12 +34,12 @@ if((_handGrenade
 exitWith{
             [_projectile, _launchPos, _shooter, _ammoType] call SFSM_fnc_explosionEH;
             if(_handGrenade)then{[_projectile, _shooter] spawn SFSM_fnc_handleGrenade;};
-		};
+        };
 
 if(_bullet)
 exitwith{
-			[_projectile, _launchPos, _shooter] call SFSM_fnc_bulletEH;
-		};
+            [_projectile, _launchPos, _shooter] call SFSM_fnc_bulletEH;
+        };
 
 
 

@@ -1,3 +1,11 @@
+// Copyright: Erlend Kristensen(c) 2023, learnbymistake@gmail.com
+// BSD 3-Clause License     
+// Author:         Leo Hartgen (Tally-1)
+// Author links:   
+//              https://github.com/Tally-1, 
+//              https://thehartgen.web.app/projects/, 
+//              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
+
 params ["_objData"];
 private _objectShape = _objData get "3dData";
 private _type        = (_objData get "type");
@@ -15,11 +23,11 @@ private _notExcluded = !(_type in SFSM_excludedMapObjs);
 
 
 private _isHunkerObject = (
-							_squareish 
-							&& {_canCover 
-							&& {_mediumSize 
-							&& {_notbush
-							&& {_notExcluded}}}}
-						  );
+                            _squareish 
+                            && {_canCover 
+                            && {_mediumSize 
+                            && {_notbush
+                            && {_notExcluded}}}}
+                          );
 
 _isHunkerObject

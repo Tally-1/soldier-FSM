@@ -1,8 +1,16 @@
+// Copyright: Erlend Kristensen(c) 2023, learnbymistake@gmail.com
+// BSD 3-Clause License     
+// Author:         Leo Hartgen (Tally-1)
+// Author links:   
+//              https://github.com/Tally-1, 
+//              https://thehartgen.web.app/projects/, 
+//              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
+
 params["_objectHash", "_enemyPositions"];
 private _objectShape    = _objectHash get "3dData";
-private _pos 			= _objectShape get "position";
+private _pos             = _objectShape get "position";
 private _avgEnemyRelDir = [_enemyPositions, _pos] call Tcore_fnc_avgRelDir;
-private _safeDir 		= _avgEnemyRelDir;
+private _safeDir         = _avgEnemyRelDir;
 private _rigthDir       = [(_safeDir -90)] call Tcore_fnc_formatDir;
 private _leftDir        = [(_safeDir +90)] call Tcore_fnc_formatDir;
 private _objMaxSize     = (selectMax [(_objectShape get "length"), (_objectShape get "width")]);

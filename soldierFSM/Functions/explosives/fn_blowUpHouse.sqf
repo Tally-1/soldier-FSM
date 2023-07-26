@@ -1,7 +1,23 @@
+// Copyright: Erlend Kristensen(c) 2023, learnbymistake@gmail.com
+// BSD 3-Clause License     
+// Author:         Leo Hartgen (Tally-1)
+// Author links:   
+//              https://github.com/Tally-1, 
+//              https://thehartgen.web.app/projects/, 
+//              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
+
+// Description: Sends a AI man to place an explosive inside a building
+
+// Params: [_man:object, _building:object]
+
+// Return value: none
+
+// Example: [_mySoldado, _myBuilding] spawn SFSM_fnc_blowUpHouse;
+
 params[
-		"_man", 
-		"_building"
-	];
+        "_man", 
+        "_building"
+    ];
 
 //init function variables
 private _startPos = getPos _man;
@@ -18,30 +34,30 @@ private _startSpeedMode = speedMode _man;
 
 //move into house.
 {
-	
+    
 
-	private _moveIn = [
-		_man, //unit 
-		_x,   //position 
-		4,    //timeout (optional)
-		3,    //minimum distance to position in order to complete move. (optional)
+    private _moveIn = [
+        _man, //unit 
+        _x,   //position 
+        4,    //timeout (optional)
+        3,    //minimum distance to position in order to complete move. (optional)
         2     // sleep between each repetition of doMove. (optional)
-		] spawn SFSM_fnc_forceMoveToPos;
+        ] spawn SFSM_fnc_forceMoveToPos;
 
     waitUntil{sleep 1; scriptDone _moveIn;};
     
-	private _distance = (_man distance2D _building);
-	private _currentBuilding = [_man]call SFSM_fnc_currentBuilding;
-	private _arrived = ((!isNil "_currentBuilding") &&{_currentBuilding == _building});
+    private _distance = (_man distance2D _building);
+    private _currentBuilding = [_man]call SFSM_fnc_currentBuilding;
+    private _arrived = ((!isNil "_currentBuilding") &&{_currentBuilding == _building});
     
-	//conditions for ending "move-in loop"
-	if((_arrived)
-	|| (!alive _man)
-	|| (time > _timer
-	|| ((_distance > _startDistance)
-	&& {_distance > SFSM_dodgeDistance})))
-	exitWith{};
-	
+    //conditions for ending "move-in loop"
+    if((_arrived)
+    || (!alive _man)
+    || (time > _timer
+    || ((_distance > _startDistance)
+    && {_distance > SFSM_dodgeDistance})))
+    exitWith{};
+    
 } forEach _path;
 
 //check status 
@@ -52,37 +68,39 @@ private _success = (alive _man && {_arrived});
 //if man is dead or not inside the house.
 if!(_success)
 exitWith{
-	      [_man, "action", "Demolition failed!"] call SFSM_fnc_unitData;
-		  sleep 2;
-		  [_man, _buildingVarname] call SFSM_fnc_endCQBclearing;
-		  _building setVariable ["SFSM_explosiveRigged", false];
-	};
+          [_man, "action", "Demolition failed!"] call SFSM_fnc_unitData;
+          sleep 2;
+          [_man, _buildingVarname] call SFSM_fnc_endCQBclearing;
+          _building setVariable ["SFSM_explosiveRigged", false];
+    };
 
 
 //place explosive
 private _placeExplosive = [_man, "Placing explosives"] spawn SFSM_fnc_placeExplosive;
 waitUntil{(scriptDone _placeExplosive || time > _timer)};
 
+["CQB_explosivePlaced", [_man, _building]] call CBA_fnc_localEvent;
 
 //Get out!
 [_man, "action", "explosives placed. RUN!"] call SFSM_fnc_unitData;
 private _script = [_man, _escapePos, 30, 60] spawn SFSM_fnc_clearCQBPos;
 waitUntil{
-	sleep 1; 
-	(scriptDone _script);
-	};
+    sleep 1; 
+    (scriptDone _script);
+    };
 
 
 
 //if man is dead
 if(!alive _man)exitWith{
-	"man died before detonating explosives" call dbgmsg;
-	[_man, _buildingVarname] call SFSM_fnc_endCQBclearing;
+    "man died before detonating explosives" call dbgmsg;
+    [_man, _buildingVarname] call SFSM_fnc_endCQBclearing;
     _building setVariable ["SFSM_explosiveRigged", false];
 };
 
 //blow it up
 [_man, "action", "Detonating explosives"] call SFSM_fnc_unitData;
+["CQB_exploded", [_man, _building]] call CBA_fnc_localEvent;
 sleep 1;
 _man action ["TouchOff", _man];
 sleep 1;

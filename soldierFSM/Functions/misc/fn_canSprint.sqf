@@ -10,7 +10,7 @@ if(! ([_man] call SFSM_fnc_isRealMan))             exitwith{false;};
 if(count SFSM_sprinters >= SFSM_maxSprinters)      exitWith{false;};
 if(_man getVariable ["SFSM_Sprinting", false])     exitwith{false;};
 if(_man getVariable ["ace_isunconscious", false])  exitWith{false;};
-if(_man getVariable ["dam_ignore_injured0",false])exitWith{false;};
+if(_man getVariable ["dam_ignore_injured0",false]) exitWith{false;};
 if!([_man, "pathEnabeled"] call SFSM_fnc_unitData) exitWith{false;};
 
 private _action = [_man, "action"] call SFSM_fnc_unitData;

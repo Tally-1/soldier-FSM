@@ -4,8 +4,8 @@ private _distances = [];
 if(isNil "_center")then{["nil pos", 2] call SFSM_fnc_debugMessage};
 
 {
-	if(!isNil "_center")
-	then{_distances pushback (_x distance2D _center)}	
+    if(!isNil "_center")
+    then{_distances pushback (_x distance2D _center)}    
 } forEach _clusterMembers;
 
 private _clusterRadius = selectMax _distances;

@@ -1,0 +1,1 @@
+[] call SFSM_fnc_allAiRescueCapture;

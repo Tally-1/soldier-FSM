@@ -1,8 +1,16 @@
+// Copyright: Erlend Kristensen(c) 2023, learnbymistake@gmail.com
+// BSD 3-Clause License     
+// Author:         Leo Hartgen (Tally-1)
+// Author links:   
+//              https://github.com/Tally-1, 
+//              https://thehartgen.web.app/projects/, 
+//              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
+
 params[
-	"_man", 
-	"_objectHash", 
-	"_enemyPositions"
-	];
+    "_man", 
+    "_objectHash", 
+    "_enemyPositions"
+    ];
 
 if(isNil "_objectHash")exitWith{/*"nil hash" call dbgmsg*/};
 
@@ -13,7 +21,7 @@ private _safePos    = _objectHash get "safe_pos";
 private _statusData = _objectHash get "status";
 private _objShape   = _objectHash get "3dData";
 private _objPos     = (_objShape get "top");
-		_objPos     = [_objPos, 0.4] call Tcore_fnc_AddZ;
+        _objPos     = [_objPos, 0.4] call Tcore_fnc_AddZ;
 if(_objPos#2 < 1.5)
 then{_objPos = [_objPos, 0.5] call Tcore_fnc_AddZ};
 
