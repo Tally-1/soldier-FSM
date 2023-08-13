@@ -288,9 +288,44 @@ params["_captive", "_captor"];
 ["execution",  [_man, _killer]] call CBA_fnc_localEvent;
 
 [Example]
-_id = ["capture", {
+_id = ["execution", {
 params["_victim", "_executioner"];
 
 }] call CBA_fnc_addEventHandler;
+
+--------------------------------------------------------------------
+
+**When a Fighting position has been temporarily knocked out**
+**(Man died or got incapacitated while inside the FIPO)**
+["FIPO_knockedOut", [_man, _fipo]] call CBA_fnc_localEvent;
+
+[Example]
+_id = ["FIPO_knockedOut", {
+params["_man", "_fipo"];
+
+}] call CBA_fnc_addEventHandler;
+
+--------------------------------------------------------------------
+
+**When a mans "brain" is reset due to inaction**
+["brain_reset", [_man]] call CBA_fnc_localEvent;
+
+[Example]
+_id = ["brain_reset", {
+params["_man"];
+
+}] call CBA_fnc_addEventHandler;
+
+--------------------------------------------------------------------
+
+**Action is flashed on man in debug-mode**
+["flash_action", [_man, _flashText]] call CBA_fnc_localEvent;
+
+[Example]
+_id = ["flash_action", {
+params["_man", "_action"];
+
+}] call CBA_fnc_addEventHandler;
+
 
 --------------------------------------------------------------------

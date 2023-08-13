@@ -8,7 +8,7 @@ private _versionName = "DCO soldier FSM | Close Quarter Combat (CQB)";
 	[
 		50,   	//minimum 
 		150,    //max
-		50,    //default
+		70,    //default
 		0,	   //decimals
 		false
 	],

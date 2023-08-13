@@ -1,5 +1,0 @@
- ***DONE*** 1) exchange priorities for AT (when target available do fire at target).
- ***DONE*** 2) MachineGunners spray fire (suppressive fire on start of engagement (spam reactive fire)). Triggers dodge on 2x the normal amount of bullets
-3) Unkillable vehicle reaction, hide / run get out of range. (take cover --> hold-fire)
-4) Exclude player teams 
-5) Zeus waypoints excludes dodging / hunkering

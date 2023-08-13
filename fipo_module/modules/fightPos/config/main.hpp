@@ -10,11 +10,12 @@ class SFSM_FIPO : Module_F
         #include "sideCheckboxes.hpp"
         #include "stances\allStances.hpp"
         #include "typeCheckBoxes.hpp"
-        #include "flanks\rightFlank.hpp"
-        #include "flanks\leftFlank.hpp"
+        #include "sectors\rightFlank.hpp"
+        #include "sectors\leftFlank.hpp"
         #include "allowOverrun.hpp"
         #include "fubarDisable.hpp"
         #include "hitAndRun.hpp"
+        #include "sectors\dynamicFIPO.hpp"
         
 
         class ModuleDescription : ModuleDescription{}; 

@@ -7,6 +7,8 @@
 //              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
 
 params["_agent"];
+if(isNull _agent)exitWith{};
+
 private _currentPath = _agent getVariable "SFSM_currentPath";
 
 if(!isNil "_currentPath")then{_agent setVariable ["SFSM_currentPath", nil, true];};

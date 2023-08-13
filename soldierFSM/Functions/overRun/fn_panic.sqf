@@ -28,7 +28,14 @@ _animHandle = ([
     ]
 ] call SFSM_fnc_animThenExec)#0;
 
-waitUntil{sleep 1; _man getVariable _animHandle};
+waitUntil{
+    sleep 1; 
+    private _animDone = _man getVariable _animHandle;
+    if(isNil "_animDone")        exitWith{true;};
+    if(_animDone isEqualTo true) exitWith{true;};
+    false;
+};
+
 _man setVariable [_animHandle, nil];
 
 //final stage of panic

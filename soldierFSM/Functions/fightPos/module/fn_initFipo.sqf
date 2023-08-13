@@ -3,6 +3,9 @@ params["_fipo"];
 // [_fipo] call SFSM_fnc_fipoMarker;
 [_fipo] call SFSM_fnc_moveInFipoSynced;
 
+if(_fipo getVariable "dynamicFipo")then{
+	_fipo setVariable ["active", false];
+};
 
 if(SFSM_debugger)then{
 	private _low  = _fipo getVariable "coverstance";

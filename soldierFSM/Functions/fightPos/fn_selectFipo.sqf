@@ -7,6 +7,6 @@ if(_available isEqualTo [])exitWith{};
 
 private _leader     = leader group _man;
 private _leaderDest = (expectedDestination _leader)#0;
-private _fipo       = [_leaderDest, _fiposs] call SFSM_fnc_getNearest;
+private _fipo       = [_leaderDest, _available] call SFSM_fnc_getNearest;
 
 _fipo;

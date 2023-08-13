@@ -9,19 +9,18 @@
 // Example:
 // [_man, (getPosATLVisual player)] spawn SFSM_fnc_forceMove2;
 
-private _maxTime = 30;
-private _maxDistance = 1.1;
-private _spamTimer = 0.5;
 params [
-    "_man",            // the man that will move.
-    "_pos",           //  target position
-    "_maxTime",      //   timeout (max time to attempt to reach said pos)
-    "_maxDistance", //    distance to wanted pos before aborting move.
-    "_spamTimer",  //     how often the doMove command is repeated.
-    "_postFnc"    //      function to be run on completion [[params], _isScheduled, _code]
-    ];
+    "_man",                  // the man that will move.
+    "_pos",                 //  target position
+    ["_maxTime", 30],      //   timeout (max time to attempt to reach said pos)
+    ["_maxDistance", 1.1],//    distance to wanted pos before aborting move.
+    ["_spamTimer", 1.5], //     seconds between each repetition of the doMove command.
+    "_postFnc"          //      function to be run on completion [[params], _isScheduled, _code]
+];
 
-doStop _man;
+// doStop _man;
+[_man] call SFSM_fnc_fixPos;
+_man doFollow _man;
 
 if([_man, _pos] call SFSM_fnc_canSprint)exitWith{
 
@@ -61,8 +60,10 @@ if(isNil "_path")exitWith{
 
 private _posTimeLimit = _maxTime / (count _path);
 {
-    if([_man, "abortForcedMove"] call SFSM_fnc_unitData)exitWith{};
-    doStop _man;
+    if([_man, "abortForcedMove"] call SFSM_fnc_unitData) exitWith{};
+    if([_man, "inFipo"] call SFSM_fnc_unitData)          exitWith{};
+    // doStop _man;
+    _man doFollow _man;
     private _move = 
     [
         _man,
@@ -79,6 +80,11 @@ private _posTimeLimit = _maxTime / (count _path);
 
 } forEach _path;
 
+[_man] call SFSM_fnc_fixPos;
+_man doFollow (leader group _man);
 
+// Forced unscheduled execution
+// https://community.bistudio.com/wiki/call
+isNil {_this call SFSM_fnc_postForceMove2;};
 
-_this call SFSM_fnc_postForceMove2;
+true;

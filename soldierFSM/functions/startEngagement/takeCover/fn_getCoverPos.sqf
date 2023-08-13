@@ -14,16 +14,23 @@ if(isNil "_battlefield")exitWith{};
 if(isNil '_searchPos')then{_searchPos = getPos _man};
 
 
-private _side           = side _man;
-private _coverPositions = [];
-private _cPosData       = _battlefield get "coverPositions";
+private _side              = side _man;
+private _coverPositions    = [];
+private _cPosData          = _battlefield get "coverPositions";
+// private _fightingPositions = (SFSM_fipositions apply {getPosATLVisual _x}) inAreaArray [_searchPos, _radius, _radius];
+// private _fiposPresent      = _fightingPositions isNotEqualTo [];
+
+// if(_fiposPresent)exitWith{
+//     private _nearest = [_searchPos, _fightingPositions] call SFSM_fnc_getNearest;
+//     _nearest;
+// };
 
 if(isNil '_cPosData')   exitWith{[_man, _radius] call Tcore_fnc_coverPosSimple;};
 
 switch (_side) do {
     case east:             { _coverPositions =  _cPosData get "east"; };
     case west:             { _coverPositions =  _cPosData get "west"; };
-    case independent:     { _coverPositions =  _cPosData get "independent"; };
+    case independent:      { _coverPositions =  _cPosData get "independent"; };
 };
 
 if(isNil '_coverPositions')exitWith{[_man, _radius] call Tcore_fnc_coverPosSimple};

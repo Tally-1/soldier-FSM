@@ -9,7 +9,8 @@ params["_man"];
 // ];
 
 // private _anim = selectRandom _anims;
-private _anim = (["Acts_AidlPercMstpSlowWrflDnon_warmup0", (ceil random 5)]joinString"");
+private _idleAnims = call compile FIPO_idleAnimations;
+private _anim = selectRandom _idleAnims;//(["Acts_AidlPercMstpSlowWrflDnon_warmup0", (ceil random 5)]joinString"");
 
 _man setVariable ["SFSM_idleAnim", _anim];
 

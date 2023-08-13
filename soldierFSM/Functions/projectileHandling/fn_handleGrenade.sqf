@@ -1,11 +1,3 @@
-// Copyright: Erlend Kristensen(c) 2023, learnbymistake@gmail.com
-// BSD 3-Clause License     
-// Author:         Leo Hartgen (Tally-1)
-// Author links:   
-//              https://github.com/Tally-1, 
-//              https://thehartgen.web.app/projects/, 
-//              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
-
 params ["_grenade", "_source"];
 private _velocity = velocityModelSpace _grenade;
 // sleep 1;
@@ -19,7 +11,10 @@ waitUntil {
         || (time > _timer));
     };
 
-private _nearSoldiers = [_grenade, (_grenade nearEntities 15 select {[_x, true] call SFSM_fnc_canRun;})] call Tcore_fnc_sortByDist;
+private _nearSoldiers = [_grenade, (_grenade nearEntities 15 select {
+	[_x] call SFSM_fnc_canRun
+	&&{([_x] call SFSM_fnc_isPlayer) isEqualTo false}
+	})] call Tcore_fnc_sortByDist;
 
 if(count _nearSoldiers == 0)exitWith{};
 

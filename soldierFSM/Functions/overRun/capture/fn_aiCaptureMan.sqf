@@ -1,5 +1,5 @@
 params ["_captive", "_captor"];
-hint "Capture in progress!";
+
 private _canCapture = [_captive, _captor, false, true] call SFSM_fnc_canCapture;
 if!(_canCapture)exitWith{[_captive, _captor] call SFSM_fnc_failAiCapture};
 

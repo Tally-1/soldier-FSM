@@ -13,7 +13,9 @@ private _action = [_man, "action"] call SFSM_fnc_unitData;
 
 if(isNil "_man")                                   exitwith{false;};
 if(isNil "_pos")                                   exitwith{false;};
+if(isNil "_action")                                exitWith{false;};
 if(_man in allPlayers)                             exitwith{false;};
+if([_man, "inFipo"] call SFSM_fnc_unitData)        exitWith{false;};
 if(_man distance2D _pos < _minDist)                exitWith{false;};
 if(_man distance2D _pos > _maxDist)                exitWith{false;};
 if(! ([_man] call SFSM_fnc_isRealMan))             exitwith{false;};
@@ -21,7 +23,6 @@ if(count SFSM_sprinters >= SFSM_maxSprinters)      exitWith{false;};
 if(_man getVariable ["SFSM_Sprinting", false])     exitwith{false;};
 if ([_man] call SFSM_fnc_isUncon)                  exitWith{false;};
 if!([_man, "pathEnabeled"] call SFSM_fnc_unitData) exitWith{false;};
-if(isNil "_action")                                exitWith{false;};
 if(insideBuilding _man > 0)                        exitWith{false;};
 if([_man, "abortSprint"] call SFSM_fnc_unitData)   exitWith{false;};
 if(_man getVariable ["SFSM_Excluded",false])       exitWith{false;};

@@ -24,5 +24,3 @@ if !(isNil "PR_HC1") then {
     [_x] call SFSM_fnc_InitGroup;
     [_x] call SFSM_fnc_handleGroupStance;
 } forEach allGroups;
-
-//no worries papa, I deleted it, lets see how it works out.

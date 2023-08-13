@@ -6,5 +6,4 @@ _man addEventHandler ["Fired", {
     private _color = [(side _man)] call SFSM_fnc_sideColor;
     _projectile setVariable ["SFSM_IconColor", _color];
     SFSM_bullets  pushBack _projectile;
-    // [_projectile] spawn SFSM_fnc_bulletTracker;
 }];

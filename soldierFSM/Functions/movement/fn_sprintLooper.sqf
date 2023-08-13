@@ -40,9 +40,12 @@ _man addEventHandler ["AnimDone", {
     
     //end sprint
     if(_endLoop)exitWith{
-        // _man setPosASL _pos;
+
         [_man] call SFSM_fnc_sprintVarRemoval;
+        [_man] call SFSM_fnc_fixPos;
         _man doFollow (leader group _man);
+        // _man setPosASL (getPosASLVisual _man);
+        
         
         //end-sprint EH
         ["sprint_end", [_man, _destination]] call CBA_fnc_localEvent;

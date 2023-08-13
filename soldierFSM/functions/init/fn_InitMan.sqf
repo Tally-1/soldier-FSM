@@ -53,6 +53,13 @@ _unitData set     ["abortForcedMove",     false];
 _unitData set     ["abortSprint",         false];
 _unitData set     ["forcedMovement",      false];
 _unitData set     ["inFipo",              false];
+_unitData set     ["moraleEventsActive",  []];
+_unitData set     ["moraleEvents",        []];
+_unitData set     ["lastMoraleEvent",     -300];
+_unitData set     ["baseMoraleChecked",   -300];
+_unitData set     ["baseMorale",          1];
+_unitData set     ["baseMoraleFactors",   createHashmap];
+_unitData set     ["morale",              1];
 
 _man setVariable["SFSM_UnitData",         _unitData, true];
 

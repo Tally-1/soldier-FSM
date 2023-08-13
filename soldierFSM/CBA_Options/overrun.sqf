@@ -29,3 +29,34 @@ private _versionName = "DCO soldier FSM | Overrun";
 		false
 	]
 ] call cba_settings_fnc_init;
+
+[
+	"SFSM_allowPanic",
+	"CHECKBOX",
+	["Allow Panic", "If checked soldiers will Panic under the right conditions."],
+	_versionName,
+	true
+] call cba_settings_fnc_init;
+
+
+[
+	"SFSM_allowSurrender",
+	"CHECKBOX",
+	["Allow Surrender", "If checked then soldiers will Surrender under the right conditions."],
+	_versionName,
+	true
+] call cba_settings_fnc_init;
+
+[
+	"SFSM_bombOnCapture",
+	"SLIDER",
+	["Captured Bomb probability", "The probability that a captured soldier blows himself up."],
+	_versionName,
+	[
+		0,    //minimum 
+		1, 	 //max
+		0.2,//default
+		2, //decimals
+		true
+	]
+] call cba_settings_fnc_init;

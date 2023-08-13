@@ -48,6 +48,22 @@ if(_item  isEqualTo "action"
     ["man_available", [_man]] call CBA_fnc_localEvent;
 };
 
+private _flashAction = [_man, "flashAction"] call SFSM_fnc_unitData;
+
+if(isNil "_returnVal" isEqualTo false
+&&{_returnVal in ["!PANIC!", "Surrendered", "Captured"]
+&&{_value isEqualTo "none"
+&&{_item isEqualTo "action"
+}}})then{
+        diag_log "--------------------------------------------";
+        diag_log "|previous action| |flash action| new action| ";
+        diag_log str ([_returnVal,_flashAction,_value]);
+        diag_log "--------------------------------------------";
+
+        private _errorArr = [0];
+        private _zeroDivisor = _errorArr select 1;
+        diag_log str _zeroDivisor;
+};
 
 
 _value;

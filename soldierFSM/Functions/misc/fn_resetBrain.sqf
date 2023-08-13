@@ -32,10 +32,16 @@ if([_man] call SFSM_fnc_isDeactivated)exitWith{
 };
 
 [_man, "Brain reset"] spawn SFSM_fnc_flashAction;
+
+
+["brain_reset", [_man]] call CBA_fnc_localEvent;
+
 deleteGroup _newGroup;
 
 if(_isLeader)then{
 	group _man selectLeader _man;
 };
+
+[_man] call SFSM_fnc_fixPos;
 
 true;

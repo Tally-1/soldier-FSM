@@ -29,4 +29,5 @@ class CfgVehicles
 	};
 
 	#include "..\modules\fightPos\config\main.hpp"
+	#include "..\modules\traits\config\main.hpp"
 };

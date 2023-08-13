@@ -87,6 +87,7 @@ class CfgFunctions
             class crouch                {};
             class hostile               {};
             class nearEnemies           {};
+            class nearAllies            {};
 
             class hasActiveWp           {};
             class animSetStance         {};
@@ -112,6 +113,42 @@ class CfgFunctions
             class onExecAnim            {};
             class execFromArr           {};
 
+            class rgbColorToA3Color     {};
+            class distanceToFooting     {};
+
+            class deploySmoke           {};
+            class numberDiff            {};
+            class getProneTreshHold     {};
+        };
+
+        class morale
+        {
+            file = "\soldierFSM\functions\morale";
+            class moraleEvent           {};
+
+            class moraleOnCapture       {};
+            class moraleOnHit           {};
+            class moraleOnKnockOut      {};
+            class moraleOnKill          {};
+            class moraleOnRevive        {};
+
+            class moraleEventData       {};
+            class postMoraleEvent       {};
+
+            class canUpdateMorale       {};
+            class updateMorale          {};
+            class updateFleeCoef        {};
+            
+            class baseMorale            {};
+            class moraleFinal           {};
+
+            class alliesFactor          {};
+            class enemiesFactor         {};
+            class skillFactor           {};
+            class moraleFactors         {};
+            class storeMoraleFactors    {};
+
+            class avgMorale             {};
         };
 
         class movement
@@ -137,7 +174,7 @@ class CfgFunctions
             class forceMoveATL          {};
 
             class regroup               {};
-            
+            class fixPos                {};
 
         }
 
@@ -230,6 +267,8 @@ class CfgFunctions
 
             class leaderChangeEH        {};
             class antiRubberBand        {};
+            class ACE_MedicalCBA        {};
+            class buildingDestroyedEH   {};
             
         };
 
@@ -268,6 +307,11 @@ class CfgFunctions
             class getLateralPos         {};
             class groupCanDodge         {};
             class forceCoverDodge       {};
+
+            class evasion               {};
+            class evadeDir              {};
+            class evasionFail           {};
+
             
             
         };
@@ -291,31 +335,47 @@ class CfgFunctions
             class isPinnedDown          {};
             
         };
-
+       
+       
+/*******************FIPOs***************************/
+        
+        
         class fightPos 
         {
             file = "\soldierFSM\functions\fightPos";
-            class clearFipo         {};
-            
-            class getFipo           {};
-            class inFipo            {};
-            class nearestFipo       {};
-            class handleFipoHit     {};
-            class fipoAvailable     {};
-            class nearGroupFiposs   {};
-            class selectFipo        {};
-            class assignFiposs      {};
-            class fipoMenRegroup    {};
-            class groupFipoAssigner {};
-            class fipoFSM           {};
-            class fipoManager       {};
-            class canTeleportFipo   {};
-            class checkFipoError    {};
-            class getFipoMen        {};
-            class animationMaps     {};
-            class tempPegToFipo     {};
+            class clearFipo             {};
+            class getFipo               {};
+            class inFipo                {};
+            class nearestFipo           {};
+            class handleFipoHit         {};
+            class fipoAvailable         {};
+            class nearGroupFiposs       {};
+            class selectFipo            {};
+            class assignFiposs          {};
+            class fipoMenRegroup        {};
+            // class groupFipoAssigner     {};
+            class fipoAssigner          {};
+            class fipoFSM               {};
+            class fipoManager           {};
+            class canTeleportFipo       {};
+            class checkFipoError        {};
+            class getFipoMen            {};
+            class animationMaps         {};
+            class tempPegToFipo         {};
+            class dynamicFipoActive     {};
+            class assignFipo            {};
+
             
         };
+
+        class dodgeToFipo
+        {
+            file = "\soldierFSM\functions\fightPos\dodgeToFipo";
+            class isDodgeFipo           {};
+            class initDodgeToFipo       {};
+            class dodgeToFipo           {};
+
+        }
 
         class actions
         {
@@ -338,6 +398,8 @@ class CfgFunctions
             class moveOutFiPo         {};
             class failFipoMove        {};
             class canMoveInFipo       {};
+            class getOutDynamicFipo   {};
+            class fipoAttemptAllowed  {};
             
         };
 
@@ -386,29 +448,49 @@ class CfgFunctions
             class fipoOutFlanked      {};
             class curatorFipoFlanks   {};
             class getObjectSector     {};
+            class unitsInFireSector   {};
         };
 
         class hitAndRun
         {
             file = "\soldierFSM\functions\fightPos\hitAndRun";
+            class initHitAndRunFipo   {};
             class fipoCooldownLeft    {};
-            class fipoFiredEH         {};
+            class firedHitAndRunEH    {};
             class fipoTimeUntilExit   {};
             class getOutFipoHitAndRun {};
             class fipoRun             {};
+            class endHitAndRun        {};
         };
+
+        class FUBAR
+        {
+            file = "\soldierFSM\functions\fightPos\FUBAR";
+            class fipoKnockOut          {};
+            class timeSinceFipoKnockOut {};
+            class fipoIsFUBAR           {};
+            class fipoIsDestroyed       {};
+            class fipoBuildingDestroyed {};
+        };
+
+/********************************************************/
+/********************************************************/
+
 
         class overrun 
         {
             file = "\soldierFSM\functions\overrun";
+            class groupFleeingEh    {};
+            class groupFlee         {};            
+            class groupFleeDecision {};
+
             class initOverRun       {};
             class overRunAllies     {};
             class overRunDecision   {};
             class overRunFight      {};
             class overRun           {};
             class flee              {};
-            class groupFlee         {};
-            class groupFleeingEh    {};
+            
             class canBeOverRun      {};
             class panic             {};
             class panicAction       {};
@@ -454,6 +536,7 @@ class CfgFunctions
             class unitWeaponDir         {};
             class multiplyReactionFire  {};
             class multiplyRF            {};
+            class forcedFire            {};
         };
 
         class rearming
@@ -539,7 +622,7 @@ class CfgFunctions
             class moveToFirePos          {};
             class findFirePos            {};
 
-            class forcedRegroupNeeded     {};
+            class forcedRegroupNeeded    {};
             class forcedRegroup          {};
             class abortSpecial           {};
 
@@ -575,15 +658,13 @@ class CfgFunctions
         {
             file = "\soldierFSM\functions\init";
             class serverInit            {};
-            class initSettings            {};
+            class initSettings          {};
             class postConfig            {};
             class initClient            {};
-            class initSFSM                {postInit = 1};
-            class InitMan                {};
+            class initSFSM              {postInit = 1};
+            class InitMan               {};
             class initGroup             {};
             class initVehicle           {};
-
-            class initCustomEvents      {};
             class initFiPositions       {};
         };
 
@@ -619,6 +700,8 @@ class CfgFunctions
             class draw3Dsectors         {};
             class drawSector3D          {};
             class add3Dsector           {};
+            class fipoDebugData         {};
+            class fipoHRDbgTxt          {};
 
         };
 
@@ -643,6 +726,7 @@ class CfgFunctions
             class dbgTxtSelectedMan     {};
             class dbgTxtActionText      {};
             class dbgTxtForcedMovement  {};
+            class dbgTxtMorale          {};
         };
         
         class healing
@@ -677,6 +761,10 @@ class CfgFunctions
             class nearestValidReviver   {};
             class sortRevivers          {};
             class sortUnconscious       {};
+
+            class onKnockOut            {};
+            class onWakeUp              {};
+            class unconAiAbility        {};
         };
 
 
@@ -762,6 +850,7 @@ class CfgFunctions
             class isATSoldier           {};
             class isMarksman            {};
             class isRealMan             {};
+            class functionalMan         {};
             class isMedic               {};
             class isFipoMedic           {};
             class isPlayer              {};
@@ -770,6 +859,11 @@ class CfgFunctions
             class availableAiSoldier    {};
             class buildingCenterPosASL  {};
             class availEnemyFriendDist  {};
+
+            class validAllyVehicle      {};
+            class validAlly             {};
+
+            class manIsInjured          {};
             
             
         };
@@ -822,7 +916,7 @@ class CfgFunctions
         class core
         {
             file = "\soldierFSM\functions\core";
-            class average              {};
+            class average               {};
             class decimals              {};
             class addZ                  {};
             class roundPos              {};

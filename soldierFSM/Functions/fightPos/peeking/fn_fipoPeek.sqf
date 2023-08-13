@@ -18,7 +18,7 @@ if(_coverStance isEqualTo _shootingStance)exitwith{
     [_man, "No stance-change in fipo"] call SFSM_fnc_flashAction;
 };
 
-private _timer    = time+1.2;
+private _timer = time + 1.2;
 
 // Get out of "safe" stances
 private _anim = _man getVariable "SFSM_idleAnim";
@@ -32,7 +32,6 @@ if!(isNil "_anim")then{
 
 //wait for stance to complete.
 waitUntil{((_man getVariable ["SFSM_animStanceDone", false]) || (time > _timer))};
-
 
 //Look for and engage enemies.
 private _peek = [_man, _peekTime] spawn SFSM_fnc_peekActions;

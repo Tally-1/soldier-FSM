@@ -51,7 +51,7 @@ private _endText = ["Battle ", (_battlefield get "name"), " ended."] joinString 
 
     [_x, "currentBattle", "none"] call SFSM_fnc_unitData;
     [_x, "lastBattle", time]      call SFSM_fnc_unitData;
-    if(_pathEnabeled)then{_x enableAI "all";};
+    // if(_pathEnabeled)then{_x enableAI "all";};
     _x setUnitPos "AUTO";
     _x doFollow leader (group _x);
 }  forEach _units;

@@ -55,6 +55,9 @@ if(! _canHeal)exitWith{
 private _relocatePos = [_healer, _unconscious] call SFSM_fnc_dragPos;
 
 if (!isNil "_relocatePos") then {
+    private _smokeOut = [_healer] call SFSM_fnc_deploySmoke;
+    if(_smokeOut)then{sleep 1;};
+    
     private _timeAdded = round((_unconscious distance2D _relocatePos) * 1.2);
     _timer             = _timer + _timeAdded;
     private _drag      = [_healer, _unconscious, _relocatePos] spawn SFSM_fnc_dragMan;
@@ -66,13 +69,19 @@ if(! _canHeal)exitWith{
     [_healer, _unconscious, false] call SFSM_fnc_endBuddyRevive;
 };
 
-//revive
+_healer disableAI "path";
+private _smokeOut = [_healer] call SFSM_fnc_deploySmoke;
+if(_smokeOut)then{sleep 1;};
+
+//start reviving revive
 ["revive_anim", [_healer, _unconscious]] call CBA_fnc_localEvent;
 private _healing = [_healer, _unconscious] spawn SFSM_fnc_reviveAnim;
 waitUntil{
         sleep 1; 
         scriptDone _healing;
 };
+
+_healer enableAI "path";
 
 private _canHeal = [_healer, _unconscious, true, 7] call SFSM_fnc_canBuddyHeal;
 if(! _canHeal)exitWith{
@@ -82,4 +91,7 @@ if(! _canHeal)exitWith{
 [_unconscious, false] call ace_medical_fnc_setUnconscious;
 [_healer, _unconscious] call ace_medical_treatment_fnc_fullHeal;
 [_healer, _unconscious, true] call SFSM_fnc_endBuddyRevive;
+
+[_healer, _unconscious] call SFSM_fnc_moraleOnRevive;
+
 true;

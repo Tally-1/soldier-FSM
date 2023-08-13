@@ -1,15 +1,16 @@
-params["_man", "_fipo"];
+params[
+    ["_man", nil],
+    ["_fipo", nil],
+    ["_showFireSector", false]
+];
 
 if!([_man] call SFSM_fnc_availableAiSoldier)  exitWith{false;};
 if ((behaviour _man) isEqualTo "SAFE")        exitWith{false;};
 if ((behaviour _man) isEqualTo "CARELESS")    exitWith{false;};
 
-//medics do not get in fipo
-private _assetType = [_man] call SFSM_fnc_squadAsset;
-// if (_assetType isEqualTo "medic")                       exitWith{false;};
-
 // if is leader and group has active wp
-if (_assetType isEqualTo "squad-leader" 
+private _isLeader = (leader (group _man)) isEqualTo _man;
+if (_isLeader
 && {([group _man] call SFSM_fnc_hasActiveWp)})          exitWith{false;};
 
 // if has tried to get in within the last 60 seconds
@@ -35,10 +36,13 @@ if!([_man, _fipo] call SFSM_fnc_fipoAllowedMan)      exitWith{false;};
 
 // If enemies are near the fighting position
 private _nearEnemies = [_man, SFSM_overRunDistance, (getPosATL _fipo)] call SFSM_fnc_nearEnemies;
-if(_nearEnemies isNotEqualTo [])exitWith{false;};
+if(_nearEnemies isNotEqualTo [])
+exitWith{false;};
 
 // The fighting position has been outflanked
 private _flankEnemies = [_fipo, _man] call SFSM_fnc_fipoFlankEnemies;
-if(_flankEnemies isNotEqualTo [[],[]])exitWith{false;};
+if(_flankEnemies isNotEqualTo [[],[]])
+exitWith{false;};
+
 
 true;

@@ -13,6 +13,7 @@ if(_fipoEnemies isEqualTo [[],[]])exitWith{false;};
 if(SFSM_debugger)then{
 	[_fipo] call SFSM_fnc_showActiveFlanks;
 };
+
 [_fipoMan, "Outflanked", 1.5] spawn SFSM_fnc_flashAction;
 "Fighting position was outFlanked" call dbgmsg;
 [_fipoMan] call SFSM_fnc_getOutFipo;

@@ -36,6 +36,7 @@ private _distance    = round(_man distance2d _pos);
 private _keepMoving  = _distance > _maxDistance;
 private _failedMoves = 0;
 private _isLeader    = leader group _man isEqualTo _man;
+private _combatMode  = unitCombatMode _man;
 
 if(SFSM_forceDodge)
 then{[_man, false] call Tcore_fnc_toggleAiMoveInhibitors};
@@ -68,10 +69,14 @@ while {_keepMoving} do {
             _man moveTo _pos;
             _man doTarget objNull;
             _man disableAI "AUTOTARGET";
-            _man setCombatBehaviour "AWARE";
             _failedMoves = _failedMoves+1;
         };
+
     
+    _man setCombatBehaviour "AWARE";
+    _man setUnitCombatMode  "WHITE";
+
+
     if(_canSprint)then{
         private _sprint = [_man, _pos] spawn SFSM_fnc_sprint;
         waitUntil{sleep 0.1; scriptDone _sprint;};
@@ -82,7 +87,7 @@ while {_keepMoving} do {
     if(_failedMoves > 10
     &&{! _isLeader})then{
         [_man] call SFSM_fnc_resetBrain;
-        _failedMoves = -30;
+        _failedMoves = -10;
     };
 
     sleep _spamTimer;
@@ -90,16 +95,17 @@ while {_keepMoving} do {
 
 _man enableAI "AUTOTARGET";
 _man enableAI "FSM";
+_man setUnitCombatMode  _combatMode;
 
 if(SFSM_forceDodge)
 then{[_man, true] call Tcore_fnc_toggleAiMoveInhibitors};
 
 _man setAnimSpeedCoef 1;
 [_man, "forcedMovement", false] call SFSM_fnc_unitData;
-
-private _currentPos = (getPos _man);
-_man moveTo _currentPos;
-_man doMove _currentPos;
-_man doTarget objNull;
+[_man] call SFSM_fnc_fixPos;
+// private _currentPos = (getPos _man);
+// _man moveTo _currentPos;
+// _man doMove _currentPos;
+// _man doTarget objNull;
 // _man doFollow (leader (group _man));
 true;

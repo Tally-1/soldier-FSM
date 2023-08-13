@@ -6,42 +6,39 @@
 //              https://thehartgen.web.app/projects/, 
 //              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
 
-private _tenSecondTimer = 0;
-private _fiveMinTimer   = 0;
-private _minuteTimer    = 0;
+private _tenSecondTimer = time + 10;
+private _minuteTimer    = time + 60;
+private _fiveMinTimer   = time + 300;
 
 while {true}
 do {
         private _startTime = time;
-        if(_tenSecondTimer isEqualTo 10)
+        
+        if(time > _tenSecondTimer)
         then{
+                _tenSecondTimer = time + 10;
                 private _script = [] spawn SFSM_fnc_tenSecondTasks;
                 waitUntil{scriptDone _script};
-                _tenSecondTimer = 0;
             };
         
-        if(_minuteTimer isEqualTo 60)
+        if(time > _minuteTimer)
         then{
                 private _script = [] spawn SFSM_fnc_minuteTasks;
+                _minuteTimer    = time + 60;
                 waitUntil{scriptDone _script};
-                _minuteTimer = 0;
             };
         
         
-        if(_fiveMinTimer isEqualTo 300)
+        if(time > _fiveMinTimer)
         then{
                 private _script = [] spawn SFSM_fnc_fiveMinTasks;
+                _fiveMinTimer   = time + 300;
                 waitUntil{scriptDone _script};
-                _fiveMinTimer = 0;
             };
         
         private _timeSpent = time - _startTime;
         private _sleep     = 1 - _timeSpent;
 
-        if(_sleep > 0)then{sleep _sleep;};       
-
-        _tenSecondTimer = _tenSecondTimer+1;
-        _minuteTimer    = _minuteTimer+1;
-        _fiveMinTimer   = _fiveMinTimer+1;
+        if(_sleep > 0)then{sleep _sleep;};
        
 };

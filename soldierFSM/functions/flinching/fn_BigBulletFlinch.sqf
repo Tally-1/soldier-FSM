@@ -40,6 +40,15 @@ switch (stance _man) do {
 
 ["flinch_big", [_man]]   call CBA_fnc_localEvent;
 
+[
+    _man, 
+    _move,
+    [
+        [_man],
+        false,
+        SFSM_fnc_normalizeStance
+    ]
+] call SFSM_fnc_animThenExec;
 _man playMove _move; 
 
 0;

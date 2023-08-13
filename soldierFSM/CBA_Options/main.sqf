@@ -65,7 +65,15 @@ private _versionName = ["DCO soldier FSM | ", SFSM_Version] joinString "";
 	"CHECKBOX",
 	["Global unit-data", "(experimental), Set this to false to reduce net-traffic. May affect client-players debug-mode."],
 	_versionName,
-	true
+	false
+] call cba_settings_fnc_init;
+
+[
+	"SFSM_storeMoraleData",
+	"CHECKBOX",
+	["Store Morale Data", "If MoraleData should be stored in the unitData hashmap (mainly used for debugging)"],
+	_versionName,
+	false
 ] call cba_settings_fnc_init;
 
 

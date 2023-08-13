@@ -1,5 +1,0 @@
-***DONE***     1) Add hint-warning against deleting engaged units.                                                  [free]
-***DONE***     2) Fix the "heavy-flinch" bug where it gets stuck.                                                   [free]
-***DONE***     3) Fix "GetLos-bugmessage"                                                                           [free]
-***CANCELED*** 4) Make a new flow-chart for the latest SFSM version                                             [CANCELED]
-***DONE***     5) Rewrite the Take-cover-function to re-asses and dodge if too many units are around the same cover [40 USD]

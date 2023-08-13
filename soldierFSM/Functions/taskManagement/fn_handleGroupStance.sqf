@@ -16,17 +16,20 @@ private _units = (units _group) select {[_x] call SFSM_fnc_isRealMan};
 
 {
     private _action = [_x, "action"] call SFSM_fnc_unitData;
+    private _proneTreshHold = [_x] call SFSM_fnc_getProneTreshHold;
 
-    if((getSuppression _x) < SFSM_ProneTreshHold)
+    if((getSuppression _x) < _proneTreshHold)
     then{_noActionLowSuppression = false};
     if(_action != "none")
     then{_noActionLowSuppression = false};
 
 } forEach _units;
 
-if!(_noActionLowSuppression)exitWith{};
+if(_noActionLowSuppression isEqualTo false)exitWith{};
 
 _group setCombatMode "YELLOW";
+
+_group setSpeedMode "FULL";
 
 //3x spam, because ArmA, some commands do not execute for unknown reasons
 {

@@ -10,7 +10,7 @@
 if(isNil "SFSM_allowFlinching")
 then{
         SFSM_disableSoldierFSM  = false;    //\\ disable soldier FSM
-        SFSM_DebugType          = "curator";  // What type of debug is to be used. ["always", "curator", "never"];
+        SFSM_DebugType          = "always";  // What type of debug is to be used. ["always", "curator", "never"];
         // SFSM_Debugger           = true;   // show debug-info, and 3D markers
         SFSM_allowFlinching     = true;     // Units will flinch on incoming fire.
         SFSM_allowDodging       = true;     // Units will dodge(change position) when incoming fire reaches the treshHold (SFSM_RpsDodgeTrigger).
@@ -18,7 +18,7 @@ then{
         SFSM_AtSpecHuntVehicles = true;     // Units with launchers will target enemy vehicles instead of hiding.
         SFSM_ExcludeZcommand    = false;    // stop units that have been given waypoints by a curator from dodging
         SFSM_PlayerGrpDodge     = true;     // Allows units in a group lead by a player to dodge / hide, dodging can be frustrating for players who like to micro-manage their AI
-        SFSM_ProneTreshHold     = 0.8;      // unit will stay prone if suppression is higher than this value
+        // SFSM_ProneTreshHold     = 0.8;      // unit will stay prone if suppression is higher than this value
         SFSM_FlinchCoolDown     = 5;        // Minimum Time between each flinch-response
         SFSM_RpsDodgeTrigger    = 4;        // Continous Incoming bullets with no less than 1 second break, to trigger Dodging
         SFSM_DodgeCoolDown      = 10;       // Time between each dodge-response
@@ -62,10 +62,10 @@ then{
         SFSM_autoStanceAction   = false;        // Show action to toggle auto-stance.
         SFSM_autoStanceEnabled  = true;        //  Enable auto-stance for playerGroups.
         SFSM_hijackVehicles     = "always";   //   Allow units to hijack enemy vehicles. ["always", "never", "action"]
-        SFSM_overRunDistance    = 50;        // activate overrun when enemy is within this distance 
-        SFSM_marksmanFSM        = true;     //    Enable sniper FSM.
-        SFSM_maxHuntTime        = 300;     //     How long a hunter will hunt his target.
-        SFSM_huntCooldown       = 30;     //      How long until next hunt.
+        SFSM_overRunDistance    = 50;        //    activate overrun when enemy is within this distance 
+        SFSM_marksmanFSM        = true;     //     Enable sniper FSM.
+        SFSM_maxHuntTime        = 300;     //      How long a hunter will hunt his target.
+        SFSM_huntCooldown       = 30;     //       How long until next hunt.
 
         SFSM_buddyRearm             = true;   // Allow buddy-Rearm
         SFSM_buddyHeal              = true;   // Allow buddy-Heal 
@@ -76,9 +76,21 @@ then{
         SFSM_playerSquadFipo        = true;   // enable ai-soldiers in player-squads to get into fipos 
         SFSM_overRun                = true;   // allow overrun actions (surrender / flee / counter)
         SFSM_playerSquadOverRun     = true;   // enable ai-soldiers in player-squads to be overrun
-        SFSM_noRubber               = false;   // Prevent sprint-rubberbanding
+        SFSM_noRubber               = false;  // Prevent sprint-rubberbanding
         SFSM_medicSearchDistance    = 100;    // How far a medic will run in order to revive a downed man (ACE only)
 
+        SFSM_fipoKnockOutTime       = 120;    // How long A FIPO is unusable after a man has been killed / knocked out while in it.
+        SFSM_storeMoraleData        = true;   // If MoraleData should be stored in the untData hashmap (mainly used for debugging)
+        SFSM_allowPanic             = true;   // If checked then soldiers will Panic under the right conditions.
+        SFSM_allowSurrender         = true;   // If checked then soldiers will Surrender under the right conditions.
+        FIPO_idleAnimations         = "[
+                'Acts_Executioner_Squat',
+                'Acts_AidlPercMstpSlowWrflDnon_pissing',
+                'Acts_AidlPercMstpSlowWrflDnon_warmup03',
+                'Acts_AidlPercMstpSnonWnonDnon_warmup_7_loop',
+                'Acts_AidlPercMstpSnonWnonDnon_warmup_6_loop'
+        ]";
+        SFSM_allowEvasion = true; // When no cover is found a soldier will run to avoid incoming fire.
 };
 
 
@@ -86,7 +98,7 @@ then{
 //Make sure settings are available globally.
 
 missionNamespace setVariable ["SFSM_FlinchTreshHold",    1,                     true];
-missionNamespace setVariable ["SFSM_ProneTreshHold",    SFSM_ProneTreshHold,    true];
+// missionNamespace setVariable ["SFSM_ProneTreshHold",    SFSM_ProneTreshHold,    true];
 missionNamespace setVariable ["SFSM_FlinchCoolDown",    SFSM_FlinchCoolDown,    true];
 missionNamespace setVariable ["SFSM_RpsDodgeTrigger",   SFSM_RpsDodgeTrigger,   true];
 missionNamespace setVariable ["SFSM_DodgeCoolDown",     SFSM_DodgeCoolDown,     true];
@@ -149,5 +161,10 @@ missionNamespace setVariable ["SFSM_noRubber",               SFSM_noRubber,     
 missionNamespace setVariable ["SFSM_medicSearchDistance",    SFSM_medicSearchDistance,    true];
 missionNamespace setVariable ["SFSM_globalUD",               SFSM_globalUD,               true];
 
+missionNamespace setVariable ["SFSM_fipoKnockOutTime",       SFSM_fipoKnockOutTime,       true];
+missionNamespace setVariable ["SFSM_storeMoraleData",        SFSM_storeMoraleData,        true];
+missionNamespace setVariable ["FIPO_idleAnimations",         FIPO_idleAnimations,         true];
+
+missionNamespace setVariable ["SFSM_allowEvasion",           SFSM_allowEvasion,           true];
 
 true;

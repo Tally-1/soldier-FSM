@@ -38,7 +38,7 @@ _man doFollow _leader;
 
 if([_man, true] call SFSM_fnc_canRun
 &&{_counter isEqualTo "target down"
-&&{!isNil "_fipo"
+&&{isNil "_fipo" isEqualTo false
 &&{[_fipo] call SFSM_fnc_fipoAvailable}}})
 then{
     sleep 0.1;

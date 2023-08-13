@@ -45,18 +45,23 @@ if (isServer && {_hcPresent}) exitWith { [] call SFSM_fnc_initSettings; };
 [] call SFSM_fnc_postConfig;
 
 {[_x] call SFSM_fnc_InitMan}     forEach allUnits;
-{[_x] call SFSM_fnc_InitGroup}     forEach allGroups;
-{[_x] call SFSM_fnc_initVehicle}forEach vehicles;
-{_x   call SFSM_fnc_curatorEH}  forEach allCurators;
+{[_x] call SFSM_fnc_InitGroup}   forEach allGroups;
+{[_x] call SFSM_fnc_initVehicle} forEach vehicles;
+{_x   call SFSM_fnc_curatorEH}   forEach allCurators;
 
 
-[] spawn SFSM_fnc_TaskManager;
 [] call  SFSM_fnc_unitKilled; 
 [] call  SFSM_fnc_unitCreated;
 [] call  SFSM_fnc_projectileCreated;
-[] call  SFSM_fnc_initCustomEvents;
+[] call  SFSM_fnc_buildingDestroyedEH;
+[] call  SFSM_fnc_speechEventsMan;
 [] call  SFSM_fnc_initFiPositions;
 [] call  SFSM_fnc_antiRubberBand;
+[] call  SFSM_fnc_ACE_MedicalCBA;
+[] call  SFSM_fnc_animationMaps;
+[] spawn SFSM_fnc_TaskManager;
+[] spawn SFSM_fnc_fipoManager;
+// [] spawn SFSM_fnc_moraleUpdater;
 
 /* --------comment by Tally----------
 unitKilled and unitCreated are mission eventhandlers.

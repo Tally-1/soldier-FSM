@@ -11,12 +11,14 @@ _man addEventHandler ["Hit", {
     params ["_man", "_source", "_damage", "_instigator"];
 
     private _vehicle = vehicle _man;
-    private _inVehicle = typeOf _vehicle != typeOf _man;
 
-    if!([_man] call SFSM_fnc_isRealMan)    exitWith{};
-    if([_man, true] call SFSM_fnc_isPlayer)exitWith{};
+    if!([_man] call SFSM_fnc_isRealMan)     exitWith{};
+    if([_man, true] call SFSM_fnc_isPlayer) exitWith{};
 
     _man setVariable["SFSM_prevShooter", _instigator, true];
+
+    //Handle morale 
+    [_man] call SFSM_fnc_moraleOnHit;
 
     //Handle marksman-hit
     private _sniper = _man getVariable "SFSM_myAssasin";

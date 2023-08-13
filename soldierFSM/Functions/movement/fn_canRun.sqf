@@ -15,13 +15,17 @@ if ([_man] call SFSM_fnc_isUncon)            exitWith{false;};
 if (captive _man)                            exitWith{false;};
 
 if(_ignoreFipo isEqualTo false
-&&{[_man, "inFipo"] call SFSM_fnc_unitData})   exitWith{false;};
+&&{[_man, "inFipo"] call SFSM_fnc_unitData})
+exitWith{false;};
 
 if(_includeExcluded isEqualTo false
-&&{_man getVariable ["SFSM_Excluded", false]}) exitWith{false;};
+&&{_man getVariable ["SFSM_Excluded", false]})
+exitWith{false;};
 
-if(_ignorePath isEqualTo false
-&&{!(_man checkAIFeature "PATH")})             exitWith{false;};
+if(_ignorePath                               isEqualTo false
+&&{(_man checkAIFeature "PATH")              isEqualTo false
+&&{([_man, "inFipo"] call SFSM_fnc_unitData) isEqualTo false}})
+exitWith{false;};
 
 if (_ignoreLegs)exitWith{true;};
 

@@ -1,5 +1,9 @@
 params["_man", "_enemies"];
-[_man] call SFSM_fnc_getOutFipo;
+
+if([_man, false] call SFSM_fnc_inFipo)then{
+	[_man] call SFSM_fnc_getOutFipo;
+};
+
 [_man, "lastOverRun", time] call SFSM_fnc_unitData;
 ["overrun",  [_man, _enemies]] call CBA_fnc_localEvent;
 

@@ -3,8 +3,7 @@ private _actionTxt = [_man] call SFSM_fnc_getAction;
 private _pos       = ASLToAGL(aimPos _man);
 
 if(_actionTxt isEqualTo "none")
-then{_actionTxt = ""}
-else{_actionTxt = _action};
+then{_actionTxt = ""};
 
 drawIcon3D[
             "\a3\ui_f\data\igui\cfg\simpletasks\letters\x_ca.paa",            

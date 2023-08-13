@@ -28,7 +28,8 @@ exitWith{"zeus blocked dodge" call dbgmsg; false};
 
 private _leader = (leader _group);
 
-private _playerLead = [_leader] call Tcore_fnc_isPlayer;
+private _playerLead = [_leader] call SFSM_fnc_isPlayer;
+// private 
 
 if(_playerLead && {(! SFSM_PlayerGrpDodge)})
 exitWith{

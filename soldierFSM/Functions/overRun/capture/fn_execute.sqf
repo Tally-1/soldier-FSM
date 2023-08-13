@@ -1,6 +1,6 @@
 params ["_victim", "_killer"];
-private _text = [(name _killer), " is executing ", name _victim]joinString"";
-[_text] remoteExecCall ["systemChat", 0];
+// private _text = [(name _killer), " is executing ", name _victim]joinString"";
+// [_text] remoteExecCall ["systemChat", 0];
 [_victim, "Being executed"] call SFSM_fnc_setAction;
 
 private _gun  = (handgunWeapon _killer);

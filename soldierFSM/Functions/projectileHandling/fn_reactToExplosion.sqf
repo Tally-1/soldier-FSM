@@ -9,8 +9,8 @@
 params ["_man", "_launchPos", "_impactPos", "_shooter"];
 
 
-if(_man getVariable ['SFSM_excluded', false])exitWith{false;};
-if!([_man] call SFSM_fnc_canRun)             exitWith{false;};
+// if(_man getVariable ['SFSM_excluded', false])exitWith{false;};
+if!([_man] call SFSM_fnc_availableAiSoldier)             exitWith{false;};
 
 "reacting" call dbgmsg;
 private _minRadius = 10;

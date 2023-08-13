@@ -7,7 +7,8 @@ if(_fipoMen isEqualTo [])exitWith{};
    private _fipoGroup = [_group, "fipoGroup"] call SFSM_fnc_groupData;
 
    if(_leader distance2D _x > SFSM_fipoGetInDistance
-   &&{(! _fipoGroup)})then{
+   &&{isNil "_fipoGroup" isEqualTo false
+   &&{_fipoGroup}})then{
 
       [_x] spawn SFSM_fnc_moveOutFipo;
    

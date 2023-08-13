@@ -18,6 +18,8 @@ private _green       = [0.3, 0.8, 0, 1];
 private _blue        = [0, 0, 1, 1];
 private _lightBlue   = [0.3, 0.3, 1, 1];
 private _aqua        = [0.4, 1, 0.9, 1];
+private _greenTeal   = [0.5, 1, 0.3, 1];
+
 
 if(""                          isEqualTo _action)    exitWith{_default};
 
@@ -34,6 +36,7 @@ if("! Suppressed !"           isEqualTo _action)    exitWith{_red};
 if("Fleeing  "                isEqualTo _action)    exitWith{_lightOrange};
 if("Fleeing"                  isEqualTo _action)    exitWith{_red};
 if("dodging"                  isEqualTo _action)    exitWith{_orange};
+if("Evading fire"             isEqualTo _action)    exitWith{[0.99,0.48,0.48,1]};
 if("rearming"                 isEqualTo _action)    exitWith{_orange};
 if("Moving to fire-position"  isEqualTo _action)    exitWith{_orange};
 if("emergency heal"           isEqualTo _action)    exitWith{_red};
@@ -58,9 +61,10 @@ if("leaving"              in _action)             exitWith{_lightBlue};
 if("success"              in _action)             exitWith{_green};
 if("completed"            in _action)             exitWith{_green};
 if("taking cover"         in _action)             exitWith{_brown};
-if("failed"               in toLowerANSI _action) exitWith{_red};
-if("explosive"            in _action)             exitWith{_orange};
 if("CQB"                  in _action)             exitWith{_darkGreen};
+if("failed"               in toLowerANSI _action) exitWith{_red};
+if("dodging"              in toLowerANSI _action) exitWith{_aqua};
+if("explosive"            in _action)             exitWith{_orange};
 if("Hiding"               in _action)             exitWith{_brown};
 if("uppressi"             in _action)             exitWith{_blue};
 if("!Targeting Enemy!"    in _action)             exitWith{_red};

@@ -32,26 +32,36 @@ private _versionName = "DCO soldier FSM | Movement";
 ] call cba_settings_fnc_init;
 
 
-[
-	"SFSM_ProneTreshHold",
-	"SLIDER",
-	["Prone TreshHold", "unit will stay prone if suppression is higher than this value"],
-	_versionName,
-	[
-		0.1,   	//minimum 
-		2, 		//max
-		0.7, 	//default
-		2,		//decimals
-		false
-	],
-	1
-] call cba_settings_fnc_init;
+// [
+// 	"SFSM_ProneTreshHold",
+// 	"SLIDER",
+// 	["Prone TreshHold", "unit will stay prone if suppression is higher than this value"],
+// 	_versionName,
+// 	[
+// 		0.1,   	//minimum 
+// 		2, 		//max
+// 		0.7, 	//default
+// 		2,		//decimals
+// 		false
+// 	],
+// 	1
+// ] call cba_settings_fnc_init;
 
 
 [
 	"SFSM_allowDodging",
 	"CHECKBOX",
 	["Dodge", "Units will dodge (change position) when incoming fire reaches the dodge-trigger-treshHold (SFSM_RpsDodgeTrigger)."],
+	_versionName,
+	true
+] call cba_settings_fnc_init;
+
+
+
+[
+	"SFSM_allowEvasion",
+	"CHECKBOX",
+	["Evasion", "When no cover is found a soldier will run to avoid incoming fire."],
 	_versionName,
 	true
 ] call cba_settings_fnc_init;

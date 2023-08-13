@@ -1,15 +1,16 @@
 params["_man", "_suppression"];
-private _excluded     = _man getVariable ['SFSM_excluded', false];
-private _action       = [_man] call SFSM_fnc_getAction;
-private _flashAction  = [_man, "flashAction"] call SFSM_fnc_unitData;
-private _excludedText = ["Excluded. Error: ", _action]joinString"";
-private _actionTxt    = _action;
+private _excluded       = _man getVariable ['SFSM_excluded', false];
+private _action         = [_man] call SFSM_fnc_getAction;
+private _flashAction    = [_man, "flashAction"] call SFSM_fnc_unitData;
+private _excludedText   = ["Excluded. Error: ", _action]joinString"";
+private _actionTxt      = _action;
+private _ProneTreshHold = [_man] call SFSM_fnc_getProneTreshHold;
 
 if(_excluded && {_action isEqualTo "none"})then{_actionTxt = "Excluded"};
 if(_excluded && {_action != "none"})       then{_actionTxt = _excludedText};
-if(isNil "_action")                           then{_actionTxt = "not initialized"};
+if(isNil "_action")                        then{_actionTxt = "not initialized"};
 if(_action isEqualTo "none")               then{_actionTxt = ""};
-if(_suppression > SFSM_ProneTreshHold)     then{_actionTxt = "! Suppressed !"};
+if(_suppression > _ProneTreshHold)         then{_actionTxt = "! Suppressed !"};
 if(_flashAction isNotEqualTo "")           then{_actionTxt = _flashAction;};
 
 if(fleeing _man

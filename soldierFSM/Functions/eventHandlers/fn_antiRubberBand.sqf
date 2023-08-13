@@ -9,11 +9,12 @@ _man attachTo [_obj, [0,0,0]];
 _man setDir 0;
 
 [_man, _obj]spawn{
-
-    sleep 0.05;
-    detach (_this#0);
-    deleteVehicle (_this#1);
-
+    params["_man", "_obj"];
+    sleep 0.02;
+    detach _man;
+    _man setPosASL (getPosASLVisual _obj);
+    deleteVehicle _obj;
+    [_man] call SFSM_fnc_fixPos;
 };
 
 }] call CBA_fnc_addEventHandler;

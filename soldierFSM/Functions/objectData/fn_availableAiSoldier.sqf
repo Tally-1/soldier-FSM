@@ -8,7 +8,6 @@ if (primaryWeapon _man isEqualTo "")                    exitWith{false;};
 if (_man getVariable ["SFSM_Excluded",  false])         exitWith{false;};
 if (_man getVariable ["SFSM_Sprinting", false])         exitwith{false;};
 if (fleeing _man)                                       exitWith{false;};
-// if (currentCommand _man isNotEqualTo "")                exitWith{false;};
 
 //If unit is hunting (Marksman FSM)
 private _huntPos = _man getVariable ["SFSM_huntStartPos", [0,0,0]];

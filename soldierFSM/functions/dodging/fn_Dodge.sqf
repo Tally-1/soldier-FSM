@@ -24,6 +24,21 @@ if(_man call SFSM_fnc_unitInDoor
 &&{(! SFSM_dodgeIndoors)})
 exitWith{"indoor dodge blocked" call dbgmsg};
 
+private _action = [_man] call SFSM_fnc_getAction;
+if("dodging" in toLowerANSI _action)exitWith{};
+
+if([_man] call SFSM_fnc_canDodge isEqualTo false)exitWith{};
+
+// If the soldier runs to a nearby FIPO
+if([_man, _enemy] call SFSM_fnc_initDodgeToFipo)exitWith{};
+
+// New evasion function 
+if(_seekCover isEqualTo false)exitWith{
+    // Forced unscheduled execution
+    // https://community.bistudio.com/wiki/call
+    isNil {[_man, _enemy] call SFSM_fnc_evasion;};
+};
+
 private _dodgeToHouse = false;
 //random chance to init CQB cover (50%)
 if(random 1 > 0.5)
@@ -42,14 +57,14 @@ if(_dodgeToHouse)exitWith{};
 
 /*Set values to the unitData hashmap */
 private _coolDown = (time + SFSM_DodgeCoolDown);
-[_man, "dodgeTimer", _coolDown] call SFSM_fnc_unitData;
+[_man, "dodgeTimer", _coolDown]      call SFSM_fnc_unitData;
 [_man, "dodging",      true]         call SFSM_fnc_unitData;
 
 
-private _target         = getAttackTarget _man;
+private _target      = getAttackTarget _man;
 private _behaviour   = behaviour _man;
-private _timer          = time + SFSM_DodgeTimer;
-private _dodgePos      = [_man, _enemy] call SFSM_fnc_GetDodgePos;
+private _timer       = time + SFSM_DodgeTimer;
+private _dodgePos    = [_man, _enemy] call SFSM_fnc_GetDodgePos;
 private _action      = "dodging";
 
 private _coverRadius = SFSM_DodgeDistance / 2;
@@ -58,13 +73,22 @@ private _coverPos    = [_man, _coverLatPos, _coverRadius] call SFSM_fnc_getCover
 private _coverFound  = (!isNil "_coverPos" && {typeName _coverPos == 'ARRAY'});
 private _group       = group _man;
 
-if(_coverFound
-&&{_seekCover})
-then{
+if(_coverFound isEqualTo false)exitWith{
+    // Forced unscheduled execution
+    // https://community.bistudio.com/wiki/call
+    isNil {[_man, _enemy] call SFSM_fnc_evasion;};
+};
+
+// if(_coverFound
+// &&{_seekCover})
+// then{
         _dodgePos = _coverPos;
         _action   = "dodging to cover";
-    };
+    // };
 
+// if(_action isEqualTo "Evading fire")exitWith{
+//     [_man, _enemy] call SFSM_fnc_initEvadeFire;
+// };
 
 [_man, "currentDestination", _dodgePos] call SFSM_fnc_unitData;
 [_man, "action", _action]    call SFSM_fnc_unitData;

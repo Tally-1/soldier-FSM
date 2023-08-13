@@ -35,6 +35,6 @@ private _warningText = parseText
 
 ] joinString "");
 
-[_warningText] remoteExec ["Hint", 0];
+Hint _warningText;
 
 diag_log "DCO soldier FSM ==> Unit was deleted mid battle!"

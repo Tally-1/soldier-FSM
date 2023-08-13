@@ -7,8 +7,8 @@ if([_man] call SFSM_fnc_isUncon)then{
     waitUntil{sleep 0.1; scriptDone _surrender};
 };
 
-private _text = [name _man, " was captured by ", (name _captor)]joinString"";
-[_text] remoteExecCall ["systemChat", 0];
+[[name _man, " was captured by ", (name _captor)],1] call dbgmsg;
+
 [_man]  remoteExecCall ["removeAllActions", 0];
 [_man] call SFSM_fnc_executeAction;
 
@@ -36,10 +36,10 @@ _man addEventHandler ["Hit", {
 }}}];
 
 
-if(random 1 < 0.2)exitWith{
+if(random 1 < SFSM_bombOnCapture)exitWith{
     createVehicle ["Bomb_03_F", (GetPosATL _man)];
-    // private _text = [name _man, " blew himself and ", (name _captor), " into very small pieces"]joinString"";
-    // [_text] remoteExecCall ["systemChat", 0];
+    private _text = [name _man, " blew himself and ", (name _captor), " into very small pieces"]joinString"";
+    [_text] call dbgmsg;
 };
 
 ["capture",  [_man, _captor]] call CBA_fnc_localEvent;

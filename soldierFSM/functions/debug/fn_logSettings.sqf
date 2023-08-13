@@ -23,7 +23,6 @@ private _hintText = parseText
         _aqua,
         "Debugger ",  SFSM_Debugger, "<br/>",
         "Hiding ",    SFSM_hideFromVehicles, "<br/>",
-        "prone-treshHold ",     SFSM_ProneTreshHold,  "<br/>",
         "react-fire coolDown ", SFSM_reactFireCoolDown, "<br/>","<br/>",
         _end,
 
@@ -86,7 +85,6 @@ diag_log ([_signature, "Player group dodge ",           SFSM_PlayerGrpDodge]    
 
 diag_log ([_signature, "flinchTreshHold ",              SFSM_FlinchTreshHold]   joinString "");
 diag_log ([_signature, "flinchCoolDown ",               SFSM_FlinchCoolDown]    joinString "");
-diag_log ([_signature, "prone-treshHold ",              SFSM_ProneTreshHold]    joinString "");
 
 diag_log parseText("-------------------------------------------------------------------------");
 

@@ -11,6 +11,6 @@ private _vicPos = getPosATLVisual _victim;
 ] spawn SFSM_fnc_forceMove2;
 
 [_man, "Rescuing friendly"] call SFSM_fnc_setAction;
-[_victim, "Being rescued"] call SFSM_fnc_setAction;
+[_victim, "Being rescued", 10] call SFSM_fnc_flashAction;
 
 true;

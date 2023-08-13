@@ -16,28 +16,29 @@
 
 private _noRpsParam = false;
 params ["_man", "_noRpsParam"];
-if!(SFSM_allowDodging)                               exitWith{false};
-if!([_man, true] call SFSM_fnc_canRun)               exitWith{false};
-if([_man] call SFSM_fnc_isPlayer)                    exitWith{false};
-if(_man getVariable ["SFSM_Sprinting", false])       exitwith{false;};
+if!(SFSM_allowDodging)                              exitWith{false};
+if([_man, "inFipo"] call SFSM_fnc_unitData)         exitWith{false};
+if([_man, "forcedMovement"] call SFSM_fnc_unitData) exitWith{false};
 
-private _action = [_man, "action"] call SFSM_fnc_unitData;
-if(isNil "_action")exitWith{false;};
+private _rps     = [_man, "roundsPrSecond"] call SFSM_fnc_unitData;
+private _lowRPS  = (_rps < SFSM_RpsDodgeTrigger) || _noRpsParam;
+if(_lowRPS) exitWith{false;};
 
-private _group             = group _man;
-private _grpCanDodge       = [_group] call SFSM_fnc_groupCanDodge;
-private _dodgeTimer        = [_man, "dodgeTimer"]         call SFSM_fnc_unitData;
-private _pathEnabeled        = [_man, 'pathEnabeled']     call SFSM_fnc_unitData;
-private _rps               = [_man, "roundsPrSecond"]     call SFSM_fnc_unitData;
-private _coolDownEnded     = _dodgeTimer < time;
-private _lowSuppression       = getSuppression _man < SFSM_ProneTreshHold;
-private _highRPS           = (_rps > SFSM_RpsDodgeTrigger) || _noRpsParam;
+private _proneTreshHold = [_man] call SFSM_fnc_getProneTreshHold;
+private _suppressed     = getSuppression _man > _proneTreshHold;
+if(_suppressed)exitWith{false;};
 
-private _canDodge = (_coolDownEnded
-                    &&{(_action == 'none')
-                    &&{_lowSuppression
-                    &&{_highRPS
-                    &&{_grpCanDodge
-                    &&{_pathEnabeled}}}}});
+private _available = [_man] call SFSM_fnc_availableAiSoldier;
+if!(_available)exitWith{false};
 
-_canDodge;
+private _dodgeTimer = [_man, "dodgeTimer"] call SFSM_fnc_unitData;
+if(_dodgeTimer > time)exitWith{false;};
+
+private _mode = unitCombatMode _man;
+if(_mode == "RED")   exitWith {true;};
+if(_mode == "WHITE") exitWith {true;};
+
+private _grpCanDodge = [group _man] call SFSM_fnc_groupCanDodge;
+if!(_grpCanDodge) exitWith{false;};
+
+true;

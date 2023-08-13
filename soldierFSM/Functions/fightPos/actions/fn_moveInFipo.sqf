@@ -1,9 +1,12 @@
 private _forced = false;
 params["_man", "_fipo", "_forced"];
 
-if((! _forced)
-&&{!([_man, _fipo] call SFSM_fnc_canMoveInFipo)})exitWith{
-    [_man, "Cannot get into fipo", 0.5] spawn SFSM_fnc_flashAction;
+// If the move is not forced, and the man is not "allowed" then abort the move.
+if(_forced                                            isEqualTo false 
+&&{([_man, _fipo, true] call SFSM_fnc_canMoveInFipo)  isEqualTo false
+})exitWith{
+    [_man, "Cannot get into fipo"] spawn SFSM_fnc_flashAction;
+    [["Man cannot move into fipo "], 1] call dbgmsg;
 };
 
 private _leader = leader group _man;
@@ -13,6 +16,12 @@ _man synchronizeObjectsAdd [_fipo];
 
 [_man, "Moving to fighting position"] call SFSM_fnc_setAction;
 ["fipo_moveIn",  [_man, _fipo]] call CBA_fnc_localEvent;
+
+if([_man, _fipo] call SFSM_fnc_canTeleportFipo)exitWith{
+    [_man] call SFSM_fnc_abortForcedMove;
+    [_man, _fipo] call SFSM_fnc_getInFipo;
+};
+
 private _move = [_man, _fightingPos, 90] spawn SFSM_fnc_forceMove2;
 private _aborted   = false;
 private _startTime = time;
@@ -25,7 +34,8 @@ waitUntil{
     || {time - _startTime > 20
     && {_startPos distance2D _man < 10
     && {_man distance2D _fipo > 10
-    && {speed _man < 3}}}})
+    && {speed _man < 3
+    }}}})
     then{
         [_man] call SFSM_fnc_abortForcedMove;
         _aborted = true;

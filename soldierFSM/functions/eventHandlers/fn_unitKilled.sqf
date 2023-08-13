@@ -26,8 +26,14 @@ addMissionEventHandler ["EntityKilled", {
     _man setVariable ['SFSM_killTime', time];
     _man setVariable ['SFSM_killer',  _killer];
 
+    // Set FIPO to FUBAR if possible / needed.
+    [_man] call SFSM_fnc_fipoKnockOut;
+
+    // Adjust morale on relevant men.
+    [_man, _killer, _instigator] call SFSM_fnc_moraleOnKill;
+
     private _building = _unitData get "currentBuilding";
-    if!(_building == "none")
+    if(_building isNotEqualTo "none")
     then{missionNamespace setVariable [_building, nil, true];};
 
 

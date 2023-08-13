@@ -12,9 +12,10 @@ while {_showFlanks isEqualTo "true"} do {
 	private _leftFlankActive    = _fipo getVariable "leftFlank";
 	private _selectedObjects    = curatorSelected#0;
 	
-	if(_rightFlankActive isEqualTo false
-	&&{_leftFlankActive  isEqualTo false})     exitWith{_showFlanks = "No flanks to show";};
-	if(count _selectedObjects isNotEqualTo 1)  exitWith{_showFlanks = "Unselected fipo";};
+	if(_rightFlankActive               isEqualTo false
+	&&{_leftFlankActive                isEqualTo false
+	&&{_fipo getVariable "dynamicFipo" isEqualTo false}}) exitWith{_showFlanks = "No flanks to show";};
+	if(count _selectedObjects isNotEqualTo 1)             exitWith{_showFlanks = "Unselected fipo";};
 	
 
 	[_fipo, true] call SFSM_fnc_showActiveFlanks;

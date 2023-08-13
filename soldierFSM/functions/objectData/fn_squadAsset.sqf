@@ -15,6 +15,4 @@ if([_man] call SFSM_fnc_isATSoldier)     exitWith{"AT-specialist"};
 if([_man] call SFSM_fnc_isMachineGunner) exitWith{"machineGunner"};
 if([_man] call SFSM_fnc_isMarksman)      exitWith{"marksman"};
 
-
-
 "regular"

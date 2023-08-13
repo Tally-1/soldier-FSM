@@ -23,7 +23,8 @@ private _safePos = _objectHash get"safe_pos";
 if(_safePos distance2D _man > 100)exitWith{};
 
 _objectHash set ["owner", _lastName];
-doStop _man;
+// doStop _man;
+_man doFollow _man;
 
 private _script = [_man, _safePos] spawn SFSM_fnc_moveToHunkerPos;
 waitUntil{sleep 1; scriptDone _script};

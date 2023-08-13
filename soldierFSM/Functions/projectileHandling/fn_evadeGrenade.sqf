@@ -18,7 +18,7 @@ then{[_man, nil, "Grenade landed near"] call SFSM_fnc_endHunker;};
 
 
 
-[_man, "action", "Evading grenade"]    call SFSM_fnc_unitData;
+[_man, "Evading grenade"]    call SFSM_fnc_flashAction;
 ["grenade_evade", [_man, _grenade]] call CBA_fnc_localEvent;
 
 

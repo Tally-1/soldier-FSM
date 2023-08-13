@@ -15,7 +15,7 @@ private _fipoMen = allUnits select
          
         if(_error)then{
             [_x] call SFSM_fnc_getOutFipo;
-            [_x, "Fipo Error", 30] call SFSM_fnc_flashAction;
+            [_x, "Fipo Error", 10] call SFSM_fnc_flashAction;
         };
 
         //the man is in a fighting-pos if there is no error an inFipo fnc returns true;

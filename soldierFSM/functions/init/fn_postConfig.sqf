@@ -127,7 +127,8 @@ SFSM_hijackVehicleTypes = [
 
 
 //all AI abilities that can be disabled using the "disableAI" command.
-SFSM_aiAbilities = [
+missionNamespace setVariable ["SFSM_aiAbilities", 
+[
 	"AIMINGERROR",
 	"ANIM",
 	"AUTOCOMBAT",
@@ -145,7 +146,7 @@ SFSM_aiAbilities = [
 	"TARGET",
 	"TEAMSWITCH",
 	"WEAPONAIM"
-];
+], true];
 
 //deactivate group-reset on vehicle FSM
 if(!isNil "DCOnoGroupReset")
@@ -172,8 +173,9 @@ SFSM_fipositions = entities "logic" select {typeOf _x isEqualTo "SFSM_FIPO"};
 SFSM_sprinters   = []; //simultaneous sprinters, used to cap the amount
 SFSM_cleanupObjs = []; //Objects programmed for deletion.
 
-[] call  SFSM_fnc_animationMaps;
-[] spawn SFSM_fnc_fipoManager;
+
+
+
 
 if(!isNil "Tally_Dev"
 &&{Tally_Dev})

@@ -4,6 +4,7 @@ if(isNil "_fipo")             exitWith{false;};
 if(_man distance _fipo < 1.1)   exitWith{false;};
 
 doStop _man;
+_man doFollow _man;
 _man setPosASL (getPosASL _fipo);
 _man doMove    (getPosATL _fipo);
 _man setDestination [(getPosATL _fipo), "DoNotPlan", false];
@@ -18,7 +19,7 @@ _man disableAI "PATH";
     params["_man"];
     sleep 0.5; 
     detach _man;
-    _man disableAI "PATH";
+    // _man disableAI "PATH";
     _man setPosASL getPosASL ([_man] call SFSM_fnc_getFipo);
     [_man, true] call SFSM_fnc_resetBrain;
     sleep 0.3;
