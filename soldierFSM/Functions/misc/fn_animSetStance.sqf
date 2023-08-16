@@ -5,7 +5,7 @@
 params["_man", "_indexAndMapName"];
 private _index          = _indexAndMapName#0;
 private _mapName        = _indexAndMapName#1;
-private _animationMap   = missionNamespace getVariable _mapName;
+private _animationMap   = missionNamespace getVariable _mapName;//[, "SFSM_animStances"];
 private _data           = _animationMap get _index;
 private _animation      = _data#0;
 private _unitPos        = _data#1;
@@ -45,13 +45,13 @@ _man addEventHandler ["AnimDone", {
 
     if(_wantedAnim in _anim)
     then{
-        //return to normal.
+        // return to normal.
         _man setAnimSpeedCoef _animSpeed;
         _man enableAI "anim";
         detach _man;
         [_man] call SFSM_fnc_setFipoAnimOfset;
 
-        //notify dependant functions.
+        // notify dependant functions.
         _man removeEventHandler [_thisEvent, _thisEventHandler];
         _man setVariable ["SFSM_animStanceDone", true];
         ["animStanceDone", [_man, _anim, _wantedIndex]] call CBA_fnc_localEvent;

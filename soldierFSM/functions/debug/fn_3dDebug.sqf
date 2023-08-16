@@ -15,6 +15,11 @@ SFSM_bullets      = [];
 SFSM_trajectories = [];
 SFSM_3Dsectors    = [];
 
+if(SFSM_DebugType isEqualTo "always")  then {SFSM_Debugger = true;};
+if(SFSM_DebugType isEqualTo "curator") then {SFSM_Debugger = true;};
+if(SFSM_DebugType isEqualTo "never")   then {SFSM_Debugger = false;};
+
+
 addMissionEventHandler ["Draw3D", {
 if(SFSM_Debugger)
 then{

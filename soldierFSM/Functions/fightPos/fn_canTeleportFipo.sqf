@@ -26,9 +26,7 @@ if(_distance < 1)exitWith{true;};
         _visibility = selectMax [_v1, _v2];
     };
 
-    if(_visibility > 0.2)exitWith{
-        _canBeSpotted = true;
-    };
+    if(_visibility > 0.2)exitWith{_canBeSpotted = true;};
     
 } forEach _nearPlayers;
 

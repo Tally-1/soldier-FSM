@@ -39,26 +39,29 @@ if (isServer && {_hcPresent}) exitWith { [] call SFSM_fnc_initSettings; };
 
 /*----------------papaReaps code end--------------*/
 
+// Forcing unscheduled call
+isNil{
+    [] call SFSM_fnc_initSettings;
+    [] call SFSM_fnc_postConfig;
 
+    {[_x] call SFSM_fnc_InitMan}     forEach allUnits;
+    {[_x] call SFSM_fnc_InitGroup}   forEach allGroups;
+    {[_x] call SFSM_fnc_initVehicle} forEach vehicles;
+    {_x   call SFSM_fnc_curatorEH}   forEach allCurators;
 
-[] call SFSM_fnc_initSettings;
-[] call SFSM_fnc_postConfig;
+    [] call  SFSM_fnc_unitKilled; 
+    [] call  SFSM_fnc_unitCreated;
+    [] call  SFSM_fnc_projectileCreated;
+    [] call  SFSM_fnc_buildingDestroyedEH;
+    [] call  SFSM_fnc_speechEventsMan;
+    [] call  SFSM_fnc_animationMaps;
+    [] call  SFSM_fnc_initFiPositions;
+    [] call  SFSM_fnc_antiRubberBand;
+    [] call  SFSM_fnc_ACE_MedicalCBA;
+};
 
-{[_x] call SFSM_fnc_InitMan}     forEach allUnits;
-{[_x] call SFSM_fnc_InitGroup}   forEach allGroups;
-{[_x] call SFSM_fnc_initVehicle} forEach vehicles;
-{_x   call SFSM_fnc_curatorEH}   forEach allCurators;
+sleep 0.1;
 
-
-[] call  SFSM_fnc_unitKilled; 
-[] call  SFSM_fnc_unitCreated;
-[] call  SFSM_fnc_projectileCreated;
-[] call  SFSM_fnc_buildingDestroyedEH;
-[] call  SFSM_fnc_speechEventsMan;
-[] call  SFSM_fnc_initFiPositions;
-[] call  SFSM_fnc_antiRubberBand;
-[] call  SFSM_fnc_ACE_MedicalCBA;
-[] call  SFSM_fnc_animationMaps;
 [] spawn SFSM_fnc_TaskManager;
 [] spawn SFSM_fnc_fipoManager;
 // [] spawn SFSM_fnc_moraleUpdater;

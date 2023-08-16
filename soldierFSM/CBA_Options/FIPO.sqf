@@ -14,6 +14,8 @@ private _versionName = "DCO soldier FSM | Fighting Positions (FIPO)";
 	]
 ] call cba_settings_fnc_init;
 
+
+
 [
 	"SFSM_allowFipoTeleport",
 	"CHECKBOX",
@@ -21,6 +23,8 @@ private _versionName = "DCO soldier FSM | Fighting Positions (FIPO)";
 	_versionName,
 	true
 ] call cba_settings_fnc_init;
+
+
 
 [
 	"SFSM_playerSpotTeleportDist",

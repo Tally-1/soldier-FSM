@@ -7,10 +7,10 @@
 //              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
 
 params["_man"];
-if(isNil "_man")exitWith{false};
-if(isNull _man)exitWith{false};
+if(isNil "_man") exitWith {false;};
+if(isNull _man)  exitWith {false;};
 
 private _unitData = _man getVariable "SFSM_UnitData";
-if(isNil "_unitData")exitWith{false};
+if(isNil "_unitData")exitWith{false;};
 
 true;

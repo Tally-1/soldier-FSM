@@ -11,7 +11,7 @@
     called from battlefieldPostInit, sends units to nearest coverPos if available.
 */
 params ["_man", "_battlefield"];
-if!([_man] call SFSM_fnc_manLoaded)exitwith{};
+if!([_man] call SFSM_fnc_isrealMan)exitwith{};
 if([_man] call SFSM_fnc_isMarksman)exitwith{};
 
 private _pathEnabeled  = [_man, 'pathEnabeled']     call SFSM_fnc_unitData;
