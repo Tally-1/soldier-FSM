@@ -40,6 +40,8 @@ if (isServer && {_hcPresent}) exitWith { [] call SFSM_fnc_initSettings; };
 /*----------------papaReaps code end--------------*/
 
 // Forcing unscheduled call
+// See leopard20s comment at the bottom of this page:
+// https://community.bistudio.com/wiki/call
 isNil{
     [] call SFSM_fnc_initSettings;
     [] call SFSM_fnc_postConfig;
