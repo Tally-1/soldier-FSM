@@ -4,6 +4,8 @@
 */
 
 private _versionName = "DCO soldier FSM | Headless Client";
+//TODO: Add setting disabling all HC related functions
+//Checked code and looks like nothing else will be affected by it
 
 [
     "PR_Allow_HC",
