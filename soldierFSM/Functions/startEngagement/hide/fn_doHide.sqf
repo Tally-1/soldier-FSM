@@ -11,7 +11,7 @@ params ["_man", "_enemyVehicle", "_CQB"];
 if(_CQB)exitWith{[_man, _enemyVehicle] spawn SFSM_fnc_doHideCQB;};
 
 private _action = [_man, "action"] call SFSM_fnc_unitData;
-if!(_action == "none")
+if(_action isNotEqualTo "none")
 then{sleep 20; ["double action", 2] call dbgmsg};
 
 private _coverPos = [_man] call SFSM_fnc_getCoverPos;
@@ -21,8 +21,9 @@ then{
       _man doTarget objNull;
       [_man, "action", "moving to cover for hiding"] call SFSM_fnc_unitData;
       _man setAnimSpeedCoef SFSM_sprintSpeed;
-      private _script = [_man, _coverPos, 30, 2] spawn SFSM_fnc_forceMove2;
-      waitUntil{sleep 0.1; scriptDone _script};
+    //   private _script = 
+      [_man, _coverPos, 30, 2] call SFSM_fnc_forceMove2;
+    //   waitUntil{sleep 0.1; scriptDone _script};
       _man setAnimSpeedCoef 1;
 };
 
@@ -48,8 +49,9 @@ while{_exitStatus == ""}do{
     if([_man]call SFSM_fnc_isUncon)                 exitWith{_exitStatus = "man is unconscious";};
 
 
-    private _script = [_man, 5] spawn SFSM_fnc_CQBTargetEnemies;
-    waitUntil {sleep 1; scriptDone _script; };
+    // private _script = 
+    [_man, 5] call SFSM_fnc_CQBTargetEnemies;
+    // waitUntil {sleep 1; scriptDone _script; };
     _man setCombatBehaviour "STEALTH";
     _man setUnitCombatMode "WHITE";
     _man setUnitPos "DOWN";

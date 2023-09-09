@@ -1,2 +1,4 @@
 params["_man", "_action"];
-[_man, "action", _action] call SFSM_fnc_unitData;
+isNil{//forced unscheduled execution
+	[_man, "action", _action] call SFSM_fnc_unitData;
+};

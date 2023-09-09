@@ -4,7 +4,7 @@ params["_man", "_units", "_excluded", "_distance"];
 private _allies  = [];
 private _enemies = [];
 
-{
+{isNil{//Forced unscheduled execution
     if(_man distance2D _x < _distance
     &&{ _x isNotEqualTo _man
     &&{(_x in _excluded) isEqualTo false
@@ -15,6 +15,6 @@ private _enemies = [];
         else{_allies  pushBack _x};
     };
 
-} forEach _units;
+}} forEach _units;
 
 [_allies, _enemies];

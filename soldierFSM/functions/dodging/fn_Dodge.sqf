@@ -25,7 +25,9 @@ if(_man call SFSM_fnc_unitInDoor
 exitWith{"indoor dodge blocked" call dbgmsg};
 
 private _action = [_man] call SFSM_fnc_getAction;
-if("dodging" in toLowerANSI _action)exitWith{};
+
+if(isNil "_action")                  exitwith{};
+if("dodging" in toLowerANSI _action) exitWith{};
 
 if([_man] call SFSM_fnc_canDodge isEqualTo false)exitWith{};
 
@@ -97,8 +99,9 @@ if(_coverFound isEqualTo false)exitWith{
 //this new better method is far better than the old one.
 if!(SFSM_flinchStopDodge)exitWith{
 
-    private _move = [_man, _dodgePos, SFSM_DodgeTimer, 2] spawn SFSM_fnc_forceMove2;
-    waitUntil{sleep 0.1; scriptDone _move;};
+    // private _move = 
+    [_man, _dodgePos, SFSM_DodgeTimer, 2] call SFSM_fnc_forceMove2;
+    // waitUntil{sleep 0.1; scriptDone _move;};
 
     _man doMove _dodgePos;
     [_man, _dodgePos, _timer, _target] spawn SFSM_fnc_EndDodge;

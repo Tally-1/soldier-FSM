@@ -60,6 +60,8 @@ _unitData set     ["baseMoraleChecked",   -300];
 _unitData set     ["baseMorale",          1];
 _unitData set     ["baseMoraleFactors",   createHashmap];
 _unitData set     ["morale",              1];
+_unitData set     ["playingAnimList",     false];
+_unitData set     ["fleeCoef",            0];
 
 _man setVariable["SFSM_UnitData",         _unitData, true];
 

@@ -20,13 +20,14 @@ if!(SFSM_aceLoaded)exitWith{["Ace not loaded, SFSM revival deactivated",2] call 
 ["Starting med-loop",2] call dbgmsg;
 
 while {!isNil "_battleField"} do {
-    private _script = [_battleField] spawn SFSM_fnc_battleFieldMedical;
-    waitUntil {
-            sleep 1;
-            private _finito = scriptDone _script;
-            if(isNil "_finito")exitWith{true;};
-            _finito; 
-    };
+    // private _script = 
+    [_battleField] call SFSM_fnc_battleFieldMedical;
+    // waitUntil {
+    //         sleep 1;
+    //         private _finito = scriptDone _script;
+    //         if(isNil "_finito")exitWith{true;};
+    //         _finito; 
+    // };
 
     private _units             = missionNamespace getVariable (_battlefield get "units");
     if(isNil "_units")exitWith{};

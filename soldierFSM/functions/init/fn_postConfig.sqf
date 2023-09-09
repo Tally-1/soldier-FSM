@@ -21,11 +21,6 @@ SFSM_lastImpactHandler  = -300;
 SFSM_lastCrater         = -300;
 SFSM_lastSprintLosCheck = -300;
 
-//How often the battlefield-data is updated
-SFSM_BattleUpdateSec = 10;
-
-//How often the battlefield-data is updated
-
 
 //types of trees, simple way of distinguishing between hard and soft cover
 SFSM_treeTypes = [
@@ -122,9 +117,33 @@ SFSM_hijackVehicleTypes = [
     "MRAP (GMG)",
     "car (GMG)",
     "car (Rocket launcher)",
-    "BTR"];
+    "BTR",
+    "Tank",
+    "light armor (HMG)",
+    "APC",
+    "IFV",
+    "heavy armor (Artillery)",
+    "Tank destroyer",
+    "Armored Anti-Air"];
 
+SFSM_hijackArmourTypes = [
+    "Tank",
+    "light armor (HMG)",
+    "APC",
+    "IFV",
+    "heavy armor (Artillery)",
+    "Tank destroyer",
+    "Armored Anti-Air"
+];
 
+SFSM_fipoActions = [
+	"Idle",
+	"peeking",
+	"Peeking", 
+	"In cover", 
+	"Moving to fighting position",
+	"Dodging to FIPO"
+] apply {toLowerANSI _x;};
 
 //all AI abilities that can be disabled using the "disableAI" command.
 missionNamespace setVariable ["SFSM_aiAbilities", 

@@ -12,7 +12,6 @@ if(_availableUnits isEqualTo [])exitwith{objNull};
 private _ableUnits = _availableUnits select {
        (_x in _excludedMen) isEqualTo false   
     && {[_x, _fipo] call SFSM_fnc_canMoveInFipo
-   // && {[_x] call SFSM_fnc_availableAiSoldier}
     }};
 
 if(_ableUnits isEqualTo [])exitWith{objNull};

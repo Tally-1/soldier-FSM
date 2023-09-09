@@ -11,7 +11,7 @@ if(isNil "_weaponHolders"
     _man selectWeapon primaryWeapon _man;
     _man setVariable ["SFSM_loadout", nil];
     [_man, "none"] call SFSM_fnc_setAction;
-    [_man, "Back in action", 3] call SFSM_fnc_flashAction;
+    [_man, "Back in action", 3] spawn SFSM_fnc_flashAction;
     [
         _man,
         "amovpercmstpsraswrfldnon",
@@ -70,7 +70,7 @@ _man switchMove "AmovPercMstpSnonWnonDnon";
 
 _man enableAI "all";
 [_man, "none"] call SFSM_fnc_setAction;
-[_man, "Back in action", 3] call SFSM_fnc_flashAction;
+[_man, "Back in action", 3] spawn SFSM_fnc_flashAction;
 _man selectWeapon primaryWeapon _man;
 _man playMove "amovpercmstpsraswrfldnon";
 

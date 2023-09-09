@@ -1,18 +1,18 @@
 ["ace_medical_CriticalInjury", {
 params["_man"];
-[_man] call SFSM_fnc_onKnockOut;
+isNil{[_man] call SFSM_fnc_onKnockOut;};
 
 }] call CBA_fnc_addEventHandler;
 
 ["ace_medical_knockout", {
 params["_man"];
-[_man] call SFSM_fnc_onKnockOut;
+isNil{[_man] call SFSM_fnc_onKnockOut;};
 
 }] call CBA_fnc_addEventHandler;
 
 
 ["ace_medical_WakeUp", {
 params["_man"];
-[_man] call SFSM_fnc_onWakeUp;
+isNil{[_man] call SFSM_fnc_onWakeUp;};
 
 }] call CBA_fnc_addEventHandler;

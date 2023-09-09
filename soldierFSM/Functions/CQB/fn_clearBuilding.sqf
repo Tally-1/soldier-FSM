@@ -35,8 +35,9 @@ _man setUnitPos "UP";
 _man setAnimSpeedCoef SFSM_sprintSpeed;
 _man setSpeedMode "FULL";
 
-private _script = [_man,(_path#0), 6, 5, 2] spawn SFSM_fnc_forceMove2;
-waitUntil{scriptDone _script;};
+// private _script = 
+[_man,(_path#0), 6, 5, 2] call SFSM_fnc_forceMove2;
+// waitUntil{scriptDone _script;};
 
 
 {
@@ -69,8 +70,9 @@ waitUntil{scriptDone _script;};
   then{
     [_man, "action", "CQB: House is clear!."] call SFSM_fnc_unitData;
     ["CQB_houseClear", [_man, _building]] call CBA_fnc_localEvent;
-    private _script = [_man, _path#((count _path)-1), 6, 5] spawn SFSM_fnc_forceMoveToPos;
-    waitUntil{sleep 1; scriptDone _script;};
+    // private _script = 
+    [_man, _path#((count _path)-1), 6, 5] call SFSM_fnc_forceMoveToPos;
+    // waitUntil{sleep 1; scriptDone _script;};
     _endCQB = true;
   };
   
@@ -78,8 +80,9 @@ waitUntil{scriptDone _script;};
   if(_endCQB)exitWith{};
 
   // if all checks passed then move to the next position.
-  private _script = [_man, _x, 10, 2] spawn SFSM_fnc_clearCQBPos;
-  waitUntil{sleep 1; scriptDone _script;};
+  // private _script = 
+  [_man, _x, 10, 2] call SFSM_fnc_clearCQBPos;
+  // waitUntil{sleep 1; scriptDone _script;};
   
 
   //action text for debugPurposes

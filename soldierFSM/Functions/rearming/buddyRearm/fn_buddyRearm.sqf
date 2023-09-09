@@ -15,8 +15,9 @@ waitUntil{
 };
 
 private _magArr   = [_buddy, _weapon] call SFSM_fnc_availMagsForWeapon;
-private _transfer = [_buddy, player, _magArr] spawn SFSM_fnc_giveMagazines;
-waitUntil { scriptDone _transfer; };
+// private _transfer = 
+[_buddy, player, _magArr] call SFSM_fnc_giveMagazines;
+// waitUntil { scriptDone _transfer; };
 
 [_buddy, "action", "none"] call SFSM_fnc_unitData;
 _buddy doFollow (leader group _buddy);

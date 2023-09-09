@@ -12,19 +12,6 @@ _man addEventHandler ["FiredMan", {
     params ["_man", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile", "_vehicle"];
     if(_weapon == secondaryWeapon _man)
     then{
-        /*
-        private _targetPos = _man getVariable "SFSM_missileTarget";
-        _man setAmmo [currentWeapon _man, 1];
-
-        if(!isNil "_targetPos")
-        then{[_projectile, _man, _targetPos] call SFSM_fnc_steerMissile;};
-
-        _man setVariable ["SFSM_launched", true];
-        _man removeEventHandler [_thisEvent, _thisEventHandler];
-        "unit fired launcher" call dbgMsg;
-        */
-
-        // private _targetASL  = [_target] call SFSM_fnc_buildingCenterPosASL;
         [_man, _projectile] spawn {
             params["_man", "_missile"];
             sleep 0.1;

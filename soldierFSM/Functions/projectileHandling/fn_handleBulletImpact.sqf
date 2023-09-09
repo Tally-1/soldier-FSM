@@ -29,20 +29,23 @@ if(_nearMen isEqualTo [])exitWith{};
 private _unitsReacted = 0;
 {
     private _action      = [_X, "action"]        call SFSM_fnc_unitData;
-    private _lastCover   = [_x, "last_time_in_cover"] call SFSM_fnc_unitData;
-    private _noCoverSpam = (time - _lastCover) > (SFSM_stayCoverPosTime + 120);
-    private _notInBattle = (([_X, "currentBattle"] call SFSM_fnc_unitData) == "none");
 
-    if(_action == "none"
-    &&{_noCoverSpam
-    &&{_notInBattle
-    &&{!(_x getVariable ['SFSM_excluded', false])}}})
-    then{
-            [_x, _launchPos] call SFSM_fnc_eventTriggeredCover;
-            _unitsReacted = _unitsReacted+1;
-        };
+    if!(isNil "_action")then{
 
-} forEach _nearMen;
+        private _lastCover   = [_x, "last_time_in_cover"] call SFSM_fnc_unitData;
+        private _noCoverSpam = (time - _lastCover) > (SFSM_stayCoverPosTime + 120);
+        private _notInBattle = (([_X, "currentBattle"] call SFSM_fnc_unitData) isEqualTo "none");
+
+        if(_action isEqualTo "none"
+        &&{_noCoverSpam
+        &&{_notInBattle
+        &&{!(_x getVariable ['SFSM_excluded', false])}}})
+        then{
+                [_x, _launchPos] call SFSM_fnc_eventTriggeredCover;
+                _unitsReacted = _unitsReacted+1;
+            };
+
+}} forEach _nearMen;
 
 if(_unitsReacted > 0)then{[[_unitsReacted, "units hiding from bulletImpac"]] call dbgmsg};
 

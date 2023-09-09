@@ -15,7 +15,7 @@ private _shootingStance = [_fireStances] call SFSM_fnc_selectShootingStance;
 if(isNil "_shootingStance")exitWith{"No stance found" call dbgmsg;};
 
 if(_coverStance isEqualTo _shootingStance)exitwith{
-    [_man, "No stance-change in fipo"] call SFSM_fnc_flashAction;
+    [_man, "No stance-change in fipo"] spawn SFSM_fnc_flashAction;
 };
 
 private _timer = time + 1.2;
@@ -34,8 +34,9 @@ if!(isNil "_anim")then{
 waitUntil{((_man getVariable ["SFSM_animStanceDone", false]) || (time > _timer))};
 
 //Look for and engage enemies.
-private _peek = [_man, _peekTime] spawn SFSM_fnc_peekActions;
-waitUntil {scriptDone _peek;};
+// private _peek = 
+[_man, _peekTime] call SFSM_fnc_peekActions;
+// waitUntil {scriptDone _peek;};
 
 //exit script if man has left  the fighting position
 if!([_man, "inFipo"] call SFSM_fnc_unitData)exitWith{};

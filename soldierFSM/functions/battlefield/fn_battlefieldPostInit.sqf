@@ -15,6 +15,7 @@
 // Example: [_battlefield] spawn SFSM_fnc_battlefieldPostInit;
 
 params["_battlefield"];
+_battlefield set ["currentAction",    "Waiting for grid to load"];
 
 //wait for grid to load, so that actions like hiding may be properly executed
 private _timer = time +5;
@@ -24,33 +25,34 @@ waitUntil
     private _gridLoaded = (_battlefield get "gridLoaded");
     if(isNil "_gridLoaded")    exitWith{true};
     if(_gridLoaded)            exitWith{true};
-    if(_timer > time)        exitWith{true};
+    if(_timer > time)          exitWith{true};
     false;
 };
 
+_battlefield set ["currentAction",    "Waiting to initialize vehicles"];
 private _vehicles = missionNamespace getVariable (_battlefield get "vehicles");
 {[_x] call SFSM_fnc_updateVehicle;}forEach _vehicles;
 //loop through all units in the battle assigning start-battle actions.
 
+_battlefield set ["currentAction",    "Executing initial BFF actions"];
 private _units = missionNamespace getVariable (_battlefield get "units");
-{
+{[]spawn{isNil{
     private _group          = group _x;
     private _specialActions = [_x, _battlefield] call SFSM_fnc_specialInitFightActions;
     private _grpCanDodge    = ([_group] call SFSM_fnc_groupCanDodge);
     private _excluded       = _x getVariable ["SFSM_Excluded",false];
     if(_grpCanDodge
-    &&{(! _specialActions)
-    &&{ ! _excluded}})
+    &&{(_specialActions isEqualTo false)
+    &&{_excluded        isEqualTo false}})
     then{
             private _reacting = [_x, _battleField] call SFSM_fnc_reactToVehicles;
             if!(_reacting)then{ [_x, _battlefield] call SFSM_fnc_fightInitCover;};
         };
 
-} forEach _units;
+}}} forEach _units;
 
+_battlefield set ["currentAction",    "Waiting for terrain to load"];
 sleep 1;
-
-
 
 //wait for the battlefield framework to register all map-objects in the area
 waitUntil
@@ -63,12 +65,14 @@ waitUntil
 };
 
 //update cover-positions
-_battlefield set ["currentAction",    "Loading cover positions"];
-[_battlefield] call SFSM_fnc_getCoverPositionsLight;
+if(SFSM_simpleBff isEqualTo false)then{
+    _battlefield set ["currentAction",    "Loading cover positions"];
+    [_battlefield] call SFSM_fnc_getCoverPositionsLight;
+};
 
 private _loadingTime = time - (_battlefield get "Started");
 
-[["Terrain and coverPositions finished loading in ", _loadingTime, " seconds"]] call SFSM_fnc_debugMessage; 
+[["Battlefield finished loading in ", _loadingTime, " seconds"]] call SFSM_fnc_debugMessage; 
 
 _battlefield set ["currentAction",    "none"];
 ["battle_initialized", _battlefield] call CBA_fnc_localEvent;

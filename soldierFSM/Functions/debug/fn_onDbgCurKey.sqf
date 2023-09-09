@@ -21,8 +21,8 @@ exitWith{
     hint "Battlefield out of range";
     false;
 };
-
-SFSM_Custom3Dpositions = (missionNamespace getVariable (_battle get 'grid')) get "gridPositions";
+private _3dPositions = (missionNamespace getVariable (_battle get 'grid')) get "gridPositions" apply {[_x, ""]};
+SFSM_Custom3Dpositions = _3dPositions;
 hint "Battlefield grid ON";
 
 true;

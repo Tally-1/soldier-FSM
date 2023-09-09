@@ -21,12 +21,14 @@ _man setAnimSpeedCoef SFSM_sprintSpeed;
 
 private _pos = getPos _supplyObject;
 _pos = [_pos#0,_pos#1, (_pos getDir _man), 1] call SFSM_fnc_sinCosPos;
-private _run = [_man, _pos, 60, 5] spawn SFSM_fnc_forceMove2;
 
-waitUntil{
-        sleep 0.1; 
-        scriptDone _run;
-};
+// private _run = 
+[_man, _pos, 60, 5] call SFSM_fnc_forceMove2;
+
+// waitUntil{
+//         sleep 0.1; 
+//         scriptDone _run;
+// };
 
 private _stillValid = [_man, _supplyObject] call SFSM_fnc_validRearm;
 

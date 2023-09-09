@@ -24,11 +24,10 @@ private _warningText = parseText
 ([
     _outLine,
     _bigTxt,_red, "!!Warning!!", _end,_end,_newLine,
-    _green, "Do not delete units while they are engaged in a fight,",
-            "This might cause errors.", _end, _newLine,_newLine,
-    _khaki,    "First kill them using the [end] button.", _newLine,
+    _green, "Deleting units while they are engaged in a fight, MAY cause errors.", _end, _newLine,_newLine,
+    _khaki, "First kill them using the [end] button.", _newLine,
             "Then wait 2-5 seconds before deleting them.", _newLine,
-            "This will allow the engine to properly exit the scripts.", _newLine,
+            "If you ignore this, then do not complain about errors on screen..", _newLine,
             _newLine,_end,
             _smallTxt, _versionName,_end,
     _end
@@ -37,4 +36,4 @@ private _warningText = parseText
 
 Hint _warningText;
 
-diag_log "DCO soldier FSM ==> Unit was deleted mid battle!"
+diag_log "DCO soldier FSM ==> Unit was deleted by curator mid battle!"

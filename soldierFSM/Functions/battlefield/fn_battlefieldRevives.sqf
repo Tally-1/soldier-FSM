@@ -20,7 +20,7 @@ private _assignedHealers = [];
             [_reviver, _x] spawn SFSM_fnc_buddyRevive;
 			_assignedHealers pushBack _reviver;
     }else{
-		[_x, "no available reviver..."] call SFSM_fnc_flashAction;
+		[_x, "no available reviver..."] spawn SFSM_fnc_flashAction;
 	};
 	
 } forEach _incapacitated;

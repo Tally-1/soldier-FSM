@@ -12,8 +12,10 @@
 // Example: [_man] call SFSM_fnc_getBattlefield;
 
 params ["_man"];
+if(isNil "_man")exitwith{};
+
 private _battleKey = [_man, "currentBattle"] call SFSM_fnc_unitData;
-// if(_battleKey == "none")exitWith{};
+if(isNil '_battleKey')exitWith{};
 
 private _battleField    = SFSM_battles get _battleKey;
 if(isNil '_battleField')exitWith{};

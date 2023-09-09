@@ -42,8 +42,9 @@ private _wAction = ["being revived by ", _healerName]joinString "";
 
 ["buddy_revive_init", [_healer, _unconscious]] call CBA_fnc_localEvent;
 
-private _run = [_healer, _wPos, _timeLimit, 3] spawn SFSM_fnc_forceMove2;
-waitUntil{ sleep 1; (scriptDone _run || time > _timer);};
+// private _run = 
+[_healer, _wPos, _timeLimit, 3] call SFSM_fnc_forceMove2;
+// waitUntil{ sleep 1; (scriptDone _run || time > _timer);};
 
 //check if conditions are still valid, if not then abort revive
 private _canHeal = [_healer, _unconscious, true, 7, true] call SFSM_fnc_canBuddyHeal;
@@ -60,9 +61,10 @@ if (!isNil "_relocatePos") then {
     
     private _timeAdded = round((_unconscious distance2D _relocatePos) * 1.2);
     _timer             = _timer + _timeAdded;
-    private _drag      = [_healer, _unconscious, _relocatePos] spawn SFSM_fnc_dragMan;
+    // private _drag      = 
+    [_healer, _unconscious, _relocatePos] call SFSM_fnc_dragMan;
     
-    waitUntil { sleep 1; scriptDone _drag;};
+    // waitUntil { sleep 1; scriptDone _drag;};
 };
 
 if(! _canHeal)exitWith{
@@ -75,7 +77,8 @@ if(_smokeOut)then{sleep 1;};
 
 //start reviving revive
 ["revive_anim", [_healer, _unconscious]] call CBA_fnc_localEvent;
-private _healing = [_healer, _unconscious] spawn SFSM_fnc_reviveAnim;
+private _healing = 
+[_healer, _unconscious] spawn SFSM_fnc_reviveAnim;
 waitUntil{
         sleep 1; 
         scriptDone _healing;

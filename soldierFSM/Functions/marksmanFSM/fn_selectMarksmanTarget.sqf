@@ -1,11 +1,13 @@
-params ["_marksman", "_targets"];
-private _side       = side _marksman;
+params ["_marksman", "_targets", "_assignedTargets"];
 private _target     = objNull;
+
+// isNil{//Forced unscheduled execution
+private _side       = side _marksman;
 private _targets    = _targets select {_side knowsAbout _x > 3};
 
 if(_targets isEqualTo [])exitWith{_target;};
 
-private _newTargets = _targets select {isNull (_x getVariable ["SFSM_myAssasin", objNull])};
+private _newTargets = _targets select {(_x in _assignedTargets) isEqualTo false;};
 
 if(_newTargets isEqualTo [])then{
     _newTargets = _targets;
@@ -33,5 +35,6 @@ private _medics         = _newTargets select {[_x]           call SFSM_fnc_squad
     _machinegunners, //5th pri
     _squadLeaders    //6th pri
 ];
+// };
 
 _target;

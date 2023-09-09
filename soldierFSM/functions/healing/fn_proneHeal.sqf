@@ -42,8 +42,9 @@ private _friendlyFire = [(side _man), (side _enemy)] call BIS_fnc_sideIsFriendly
 if(_friendlyFire)exitWith{};
 
 
-private _fireAtEnemy = [_man, _enemy] spawn SFSM_fnc_reactFire;
-waitUntil { sleep 1; scriptDone _fireAtEnemy;};
+// private _fireAtEnemy = 
+[_man, _enemy] call SFSM_fnc_reactFire;
+// waitUntil { sleep 1; scriptDone _fireAtEnemy;};
 
 };
 

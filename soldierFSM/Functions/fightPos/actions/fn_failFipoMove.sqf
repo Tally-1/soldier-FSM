@@ -1,5 +1,10 @@
 params["_man"];
-[_man, "none"] call SFSM_fnc_setAction;
+
+isNil{
+private _action = [_man] call SFSM_fnc_getAction;
+
+if(_action isEqualTo "Moving to fighting position")
+then{[_man, "none"] call SFSM_fnc_setAction;};
 [_man, "Failed to move into position", 0.5] spawn SFSM_fnc_flashAction;
 
 private _fipo = [_man] call SFSM_fnc_getFipo;
@@ -16,5 +21,5 @@ _man synchronizeObjectsRemove [_fipo];
 _man doFollow (leader group _man);
 
 [_man, 1.2] spawn SFSM_fnc_regroup;
-
+};
 true;

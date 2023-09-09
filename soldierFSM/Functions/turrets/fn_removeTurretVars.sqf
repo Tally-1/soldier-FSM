@@ -22,3 +22,5 @@ _turret setVariable        ["SFSM_gunner", nil];
 _turret setVariable        ["SFSM_getOutEH", nil];
 
 unassignVehicle _man;
+
+[_man] call SFSM_fnc_initOverrun;

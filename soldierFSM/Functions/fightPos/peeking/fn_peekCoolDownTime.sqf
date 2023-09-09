@@ -17,6 +17,8 @@ params["_man"];
 // Yip: Added randomness to cooldown based on courage.
 private _skillCourage = _man skill "courage";
 private _morale       = [_man, "morale"] call SFSM_fnc_unitData;
+if(isNil "_morale")exitWith{0.01;};
+
 if(_morale isEqualTo 0)       then{_morale       = 0.00001;};
 if(_skillCourage isEqualTo 0) then{_skillCourage = 0.00001;};//to avoid zero divisor error.
 

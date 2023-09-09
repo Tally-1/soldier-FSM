@@ -8,6 +8,7 @@
 
 params["_man", "_targetHouse"];
 private _battleKey = [_man, "currentBattle"] call SFSM_fnc_unitData;
+if(isNil "_battleKey")exitwith{true;};
 private _battlefield = SFSM_Battles get _battleKey;
 private _units = missionNamespace getVariable (_battleField get "units");
 private _filter = { 

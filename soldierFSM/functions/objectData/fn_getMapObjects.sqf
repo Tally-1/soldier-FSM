@@ -18,12 +18,22 @@ private _buildings            = [];
 private _posList              = [];
 private _hunkerObjects        = [];
 private _startTime            = time;
-private _terrainObjects       = nearestTerrainObjects [_pos, _types, _radius, false, true];
-private _nonTerrainStructures = _pos nearObjects ["building", _radius];
+private [
+    "_terrainObjects", 
+    "_nonTerrainStructures",
+    "_countAll"
+];
+
+
+
+if(SFSM_simpleBff isEqualTo false)
+then{
+_terrainObjects       = nearestTerrainObjects [_pos, _types, _radius, false, true];
+_nonTerrainStructures = _pos nearObjects ["building", _radius];
 
 _terrainObjects insert [0, _nonTerrainStructures, true];
 
-private _countAll = count _terrainObjects;
+_countAll = count _terrainObjects;
 
 
 if!(_lightScan)then{
@@ -33,13 +43,10 @@ if!(_lightScan)then{
         _terrainObjects = [_terrainObjects, _scheduled, _areaData] call SFSM_fnc_filterMapObjects;        
         }
       else{_terrainObjects = [_terrainObjects, _scheduled] call SFSM_fnc_filterMapObjects;};
-
-      
-      
-    };
+};
 
 
-private _count             = 0;
+_count             = 0;
 
 {    
     if((!isNull _x)
@@ -47,7 +54,7 @@ private _count             = 0;
     then{
             private _objData   =  [_x] call SFSM_fnc_terrainObjData;
             private _position  = (ASLToAGL (getPosASLVisual _x));
-            private _canHunker = [_objData] call SFSM_fnc_isHunkerObject;
+            // private _canHunker = [_objData] call SFSM_fnc_isHunkerObject;
             
             _posList pushback _position;
             _position =(str _position);
@@ -58,11 +65,11 @@ private _count             = 0;
             if(!isNil "_mapObjsData")
             then{_mapObjsData set [_position, _objData]};
 
-            if(_canHunker)
-            then{
-                    [_hunkerObjData, _objData] call SFSM_fnc_addHunkerObjData;
-                    _hunkerObjects pushBackUnique _x;
-                };
+            // if(_canHunker)
+            // then{
+            //         [_hunkerObjData, _objData] call SFSM_fnc_addHunkerObjData;
+            //         _hunkerObjects pushBackUnique _x;
+            //     };
             
             if(_x isKindOf 'house'
             &&{true//(!isObjectHidden _x)
@@ -83,9 +90,11 @@ private _count             = 0;
 
 _mapObjectsData set ["objectCount", _count];
 private _timeSpent = time - _startTime;
+};
 
-/*When called by the areaData function _buildings*/
-if(!isNil "_areaData")
+
+/*When called by the areaData function*/
+if(isNil "_areaData" isEqualTo false)
 then{
         _mapObjsData set ["positions", _posList];
         _mapObjsData set ["hunkerObjData", _hunkerObjData];
@@ -98,14 +107,22 @@ then{
         missionNamespace setVariable [_mapObjVarName,   _mapObjsData];
         missionNamespace setVariable [_hunkObjVarName,  _hunkerObjects];
         missionNamespace setVariable [_buildingsVarName,_buildings];
-        
-        _areaData set ["mapObjects", _mapObjVarName];
-        _areaData set ["hunkerObjects", _hunkObjVarName];
-        _areaData set ["buildings", _buildingsVarName];
-        _areaData set ["terrainLoaded", true];
-        _areaData set ["currentAction",    "none"];
 
-        // copyToClipboard str _hunkerObjData;
+        if(SFSM_simpleBff isEqualTo false)
+        then{        
+            _areaData set ["mapObjects",    _mapObjVarName   ];
+            _areaData set ["hunkerObjects", _hunkObjVarName  ];
+            _areaData set ["buildings",     _buildingsVarName];
+            _areaData set ["terrainLoaded", true             ];
+            _areaData set ["currentAction", "none"           ];
+        }else{
+            _areaData set ["mapObjects",    nil];
+            _areaData set ["hunkerObjects", nil];
+            _areaData set ["buildings",     nil];
+            _areaData set ["terrainLoaded", true];
+            _areaData set ["currentAction", "none"];
+        };
+
     };
 
 // copyToClipboard str _objTypes;

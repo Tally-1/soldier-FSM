@@ -7,8 +7,9 @@
 //              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
 
 params ["_man"];
-private _battleKey     = [_man, "currentBattle"] call SFSM_fnc_unitData;
-private _battlefield   = SFSM_Battles get _battleKey;
+private _battlefield = [_man] call SFSM_fnc_getBattleField;
+if(isNil "_battlefield") exitWith{};
+
 private _gridPositions = (missionNamespace getVariable (_battlefield get 'grid')) get "gridPositions";
 private _enemyVehicles = [_man, _battlefield] call SFSM_fnc_getEnemyVehicles;
 private _enemies       = [_man] call Tcore_fnc_nearKnownEnemies;
@@ -87,8 +88,9 @@ do{
                     private _canSprint = [_man, _nearest, 40] call SFSM_fnc_canSprint;
 
                     if(_canSprint)then{
-                        private _sprint = [_man, _nearest] spawn SFSM_fnc_sprint;
-                        waitUntil {sleep 0.1; scriptDone _sprint;};
+                        // private _sprint = 
+                        [_man, _nearest] call SFSM_fnc_sprint;
+                        // waitUntil {sleep 0.1; scriptDone _sprint;};
                     }
                     else
                     {_man doMove _nearest;};

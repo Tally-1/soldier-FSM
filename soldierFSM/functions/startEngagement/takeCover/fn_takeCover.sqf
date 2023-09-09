@@ -10,8 +10,8 @@ params ['_man', '_coverPos'];
 private _group = group _man;
 private _canTakeCover = [_group] call SFSM_fnc_groupCanDodge;
 private _lastCover   = [_man, "last_time_in_cover"] call SFSM_fnc_unitData;
+if(isNil "_lastCover")                       exitWith{};
 private _noCoverSpam = (time - _lastCover) > (SFSM_stayCoverPosTime + 120);
-
 if(isNil "_noCoverSpam")                       exitWith{};
 if (isNil '_coverPos')                         exitWith{'cover-pos is undefined, cannot take cover' call dbgmsg};
 if(_noCoverSpam)                               exitWith{};
@@ -22,8 +22,9 @@ if!(_canTakeCover)                             exitWith{[["taking cover blocked 
 
 
 //wait until man is available
-private _script = [_man] spawn SFSM_fnc_initTakeCover;
-waitUntil{sleep 0.1; scriptDone _script};
+// private _script = 
+[_man] call SFSM_fnc_initTakeCover;
+// waitUntil{sleep 0.1; scriptDone _script};
 
 if!([_man] call SFSM_fnc_manAvailable)
 exitWith{'unit too busy to take cover' call dbgmsg};
@@ -49,8 +50,9 @@ _man setAnimSpeedCoef SFSM_sprintSpeed;
 
 
 
-_script = [_man, _coverPos, SFSM_dodgeTimer, 2.5] spawn SFSM_fnc_forceMove2;
-waitUntil{sleep 0.1; scriptDone _script};
+// _script = 
+[_man, _coverPos, SFSM_dodgeTimer, 2.5] call SFSM_fnc_forceMove2;
+// waitUntil{sleep 0.1; scriptDone _script};
 
 _man doTarget _target;
 _man setUnitPos "AUTO";

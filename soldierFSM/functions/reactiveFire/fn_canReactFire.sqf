@@ -14,9 +14,13 @@ if(_man getVariable ["ace_isunconscious", false])exitWith{false;};
 if(_man getVariable ["dam_ignore_injured0",false])exitWith{false;};
 
 
-private _reactFireTimer    = [_man, "reactFireTimer"]     call SFSM_fnc_unitData;
+private _reactFireTimer  = [_man, "reactFireTimer"]     call SFSM_fnc_unitData;
 private _action          = [_man, "action"]              call SFSM_fnc_unitData;
-private _rps              = [_man, "roundsPrSecond"]     call SFSM_fnc_unitData;
+private _rps             = [_man, "roundsPrSecond"]     call SFSM_fnc_unitData;
+
+if(isNil "_reactFireTimer") exitWith{false;};
+if(isNil "_action")         exitWith{false;};
+if(isNil "_rps")            exitWith{false;};
 
 (_rps < SFSM_RpsDodgeTrigger
 &&{(_reactFireTimer < time || _ignoreReactFireTimer)//when hit by a bullet the reactF-timer is ignored.

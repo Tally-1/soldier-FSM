@@ -10,6 +10,7 @@ params["_man"];
 
 //exit if the man is clearing a house.
 private _action = [_man, "action"] call SFSM_fnc_unitData;
+if(isNil "_action")exitwith{};
 if("CQB" in _action)exitWith{false;};
 
 private _previousBuilding = [_man, "currentBuilding"] call SFSM_fnc_unitData;

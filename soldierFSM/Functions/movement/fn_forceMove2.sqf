@@ -24,8 +24,9 @@ _man doFollow _man;
 
 if([_man, _pos] call SFSM_fnc_canSprint)exitWith{
 
-    private _sprint = [_man, _pos] spawn SFSM_fnc_sprint;
-    waitUntil{sleep 0.3; scriptDone _sprint;};
+    // private _sprint = 
+    [_man, _pos] call SFSM_fnc_sprint;
+    // waitUntil{sleep 0.3; scriptDone _sprint;};
     
 
     if([_man, "abortForcedMove"] call SFSM_fnc_unitData)exitWith{
@@ -37,8 +38,9 @@ if([_man, _pos] call SFSM_fnc_canSprint)exitWith{
     };
     };
 
-    private _move = _this spawn SFSM_fnc_forceMoveToPos;
-    waitUntil { sleep 0.1; scriptDone _move; };
+    // private _move = 
+    _this call SFSM_fnc_forceMoveToPos;
+    // waitUntil { sleep 0.1; scriptDone _move; };
     _this call SFSM_fnc_postForceMove2;
 
 };
@@ -50,8 +52,9 @@ waitUntil {(scriptDone _calculate) || (_timer < time); };
 
 private _path = _man getVariable "SFSM_currentPath";
 if(isNil "_path")exitWith{
-    private _move = _this spawn SFSM_fnc_forceMoveToPos;
-    waitUntil { sleep 0.1; scriptDone _move; };
+    // private _move = 
+    _this call SFSM_fnc_forceMoveToPos;
+    // waitUntil { sleep 0.1; scriptDone _move; };
     _this call SFSM_fnc_postForceMove2;
 };
 
@@ -64,7 +67,7 @@ private _posTimeLimit = _maxTime / (count _path);
     if([_man, "inFipo"] call SFSM_fnc_unitData)          exitWith{};
     // doStop _man;
     _man doFollow _man;
-    private _move = 
+    // private _move = 
     [
         _man,
         _x,
@@ -72,9 +75,9 @@ private _posTimeLimit = _maxTime / (count _path);
         1,
         _spamTimer
     ]
-    spawn SFSM_fnc_forceMoveToPos;
+    call SFSM_fnc_forceMoveToPos;
 
-    waitUntil { sleep 0.1; scriptDone _move; };
+    // waitUntil { sleep 0.1; scriptDone _move; };
 
     [_man, "forcedMovement", true] call SFSM_fnc_unitData;
 

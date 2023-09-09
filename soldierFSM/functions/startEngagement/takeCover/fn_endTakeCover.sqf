@@ -18,14 +18,15 @@ then{
 
         if(_soldiersInPosition > 1)exitWith{_positionIsAvailable = false};
         
-        private _script = [_man, _endPos] spawn SFSM_fnc_stayInCover;
-        waitUntil {sleep 1; scriptDone _script};
+        // private _script = 
+        [_man, _endPos] call SFSM_fnc_stayInCover;
+        // waitUntil {sleep 1; scriptDone _script};
 
     };
 
 if!(_positionIsAvailable)exitWith{
     ["take_cover_Aborted", [_man, _endPos]] call CBA_fnc_localEvent;
-    [_man, _endPos] call SFSM_fnc_forceCoverDodge
+    [_man, _endPos] call SFSM_fnc_forceCoverDodge;
 };
 
 

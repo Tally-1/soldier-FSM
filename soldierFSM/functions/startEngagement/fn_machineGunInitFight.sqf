@@ -7,14 +7,17 @@
 //              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
 
 params ["_man"];
+if(isNil "_man")exitWith{};
 
 private _battleKey = [_man, "currentBattle"] call SFSM_fnc_unitData;
+
+if(isNil "_battleKey")exitWith{};
+
 private _battlefield = SFSM_Battles get _battleKey;
 
 if(isNil "_battlefield")exitWith{};
 
-if(_man getVariable ["ace_isunconscious", false])exitWith{};
-if(_man getVariable ["dam_ignore_injured0",false])exitWith{};
+if!([_man, true] call SFSM_fnc_canRun)exitWith{};
 
 private _side          = side _man;
 private _allClusterPos = (_battlefield get "clusterPositions");
@@ -27,8 +30,9 @@ private _coverPosFound = ((!isNil "_coverPos") && {typeName _coverPos == "ARRAY"
 
 //suppress enemy clusters
 private _enemyClusterPositions = [_side, _battlefield] call SFSM_fnc_getEnemyPositions;
-private _script = [_man, _enemyClusterPositions] spawn SFSM_fnc_supressPositions;
-waitUntil {sleep 0.5; scriptDone _script};
+// private _script = 
+[_man, _enemyClusterPositions] call SFSM_fnc_supressPositions;
+// waitUntil {sleep 0.5; scriptDone _script};
 
 if(isNil "_battlefield")exitWith{[_man, "action", "none"] call SFSM_fnc_unitData};
 
@@ -54,14 +58,16 @@ if(_coverPosFound
 then{
         
         [_man, "Suppressing and Moving"] call SFSM_fnc_setAction;
-        _script = [_man, _coverPos, 3] spawn SFSM_fnc_forceMove2;
-        waitUntil {sleep 1; scriptDone _script};
+        // _script = 
+        [_man, _coverPos, 3] call SFSM_fnc_forceMove2;
+        // waitUntil {sleep 1; scriptDone _script};
     };
     
 sleep 2;
 
 if ([_man] call SFSM_fnc_abortSpecial)exitWith{
     private _regrouping = [_man] call SFSM_fnc_getAction isEqualTo "Forced regroup";
+    if(isNil "_regrouping")exitWith{};
     if!(_regrouping)then{[_man, "none"] call SFSM_fnc_setAction;};
 };
 
@@ -72,8 +78,9 @@ if(isNil "_battlefield")exitWith{[_man, "none"] call SFSM_fnc_setAction;};
 //now suppress every single enemy individually
 private _radius = _battlefield get "radius";
 private _allEnemyPos = [_man, (_radius*2)] call Tcore_fnc_nearKnownEnemies;
-private _script = [_man, _allEnemyPos] spawn SFSM_fnc_supressPositions;
-waitUntil {sleep 0.5; scriptDone _script};
+// private _script = 
+[_man, _allEnemyPos] call SFSM_fnc_supressPositions;
+// waitUntil {sleep 0.5; scriptDone _script};
 
 if(isNil "_battlefield")exitWith{[_man, "action", "none"] call SFSM_fnc_unitData};
 
@@ -83,8 +90,9 @@ if(_coverPosFound
 }})
 then{
         [_man, "action", "Ending suppression"] call SFSM_fnc_unitData;
-        _script = [_man, _coverPos, 3] spawn SFSM_fnc_forceMove2;
-        waitUntil {sleep 1; scriptDone _script};
+        // _script = 
+        [_man, _coverPos, 3] call SFSM_fnc_forceMove2;
+        // waitUntil {sleep 1; scriptDone _script};
     };
 
 "machineGunner ended suppression of enemy" call SFSM_fnc_debugMessage;

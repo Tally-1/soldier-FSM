@@ -43,10 +43,11 @@ _ASL_positions = [_man, _ASL_positions] call Tcore_fnc_sortByDist;
     if((!(_movePos isEqualTo _manPos))
     &&{!(_movePos isEqualTo [0,0,0])})
     then{
-            private _move = [_man, _movePos, _x] spawn SFSM_fnc_moveToFirePos;
-            [_man, "action", "Moving to fire-position"] call SFSM_fnc_unitData;
-            waitUntil{sleep 1; scriptDone _move;};
-            [_man, "action", "none"] call SFSM_fnc_unitData;
+            [_man, "Moving to fire-position"] call SFSM_fnc_setAction;
+            // private _move = 
+            [_man, _movePos, _x] call SFSM_fnc_moveToFirePos;
+            // waitUntil{sleep 1; scriptDone _move;};
+            [_man, "none"] call SFSM_fnc_setAction;
     };
 
     // if ([_man] call SFSM_fnc_abortSpecial)exitWith{};

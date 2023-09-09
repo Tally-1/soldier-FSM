@@ -30,8 +30,9 @@ while{_exitStatus == ""}do{
     if(_man getVariable ["ace_isunconscious", false])exitWith{_exitStatus = "man is unconscious";};
     if(_man getVariable ["dam_ignore_injured0",false])exitWith{_exitStatus = "man is injured";};
 
-    private _script = [_man, 5] spawn SFSM_fnc_CQBTargetEnemies;
-    waitUntil {sleep 5; scriptDone _script; };
+    // private _script = 
+    [_man, 5] call SFSM_fnc_CQBTargetEnemies;
+    // waitUntil {sleep 5; scriptDone _script; };
     _man setUnitPos "DOWN";
     _man doTarget objNull;
 };

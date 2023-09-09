@@ -20,14 +20,16 @@ params [
 private _canSprint = [_man, _pos, 50, 10] call SFSM_fnc_canSprint;
 
 if(_canSprint)exitWith{
-    private _sprint = [_man, _pos] spawn SFSM_fnc_sprint;
-    waitUntil{sleep 0.3; scriptDone _sprint;};
+    // private _sprint = 
+    [_man, _pos] call SFSM_fnc_sprint;
+    // waitUntil{sleep 0.3; scriptDone _sprint;};
     
     //repeated twice here because sometimes the sprint does not reach all the way.
     _canSprint = [_man, _pos, 30, 10] call SFSM_fnc_canSprint;
     if(_canSprint)then{
-    private _sprint = [_man, _pos] spawn SFSM_fnc_sprint;
-    waitUntil{sleep 0.3; scriptDone _sprint;};
+    // private _sprint = 
+    [_man, _pos] call SFSM_fnc_sprint;
+    // waitUntil{sleep 0.3; scriptDone _sprint;};
     }
 };
 
@@ -78,8 +80,9 @@ while {_keepMoving} do {
 
 
     if(_canSprint)then{
-        private _sprint = [_man, _pos] spawn SFSM_fnc_sprint;
-        waitUntil{sleep 0.1; scriptDone _sprint;};
+        // private _sprint = 
+        [_man, _pos] call SFSM_fnc_sprint;
+        // waitUntil{sleep 0.1; scriptDone _sprint;};
     };
 
     if(_distance < _maxDistance) exitWith{_keepMoving = false};

@@ -12,19 +12,25 @@ params[
     "_ignoreUnitData"  // Bool   - Ignore the unitData check
 ];
 
-if!(typeName _man isEqualTo "OBJECT")   exitWith {false};
-if!(alive _man)                         exitWith {false};
-if!(_man isKindOf "CAManBase")          exitWith {false};
+private _isRealMan = true;
 
-private _group = group _man;
-if(isNull _group)                       exitWith {false};
-if(side _group == sideLogic)            exitWith {false};
-if([_man] call SFSM_fnc_isDeactivated)  exitWith {false};
-if(isObjectHidden _man)                 exitWith {false};
+isNil{//Forced unscheduled execution
 
-if(_ignoreUnitData)exitWith{true};
+    if!(typeName _man isEqualTo "OBJECT")   exitWith {_isRealMan = false};
+    if!(alive _man)                         exitWith {_isRealMan = false};
+    if!(_man isKindOf "CAManBase")          exitWith {_isRealMan = false};
 
-private _action = [_man, "action"] call SFSM_fnc_unitData;
-if(isNil "_action")   exitWith {false};
+    private _group = group _man;
+    if(isNull _group)                       exitWith {_isRealMan = false};
+    if(side _group == sideLogic)            exitWith {_isRealMan = false};
+    if([_man] call SFSM_fnc_isDeactivated)  exitWith {_isRealMan = false};
+    if(isObjectHidden _man)                 exitWith {_isRealMan = false};
 
-true;
+    if(_ignoreUnitData)                     exitWith{_isRealMan = true;};
+
+    private _action = [_man, "action"] call SFSM_fnc_unitData;
+    if(isNil "_action")   exitWith {_isRealMan = false};
+};
+
+
+_isRealMan;

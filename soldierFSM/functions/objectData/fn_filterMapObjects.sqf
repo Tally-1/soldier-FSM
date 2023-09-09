@@ -21,7 +21,8 @@ private _i = 0;
     private _excluded = [_x] call SFSM_fnc_excludedMapObject;
     
     if!(_excluded)
-    then{
+    then{isNil{//Forced unscheduled execution
+
             private _nearest  = [_X, _approvedObjects] call Tcore_fnc_nearestPos;
             private _found    = !(typeName _nearest == "SCALAR");
             private _distance = 3;
@@ -32,7 +33,7 @@ private _i = 0;
 
             if(_push)
             then{_approvedObjects pushBackUnique _x};
-        };
+    }};
 
     //debugText
     if(SFSM_Debugger

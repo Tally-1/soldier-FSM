@@ -30,13 +30,27 @@ waitUntil {
     sleep 0.3;
     [_man, _turret, _timer] call SFSM_fnc_turretRunEnded;
  };
+private _timer = time + 5;
 
-if!([_man, _turret] call SFSM_fnc_canGetInTurret)exitWith{[_man, _turret] call SFSM_fnc_failTurretMount;};
+if!([_man, _turret] call SFSM_fnc_canGetInTurret)exitWith{[_man, _turret, "Cannot get in"] call SFSM_fnc_failTurretMount;};
 
 [_man, _turret] call SFSM_fnc_getInTurret;
 
-sleep 1;
-if(gunner _turret != _man)exitWith{[_man, _turret] call SFSM_fnc_failTurretMount;};
+waitUntil {
+    sleep 1;
+    private _mounted  = _man in crew _turret;
+    private _timedOut = time > _timer;
+    
+    if(_mounted)  exitWith {true;};
+    if(_timedOut) exitWith {true;};
+
+    private _canGetIn = [_man, _turret] call SFSM_fnc_canGetInTurret;
+    if(_canGetIn)then{_man moveInGunner _turret;};
+
+    false;
+};
+
+if(_man in crew _turret isEqualTo false)exitWith{[_man, _turret, "Wrong gunner"] call SFSM_fnc_failTurretMount;};
 
 [_man, "action", "Manning turret!"] call SFSM_fnc_unitData;
 ["turret_mounted", [_man, _turret]]   call CBA_fnc_localEvent;

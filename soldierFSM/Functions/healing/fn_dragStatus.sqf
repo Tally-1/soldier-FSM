@@ -40,7 +40,7 @@ if(_timedOut)exitWith{
 private _arrived = _targetPos distance2D (getPosASLVisual _dragger) <= 1;
 if(_arrived)exitWith{"Arrived at dragPos" call dbgmsg; true;};
 
-private _objsInPath = [_dragger, 180, 1] call SFSM_fnc_objectsInPath;
+private _objsInPath = [_dragger, 180, 2] call SFSM_fnc_objectsInPath;
 private _object     = _objsInPath#0;
 private _type       = "";
 private _collide    = false;

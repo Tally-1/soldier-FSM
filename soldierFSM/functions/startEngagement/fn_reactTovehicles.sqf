@@ -8,7 +8,7 @@
 
 params ["_man", "_battleField"];
 
-private _action = [_man, "action"] call SFSM_fnc_unitData;
+private _action = [_man] call SFSM_fnc_getAction;
 if(isNil "_action")
 exitWith{
     "reactToVehicles, action undefined" call dbgmsg;

@@ -7,19 +7,18 @@
 //              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
 
 params["_vehicle"];
-if(isNil "_vehicle")exitwith{false;};
-if(!alive _vehicle)exitwith{false;};
-if(!canMove _vehicle)exitwith{false;};
-if!((locked _vehicle)in[0,1,3])exitwith{false;};
-if!([_vehicle] call Tcore_fnc_deadCrew)exitwith{false;};
-if!(_vehicle getVariable ["SFSM_allowHijack", false])exitwith{false;};
+if(isNil "_vehicle")                                  exitwith{false;};
+if(!alive _vehicle)                                   exitwith{false;};
+if(!canMove _vehicle)                                 exitwith{false;};
+if!((locked _vehicle)in[0,1,3])                       exitwith{false;};
+if!([_vehicle] call Tcore_fnc_deadCrew)               exitwith{false;};
+if!(_vehicle getVariable ["SFSM_allowHijack", false]) exitwith{false;};
 
-private _occupiedVehicles = [];
-private _vehicleType = [_vehicle] call objScan_fnc_VehicleType;
 
-private _targetedBy = _vehicle getVariable ["targetedBy", []];
+private _vehicleType      = [_vehicle] call objScan_fnc_VehicleType;
+private _targetedBy       = _vehicle getVariable ["targetedBy", []];
 
-if(count _targetedBy>1)exitWith{false;};
-if!(_vehicleType in SFSM_hijackVehicleTypes)exitwith{false;};
+if(_targetedBy isNotEqualTo [])              exitWith{false;};
+if!(_vehicleType in SFSM_hijackVehicleTypes) exitwith{false;};
 
 true;

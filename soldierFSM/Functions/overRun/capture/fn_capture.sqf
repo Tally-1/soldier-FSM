@@ -3,8 +3,9 @@ params ["_man", "_captor"];
 if([_man] call SFSM_fnc_isUncon)then{
     [_man, false] call ace_medical_fnc_setUnconscious;
     [_captor, _man] call ace_medical_treatment_fnc_fullHeal;
-    private _surrender = [_man] spawn SFSM_fnc_surrender;
-    waitUntil{sleep 0.1; scriptDone _surrender};
+    // private _surrender = 
+    [_man] call SFSM_fnc_surrender;
+    // waitUntil{sleep 0.1; scriptDone _surrender};
 };
 
 [[name _man, " was captured by ", (name _captor)],1] call dbgmsg;

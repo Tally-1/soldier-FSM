@@ -20,25 +20,25 @@ if(count _sides < 2)      exitWith{"no valid targets found for marksmen" call db
 if(_targets isEqualTo []) exitWith{"no valid targets found for marksmen" call dbgmsg;};
 
 private _hunters = [];
-{   
+private _assignedTargets = [];
+{/*isNil{//Forced unscheduled execution*/
     if(isNil "_battlefield") exitWith{};
     if([_x] call SFSM_fnc_availableAiSoldier)then{
     
     [_x, "action", "Searching for targets"] call SFSM_fnc_unitData;
-    private _target = [_x, _targets] call SFSM_fnc_selectMarksmanTarget;
+    private _target = [_x, _targets, _assignedTargets] call SFSM_fnc_selectMarksmanTarget;
 
     if(!isNull _target)then{
         [_x, _target] spawn SFSM_fnc_huntTarget;
         _hunters pushBackUnique _x;
+        _assignedTargets pushBackUnique _target;
     }
     else{
         [_x, "action", "none"] call SFSM_fnc_unitData;
         [_x, "Failed to aquire target"]spawn SFSM_fnc_flashAction;
     };
 
-    sleep 0.05;
-
-}} forEach _marksMen;
+}}/*}*/ forEach _marksMen;
 
 if(isNil "_battlefield") exitWith{};
 

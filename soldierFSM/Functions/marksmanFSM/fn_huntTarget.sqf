@@ -9,8 +9,9 @@ _marksman dofire _target;
 
 while {!([_marksman, _target] call SFSM_fnc_huntEnded)} do {
     
-    private _hunt = [_marksman, _target, _firePos] spawn SFSM_fnc_huntActions;
-    waitUntil {sleep 0.3; scriptDone _hunt; };
+    // private _hunt = 
+    [_marksman, _target, _firePos] call SFSM_fnc_huntActions;
+    // waitUntil {sleep 0.3; scriptDone _hunt; };
 
     if([_marksman, _target] call SFSM_fnc_huntEnded)exitWith{};
 

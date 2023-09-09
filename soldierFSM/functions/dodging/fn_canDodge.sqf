@@ -21,8 +21,11 @@ if([_man, "inFipo"] call SFSM_fnc_unitData)         exitWith{false};
 if([_man, "forcedMovement"] call SFSM_fnc_unitData) exitWith{false};
 
 private _rps     = [_man, "roundsPrSecond"] call SFSM_fnc_unitData;
-private _lowRPS  = (_rps < SFSM_RpsDodgeTrigger) || _noRpsParam;
-if(_lowRPS) exitWith{false;};
+if(isNil "_rps") exitWith{false;};
+
+private _lowRPS  = (_rps < SFSM_RpsDodgeTrigger);
+if(_lowRPS
+&&{_noRpsParam isEqualTo false}) exitWith{false;};
 
 private _proneTreshHold = [_man] call SFSM_fnc_getProneTreshHold;
 private _suppressed     = getSuppression _man > _proneTreshHold;
@@ -32,7 +35,8 @@ private _available = [_man] call SFSM_fnc_availableAiSoldier;
 if!(_available)exitWith{false};
 
 private _dodgeTimer = [_man, "dodgeTimer"] call SFSM_fnc_unitData;
-if(_dodgeTimer > time)exitWith{false;};
+if(isNil "_dodgeTimer") exitWith{false;};
+if(_dodgeTimer > time)  exitWith{false;};
 
 private _mode = unitCombatMode _man;
 if(_mode == "RED")   exitWith {true;};

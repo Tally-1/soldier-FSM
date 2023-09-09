@@ -76,12 +76,12 @@ private _unitFilter = {
 
     };
 
-private _groups          = [_clustersData] call Tcore_fnc_clusterGroups;
-private _units           = ([_clustersData] call Tcore_fnc_clusterUnits) select _unitFilter;
-private _vehicles        = [_clustersData] call Tcore_fnc_clusterVehicles;
-private _areaName        = _battlefield get "name";
-private _deadMen         = [_centerPos, _radius] call Tcore_fnc_deadMenInArea;
-private _weapons         = nearestObjects [_centerPos, ["WeaponHolder", "WeaponHolderSimulated"], _radius];
+private _groups   = [_clustersData]       call Tcore_fnc_clusterGroups;
+private _units    = ([_clustersData]      call Tcore_fnc_clusterUnits) select _unitFilter;
+private _vehicles = [_clustersData]       call Tcore_fnc_clusterVehicles;
+private _deadMen  = [_centerPos, _radius] call Tcore_fnc_deadMenInArea;
+private _weapons  = nearestObjects [_centerPos, ["WeaponHolder", "WeaponHolderSimulated"], _radius];
+private _areaName = _battlefield get "name";
 
 //store the variables that are not included in the "battlefield"-hashmap itself.
 [
@@ -111,9 +111,8 @@ _battlefield set ["zones", ([_battlefield] call SFSM_fnc_getZones)];
 // [_battleField] spawn SFSM_fnc_assignAllBuildings;
 
 
+if(SFSM_simpleBff isEqualTo false)then{[_battlefield] call SFSM_fnc_getCoverPositionsLight;};
 
-[_battlefield] call SFSM_fnc_getCoverPositionsLight;
- 
 [["Battle at ", _areaName, " initialized in ", (time - _startTime), " seconds"]] call SFSM_fnc_debugMessage;
 
 [_battlefield] call SFSM_fnc_bfDebugMarkers;
@@ -122,10 +121,10 @@ _battlefield set ["currentAction",    "loading terrain"];
 
 
 
-[_battlefield] spawn SFSM_fnc_battlefieldMarksmen;
-[_battlefield] spawn SFSM_fnc_battleFieldMedicLoop;
-[_battlefield] spawn SFSM_fnc_assignBattlefieldTurrets;
-[_battlefield] spawn SFSM_fnc_BffOverRunLoop;
+// [_battlefield] spawn SFSM_fnc_battlefieldMarksmen;
+// [_battlefield] spawn SFSM_fnc_battleFieldMedicLoop;
+// [_battlefield] spawn SFSM_fnc_assignBattlefieldTurrets;
+// [_battlefield] spawn SFSM_fnc_BffOverRunLoop;
 // [_battlefield] spawn SFSM_fnc_battlefieldRescueLoop;
 [_battlefield] spawn SFSM_fnc_battlefieldPostInit;
 

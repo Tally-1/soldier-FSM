@@ -6,7 +6,9 @@
 //              https://thehartgen.web.app/projects/, 
 //              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
 
-params["_man", "_turret"];
+params["_man", "_turret", "_reason"];
+private _msg = ["Turret-mount failed! ", _reason]joinString"";
 [_turret, _man]call SFSM_fnc_removeTurretVars;
-[_man, "Turret-mount failed!", 3] call SFSM_fnc_flashAction;
+[_man, _msg, 3] spawn SFSM_fnc_flashAction;
+[[_msg],2] call dbgmsg;
 true;

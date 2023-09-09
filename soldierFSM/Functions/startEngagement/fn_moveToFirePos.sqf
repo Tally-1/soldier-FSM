@@ -32,15 +32,17 @@ _man doTarget objNull;
 while {sleep 2; _distance > 3} do {
     
     private _time        = time;
-    private _killEnemies = [_man, 150] spawn SFSM_fnc_killNearEnemies; 
-    waitUntil {sleep 0.5; scriptDone _killEnemies;};
+    // private _killEnemies = 
+    [_man, 150] call SFSM_fnc_killNearEnemies; 
+    // waitUntil {sleep 0.5; scriptDone _killEnemies;};
 
     private _noEnemies = time - _time < 1.1;
     private _canSprint = [_man, _movePos, 30] call SFSM_fnc_canSprint;
     if(_canSprint
     &&{_noEnemies})then{
-        private _sprint = [_man, _movePos] spawn SFSM_fnc_sprint;
-        waitUntil {sleep 0.1; scriptDone _sprint;};
+        // private _sprint = 
+        [_man, _movePos] call SFSM_fnc_sprint;
+        // waitUntil {sleep 0.1; scriptDone _sprint;};
     };
 
     private _visible = ([(aimPos _man), _targetPos] call Tcore_fnc_visibility) > 0.8;

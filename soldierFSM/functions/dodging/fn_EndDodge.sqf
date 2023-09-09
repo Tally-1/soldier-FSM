@@ -36,7 +36,8 @@ _man setAnimSpeedCoef 1;
 //if the dodge was ended by a flinch then exit the script before setting action = "none"
 //and init hunker
 private _action = [_man, "action"] call SFSM_fnc_unitData;
-if(_action in ["reacting", "flinch"])exitWith{};
+if(isNil "_action")                   exitWith{};
+if(_action in ["reacting", "flinch"]) exitWith{};
 
 
 _man doMove (getPos _man);
@@ -44,6 +45,6 @@ _man doMove (getPos _man);
 [_man, "action",     "none"]    call SFSM_fnc_unitData;
 
 
-[_man] spawn SFSM_fnc_randomHunkerInit;
+// [_man] spawn SFSM_fnc_randomHunkerInit;
 
 true;

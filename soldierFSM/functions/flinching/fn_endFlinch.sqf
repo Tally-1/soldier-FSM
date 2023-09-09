@@ -27,7 +27,7 @@ then{_actionTime = _actionTime + _reactionTime};
 if ((stance _man) == "PRONE"
 &&{(animationState _man) in _sideStances})
 then{
-        _man playMove "AmovPercMstpSrasWrflDnon_AmovPpneMstpSrasWrflDnon";
+        _man playMoveNow "AmovPercMstpSrasWrflDnon_AmovPpneMstpSrasWrflDnon";
     };
 sleep 1;
 if(isNil "_man")exitWith{};
@@ -45,4 +45,6 @@ then{_man switchMove "amovppnemstpsraswrfldnon"};
 // if(isNull _shooter)exitWith{};
 
 private _canReactFire = [_man] call SFSM_fnc_canReactFire;
+if(isNil "_canReactFire")then{_canReactFire = false;};
+
 if(_canReactFire)then{[_man, _shooter] spawn SFSM_fnc_reactFire};

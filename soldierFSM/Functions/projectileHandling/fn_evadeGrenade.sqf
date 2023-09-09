@@ -18,7 +18,7 @@ then{[_man, nil, "Grenade landed near"] call SFSM_fnc_endHunker;};
 
 
 
-[_man, "Evading grenade"]    call SFSM_fnc_flashAction;
+[_man, "Evading grenade"]    spawn SFSM_fnc_flashAction;
 ["grenade_evade", [_man, _grenade]] call CBA_fnc_localEvent;
 
 
@@ -41,8 +41,9 @@ do{
 
 if(_man Distance2d _grenade < _distance)
 then{
-        private _panic = [_man, true] spawn SFSM_fnc_eyelidTrench;
-        waitUntil { scriptDone _panic; };
+        // private _panic = 
+        [_man, true] call SFSM_fnc_eyelidTrench;
+        // waitUntil { scriptDone _panic; };
 };
 
 [_man, "action", "none"]    call SFSM_fnc_unitData;

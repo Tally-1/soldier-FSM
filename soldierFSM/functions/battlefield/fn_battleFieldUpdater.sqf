@@ -14,69 +14,30 @@
 
 // Example: [_battleField] spawn SFSM_fnc_battleFieldUpdater;
 
-
 params ['_battleField'];
-
+[["Battlefield loop initializing"], 2] call dbgmsg;
 while {!isNil "_battleField"} 
 do     {
-        
-        
-
-        private _ended = [_battleField] call SFSM_fnc_updateBattlefield;
-        if(isNil "_ended")exitWith{};
-        if(_ended)exitWith{};
-
-        // _battlefield set ["currentAction",    "Medical actions"];
-        // private _script = [_battleField] spawn SFSM_fnc_battleFieldMedical;
-        // waitUntil {
-        //     private _finito = scriptDone _script;
-        //     if(isNil "_finito")exitWith{true;};
-        //     _finito; 
-        // };
-        
-
-        private _script = [_battleField] spawn SFSM_fnc_updateGrid;
-        waitUntil {
-            private _finito = scriptDone _script;
-            if(isNil "_finito")exitWith{true;};
-            _finito; 
-        };
-
-        private _script = [_battleField] spawn SFSM_fnc_battleFieldCQB;
-        waitUntil {
-            private _finito = scriptDone _script;
-            if(isNil "_finito")exitWith{true;};
-            _finito; 
-        };
-
-        _battlefield set ["currentAction",    "Assigning vehicles"];
-        private _script = [_battleField] spawn SFSM_fnc_hijackAllVehicles;
-        waitUntil {
-            private _finito = scriptDone _script;
-            if(isNil "_finito")exitWith{true;};
-            _finito; 
-        };
-
-        
-        _battlefield set ["currentAction",    "Reinforcing vehicles"];
-        private _script = [_battleField] spawn SFSM_fnc_reinforceVehicles;
-        waitUntil {
-            private _finito = scriptDone _script;
-            if(isNil "_finito")exitWith{true;};
-            _finito; 
-        };
-
-        // _battlefield set ["currentAction",    "Medical actions"];
-        // private _script = [_battleField] spawn SFSM_fnc_battleFieldMedical;
-        // waitUntil {
-        //     private _finito = scriptDone _script;
-        //     if(isNil "_finito")exitWith{true;};
-        //     _finito; 
-        // };
-
         _battlefield set ["currentAction",    "none"];
+        private _ended = [_battleField] call SFSM_fnc_updateBattlefield;
+        if(isNil "_ended") exitWith{};
+        if(_ended)         exitWith{};
+        
+        // Calling the function is better for performance, but may destroy the loop in case of a unhandled exception.
+        if(SFSM_spawnBffActions isEqualTo false)then{
+            [_battleField] call  SFSM_fnc_battlefieldActions;
+        
+        }else{
+        private _script = [_battleField] spawn  SFSM_fnc_battlefieldActions;
+        waitUntil {
+                sleep 1;
+                private _finito = scriptDone _script;
+                if(isNil "_finito")exitWith{true;};
+                _finito; 
+            };
 
-        sleep SFSM_BattleUpdateSec;
-    };
+        sleep 1;
+        true;
+    }};
 
 true;

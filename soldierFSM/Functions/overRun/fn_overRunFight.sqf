@@ -20,8 +20,10 @@ while {_counter isEqualTo "true"} do {
     if(_man distance _target > 2)then{
         _man doMove (getPosATLVisual _target);
     };
-    
+
     _man doFire _target;
+    [_man, _target] call SFSM_fnc_evasiveAttack;
+    
     sleep 5;
 
     if!([_target, true] call SFSM_fnc_canRun) exitWith{_counter = "target down";};

@@ -17,23 +17,26 @@ do {
         if(time > _tenSecondTimer)
         then{
                 _tenSecondTimer = time + 10;
-                private _script = [] spawn SFSM_fnc_tenSecondTasks;
-                waitUntil{scriptDone _script};
+                // private _script = 
+                [] call SFSM_fnc_tenSecondTasks;
+                // waitUntil{scriptDone _script};
             };
         
         if(time > _minuteTimer)
         then{
-                private _script = [] spawn SFSM_fnc_minuteTasks;
                 _minuteTimer    = time + 60;
-                waitUntil{scriptDone _script};
+                // private _script = 
+                [] call SFSM_fnc_minuteTasks;
+                // waitUntil{scriptDone _script};
             };
         
         
         if(time > _fiveMinTimer)
         then{
-                private _script = [] spawn SFSM_fnc_fiveMinTasks;
                 _fiveMinTimer   = time + 300;
-                waitUntil{scriptDone _script};
+                // private _script = 
+                [] call SFSM_fnc_fiveMinTasks;                
+                // waitUntil{scriptDone _script};
             };
         
         private _timeSpent = time - _startTime;

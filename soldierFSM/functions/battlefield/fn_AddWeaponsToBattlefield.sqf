@@ -18,8 +18,9 @@
 params ["_man"];
 sleep 1;
 private _battleKey = [_man, "currentBattle"] call SFSM_fnc_unitData;
-private _battlefield = SFSM_Battles get _battleKey;
+if(isNil "_battleKey")exitWith{};
 
+private _battlefield = SFSM_Battles get _battleKey;
 if(isNil "_battlefield")exitWith{};
 
 private _droppedWeapons = nearestObjects [_man, ["WeaponHolder", "WeaponHolderSimulated"], 5];

@@ -27,15 +27,16 @@ _man setAnimSpeedCoef SFSM_sprintSpeed;
 
 if((_launchPos distance2D _man) > 3)
 then{
-    private _move = [
+    // private _move = 
+    [
             _man,      //unit 
             _launchPos,//position 
             30,        //timeout (optional)
             2,         //minimum distance to position in order to complete move. (optional)
             3          // sleep between each repetition of doMove. (optional)
-            ] spawn SFSM_fnc_forceMove2;
+            ] call SFSM_fnc_forceMove2;
 
-    waitUntil{sleep 1.5; scriptDone _move;};
+    // waitUntil{sleep 1.5; scriptDone _move;};
 };
 
 _man setAnimSpeedCoef 1;
@@ -71,9 +72,9 @@ sleep 1;
 private _dir = (_man getDir _building);
 _man setDir _dir;
 _man doWatch objNull;
-private _doFire = [_man, nil, _dir] spawn SFSM_fnc_forceFireLauncher;
-
-waitUntil{scriptDone _doFire;};
+// private _doFire = 
+[_man, nil, _dir] call SFSM_fnc_forceFireLauncher;
+// waitUntil{scriptDone _doFire;};
 
 _man setVariable ["SFSM_missileTarget", nil];
 [_man, "action", "none"] call SFSM_fnc_unitData;

@@ -8,6 +8,8 @@
 
 params ["_man", "_maxTime"];
 private _action = [_man, "action"] call SFSM_fnc_unitData;
+if(isNil "_action")exitwith{true;};
+
 private _enemies = [_man, 8, true] call Tcore_fnc_nearSoldiers;
 
 if(count _enemies > 0)

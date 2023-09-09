@@ -27,8 +27,9 @@ _man doTarget objNull;
 while {sleep 1; _distance > _maxDistance} do {
 
 //look for and engage close enemies.
-private _killEnemies = [_man, _maxTime] spawn SFSM_fnc_CQBTargetEnemies;
-waitUntil{scriptDone _killEnemies};
+// private _killEnemies = 
+[_man, _maxTime] call SFSM_fnc_CQBTargetEnemies;
+// waitUntil{scriptDone _killEnemies};
 
 
 //   private _currentDistance = ((eyePos _man) distance2d _pos);

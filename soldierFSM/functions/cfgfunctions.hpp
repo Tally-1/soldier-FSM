@@ -11,6 +11,34 @@ class CfgFunctions
             class speechEventsMan {};
             class getPhrase       {};
         }
+
+        class animations 
+        {
+            file = "\soldierFSM\functions\animations";
+            class playAnimList       {};
+            class animListEnd        {};
+            class onAnimListEhFired  {};
+            class animListEh         {};
+            class removeAnimPlaylist {};
+            class animationMaps      {};
+            class movementAnimData   {};
+            class getAnimData        {};
+            class checkAnimDirDist   {};
+            class animListData       {};
+        };
+
+        class OOP_movement
+        {
+            file = "\soldierFSM\functions\animations\OOPmovement";
+            class OOP_moveAnimsMap     {};
+            class OOP_moveAnimsEntries {};
+            class OOP_playAnim         {};
+            class OOP_mapByCfgName     {};
+            class OOP_animEndPos       {};
+            class OOP_getAnimEndPos    {};
+        };
+
+        
         
         class CQB
         {
@@ -119,6 +147,10 @@ class CfgFunctions
             class deploySmoke           {};
             class numberDiff            {};
             class getProneTreshHold     {};
+            class distanceToMan         {};
+
+            class threadsFinished       {};
+            class enemiesInFront        {};
         };
 
         class morale
@@ -154,13 +186,6 @@ class CfgFunctions
         class movement
         {
             file = "\soldierFSM\functions\movement";
-            class canSprint             {};
-            class clearSprintPath       {};
-            class sprint                {};
-            class sprintInit            {};
-            class sprintLooper          {};
-            class sprintVarRemoval      {};
-
             class forceMoveToPos        {};
             class forceMove2            {};
             class postForceMove2        {};
@@ -176,7 +201,42 @@ class CfgFunctions
             class regroup               {};
             class fixPos                {};
 
-        }
+        };
+
+        class evasionAttack
+        {
+            file = "\soldierFSM\functions\movement\evasionAttack";
+            class evasiveAttack          {};
+            class evasiveAttackAnims     {};
+            class canDoEvasiveAttack     {};
+            class evasiveAttackCondition {};
+            class evasiveAttackLoop      {};
+            class evasiveAttackAlign     {};
+            class endEvasiveAttack       {};
+            class initEvasiveAttack      {};
+        };
+
+        class sprint
+        {
+            file = "\soldierFSM\functions\movement\sprint";
+            class canSprint             {};
+            class clearSprintPath       {};
+            class sprint                {};
+            class sprintInit            {};
+            class sprintLooper          {};
+            class sprintVarRemoval      {};
+
+            class sprintAnimList        {};
+            class sprintCondition       {};
+            class sprintMidFnc          {};
+            class sprintEndFnc          {};
+            class updateSprintAnims     {};
+            class canUpdateSprintAnims  {};
+            class sprintEndAnims        {};
+            class sprintSuppress        {};
+            class updateSprintTimer     {};
+            class adjustSprintDir       {};
+        };
 
         class vehicles
         {
@@ -197,6 +257,7 @@ class CfgFunctions
             class vehicleActions        {};
             class enableHijack          {};
             class disableHijack         {};
+            class canHijackVehicle      {};
 
         };
 
@@ -360,12 +421,10 @@ class CfgFunctions
             class canTeleportFipo       {};
             class checkFipoError        {};
             class getFipoMen            {};
-            class animationMaps         {};
             class tempPegToFipo         {};
             class dynamicFipoActive     {};
             class assignFipo            {};
-
-            
+                        
         };
 
         class dodgeToFipo
@@ -398,6 +457,7 @@ class CfgFunctions
             class moveOutFiPo         {};
             class failFipoMove        {};
             class canMoveInFipo       {};
+            class fipoMoveInStatus    {};
             class getOutDynamicFipo   {};
             class fipoAttemptAllowed  {};
             
@@ -537,6 +597,8 @@ class CfgFunctions
             class multiplyReactionFire  {};
             class multiplyRF            {};
             class forcedFire            {};
+            class isAimedAtTarget       {};
+            class ifAimThenFire         {};
         };
 
         class rearming
@@ -793,7 +855,7 @@ class CfgFunctions
             class excludeCpos             {};
             class getBattlefield          {};
             class getEnemyPositions       {};
-            class updateHunkerObjects     {};
+            // class updateHunkerObjects     {};
             class initGrid                {};
             class updateGrid              {};
             class AddWeaponsToBattlefield {};
@@ -820,6 +882,7 @@ class CfgFunctions
 
             class battlefieldDimensions   {};
             class battlefieldRevives      {}; 
+            class battlefieldActions      {};
 
         };
         
@@ -864,31 +927,34 @@ class CfgFunctions
             class validAlly             {};
 
             class manIsInjured          {};
+
+            class weaponAimPos          {};
+
             
             
         };
 
-        class hunkerDown
-        {
-            file = "\soldierFSM\functions\hunkerDown";
-            class getHunkerObject     {};
-            class initHunker          {};
-            class isHunkerObject      {};
-            class hunkAvailable       {};
-            class getAvHunkObject     {};
-            class filterHunkerObjects {};
-            class hunkObjHash         {};
-            class hunkerFSM           {};
-            class hunkerFsmStatus     {};
-            class addHunkerObjData    {};
-            class setHobjPositions    {};
-            class moveToHunkerPos     {};
-            class endHunker           {};
-            class initHunkerFSM       {};
-            class handleHunkerStatus  {};
-            class randomHunkerInit    {};
+        // class hunkerDown
+        // {
+        //     file = "\soldierFSM\functions\hunkerDown";
+        //     class getHunkerObject     {};
+        //     class initHunker          {};
+        //     class isHunkerObject      {};
+        //     class hunkAvailable       {};
+        //     class getAvHunkObject     {};
+        //     class filterHunkerObjects {};
+        //     class hunkObjHash         {};
+        //     class hunkerFSM           {};
+        //     class hunkerFsmStatus     {};
+        //     class addHunkerObjData    {};
+        //     class setHobjPositions    {};
+        //     class moveToHunkerPos     {};
+        //     class endHunker           {};
+        //     class initHunkerFSM       {};
+        //     class handleHunkerStatus  {};
+        //     class randomHunkerInit    {};
 
-        };
+        // };
 
         class turrets
         {

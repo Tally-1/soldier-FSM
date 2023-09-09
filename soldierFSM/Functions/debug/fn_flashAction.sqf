@@ -16,7 +16,13 @@ private _flashAction = [_man, "flashAction"] call SFSM_fnc_unitData;
 if(isNil "_flashAction")         exitWith{};
 if(_flashAction isNotEqualTo "") then{
 	private _startTime = time;
-	waitUntil{([_man, "flashAction"] call SFSM_fnc_unitData) isEqualTo ""};
+	waitUntil{
+		private _flashAction = [_man, "flashAction"] call SFSM_fnc_unitData;
+		if(isNil "_flashAction")      exitWith {true;};
+		if(_flashAction isEqualTo "") exitWith {true;};
+		false;
+	};
+
 	private _timeSpent = time - _startTime;
 	private _time = _time - _timeSpent;
 	if(_time < 0.2)then{_time = 0.2;};

@@ -22,8 +22,9 @@ _man doTarget _target;
 
 if(_hasGL)
 then{
-        private _script = [_man, _target, 3, _glMuzzleName, _glAmmoCapacity] spawn SFSM_fnc_unitTounitForcedFire;
-        waitUntil {sleep 0.1; scriptDone _script};
+        // private _script = 
+        [_man, _target, 3, _glMuzzleName, _glAmmoCapacity] call SFSM_fnc_unitTounitForcedFire;
+        // waitUntil {sleep 0.1; scriptDone _script};
     };
 
 /*get rapid fireMode */

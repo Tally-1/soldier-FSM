@@ -18,8 +18,9 @@ SFSM_cleanupObjs pushBackUnique _man;
 
 [_man, "Surrendered"] call SFSM_fnc_setAction;
 
-private _drop = [_man, true] spawn SFSM_fnc_dropAllWeapons;
-waitUntil{sleep 0.1; scriptDone _drop;};
+// private _drop = 
+[_man, true] call SFSM_fnc_dropAllWeapons;
+// waitUntil{sleep 0.1; scriptDone _drop;};
 
 [_man, "Acts_JetsMarshallingEmergencyStop_in"] remoteExecCall ["switchMove",0];
 

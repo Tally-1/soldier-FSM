@@ -1,6 +1,5 @@
-missionNamespace setVariable ["SFSM_Version", 1.182, true];
+missionNamespace setVariable ["SFSM_Version", 1.19, true];
 private _versionName = ["DCO soldier FSM | ", SFSM_Version] joinString "";
-
 
 [
 	"SFSM_disableSoldierFSM",
@@ -26,21 +25,9 @@ private _versionName = ["DCO soldier FSM | ", SFSM_Version] joinString "";
 [
 	"SFSM_noRubber",
 	"CHECKBOX",
-	["Prevent sprint-rubberbanding", "Rubberbanding units sometimes occurs on high-load missions, if checked this feature tries to mitigate it"],
+	["Prevent sprint-rubberbanding", "Rubberbanding units sometimes occurs on high-load missions, if checked this feature tries to mitigate it. It will however freeze the unit for 10ms"],
 	_versionName,
-	true
-] call cba_settings_fnc_init;
-
-[
-	"SFSM_BFFknowledgeType",
-	"LIST",
-	["Battle start side-knowledge", "Select wether or not both sides should know about eachother before battle starts"],
-	_versionName,
-	[
-		["both sides", "one side"],
-		["Both sides needs knowledge", "Start battle as soon as one unit spots another"], 
-		1
-	]
+	false
 ] call cba_settings_fnc_init;
 
 
@@ -59,6 +46,35 @@ private _versionName = ["DCO soldier FSM | ", SFSM_Version] joinString "";
 	1
 ] call cba_settings_fnc_init;
 
+
+[
+	"SFSM_BFFknowledgeType",
+	"LIST",
+	["Battle start side-knowledge", "Select wether or not both sides should know about eachother before battle starts"],
+	_versionName,
+	[
+		["both sides", "one side"],
+		["Both sides needs knowledge", "Start battle as soon as one unit spots another"], 
+		1
+	]
+] call cba_settings_fnc_init;
+
+
+[
+	"SFSM_simpleBff",
+	"CHECKBOX",
+	["Battlefield Framework Light", "Remove Caching of Terrain objects. Will improve performance, but units taking cover will become slightly dumber."],
+	_versionName,
+	true
+] call cba_settings_fnc_init;
+
+[
+	"SFSM_spawnBffActions",
+	"CHECKBOX",
+	["Spawn Battlefield Framework Actions", "Spawns the functions called during a battle in a separate thread, bad for performance but ensures that the loop does not get destroyed when an error occurs."],
+	_versionName,
+	true
+] call cba_settings_fnc_init;
 
 [
 	"SFSM_globalUD",

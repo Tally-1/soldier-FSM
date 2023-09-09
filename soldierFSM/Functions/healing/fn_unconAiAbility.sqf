@@ -1,4 +1,8 @@
 params["_man", "_enable"];
+
+if(canSuspend)
+then{sleep 3;};
+
 private _abilities = [
 	"AIMINGERROR",
 	"ANIM",

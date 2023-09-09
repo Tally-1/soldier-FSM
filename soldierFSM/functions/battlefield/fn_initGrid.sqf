@@ -7,6 +7,7 @@
 //              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
 
 params["_battlefield"];
+
 private _startTime     = time;
 private _areaName      = _battlefield get "name";
 private _hashmap       = createHashmap;
@@ -15,7 +16,6 @@ private _centerPos     = _battlefield get "center";
 private _size          = (_battlefield get "radius")*2.5;
 private _gridPositions = [_centerPos, _size] call Tcore_fnc_grid100Pos;
 // private _gridPositions = [_centerPos, _size, 300] call Tcore_fnc_availablePositions;
-
 
 private _clusterHash   = _battlefield get "clusterPositions";
 
@@ -27,6 +27,7 @@ private _hiddenFromWest = [];
 private _hiddenFromEast = [];
 private _hiddenFromGuer = [];
 
+
 {
     private _westVisible = [_x, _westPositions] call Tcore_fnc_visibleFromPositions;
     private _eastVisible = [_x, _eastPositions] call Tcore_fnc_visibleFromPositions;
@@ -37,6 +38,7 @@ private _hiddenFromGuer = [];
     if!(_guerVisible)then{_hiddenFromGuer pushBackUnique _x};
 
 } forEach _gridPositions;
+
 
 _hashmap set ["gridPositions",  _gridPositions ];
 _hashmap set ["hiddenFromWest", _hiddenFromWest];

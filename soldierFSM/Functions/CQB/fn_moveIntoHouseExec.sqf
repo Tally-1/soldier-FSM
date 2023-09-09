@@ -15,6 +15,8 @@ params[
     '_enemyVehicle'
     ];
 private _action = [_man, "action"] call SFSM_fnc_unitData;
+if(isNil "_action")exitwith{true;};
+
 private _WaitTimer = time + 20;
 private _startTime = time;
 private _hide = !isNil '_enemyVehicle';
@@ -56,8 +58,9 @@ _man setAnimSpeedCoef SFSM_sprintSpeed;
 _man setSpeedMode "FULL";
 
 
-private _script = [_man,(_entrance), 60, 5] spawn SFSM_fnc_forceMoveToPos;
-waitUntil{sleep 1; scriptDone _script;};
+// private _script = 
+[_man,(_entrance), 60, 5] call SFSM_fnc_forceMoveToPos;
+// waitUntil{sleep 1; scriptDone _script;};
 
 private _j = 1;
 {
@@ -68,8 +71,10 @@ private _j = 1;
 
     private _progressText = [_baseText, _j]joinString "";
     [_man, "action", _progressText] call SFSM_fnc_unitData;
-    private _script = [_man, _x, 4, 2] spawn SFSM_fnc_clearCQBPos;
-    waitUntil{sleep 1; scriptDone _script;};
+    // private _script = 
+    [_man, _x, 4, 2] call SFSM_fnc_clearCQBPos;
+    // waitUntil{sleep 1; scriptDone _script;};
+
     private _currentBuilding = [_man] call SFSM_fnc_currentBuilding;
     private _endLoop = false;
     
@@ -98,8 +103,9 @@ then{
        if(_hide)then{_baseText = "CQB: Moving to hiding position ";};
 
      [_man, "action", _baseText] call SFSM_fnc_unitData;
-     private _script = [_man, _pos, 30, 1.9] spawn SFSM_fnc_clearCQBPos;
-     waitUntil{sleep 1; scriptDone _script;};
+    //  private _script = 
+     [_man, _pos, 30, 1.9] call SFSM_fnc_clearCQBPos;
+    //  waitUntil{sleep 1; scriptDone _script;};
 };
 
 _man setUnitPos "AUTO";

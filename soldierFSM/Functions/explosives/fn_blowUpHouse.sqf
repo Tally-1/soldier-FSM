@@ -36,15 +36,16 @@ private _startSpeedMode = speedMode _man;
 {
     
 
-    private _moveIn = [
+    // private _moveIn = 
+    [
         _man, //unit 
         _x,   //position 
         4,    //timeout (optional)
         3,    //minimum distance to position in order to complete move. (optional)
         2     // sleep between each repetition of doMove. (optional)
-        ] spawn SFSM_fnc_forceMoveToPos;
+        ] call SFSM_fnc_forceMoveToPos;
 
-    waitUntil{sleep 1; scriptDone _moveIn;};
+    // waitUntil{sleep 1; scriptDone _moveIn;};
     
     private _distance = (_man distance2D _building);
     private _currentBuilding = [_man]call SFSM_fnc_currentBuilding;
@@ -76,18 +77,20 @@ exitWith{
 
 
 //place explosive
-private _placeExplosive = [_man, "Placing explosives"] spawn SFSM_fnc_placeExplosive;
-waitUntil{(scriptDone _placeExplosive || time > _timer)};
+// private _placeExplosive = 
+[_man, "Placing explosives"] call SFSM_fnc_placeExplosive;
+// waitUntil{(scriptDone _placeExplosive || time > _timer)};
 
 ["CQB_explosivePlaced", [_man, _building]] call CBA_fnc_localEvent;
 
 //Get out!
 [_man, "action", "explosives placed. RUN!"] call SFSM_fnc_unitData;
-private _script = [_man, _escapePos, 30, 60] spawn SFSM_fnc_clearCQBPos;
-waitUntil{
-    sleep 1; 
-    (scriptDone _script);
-    };
+// private _script = 
+[_man, _escapePos, 30, 60] call SFSM_fnc_clearCQBPos;
+// waitUntil{
+//     sleep 1; 
+//     (scriptDone _script);
+//     };
 
 
 

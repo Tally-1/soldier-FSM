@@ -5,7 +5,7 @@ private _visible    = false;
 
 private _atTarget = [_man] call SFSM_fnc_getFipoATtarget;
 if(!isNull _atTarget)exitwith{ 
-    [_man, "Targeting Vehicle"] call SFSM_fnc_flashAction;
+    [_man, "Targeting Vehicle"] spawn SFSM_fnc_flashAction;
     ["Targeting vehicle from fipo", 2]call dbgmsg;
     _atTarget;
 };
@@ -27,7 +27,7 @@ if!(_visible)then{
     
     if(_targetList isEqualTo [])exitwith{_target = objNull;};
 
-    [_man, "Target reassigned"] call SFSM_fnc_flashAction;
+    [_man, "Target reassigned"] spawn SFSM_fnc_flashAction;
     _target = _targetList#0#0;
 };
 

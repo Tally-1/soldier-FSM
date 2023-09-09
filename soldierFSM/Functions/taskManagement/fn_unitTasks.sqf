@@ -6,11 +6,10 @@
 //              https://thehartgen.web.app/projects/, 
 //              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
 
-{
+{isNil{//Forced unscheduled execution
     if([_x] call SFSM_fnc_isRealMan)
     then{
             [_x] call SFSM_fnc_HandleSuppression;
-            // [_x] call SFSM_fnc_normalizeMorale;
             [_x] call SFSM_fnc_updateMorale;
-};
+}};
 } forEach allUnits;

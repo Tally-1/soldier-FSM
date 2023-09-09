@@ -14,15 +14,17 @@ if(_otherSidePresent)exitWith{};
 [_vehicle, _man] call SFSM_fnc_initGetInVehicle;
 private _vPos = (getPos _vehicle);
 
-private _move = [
-            _man,  //unit 
-            _vPos,//position 
-            30,   //timeout (optional)
-            5,    //minimum distance to position in order to complete move. (optional)
-            2     // sleep between each repetition of doMove. (optional)
-            ] spawn SFSM_fnc_forceMove2;
+// private _move = 
+[
+    _man,  //unit 
+    _vPos,//position 
+    30,   //timeout (optional)
+    5,    //minimum distance to position in order to complete move. (optional)
+    2     // sleep between each repetition of doMove. (optional)
 
-waitUntil{sleep 0.1; scriptDone _move;};
+] call SFSM_fnc_forceMove2;
+
+// waitUntil{sleep 0.1; scriptDone _move;};
 
 if((!alive _vehicle)
 ||(!alive _man)

@@ -56,9 +56,17 @@ if(_incapacitated isNotEqualTo [])exitWith{
 
 // Loop through all wounded units and assign a healer to them.
 _medics append _healers;
+private _excluded = [];
 {
-    [_x, _wounded, _incapacitated, _medics] call SFSM_fnc_initBuddyHeal;
-    sleep 0.3;
+    private _woundedMan = [
+        _x, 
+        _wounded, 
+        _incapacitated, 
+        _excluded        
+
+    ] call SFSM_fnc_initBuddyHeal;
+
+    _excluded pushBackUnique _woundedMan;
     
 } forEach _medics;
 

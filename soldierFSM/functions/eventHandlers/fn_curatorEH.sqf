@@ -43,15 +43,15 @@ _this addEventHandler ["CuratorWaypointDeleted", {
 }];
 
 _this addEventHandler ["CuratorObjectDeleted", {
-    params ["_curator", "_entity"];
-    private _unitData = _entity getVariable "SFSM_UnitData";
-    if(isNil "_unitData")exitWith{};
-    if!(_entity isKindOf "man")exitWith{};
+    params ["_curator", "_man"];
+    private _unitData = _man getVariable "SFSM_UnitData";
+    if(isNil "_unitData")          exitWith{};
+    if!(_man isKindOf "caManBase") exitWith{};
+    if!(alive _man)                exitWith{};
 
     "Unit was deleted by curator" call dbgmsg;
 
-    private _currentBattle = [_entity, "currentBattle"] call SFSM_fnc_unitData;
-    if(_currentBattle == "none")exitWith{};
+    private _currentBattle = [_man] call SFSM_fnc_getBattleField;
+    if(isNil "_currentBattle")exitWith{};
     [] call SFSM_fnc_deleteWarning;
-    
 }];

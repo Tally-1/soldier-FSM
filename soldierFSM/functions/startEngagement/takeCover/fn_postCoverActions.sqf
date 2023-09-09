@@ -15,8 +15,8 @@ if(isNil "_battleField")exitWith{};
 
 private _reacting = [_man, _battleField] call SFSM_fnc_reactToVehicles;
 
-if!(_reacting)
-then{[_man] spawn SFSM_fnc_randomHunkerInit};
+// if!(_reacting)
+// then{[_man] spawn SFSM_fnc_randomHunkerInit};
 
 
 true;

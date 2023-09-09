@@ -23,57 +23,45 @@ if([_man, _fipo] call SFSM_fnc_canTeleportFipo)exitWith{
 };
 
 private _move = [_man, _fightingPos, 90] spawn SFSM_fnc_forceMove2;
-private _aborted   = false;
 private _startTime = time;
 private _startPos  = getPosASLVisual _man;
+private _aborted   = false;
 private _teleport  = false;
 
 waitUntil{
     //abort move in case the leader is out of range or the man is not moving.
-    if (_leader distance2D _fipo > SFSM_fipoGetInDistance
-    || {time - _startTime > 20
-    && {_startPos distance2D _man < 10
-    && {_man distance2D _fipo > 10
-    && {speed _man < 3
-    }}}})
-    then{
-        [_man] call SFSM_fnc_abortForcedMove;
-        _aborted = true;
-    };
+    private _status = [
+        _man, 
+        _leader, 
+        _fipo, 
+        _startTime, 
+        _startPos
 
-    if([_man, _fipo] call SFSM_fnc_canTeleportFipo)then{
-        [_man] call SFSM_fnc_abortForcedMove;
-        _teleport = true;
-    };
+    ] call SFSM_fnc_fipoMoveInStatus;
+
+    _aborted  = _status isEqualTo "abort";
+    _teleport = _status isEqualTo "teleport";
 
     sleep 0.1; 
     scriptDone _move;
 };
+private _canMove = [_man, true] call SFSM_fnc_canRun;
+private _manPos  = (getPosATLVisual _man);
 
-if(_teleport)exitWith{
-    [_man, _fipo] call SFSM_fnc_getInFipo;
-};
+if(_teleport isEqualTo true)  exitWith {[_man, _fipo] call SFSM_fnc_getInFipo;   };
+if(_aborted  isEqualTo true)  exitwith {[_man]        call SFSM_fnc_failFipoMove;};
+if(_canMove  isEqualTo false) exitWith {[_man]        call SFSM_fnc_failFipoMove;};
 
-if(_aborted)exitwith{
-    [_man] call SFSM_fnc_failFipoMove;
-};
 
-if!([_man, true] call SFSM_fnc_canRun)exitWith{[_man] call SFSM_fnc_failFipoMove;};
-
-private _manPos = (getPosATLVisual _man);
 
 if(_manPos distance2D _fightingPos < 5
 &&{_man distance _fightingPos > 1.6})then{
-    _move = [_man, _fightingPos] spawn SFSM_fnc_forceMoveATL;
-    waitUntil{sleep 0.1; scriptDone _move;};
+    [_man, _fightingPos] call SFSM_fnc_forceMoveATL;
 };
 
-if!([_man, true] call SFSM_fnc_canRun)exitWith{[_man] call SFSM_fnc_failFipoMove;};
-if(_man distance2D _fightingPos > 5)  exitWith{[_man] call SFSM_fnc_failFipoMove;};
+if!([_man, true] call SFSM_fnc_canRun) exitWith{[_man] call SFSM_fnc_failFipoMove;};
+if (_man distance2D _fightingPos > 5)  exitWith{[_man] call SFSM_fnc_failFipoMove;};
 
 [_man, _fipo] call SFSM_fnc_getInFipo;
-
-
-
 
 true;

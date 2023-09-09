@@ -24,7 +24,7 @@ params [
         "_update"
         ];
 
-if(isNil "_mapObjsData")then{_mapObjsData = createHashmap};
+// if(isNil "_mapObjsData")then{_mapObjsData = createHashmap};
 
 private _areaData = nil;
 private _sides = [];
@@ -40,10 +40,10 @@ _areaData set ["terrainLoaded", false];
 
 if(!isNil "_clustersData")
 then{
-        _westPositions = [_clustersData, west]             call Tcore_fnc_positionsClusterArr;
-        _eastPositions = [_clustersData, east]             call Tcore_fnc_positionsClusterArr;
-        _guerPositions = [_clustersData, independent]     call Tcore_fnc_positionsClusterArr;
-        _sides = [_clustersData]                         call Tcore_fnc_ClusterSides;
+        _westPositions = [_clustersData, west]        call Tcore_fnc_positionsClusterArr;
+        _eastPositions = [_clustersData, east]        call Tcore_fnc_positionsClusterArr;
+        _guerPositions = [_clustersData, independent] call Tcore_fnc_positionsClusterArr;
+        _sides = [_clustersData]                      call Tcore_fnc_ClusterSides;
         
         if!(_update)
         then{[_mapObjsData, _clustersData] call Tcore_fnc_ClusterTerrainObjects};         
@@ -72,9 +72,9 @@ then{
 
 
 
-_areaData set ["name",                 _areaName];
+_areaData set ["name",               _areaName];
 _areaData set ["radius",             _radius];
-_areaData set ["clusterPositions",     _allPositions];
+_areaData set ["clusterPositions",   _allPositions];
 _areaData set ["sides",             str _sides];
 
 _areaData

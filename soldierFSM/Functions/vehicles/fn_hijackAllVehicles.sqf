@@ -7,6 +7,7 @@
 //              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
 
 params["_battleField"];
+
 if(SFSM_hijackVehicles isEqualTo "never")exitWith{};
 if(isNil "_battleField")exitWith{"Battlefield is nil"call dbgmsg;};
 
@@ -17,18 +18,23 @@ private _vehicles = [_pos, _radius] call SFSM_fnc_availableVehicles;
 
 if(_vehicles isEqualTo [])exitWith{"no vehicles available for hijack"call dbgmsg;};
 
-private _units = missionNamespace getVariable (_battleField get "units");
-_units = _units select {(([_x, "action"]call SFSM_fnc_unitData)=="none")&&{(typeOf _x)==(typeof (vehicle _x))}};
+private _units  = missionNamespace getVariable (_battleField get "units");
+private _filter = {
+       [_x, "action"]call SFSM_fnc_unitData isEqualTo "none"
+    &&{(typeOf _x) isEqualTo (typeof (vehicle _x))}};
+    
+_units = _units select _filter;
 
 _units = [_units, _vehicles, SFSM_DodgeDistance] call SFSM_fnc_UnitsNearVehicles;
-if(_units isEqualTo [])exitWith{"no near units"call dbgmsg;};
+if(_units isEqualTo [])exitWith{"no units near vehicles"call dbgmsg;};
+
+private _hijackers = [];
 
 {
-    _units = _units select {([_x, "action"]call SFSM_fnc_unitData)=="none"};
-    if(_units isEqualTo [])exitWith{"no available units"call dbgmsg;};
-
-    [_x, _units] call SFSM_fnc_hijackVehicle;
-    sleep 0.1;
+    private _newHijackers = [_x, _units, _hijackers] call SFSM_fnc_hijackVehicle;
+ 
+    if(!isNil "_newHijackers")
+    then{_hijackers append _newHijackers;};
     
 } forEach _vehicles;
 

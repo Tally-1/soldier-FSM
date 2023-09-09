@@ -10,8 +10,8 @@ params["_man"];
 
 // private _anim = selectRandom _anims;
 private _idleAnims = call compile FIPO_idleAnimations;
-private _anim = selectRandom _idleAnims;//(["Acts_AidlPercMstpSlowWrflDnon_warmup0", (ceil random 5)]joinString"");
-
+private _anim      = selectRandom _idleAnims;//(["Acts_AidlPercMstpSlowWrflDnon_warmup0", (ceil random 5)]joinString"");
+private _timer     = time + 30;
 _man setVariable ["SFSM_idleAnim", _anim];
 
 [_man] call SFSM_fnc_idleAnimEh;
@@ -23,7 +23,13 @@ _man setDir getDir([_man] call SFSM_fnc_getFipo);
 
 waitUntil{
     sleep 0.2;
-    (_man getVariable ["SFSM_idleAnimDone", false]);
+    
+    private _animDone = (_man getVariable ["SFSM_idleAnimDone", false]);
+    private _timedOut = time > _timer;
+    if(_animDone) exitWith {true;};
+    if(_timedOut) exitWith {true;};
+
+    false;
 };
 
 private _eh = _man getVariable "SFSM_idleAnimEh";

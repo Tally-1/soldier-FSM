@@ -11,7 +11,7 @@ if(isNil "_battleField")exitWith{"Battlefield nil, cannot update" call SFSM_fnc_
 
 private _action   = _battlefield get "currentAction";
 
-if!(_action == "none")exitWith    {
+if(_action isNotEqualTo "none") exitWith{
                                     "Could not update battlefield " call dbgmsg; 
                                     false;
                                 };
@@ -53,6 +53,12 @@ private _groups      = [_clustersData]       call Tcore_fnc_clusterGroups;
 private _units       = [_clustersData]       call Tcore_fnc_clusterUnits select _unitFilter;
 private _vehicles    = [_clustersData]       call Tcore_fnc_clusterVehicles;
 private _deadMen     = allDeadMen select {_centerPos distance2D _x < _radius;}; //missionNamespace getVariable (_battleField get "deadMen");
+
+
+if(SFSM_simpleBff isEqualTo true
+&&{isNil "_mapObjsData"})then{
+    _mapObjsData = createHashmap
+};
 
 {
     if(((getPosATL _x)#2)<-1)then{
@@ -96,9 +102,8 @@ private _supplies = _centerPos nearSupplies _radius;
 //the zones are used to retrieve cover-positions
 _battlefield set ["zones", ([_battlefield] call SFSM_fnc_getZones)];
 
-
-[_battlefield] call SFSM_fnc_getCoverPositionsLight;
-[_battlefield] call SFSM_fnc_updateHunkerObjects;
+if(SFSM_simpleBff isEqualTo false)then{[_battlefield] call SFSM_fnc_getCoverPositionsLight;};
+// [_battlefield] call SFSM_fnc_updateHunkerObjects;
 
 {
     [_x, "currentBattle", _battleKey] call SFSM_fnc_unitData;

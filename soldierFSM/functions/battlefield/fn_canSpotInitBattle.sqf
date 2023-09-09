@@ -21,7 +21,8 @@ if ([_unit] call SFSM_fnc_isUncon)      exitWith{false};
 if ([_target] call SFSM_fnc_isUncon)    exitWith{false};
 
 private _lastBullet = [_unit, "last_bullet_fired"] call SFSM_fnc_unitData;
-if(time - _lastBullet < 2)exitwith{false};
+if(isNil "_lastBullet")    exitwith{false;};
+if(time - _lastBullet < 2) exitwith{false;};
 
 private _battle = [_unit, "currentBattle"] call SFSM_fnc_unitData;
 if!(_battle == "none")exitwith{false};
