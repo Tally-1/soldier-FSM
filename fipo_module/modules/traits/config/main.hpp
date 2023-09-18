@@ -6,9 +6,9 @@ class SFSM_traits : Module_F
     class Attributes : AttributesBase
     {
         #include "dropDownSyncTo.hpp"
-
         #include "excludedCheckBox.hpp"
-
+        
+        #include "aimingErrorCheckBox.hpp"
         #include "courage.hpp"
         #include "command.hpp"
 
@@ -20,9 +20,8 @@ class SFSM_traits : Module_F
         
         #include "spotDistance.hpp"
         #include "spotTime.hpp"
-
-        #include "aimingErrorCheckBox.hpp"
-
+        #include "randomValues.hpp"
+        
         class ModuleDescription : ModuleDescription{}; 
     };
 

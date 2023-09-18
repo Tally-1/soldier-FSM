@@ -7,6 +7,7 @@ class TMOD
         class initTraits        {};
         class applyModuleTraits {};
         class getModuleTargets  {};
+        class getModuleTraits   {};
     };
     
 };

@@ -8,8 +8,8 @@ class ModuleDescription : ModuleDescription
     "You can allow the position to be outflanked / overrun.",
     "If the position is outflanked / overrun the position will be abandoned."
 
-	};
-	
+    };
+    
     position  = 2;  // Position is taken into effect
     direction = 2; // Direction is taken into effect
     optional  = 2;  // Synced entity is optional

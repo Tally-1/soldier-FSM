@@ -12,7 +12,7 @@ if!(is3DEN)exitWith{};
 
 private _group = FIPO_indicatorGroup;
 if(isNil "_group")then{
-	FIPO_indicatorGroup = createGroup civilian;
+    FIPO_indicatorGroup = createGroup civilian;
 };
 
 
@@ -24,7 +24,7 @@ if(_mode == "registeredToWorld3DEN")exitwith{};
 
 // When removed from the world (by deletion or undoing creation)
 if(_mode == "unregisteredFromWorld3DEN")exitwith{
-	[_logic] call FIPO_fnc_deleteIndicators;	
+    [_logic] call FIPO_fnc_deleteIndicators;    
 };
 
 // When connection to object changes (new a connection is added or existing one removed)
@@ -34,7 +34,7 @@ if(_mode == "connectionChanged3DEN")exitwith{};
 // When some attributes were changed (including position and rotation)
 if(_mode == "attributesChanged3DEN")
 exitwith{
-	[_logic] call FIPO_fnc_fipoChanged;
+    [_logic] call FIPO_fnc_fipoChanged;
 };
 
 

@@ -3,7 +3,7 @@ class ModuleDescription : ModuleDescription
 {
     description[] = {
     "The traits set here will affect the individual soldiers behaviour ingame.",
-    "Use the ''Apply to'' field to select the target of the module.",
+    "Use the ''Apply to'' field to select the target(s) of the module.",
     "",
     "Untrained  0% - 25%",
     "Conscript  25% - 45%",
@@ -12,7 +12,7 @@ class ModuleDescription : ModuleDescription
     "Elite      85% - 95%",
     "Superman   95% - 100%"
     };
-	
+    
     position  = 0;   // Position is taken into effect
     direction = 0;  // Direction is taken into effect
     optional  = 2; // Synced entity is optional

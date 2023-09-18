@@ -20,13 +20,13 @@ SFSM_animStances set [8,  ["aadjpercmstpsraswrfldup",   "UP",       1.31, 1.64]]
 // each animation is leaning to the right/left
 // the value of each entry is an array with 7 elements:
 /*[
-	#0 	animation name(string), 
-	#1 	chest over ground(number in meters), 
-	#2 	eyes over ground(number in meters), 
-	#3  positional displacement *
-	#4 	chest displacement(number in meters)
-	#5 	eye displacement(number in meters)
-	#6 	relative direction to animation position (number 0-360)
+    #0     animation name(string), 
+    #1     chest over ground(number in meters), 
+    #2     eyes over ground(number in meters), 
+    #3  positional displacement *
+    #4     chest displacement(number in meters)
+    #5     eye displacement(number in meters)
+    #6     relative direction to animation position (number 0-360)
 ]*/
 //positional displacement refers to the distance between the starting-position and the 
 //animated position

@@ -5,15 +5,15 @@ private _startPos       = _edgePositions#0;
 private _lines          = [];
 private _c              = 2;
 {
-	private _line = [_startPos, _x, _color];
-	_lines pushBack _line;
+    private _line = [_startPos, _x, _color];
+    _lines pushBack _line;
 
-	if(_c < 12)then{
-		_line = [_x, _edgePositions#_c, _color];
-		_lines pushBack _line;
-	};
-	_c=_c+1;
-	
+    if(_c < 12)then{
+        _line = [_x, _edgePositions#_c, _color];
+        _lines pushBack _line;
+    };
+    _c=_c+1;
+    
 } forEach _outerPositions;
 
 _lines;

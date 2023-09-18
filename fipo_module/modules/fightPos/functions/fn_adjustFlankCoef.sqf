@@ -14,9 +14,9 @@ if(_coefFlank > 0.5)then{
     };
 
     if(_overLap > 0
-	&&{_debug})then{
-		// private _degOverlap = round (180*_overLap);
-		systemChat "Flank-sector overlaps Fire-sector";
+    &&{_debug})then{
+        // private _degOverlap = round (180*_overLap);
+        systemChat "Flank-sector overlaps Fire-sector";
     };
 };
 

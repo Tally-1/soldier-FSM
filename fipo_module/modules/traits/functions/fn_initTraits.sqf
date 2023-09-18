@@ -15,8 +15,8 @@ if(_targetClass isEqualTo "man")     then{sleep 6;};
 
 private _targets = [_module] call TMOD_fnc_getModuleTargets;
 {
-	if(_x isKindOf "caManBase")then{
-    	[_module, _x] spawn TMOD_fnc_applyModuleTraits;
-	};
+    if(_x isKindOf "caManBase")then{
+        [_module, _x] spawn TMOD_fnc_applyModuleTraits;
+    };
 } forEach _targets;
 };

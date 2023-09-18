@@ -1,10 +1,13 @@
 // Standard object definitions:
 scope = 2;                                                      // Editor visibility; 2 will show it in the menu, 1 will hide it.
-displayName = "Fighting Position";                              // Name displayed in the menu
-icon = "\a3\ui_f\data\igui\cfg\simpletasks\types\rifle_ca.paa"; // Map icon. Delete this entry to use the default icon.
+displayName = "Fighting Position Activation-Zone";              // Name displayed in the menu
+icon = "\a3\ui_f\data\igui\cfg\simpletasks\letters\z_ca.paa"; // Map icon. Delete this entry to use the default icon.
 category = "SFSM_modules";
+canSetArea       = 1;
+canSetAreaHeight = 1;
+canSetAreaShape  = 0;
 
-function = "FIPO_fnc_fipo3denManager"; // Name of function triggered once conditions are met
+function = "";                         // Name of function triggered once conditions are met
 functionPriority   = 1;               // Execution priority, modules with lower number are executed first. 0 is used when the attribute is undefined
 isGlobal           = 1;              // 0 for server only execution, 1 for global execution, 2 for persistent global execution
 isTriggerActivated = 0;             // 1 for module waiting until all synced triggers are activated

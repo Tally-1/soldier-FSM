@@ -12,7 +12,7 @@ class rightFlank : Combo
         #include "disabledDistance.hpp"
         #include "distances.hpp"
     };
-	
+    
 };
 
 class SFSM_rightFlankWidth : Edit

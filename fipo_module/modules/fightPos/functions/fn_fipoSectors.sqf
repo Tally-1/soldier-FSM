@@ -16,27 +16,27 @@ private _angleR       = 0-(180+_correctionR);
 private _angleL       = 180+_correctionL;
 
 private _rightSector = [
-	_fipo,
-	_angleR,
-	_distR,
+    _fipo,
+    _angleR,
+    _distR,
     _widthR,
-	_offset
+    _offset
 ] call FIPO_fnc_getObjectSector;
 
 private _centerSector = [
-	_fipo,
-	0,
-	_distC,
+    _fipo,
+    0,
+    _distC,
     _widthC,
-	_offset
+    _offset
 ] call FIPO_fnc_getObjectSector;
 
 private _leftSector = [
-	_fipo,
-	_angleL,
-	_distL,
+    _fipo,
+    _angleL,
+    _distL,
     _widthL,
-	_offset
+    _offset
 ] call FIPO_fnc_getObjectSector;
 
 [_rightSector, _centerSector, _leftSector];

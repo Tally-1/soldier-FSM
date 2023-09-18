@@ -12,7 +12,7 @@ private _fipos = _all select {typeOf _x isEqualTo "SFSM_FIPO"};
 private _indios = [];
 {_indios append (_x getVariable ["indicators", []]);} forEach _fipos;
 if(count _indios > 0)then{
-	FIPO_indicatorGroup = group (_indios#0);
+    FIPO_indicatorGroup = group (_indios#0);
 };
 
 private _fipoStances = 
@@ -36,13 +36,13 @@ private _groupNeeded = isNil "_group";
 
 if(isNil "FIPO_vrMan"
 ||{isNull FIPO_vrMan})then{
-	FIPO_vrMan  = create3DENEntity ["Object", _type, [0,0,0], true];
+    FIPO_vrMan  = create3DENEntity ["Object", _type, [0,0,0], true];
     [FIPO_vrMan, _fipo] call FIPO_fnc_initVrMan;
-	_indicators pushBack FIPO_vrMan;
+    _indicators pushBack FIPO_vrMan;
     FIPO_indicatorGroup = (group FIPO_vrMan);
 }else{
-	private _vrMan = FIPO_indicatorGroup create3DENEntity ["Object", _type, [0,0,0]];
-	[_vrMan, _fipo] call FIPO_fnc_initVrMan;
+    private _vrMan = FIPO_indicatorGroup create3DENEntity ["Object", _type, [0,0,0]];
+    [_vrMan, _fipo] call FIPO_fnc_initVrMan;
     _indicators pushBack _vrMan;
 };
 if(_countNeeded -(count _indicators) isEqualTo 0)exitwith{_fipo setVariable ["indicators", _indicators];};

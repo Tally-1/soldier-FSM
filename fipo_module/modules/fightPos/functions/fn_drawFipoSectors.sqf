@@ -20,7 +20,7 @@ if(_fipo getVariable "dynamicfipo")then{
 };
 
 if((_fipo getVariable ["leftFlank", -1]) > 0)then{
-	_leftSector       params ["_pos", "_angle", "_width", "_distance"];
+    _leftSector       params ["_pos", "_angle", "_width", "_distance"];
     private _txt      = ["Left ", _width, " degrees. ", _distance, " meters."] joinString"";
     private _sector   = [_leftSector, [0.3, 0.3, 0.8, 1], _txt] call FIPO_fnc_sector3D;
     [_sector] call FIPO_fnc_drawSector3D;
