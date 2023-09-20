@@ -26,6 +26,16 @@ class hitAndRunTimeOut: Edit
     defaultValue = "60";
 };
 
+class HRTimeOutRandom: Edit
+{
+    property     = "SFSM_FIPO_HRTimeOutRandom";
+    displayName  = "Random TimeOut";
+    tooltip      = "Will add a random amount of time to the TimeOut setting. \n if TimeOut = 30 seconds & Random value = 10 seconds then the TimeOut will be between 25 and 35 seconds.";
+    control      = "SliderTime";
+    typeName     = "NUMBER";
+    defaultValue = "0";
+};
+
 class hitAndRunMaxShots: Edit
 {
     property     = "SFSM_FIPO_maxShots";
