@@ -22,6 +22,7 @@ class SFSM_FIPO : Module_F
         #include "fubarDisable.hpp"
         #include "hitAndRun.hpp"
         #include "sectors\dynamicFIPO.hpp"
+        #include "suppression.hpp"
 
         class ModuleDescription : ModuleDescription{};
     };
