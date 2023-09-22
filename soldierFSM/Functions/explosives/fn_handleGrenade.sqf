@@ -1,6 +1,6 @@
 params ["_grenade", "_source"];
 private _velocity = velocityModelSpace _grenade;
-// sleep 1;
+
 private _timer = time + 4;
 
 waitUntil {
@@ -29,7 +29,7 @@ then{
     ["grenade_throwback", [_nearest, _grenade]] call CBA_fnc_localEvent;
     };
 
-if(count _nearSoldiers == 0)exitWith{};
+if(count _nearSoldiers isEqualTo 0)exitWith{};
 
 {
     private _action = [_x, "action"] call SFSM_fnc_unitData;

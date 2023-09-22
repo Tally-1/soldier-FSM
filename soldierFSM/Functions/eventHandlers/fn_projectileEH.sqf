@@ -27,10 +27,8 @@ private _bullet      = _class > 1 && _class < 3;
 
 if(isNil "_launchPos")then{_launchPos = getPos _projectile};
 
-// [["explosive: ",_explosive]] call dbgmsg;
-
-if((_handGrenade
-|| _explosive))
+if((_handGrenade || _explosive)
+&&{(_projectile getVariable ["SFSM_capBomb", false]) isEqualTo false})
 exitWith{
             [_projectile, _launchPos, _shooter, _ammoType] call SFSM_fnc_explosionEH;
             if(_handGrenade)then{[_projectile, _shooter] spawn SFSM_fnc_handleGrenade;};

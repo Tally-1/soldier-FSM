@@ -9,6 +9,8 @@
 addMissionEventHandler ["EntityKilled", {
     params ["_man", "_killer", "_instigator", "_useEffects"];
 
+    detach _man;
+
     //Handle fighting positions
     private _fipo = [_man] call SFSM_fnc_getFipo;
     if(!isNil "_fipo")then{

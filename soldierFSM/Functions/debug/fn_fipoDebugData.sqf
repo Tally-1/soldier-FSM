@@ -4,13 +4,27 @@ private _color       = [0,1,0.9,0.3];
 private _text        = "Fighting Position";
 private _icon        = "\a3\UI_F_Enoch\Data\CfgMarkers\circle1_ca.paa";
 private _size        = 1.5;
-private _name        = _fipo getVariable "posname";
-private _manAssigned = (synchronizedObjects _fipo) isNotEqualTo [];
+private _name        = _fipo getVariable ["posname", ""];
+private _synced      = (synchronizedObjects _fipo) select {_x isKindOf "caManBase"};
+private _manAssigned = _synced isNotEqualTo [];
+private _azFipoData  = _fipo getVariable "azFipoData";
+private _azFipo      = !isNil "_azFipoData";
+private _flashData   = _fipo getVariable ["flashData", []];
+
+if(_flashData isNotEqualTo [])exitWith{
+	_flashData params ["_txt", "_clr", ["_icn", _icon]];
+	[_pos, _clr, _txt, _icn, _size];
+};
 
 // Set a side-color to the icon if there is a man assigned to the position.
 if(_manAssigned)then{
-    private _man = [_fipo] call SFSM_fnc_fipoMan; 
+    private _man = [_fipo] call SFSM_fnc_fipoMan;
     _color = [(side _man)] call SFSM_fnc_sideColor;
+};
+
+if(_azFipo)then{
+    _text = "Activation Zone FIPO";
+    _icon = "\a3\ui_f\data\igui\cfg\simpletasks\letters\a_ca.paa";
 };
 
 //Default data-set.
@@ -21,6 +35,8 @@ if(_name isNotEqualTo "")exitWith{
 	_text = _name;
 	[_pos, _color, _text, _icon, _size];
 };
+
+
 
 // Exit with knockout data(timer included).
 private _knockOutT = [_fipo] call SFSM_fnc_timeSinceFipoKnockOut;

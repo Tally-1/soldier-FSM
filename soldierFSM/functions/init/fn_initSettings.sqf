@@ -9,7 +9,7 @@
 //Set default settings unless previously defined (usually via CBA settings)
 if(isNil "SFSM_allowFlinching")
 then{
-        SFSM_disableSoldierFSM  = false;    //\\ disable soldier FSM
+        SFSM_disableSoldierFSM  = false;   //\\ disable soldier FSM
         SFSM_DebugType          = "always";  // What type of debug is to be used. ["always", "curator", "never"];
         // SFSM_Debugger           = true;   // show debug-info, and 3D markers
         SFSM_allowFlinching     = true;     // Units will flinch on incoming fire.
@@ -52,20 +52,20 @@ then{
         SFSM_throwBackGrenade   = true;        //  Allow units to throw back grenades.
         SFSM_allowHunkerDown    = false;      //   Allow units to hunker down.
         SFSM_mgSuppression      = true;      //    Allow MG's to suppress enemy units.
-        SFSM_dragWounded        = true;     // Allow units to drag wounded units.
-        SFSM_maxDragDistance    = 40;      //  Max distance a unit will drag a wounded unit.
-        SFSM_turretLeaderDist   = 40;     //   Distance to leader for turret gunners to dismount.
-        SFSM_maxSprinters       = 10;    //    Max amount of units that can sprint at the same time.
+        SFSM_dragWounded        = true;     //     Allow units to drag wounded units.
+        SFSM_maxDragDistance    = 40;      //      Max distance a unit will drag a wounded unit.
+        SFSM_turretLeaderDist   = 40;     //       Distance to leader for turret gunners to dismount.
+        SFSM_maxSprinters       = 10;    //        Max amount of units that can sprint at the same time.
         SFSM_disableSpecialists = "player-squads"; // "all" "player-squads" "none"
         SFSM_specRegroupDist    = 70;             //   Distance to leader for specialists to regroup.
         SFSM_BFFknowledgeType   = "both sides";  //   "one side" "both sides"
         SFSM_autoStanceAction   = false;        // Show action to toggle auto-stance.
         SFSM_autoStanceEnabled  = true;        //  Enable auto-stance for playerGroups.
         SFSM_hijackVehicles     = "always";   //   Allow units to hijack enemy vehicles. ["always", "never", "action"]
-        SFSM_overRunDistance    = 50;        //    activate overrun when enemy is within this distance 
-        SFSM_marksmanFSM        = true;     //     Enable sniper FSM.
-        SFSM_maxHuntTime        = 300;     //      How long a hunter will hunt his target.
-        SFSM_huntCooldown       = 30;     //       How long until next hunt.
+        SFSM_overRunDistance    = 50;        // activate overrun when enemy is within this distance 
+        SFSM_marksmanFSM        = true;     //  Enable sniper FSM.
+        SFSM_maxHuntTime        = 300;     //   How long a hunter will hunt his target.
+        SFSM_huntCooldown       = 30;     //    How long until next hunt.
 
         SFSM_buddyRearm             = true;   // Allow buddy-Rearm
         SFSM_buddyHeal              = true;   // Allow buddy-Heal 
@@ -90,10 +90,11 @@ then{
                 'Acts_AidlPercMstpSnonWnonDnon_warmup_7_loop',
                 'Acts_AidlPercMstpSnonWnonDnon_warmup_6_loop'
         ]";
-        SFSM_allowEvasion    = true;    // When no cover is found a soldier will run to avoid incoming fire.
-        SFSM_bombOnCapture   = 0.2;    //  Probability for suicide-bomb when captured.
-        SFSM_simpleBff       = true;  //   Remove Caching of Terrain objects. Will improve performance, but units taking cover will become slightly dumber.
-        SFSM_spawnBffActions = false;//    Spawns the functions called during a battle in a separate thread, bad for performance but ensures that the loop does not get aborted when an error occurs.
+        SFSM_allowEvasion     = true;     //When no cover is found a soldier will run to avoid incoming fire.
+        SFSM_bombOnCapture    = 0.2;     // Probability for suicide-bomb when captured.
+        SFSM_simpleBff        = true;   //  Remove Caching of Terrain objects. Will improve performance, but units taking cover will become slightly dumber.
+        SFSM_spawnBffActions  = false; //   Spawns the functions called during a battle in a separate thread, bad for performance but ensures that the loop does not get aborted when an error occurs.
+        SFSM_captureExplosive = "largestEx"; // Choose which explosive you will be used in the case of capture suicide. ("gbu"   "grenade"  "largestEx")
 };
 
 

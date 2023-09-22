@@ -37,11 +37,7 @@ _man addEventHandler ["Hit", {
 }}}];
 
 
-if(random 1 < SFSM_bombOnCapture)exitWith{
-    createVehicle ["Bomb_03_F", (GetPosATL _man)];
-    private _text = [name _man, " blew himself and ", (name _captor), " into very small pieces"]joinString"";
-    [_text] call dbgmsg;
-};
+if(random 1 < SFSM_bombOnCapture)exitWith{[_man, _captor] call SFSM_fnc_bombOnCapture;};
 
 ["capture",  [_man, _captor]] call CBA_fnc_localEvent;
 

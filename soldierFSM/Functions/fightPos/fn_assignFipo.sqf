@@ -1,5 +1,6 @@
 params["_fipo", "_squadLeaders", "_excludedMen"];
 private _availableUnits = [];
+private _fipoMan = objNull;
 
 {
      if(_x distance2D _fipo < SFSM_fipoGetInDistance)
@@ -18,7 +19,10 @@ if(_ableUnits isEqualTo [])exitWith{objNull};
 
 // Get nearest and move in.
 private _fipoMan = [_fipo, _ableUnits] call SFSM_fnc_getNearest;
-[_fipoMan, _fipo, true] spawn SFSM_fnc_moveInFipo;
+private _canMoveIn = [_fipoMan, _fipo] call SFSM_fnc_canMoveInFipo;
+[_fipoMan, _fipo, _canMoveIn] spawn SFSM_fnc_moveInFipo;
+
+if(_canMoveIn isEqualTo false)exitWith{objNull;};
 
 //Show dynamic fipo while debugging.
 if(SFSM_debugger

@@ -6,9 +6,9 @@ _man setAnimSpeedCoef 1;
 _man enableAI "all";
 _man setUnitPos "AUTO";
 
-private _action      = [_man] call SFSM_fnc_getAction;
-private _fipo        = [_man] call SFSM_fnc_getFipo;
-private _noFipo      =  isNil "_fipo";
+private _action = [_man] call SFSM_fnc_getAction;
+private _fipo   = [_man] call SFSM_fnc_getFipo;
+private _noFipo =  isNil "_fipo";
 
 if(_noFipo
 &&{_action isNotEqualTo "none"})exitWith{
@@ -18,7 +18,8 @@ if(_noFipo
 
 if(_noFipo)exitWith{};
 
-
+private _azFipoData = _fipo getVariable "azFipoData";
+if(!isNil "_azFipoData")then{_azFipoData set ["owner", objNull];};
 
 [_fipo] call SFSM_fnc_clearFipo;
 [_fipo] call SFSM_fnc_updateFipoMarker;
@@ -49,4 +50,5 @@ _man spawn{
 	};
 	true;
 };
+
 true;

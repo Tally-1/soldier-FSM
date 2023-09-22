@@ -1,7 +1,7 @@
 params ["_fipo"];
 if!(_fipo getVariable "hitAndRun")exitWith{-1;};
 
-private _timeLimit = _fipo getVariable "hitandruntimeout";
+private _timeLimit = _fipo getVariable "timeLimit";
 private _getInTime = _fipo getVariable "getInTime";
 
 if(isNil "_getInTime")exitWith{-1;};

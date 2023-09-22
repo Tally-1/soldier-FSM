@@ -15,11 +15,14 @@ params[
 
 [_man, "action", _actionTxt] call SFSM_fnc_unitData;
 
-private _handler = [_man] call SFSM_fnc_launcherHandler;
+private _handler  = [_man] call SFSM_fnc_launcherHandler;
 private _launcher = secondaryWeapon _man;
-private _mode = (getArray (configFile >> "CfgWeapons" >> _launcher >> "modes"))#0;
-private _fired = (_man getVariable ["SFSM_launched", false]);
-private _timer = time +5;
+private _mode     = (getArray (configFile >> "CfgWeapons" >> _launcher >> "modes"))#0;
+private _fired    = (_man getVariable ["SFSM_launched", false]);
+private _timer    = time +5;
+
+_man playMoveNow "AmovPercMstpSrasWrflDnon_AmovPercMstpSrasWlnrDnon_end";
+_man selectWeapon _launcher;
 
 waitUntil {
 

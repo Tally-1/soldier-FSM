@@ -43,5 +43,5 @@ do {
         private _sleep     = 1 - _timeSpent;
 
         if(_sleep > 0)then{sleep _sleep;};
-       
+
 };

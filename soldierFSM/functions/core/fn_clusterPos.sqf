@@ -14,12 +14,12 @@ params [    "_target",
 
 if((typeName _target) == "BOOL")exitWith{};
 
-private _Side             = (side _target);
-Private _Pos             = (GetPos _target);
-private _list             = (_Pos nearEntities ["Land", _radius]);
-Private _Yarr             = [];
-Private _Xarr             = [];
-private _clusterObjects    = [_target];
+private _Side           = (side _target);
+Private _Pos            = (GetPos _target);
+private _list           = (_Pos nearEntities ["Land", _radius]);
+Private _Yarr           = [];
+Private _Xarr           = [];
+private _clusterObjects = [_target];
 private _groups         = [];
 
 _list PushBackUnique _target;

@@ -27,4 +27,12 @@ if(_fipo getVariable "dynamicFipo"
 &&{([_fipo] call SFSM_fnc_unitsInFireSector) isEqualTo []})
 exitWith{false;};
 
+private _azFipo = _fipo getVariable "azFipoData";
+if(!isNil "_azFipo")
+exitWith{
+		private _fireZones = (_azFipo get "fire_zones")  select {_x get "active";};
+		private _active = _fireZones isNotEqualTo [];
+		_active;
+};
+
 true;

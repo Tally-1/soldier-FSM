@@ -7,9 +7,9 @@
 //              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
 
 private 
-_script = [] spawn SFSM_fnc_unitTasks;    waitUntil{scriptDone _script};
-_script = [] spawn SFSM_fnc_groupTasks;   waitUntil{scriptDone _script};
-_script = [] spawn SFSM_fnc_vehicleTasks; waitUntil{scriptDone _script};
+_script = [] spawn SFSM_fnc_unitTasks;             waitUntil{scriptDone _script};
+_script = [] spawn SFSM_fnc_groupTasks;            waitUntil{scriptDone _script};
+_script = [] spawn SFSM_fnc_vehicleTasks;          waitUntil{scriptDone _script};
 
 {
 	if((getPosATLVisual _x)#2 < (0-1))then{
@@ -18,6 +18,7 @@ _script = [] spawn SFSM_fnc_vehicleTasks; waitUntil{scriptDone _script};
 	};
 
 }forEach alldeadMen;
+// hint str round time;
 
 // _script = [] spawn SFSM_fnc_deleteDeadData; waitUntil{scriptDone _script};
 true;

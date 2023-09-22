@@ -8,16 +8,10 @@
 
 params ["_man", "_target"];
 
-if(isNil "_target")                                     exitWith{};
-if(isNil "_man")                                     exitWith{};
-if!(_target isKindOf "man")                             exitWith{};
-if!(_man isKindOf "man")                             exitWith{};
-if(_man distance2D _target > 400)                    exitWith{};
-if(_man getVariable ["ace_isunconscious", false])    exitWith{};
-if(_man getVariable ["dam_ignore_injured0",false])   exitWith{};
-if(_target getVariable ["ace_isunconscious", false]) exitWith{};
-if(_target getVariable ["dam_ignore_injured0",false])exitWith{};
-if(!alive _target)                                   exitWith{};
+if!([_target] call SFSM_fnc_functionalMan) exitWith{};
+if!([_man] call SFSM_fnc_functionalMan)    exitWith{};
+if (_man distance2D _target > 400)         exitWith{};
+
 
 private _knowledge            = _man knowsAbout _target;
 private _targetVerified        = _knowledge == 4;

@@ -1,5 +1,7 @@
 params["_man"];
 private _target     = getAttackTarget _man;
+
+isNil{// Forced unscheduled execution
 private _targetList = [];
 private _visible    = false;
 
@@ -12,7 +14,7 @@ if(!isNull _atTarget)exitwith{
 
 
 if(alive _target)then{
-    _visible = [_man, _target, 0.1, true] call SFSM_fnc_targetVisible;
+    _visible = [_man, _target, 0.5, true] call SFSM_fnc_targetVisible;
 };
 
 if!(_visible)then{
@@ -29,7 +31,7 @@ if!(_visible)then{
 
     [_man, "Target reassigned"] spawn SFSM_fnc_flashAction;
     _target = _targetList#0#0;
-};
+}};
 
 if(isNull _target)exitWith{};
 

@@ -28,9 +28,10 @@ then{
         [] call SFSM_fnc_drawBullets;
         [] call SFSM_fnc_custom3Dmarkers;
         [] call SFSM_fnc_drawAllTrajectories;
-        [] call SFSM_fnc_drawFiPositions;     
-        [] call SFSM_fnc_drawAllAimLines;  
-        [] call SFSM_fnc_draw3Dsectors;     
+        [] call SFSM_fnc_drawFiPositions;
+        [] call SFSM_fnc_drawAllAimLines;
+        [] call SFSM_fnc_draw3Dsectors;
+        [] call SFSM_fnc_drawActivationZones;
 }}];
 
 

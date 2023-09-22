@@ -10,23 +10,22 @@ params ["_man"];
 private _handler =
 _man addEventHandler ["FiredMan", {
     params ["_man", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile", "_vehicle"];
-    if(_weapon == secondaryWeapon _man)
+    if(_weapon isEqualTo secondaryWeapon _man)
     then{
         [_man, _projectile] spawn {
             params["_man", "_missile"];
-            sleep 0.1;
-
             private _targetPos = _man getVariable "SFSM_missileTarget";
             private _velocityMS = velocityModelSpace _missile;
 
             //Repeat it just to make sure it actually sticks.
             for "_i" from 0 to 2 do {
+            sleep 0.1;
             if(!alive _missile)exitWith{};
 
             [_missile, _targetPos] call SFSM_fnc_setDirAndPitchToPos;
             _missile setVelocityModelSpace _velocityMS;
 
-            sleep 0.1;
+            
         };
         
     };

@@ -71,7 +71,7 @@ _man setSpeedMode "FULL";
     [_man, "action", "CQB: House is clear!."] call SFSM_fnc_unitData;
     ["CQB_houseClear", [_man, _building]] call CBA_fnc_localEvent;
     // private _script = 
-    [_man, _path#((count _path)-1), 6, 5] call SFSM_fnc_forceMoveToPos;
+    [_man, _path#((count _path)-1), 6, 5] call SFSM_fnc_forceMoveToPos2;
     // waitUntil{sleep 1; scriptDone _script;};
     _endCQB = true;
   };

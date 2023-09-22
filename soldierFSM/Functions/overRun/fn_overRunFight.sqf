@@ -26,9 +26,9 @@ while {_counter isEqualTo "true"} do {
     
     sleep 5;
 
-    if!([_target, true] call SFSM_fnc_canRun) exitWith{_counter = "target down";};
-    if!([_man, true] call SFSM_fnc_canRun)    exitWith{_counter = "I am down";};
-    if(time>_timer)                           exitWith{_counter = "Timed out";};
+    if!([_target] call SFSM_fnc_functionalMan) exitWith{_counter = "target down";};
+    if!([_man, true] call SFSM_fnc_canRun)     exitWith{_counter = "I am down";};
+    if(time > _timer)                          exitWith{_counter = "Timed out";};
 
     _enemies = [_man] call SFSM_fnc_nearEnemies;
     _target  = [_man, _enemies] call SFSM_fnc_getNearest;

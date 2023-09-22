@@ -12,4 +12,4 @@ private _clusterRadius = selectMax _distances;
 
 if(isNil "_clusterRadius")then{_clusterRadius = 2};
 
-_clusterRadius
+_clusterRadius;

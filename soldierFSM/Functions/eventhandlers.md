@@ -329,3 +329,33 @@ params["_man", "_action"];
 
 
 --------------------------------------------------------------------
+
+**When a soldier is about to blow himself up while being captured**
+["pre_bomb_on_capture",  [_man, _captor, _bombType]] call CBA_fnc_localEvent;
+["post_bomb_on_capture", [_man, _captor, _bombType]] call CBA_fnc_localEvent;
+
+[Example](before he blows up)
+_id = ["pre_bomb_on_capture", {
+params["_man", "_captor"];
+
+// set this variable to stop the explosion:
+// _man setVariable ["SFSM_stopCapBomb", true];
+// That variable will be deleted after the suicide is stopped
+// To never get blown up set this variable:
+// _man setVariable ["SFSM_stopCapBombAlways", true];
+
+
+}] call CBA_fnc_addEventHandler;
+
+[Example](after the explosive has spawned, but before it blows up)
+_id = ["post_bomb_on_capture", {
+params["_man", "_captor", "_explosive"];
+
+// You can set this variable to change the wait before the explosive blows up:
+// _explosive setVariable ["SFSM_fuseTime", 1];
+// (Will only work for IEDs, mines and explosive-charges)
+
+}] call CBA_fnc_addEventHandler;
+
+
+--------------------------------------------------------------------

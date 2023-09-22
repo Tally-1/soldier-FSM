@@ -12,7 +12,6 @@ private _newGroup   = createGroup _side;
 private _abilities  = [_man] call SFSM_fnc_abilitiesInUse;
 private _squadIndex = [_man] call SFSM_fnc_getSquadIndex;
 
-// [_man, "Resetting brain..."] spawn SFSM_fnc_flashAction;
 [_man]                    call SFSM_fnc_deActivateMan;
 [_man, _newGroup]         call SFSM_fnc_forceGroupJoin;
 

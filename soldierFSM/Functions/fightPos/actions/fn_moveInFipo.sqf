@@ -39,6 +39,10 @@ waitUntil{
 
     ] call SFSM_fnc_fipoMoveInStatus;
 
+    if(isNil "_status")then{
+        _status = "abort"
+    };
+
     _aborted  = _status isEqualTo "abort";
     _teleport = _status isEqualTo "teleport";
 

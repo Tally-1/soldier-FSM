@@ -27,7 +27,7 @@ private _droppedWeapons = nearestObjects [_man, ["WeaponHolder", "WeaponHolderSi
 
 private _weaponCount    = count _droppedWeapons;
 
-if(_weaponCount == 0)exitWith{["could not find weapons close to dead man", 2] call dbgmsg};
+if(_weaponCount isEqualTo 0)exitWith{["could not find weapons close to dead man", 2] call dbgmsg};
 
 private _weaponsVar = (_battlefield get "weapons");
 

@@ -8,7 +8,7 @@ private _versionName = "DCO soldier FSM | Fighting Positions (FIPO)";
 	[
 		30,   	//minimum 
 		120, 	//max
-		50,     //default
+		70,     //default
 		0,	    //decimals
 		false
 	]

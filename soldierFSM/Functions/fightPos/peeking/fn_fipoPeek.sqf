@@ -31,7 +31,10 @@ if!(isNil "_anim")then{
 [_man, _shootingStance] call SFSM_fnc_animSetStance;
 
 //wait for stance to complete.
-waitUntil{((_man getVariable ["SFSM_animStanceDone", false]) || (time > _timer))};
+waitUntil{
+    ((_man getVariable ["SFSM_animStanceDone", false]) 
+    || (time > _timer))
+};
 
 //Look for and engage enemies.
 // private _peek = 

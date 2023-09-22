@@ -6,15 +6,15 @@ if!([_man] call SFSM_fnc_inFipo)exitwith{false;};
 private _target = [_man] call SFSM_fnc_getPeekTarget;
 
 if(isNil "_target")exitWith{ 
-    [_man, "no targets...", _peekTime] spawn SFSM_fnc_flashAction;
-    sleep _peekTime;
+    
+    if([_man] call SFSM_fnc_fipoSuppress)exitWith{true;};
+    
+        [_man, "no targets...", _peekTime] spawn SFSM_fnc_flashAction;
+        sleep _peekTime;
+        true;
 };
 
-
-
 _peekTime = _peekTime+2;
-// if(_peekTime < 3)then{_peekTime = 3};
-
 [_man, "Engaging target"] call SFSM_fnc_setAction;
 
 

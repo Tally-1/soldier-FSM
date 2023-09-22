@@ -5,6 +5,10 @@ _man setDir 0;
 // doStop _man;
 _man doFollow _man;
 
+
+private _azFipoData = _fipo getVariable "azFipoData";
+if(!isNil "_azFipoData")then{_azFipoData set ["owner", _man];};
+
 [_man, "Idle"] call SFSM_fnc_setAction;
 [_man, "inFipo", true] call SFSM_fnc_unitData;
 
@@ -27,4 +31,5 @@ if(_fipo getVariable "hitandrun")then{
 
 
 ["fipo_getIn", [_man, _fipo]] call CBA_fnc_localEvent;
+
 true;

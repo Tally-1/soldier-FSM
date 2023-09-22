@@ -14,7 +14,7 @@ private _anims     = [_moveType] call SFSM_fnc_evasiveAttackAnims;
 
 [_man, _moveType]                                  spawn SFSM_fnc_flashAction;
 [_man, _target]                                    call  SFSM_fnc_initevasiveAttack;
-[_man, _anims, false, _condition,_midFnc, _endFnc] call  SFSM_fnc_playAnimList;
+[_man, _anims, true, _condition,_midFnc, _endFnc]  call  SFSM_fnc_playAnimList;
 [_man, _target]                                    call  SFSM_fnc_evasiveAttackLoop;
 
 true;

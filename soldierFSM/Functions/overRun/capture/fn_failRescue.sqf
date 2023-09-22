@@ -17,7 +17,7 @@ if(_captive getVariable ["SFSM_panic", false]
     _nextAction   = "!PANIC!";
 };
 
-// [_captive, _nextAction] call SFSM_fnc_setAction;
+[_captive, _nextAction] call SFSM_fnc_setAction;
 [_captor,  "none"] call SFSM_fnc_setAction;
 [_captive, _flashAction] spawn SFSM_fnc_flashAction;
 [_captor,  _flashAction] spawn SFSM_fnc_flashAction;

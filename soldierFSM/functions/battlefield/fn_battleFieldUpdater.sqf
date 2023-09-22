@@ -15,6 +15,11 @@
 // Example: [_battleField] spawn SFSM_fnc_battleFieldUpdater;
 
 params ['_battleField'];
+private _looping = _battleField get "loop activated";
+if(!isNil "_looping")exitWith{};
+
+_battleField set ["loop activated", true];
+
 [["Battlefield loop initializing"], 2] call dbgmsg;
 while {!isNil "_battleField"} 
 do     {

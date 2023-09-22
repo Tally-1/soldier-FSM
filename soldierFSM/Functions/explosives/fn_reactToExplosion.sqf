@@ -9,13 +9,12 @@
 params ["_man", "_launchPos", "_impactPos", "_shooter"];
 
 
-// if(_man getVariable ['SFSM_excluded', false])exitWith{false;};
-if!([_man] call SFSM_fnc_availableAiSoldier)             exitWith{false;};
+if!([_man] call SFSM_fnc_availableAiSoldier) exitWith{false;};
 
 "reacting" call dbgmsg;
 private _minRadius = 10;
 private _flinchRadius = 60;
-private _notInBattle = (([_man, "currentBattle"] call SFSM_fnc_unitData) == "none");
+private _notInBattle = (([_man, "currentBattle"] call SFSM_fnc_unitData) isEqualTo "none");
 private _distanceToImpact = _impactPos distance2D _man;
 private _outOfMinRad      = _distanceToImpact > _minRadius;
 private _flinch           = ((_distanceToImpact < _flinchRadius) && {_outOfMinRad});

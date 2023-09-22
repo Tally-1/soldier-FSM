@@ -59,7 +59,7 @@ _man setSpeedMode "FULL";
 
 
 // private _script = 
-[_man,(_entrance), 60, 5] call SFSM_fnc_forceMoveToPos;
+[_man,(_entrance), 60, 5] call SFSM_fnc_forceMoveToPos2;
 // waitUntil{sleep 1; scriptDone _script;};
 
 private _j = 1;

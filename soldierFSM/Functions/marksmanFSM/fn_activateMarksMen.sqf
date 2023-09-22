@@ -10,14 +10,22 @@ if(_marksMen isEqualTo []) exitWith{
     "No available marksmen" call dbgmsg;
 };
 
+private _alreadyActive = _battlefield get "marksmenLoop";
+if(!isNil "_alreadyActive")exitWith{};
+
+_battlefield set ["marksmenLoop", true];
+_battlefield set ["currentAction",    "Getting all marksmen-targets"];
+
 private _targets = [_battlefield] call SFSM_fnc_getHVTs;
 private _sides   = [];
 _targets append _marksMen;
 
 {_sides pushBackUnique (side _x)} forEach _targets;
 
-if(count _sides < 2)      exitWith{"no valid targets found for marksmen" call dbgmsg;};
-if(_targets isEqualTo []) exitWith{"no valid targets found for marksmen" call dbgmsg;};
+if(count _sides < 2)      exitWith{_battlefield set ["marksmenLoop", nil]; "no valid targets found for marksmen" call dbgmsg;};
+if(_targets isEqualTo []) exitWith{_battlefield set ["marksmenLoop", nil]; "no valid targets found for marksmen" call dbgmsg;};
+
+_battlefield set ["currentAction",    "Assigning marksmen to HVTs"];
 
 private _hunters = [];
 private _assignedTargets = [];
@@ -30,7 +38,7 @@ private _assignedTargets = [];
 
     if(!isNull _target)then{
         [_x, _target] spawn SFSM_fnc_huntTarget;
-        _hunters pushBackUnique _x;
+        _hunters         pushBackUnique _x;
         _assignedTargets pushBackUnique _target;
     }
     else{
@@ -43,9 +51,11 @@ private _assignedTargets = [];
 if(isNil "_battlefield") exitWith{};
 
 if(_hunters isEqualTo [])exitWith{
+    _battlefield set ["marksmenLoop", true];
     "no valid targets found for marksmen" call dbgmsg;
 };
 
+_battlefield set ["marksmenLoop", true];
 "marksmen assigned to targets" call dbgmsg;
 
 true;

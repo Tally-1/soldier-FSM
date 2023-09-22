@@ -39,7 +39,7 @@ if([_man, _pos] call SFSM_fnc_canSprint)exitWith{
     };
 
     // private _move = 
-    _this call SFSM_fnc_forceMoveToPos;
+    _this call SFSM_fnc_forceMoveToPos2;
     // waitUntil { sleep 0.1; scriptDone _move; };
     _this call SFSM_fnc_postForceMove2;
 
@@ -53,7 +53,7 @@ waitUntil {(scriptDone _calculate) || (_timer < time); };
 private _path = _man getVariable "SFSM_currentPath";
 if(isNil "_path")exitWith{
     // private _move = 
-    _this call SFSM_fnc_forceMoveToPos;
+    _this call SFSM_fnc_forceMoveToPos2;
     // waitUntil { sleep 0.1; scriptDone _move; };
     _this call SFSM_fnc_postForceMove2;
 };
@@ -75,7 +75,7 @@ private _posTimeLimit = _maxTime / (count _path);
         1,
         _spamTimer
     ]
-    call SFSM_fnc_forceMoveToPos;
+    call SFSM_fnc_forceMoveToPos2;
 
     // waitUntil { sleep 0.1; scriptDone _move; };
 

@@ -32,4 +32,6 @@ if(SFSM_debugger)then{
 
 _animArr append (_finalAnims apply {_x get "animName"});
 
+[_man] call SFSM_fnc_fixPos;
+
 true;

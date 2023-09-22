@@ -2,11 +2,11 @@
 // 
 // EXAMPLE: [(getPos player), west, true] call Tcore_fnc_allClustersInRadius
 // 
-private _sides             = [east, west, independent];
+private _sides           = [east, west, independent];
 private _returnAllData   = false; 
 private _radius          = 500;
-private _clusterRadius      = 50;
-private _Zvalue             = 2;
+private _clusterRadius   = 50;
+private _Zvalue          = 2;
 private _includeTerrainObjects = false;
 
 params[
@@ -35,13 +35,15 @@ do {
         &&{_side in _sides
         && {[_unit] call SFSM_fnc_isRealMan}})
         then{
-                private _clusterData    = [    _unit, 
-                                            _clusterRadius, 
-                                            _Zvalue,
-                                            _excludedUnits, 
-                                            "all",
-                                            _includeTerrainObjects
-                                          ] call Tcore_fnc_clusterPos;
+                private _clusterData    = [ 
+                        _unit, 
+                        _clusterRadius, 
+                        _Zvalue,
+                        _excludedUnits, 
+                        "all",
+                        _includeTerrainObjects
+                        
+                        ] call Tcore_fnc_clusterPos;
 
                 private _clusterPos     = _clusterData # 0;
                 private _clusterMembers = _clusterData # 1;
