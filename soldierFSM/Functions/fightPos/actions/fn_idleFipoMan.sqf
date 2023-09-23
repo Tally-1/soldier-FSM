@@ -17,6 +17,7 @@ _man setVariable ["SFSM_idleAnim", _anim];
 [_man] call SFSM_fnc_idleAnimEh;
 [_man, "Idle"] call SFSM_fnc_setAction;
 
+_man setAnimSpeedCoef 1;
 _man playMoveNow _anim;
 sleep 0.2;
 _man setDir getDir([_man] call SFSM_fnc_getFipo);
