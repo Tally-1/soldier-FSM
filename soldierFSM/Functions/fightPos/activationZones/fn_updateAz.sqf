@@ -33,6 +33,8 @@ if(_sides isEqualTo _newSides)exitWith{};
 
 _self set  ["sides_present", _newSides];
 // _self call ["onSidesChanged"];
+{(_x getVariable "azFipoData") call ["setActiveSides"]}forEach (_self get "fipos");
+
 ["activation_sides_changed", _self] call CBA_fnc_localEvent;
 
 if(_activeNow isEqualTo _status)exitWith{};

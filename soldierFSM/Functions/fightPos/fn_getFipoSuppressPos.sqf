@@ -18,16 +18,32 @@ private _enemyClusters = _clusterData select {
 
 private _enemyPositions = _enemyClusters apply {ATLToASL(_x#0);};
 
+if(_enemyPositions isEqualTo [])exitWith{};
+
+private _validPositions = _enemyPositions select {[(aimPos _man), _x] call Tcore_fnc_visibility > 0;};
+
+if(_validPositions isEqualTo [])then{
+	_validPositions = _enemyPositions apply {[_x, 10] call Tcore_fnc_addZ;};
+};
+
+
 private _sortVisDist = {
 	private _v = [(aimPos _man), _x] call Tcore_fnc_visibility;
 	private _d = _man distance _x;
-	if(_v isEqualTo 0)then{_v = 0.0001;};
+
+	if(_v isEqualTo 0)
+	then{_v = 0.0001;};
+
 	private _value = _d/_v;
 	_value;
 };
 
-_pos = ([_enemyPositions, [], _sortVisDist, "ASCEND"] call BIS_fnc_sortBy)#0;
+_pos = ([_validPositions, [], _sortVisDist, "ASCEND"] call BIS_fnc_sortBy)#0;
 
 };//unscheduled execution end.
+
+if(isNil "_pos")then{
+	_pos = [(_fipo modelToWorldVisualWorld [0,3,0]), 1.5] call Tcore_fnc_addZ;
+};
 
 _pos;

@@ -1,9 +1,16 @@
 params["_fipo"];
+  
+/*--Defining Values used in the object--*/
 ([_fipo] call SFSM_fnc_getAzFipoZones)
 params["_allZones", "_fireZones", "_flankZones"];
 
-// private _sides = [_fipo] call SFSM_fnc_fipoDefineSides;
-private _pos   = getPosATLVisual _fipo;
+private _sides = [_fipo] call SFSM_fnc_fipoDefineSides;
+private _pos = getPosATLVisual _fipo;
+private _activatedForSides = { isNil{
+        private _activatedSides = (_self get "sides") select {_self call ["isActive",[_x]]};
+        _self set ["activeForSides", _activatedSides];
+}};
+
 
 private _objData = [ 
 /*---------------Settings--------------*/
@@ -16,7 +23,7 @@ private _objData = [
     ["all_zones",   _allZones],
     ["fire_zones",  _fireZones],
     ["flank_zones", _flankZones],
-    // ["sides",       _sides],
+    ["sides",       _sides],
     ["position",    _pos],
     ["owner",       objNull],
     ["active_actions", false],
@@ -24,7 +31,8 @@ private _objData = [
 
 /*----------------Methods--------------*/
     ["isActive",         {_this call SFSM_fnc_azFipoActive}],
-    ["getOut",           {[]    call SFSM_fnc_azFipoGetOut}]
+    ["getOut",           {[]    call SFSM_fnc_azFipoGetOut}],
+    ["setActiveSides",   _activatedForSides]
 ];
 
 private _azFipo = createHashMapObject [_objData];

@@ -69,6 +69,6 @@ private _versionName = "DCO soldier FSM | Overrun";
 	[
 		["gbu", "grenade", "largestEx"],
 		["GBU", "Grenade", "Largest explosive in Inventory"], 
-		2
+		1
 	]
 ] call cba_settings_fnc_init;

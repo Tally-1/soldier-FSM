@@ -572,6 +572,7 @@ class CfgFunctions
             class azFipoGetOut          {};
             class handleActivationZones {};
             class AZmanager             {};
+            class onAzSidesChanged      {};
 
         };
 

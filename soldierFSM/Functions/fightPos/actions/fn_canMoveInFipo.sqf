@@ -44,7 +44,7 @@ exitWith{_canMoveIn = false;};
 
 private _azFipo = _fipo getVariable "azFipoData";
 if(!isNil "_azFipo")
-exitWith{_azFipo call ["isActive", [(side _man)]];};
+exitWith{_canMoveIn = (side _man) in (_azFipo get "activeForSides");};
 
 // The fighting position has been outflanked
 private _flankEnemies = [_fipo, _man] call SFSM_fnc_fipoFlankEnemies;
