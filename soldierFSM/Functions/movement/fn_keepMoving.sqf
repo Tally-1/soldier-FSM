@@ -6,6 +6,8 @@ params [
 	"_startTime"*/
 ];
 
+if(isNil "_pos")exitWith{false;};
+
 private _keepMoving = true;
 
 isNil{// Forced unscheduled execution

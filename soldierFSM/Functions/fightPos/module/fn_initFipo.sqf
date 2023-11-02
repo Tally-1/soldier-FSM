@@ -19,3 +19,7 @@ if(SFSM_debugger)then{
 		"Fighting position with cover-pos higher than shooting-pos detected" call dbgmsg;
 	};
 };
+
+_fipo setVectorUp [0,0,1];
+
+true;

@@ -17,6 +17,9 @@
 private _includeExits = false;
 params["_building", "_includeExits", "_startPos"];
 private _positions = _building buildingPos -1;
+if(isNil "_positions")      exitwith {[];};
+if(_positions isEqualTo []) exitwith {[];};
+
 private _floorPositions = [_positions] call SFSM_fnc_floorPositions;
 private _pathPosArr = [];
 

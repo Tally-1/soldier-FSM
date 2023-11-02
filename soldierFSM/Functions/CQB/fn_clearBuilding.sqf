@@ -16,7 +16,8 @@
 
 
 params["_man", "_building", "_target"];
-private _startPos = getPos _man;
+private _startPos  = getPos _man;
+private _targetPos = getPosATLVisual _target;
 private _buildingVarName = ["Occupied building ", (name _man), (getPos _building)] joinString "_";
 private _path = [_building, true, _startPos] call SFSM_fnc_buildingPath;
 private _cPos = 1;
@@ -24,6 +25,10 @@ private _startSpeedMode = speedMode _man;
 private _startTime = time;
 private _rigged = _building getVariable ["SFSM_explosiveRigged", false];
 
+
+// Some buildings have no waypoints hence the path will be a loop of the target-position
+if(isNil "_path")      then{_path = [_targetPos, _targetPos, _targetPos];};
+if(_path isEqualTo []) then{_path = [_targetPos, _targetPos, _targetPos];};
 
 [_man, "action", "Initializing CQB"] call SFSM_fnc_unitData;
 [_man, "targetBuilding", _buildingVarName] call SFSM_fnc_unitData;
