@@ -37,3 +37,4 @@ then{[_group] call SFSM_fnc_enemyDetected};
 
 [_group] call SFSM_fnc_leaderChangeEH;
 [_group] call SFSM_fnc_groupFleeingEh;
+[_group] call SFSM_fnc_groupCommandEh;

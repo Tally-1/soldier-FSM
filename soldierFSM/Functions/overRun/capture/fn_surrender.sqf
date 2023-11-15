@@ -1,5 +1,5 @@
 params["_man"];
-["overrun_surrender",  [_man]] call CBA_fnc_localEvent;
+["SFSM_surrender",  [_man]] call CBA_fnc_localEvent;
 
 private _side = side _man;
 private _loadout = getUnitLoadout _man;
@@ -25,7 +25,7 @@ SFSM_cleanupObjs pushBackUnique _man;
 [_man, "Acts_JetsMarshallingEmergencyStop_in"] remoteExecCall ["switchMove",0];
 
 [_man] call SFSM_fnc_panicAction;
-[_man] call SFSM_fnc_captureAction;
+[_man]  remoteExecCall ["SFSM_fnc_captureAction", 0];
 [_man, _side] call SFSM_fnc_joinSurrenderGroup;
 
 //Because some scripts might already be running the 

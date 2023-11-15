@@ -6,17 +6,7 @@ params ["_victim", "_killer"];
 private _gun  = (handgunWeapon _killer);
 // private _dmg  = damage _victim;
 
-_killer selectWeapon _gun;
-_killer attachTo [_victim, [0,0,0]];
-_killer switchMove "Acts_Executioner_Kill";
-_victim setDamage 0.95;
-
-sleep 0.2; 
-detach _killer;
-sleep 1.8;
-
-private _weaponMode = currentWeaponMode _killer;
-_killer forceWeaponFire [_gun, _weaponMode];
+[_killer, _victim] call SFSM_fnc_executionerKillshot;
 
 [_victim, "none"] call SFSM_fnc_setAction;
 

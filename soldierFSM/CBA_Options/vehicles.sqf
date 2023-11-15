@@ -8,7 +8,7 @@ private _versionName = "DCO soldier FSM | Vehicles";
 	[
 		["always", "never", "action"],
 		["Allow AI to hijack any vehicle", "Disable hijack behaviour", "Use action menu to reserve against hijacking"], 
-		0
+		2
 	]
 ] call cba_settings_fnc_init;
 

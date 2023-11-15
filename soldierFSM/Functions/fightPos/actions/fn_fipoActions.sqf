@@ -2,6 +2,7 @@ params["_man"];
 if([_man] call SFSM_fnc_getOutAzFipo)        exitWith{};
 if([_man] call SFSM_fnc_curatorGetOutFipo)   exitWith{};
 if([_man] call SFSM_fnc_leaderGetOutFipo)    exitWith{};
+if([_man] call SFSM_fnc_safeGetOutFipo)      exitWith{};
 if([_man] call SFSM_fnc_fipoCorrectPosition) exitWith{};
 if([_man] call SFSM_fnc_initOverRun)         exitWith{};
 if([_man] call SFSM_fnc_fipoOutFlanked)      exitWith{};

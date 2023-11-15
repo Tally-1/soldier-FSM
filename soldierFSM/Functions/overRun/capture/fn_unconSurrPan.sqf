@@ -8,4 +8,6 @@ if(_man getVariable ["SFSM_surrendered", false]
 if(_man getVariable ["SFSM_panic", false]  
 &&{[_man] call SFSM_fnc_getAction isEqualTo "!PANIC!"})     exitWith{true;};
 
+if(_man getVariable ["ace_captives_issurrendering", false]) exitWith{true;};
+
 false;

@@ -40,15 +40,14 @@ while {sleep 1; _distance > 3} do {
             _man doMove _hidePos;
             _man doTarget objNull;
         };
-    
 
-    if(_distance < 1.1)  exitWith{false;};
-    if(time > _Timer)     exitWith{false;};
-    if(!alive _man)         exitWith{false;};
-    if!(_visibleToThreat)exitWith{false;};
-    if(_destroyed)         exitWith{false;};
-    if(_man getVariable ["ace_isunconscious", false])exitWith{false;};
-    if(_man getVariable ["dam_ignore_injured0",false])exitWith{false;};
+    if(_distance < 1.1)                                exitWith{false;};
+    if(time > _Timer)                                  exitWith{false;};
+    if(!alive _man)                                    exitWith{false;};
+    if!(_visibleToThreat)                              exitWith{false;};
+    if(_destroyed)                                     exitWith{false;};
+    if(_man getVariable ["ace_isunconscious", false])  exitWith{false;};
+    if(_man getVariable ["dam_ignore_injured0",false]) exitWith{false;};
 
 };
 

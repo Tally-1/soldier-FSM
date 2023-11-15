@@ -91,6 +91,17 @@ _man addEventHandler ["InventoryOpened", {
 	_this call SFSM_fnc_onInventoryOpened;
 }];
 
+// _man addEventHandler ["GetOutMan", {
+// 	params ["_man", "_role", "_vehicle", "_turret", "_isEject"];
+//         if!([_man] call SFSM_fnc_isRealMan)exitWith{};
+//         if(isNil "_vehicle")               exitWith{};
+
+//         private _action = [_man] call SFSM_fnc_getAction;
+//         if(_action isEqualTo "Manning turret!")then{
+//                 [_vehicle, _man] call SFSM_fnc_removeTurretVars;
+//         };
+// }];
+
 [_man] call SFSM_fnc_autoStanceActions;
 [_man] call SFSM_fnc_buddyRearmAction;
 [_man] call SFSM_fnc_playerCallMedicAction;

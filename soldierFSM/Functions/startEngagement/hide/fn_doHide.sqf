@@ -26,12 +26,12 @@ then{
     //   waitUntil{sleep 0.1; scriptDone _script};
       _man setAnimSpeedCoef 1;
 };
-
-private _timer = time + SFSM_hidingTimeOut;
-private _exitStatus = "";
-private _behaviour = combatBehaviour _man;
-private _combatMode = unitCombatMode _man;
-private _ovEnemy = objNull;
+private _coverTime   = [_man, SFSM_hidingTimeOut] call SFSM_fnc_getCourageTime;
+private _timer       = time + _coverTime;
+private _exitStatus  = "";
+private _behaviour   = combatBehaviour _man;
+private _combatMode  = unitCombatMode _man;
+private _ovEnemy     = objNull;
 
 _man disableAI 'path';
 _man setCombatBehaviour "STEALTH";

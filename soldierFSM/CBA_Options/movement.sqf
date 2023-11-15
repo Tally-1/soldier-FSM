@@ -32,22 +32,6 @@ private _versionName = "DCO soldier FSM | Movement";
 ] call cba_settings_fnc_init;
 
 
-// [
-// 	"SFSM_ProneTreshHold",
-// 	"SLIDER",
-// 	["Prone TreshHold", "unit will stay prone if suppression is higher than this value"],
-// 	_versionName,
-// 	[
-// 		0.1,   	//minimum 
-// 		2, 		//max
-// 		0.7, 	//default
-// 		2,		//decimals
-// 		false
-// 	],
-// 	1
-// ] call cba_settings_fnc_init;
-
-
 [
 	"SFSM_allowDodging",
 	"CHECKBOX",
@@ -254,3 +238,4 @@ private _versionName = "DCO soldier FSM | Movement";
 	],
 	1
 ] call cba_settings_fnc_init;
+

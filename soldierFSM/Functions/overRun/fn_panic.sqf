@@ -1,4 +1,3 @@
- 
 params["_man"];
 [_man, "!PANIC!"] call SFSM_fnc_setAction;
 private _loadout = getUnitLoadout _man;
@@ -47,7 +46,7 @@ _man setCaptive true;
 
 
 [_man] call SFSM_fnc_panicAction;
-[_man] call SFSM_fnc_captureAction;
+[_man]  remoteExecCall ["SFSM_fnc_captureAction", 0];
 
 // Sometimes the animation glitches out, this repeats it in case that happens.
 [_man, _panicAnim] spawn {

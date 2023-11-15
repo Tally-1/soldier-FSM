@@ -8,6 +8,7 @@ _units = [_man, _units, _excluded, 70] call SFSM_fnc_availEnemyFriendDist;
 private _allies       = _units#0;
 private _availEnemies = _units#1;
 private _enemies      = ([_man] call SFSM_fnc_nearEnemies);
+private _surrendedACE = _man getVariable ["ace_captives_issurrendering", false];
 private _surrendered  = _man getVariable ["SFSM_surrendered", false];
 private _panic        = _man getVariable ["SFSM_panic", false];
 
@@ -16,6 +17,8 @@ private _panic        = _man getVariable ["SFSM_panic", false];
 // Surrendered but there are no longer any enemies nearby.
 if(_enemies isEqualTo []
 &&{_surrendered})exitWith{[_man] spawn SFSM_fnc_calmPanicked;};
+
+if!(_surrendered)then{_surrendered = _surrendedACE;};
 
 if(_enemies isEqualTo    []
 &&{_allies  isNotEqualTo []

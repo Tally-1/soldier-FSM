@@ -15,7 +15,7 @@
 // Example: [_battlefield] spawn SFSM_fnc_battlefieldPostInit;
 
 params["_battlefield"];
-_battlefield set ["currentAction",    "Waiting for grid to load"];
+_battlefield set ["currentAction", "Waiting for grid to load"];
 
 //wait for grid to load, so that actions like hiding may be properly executed
 private _timer = time +5;

@@ -59,9 +59,9 @@ then{
         SFSM_disableSpecialists = "player-squads"; // "all" "player-squads" "none"
         SFSM_specRegroupDist    = 70;             //   Distance to leader for specialists to regroup.
         SFSM_BFFknowledgeType   = "both sides";  //   "one side" "both sides"
-        SFSM_autoStanceAction   = false;        // Show action to toggle auto-stance.
+        SFSM_autoStanceAction   = true;         // Show action to toggle auto-stance.
         SFSM_autoStanceEnabled  = true;        //  Enable auto-stance for playerGroups.
-        SFSM_hijackVehicles     = "always";   //   Allow units to hijack enemy vehicles. ["always", "never", "action"]
+        SFSM_hijackVehicles     = "action";   //   Allow units to hijack enemy vehicles. ["always", "never", "action"]
         SFSM_overRunDistance    = 50;        // activate overrun when enemy is within this distance 
         SFSM_marksmanFSM        = true;     //  Enable sniper FSM.
         SFSM_maxHuntTime        = 300;     //   How long a hunter will hunt his target.
@@ -91,16 +91,43 @@ then{
                 'Acts_AidlPercMstpSnonWnonDnon_warmup_6_loop'
         ]";
         SFSM_allowEvasion     = true;     //When no cover is found a soldier will run to avoid incoming fire.
-        SFSM_bombOnCapture    = 0.2;     // Probability for suicide-bomb when captured.
         SFSM_simpleBff        = true;   //  Remove Caching of Terrain objects. Will improve performance, but units taking cover will become slightly dumber.
         SFSM_spawnBffActions  = false; //   Spawns the functions called during a battle in a separate thread, bad for performance but ensures that the loop does not get aborted when an error occurs.
+        
+
+        SFSM_shotDistanceDef  = 300; // Default distance a man will hear enemy fire
+        SFSM_shotDistanceAss  = 400; // The distance a man will hear enemy Assault rifles firing
+        SFSM_shotDistanceMac  = 600; // The distance a man will hear enemy Machine Guns firing
+        SFSM_shotDistanceSni  = 800; // The distance a man will hear enemy Sniper Rifles firing
+        SFSM_shotDistanceSil  = 100; // The distance a man will hear enemy Silenced weapons firing.
+        
+        SFSM_bombOnCapture    = 0.2;         // Probability for suicide-bomb when captured.
         SFSM_captureExplosive = "largestEx"; // Choose which explosive you will be used in the case of capture suicide. ("gbu"   "grenade"  "largestEx")
+        SFSM_captureAbuseProb = 1;           // Float 0-1 probability that a captive will be beaten.
+        SFSM_cptrAbuseProbPlr = 1;           // Float 0-1 probability that a player-captive will be beaten.
+        SFSM_captureExecProb  = 1;           // Float 0-1 Probability that a captive Will be executed.
+        SFSM_cptrExecProbPlr  = 1;           // Float 0-1 Probability that a player-captive Will be executed.
+        SFSM_cptrPlrEscProb   = 0.5;         // The probability for success when a player attempts to break free while captured.
+        SFSM_cptrPlrEscTime   = 8;           // How long one escape attempt takes in seconds.
 };
 
 
 
 //Make sure settings are available globally.
+// 1.21 settings
+missionNamespace setVariable ["SFSM_shotDistanceDef",  SFSM_shotDistanceDef, true];
+missionNamespace setVariable ["SFSM_shotDistanceAss",  SFSM_shotDistanceAss, true];
+missionNamespace setVariable ["SFSM_shotDistanceMac",  SFSM_shotDistanceMac, true];
+missionNamespace setVariable ["SFSM_shotDistanceSni",  SFSM_shotDistanceSni, true];
+missionNamespace setVariable ["SFSM_shotDistanceSil",  SFSM_shotDistanceSil, true];
+missionNamespace setVariable ["SFSM_captureAbuseProb", SFSM_captureAbuseProb,true];
+missionNamespace setVariable ["SFSM_cptrAbuseProbPlr", SFSM_cptrAbuseProbPlr,true];
+missionNamespace setVariable ["SFSM_captureExecProb",  SFSM_captureExecProb,true];
+missionNamespace setVariable ["SFSM_cptrExecProbPlr",  SFSM_cptrExecProbPlr,true];
+missionNamespace setVariable ["SFSM_cptrPlrEscProb",   SFSM_cptrPlrEscProb,true];
+missionNamespace setVariable ["SFSM_cptrPlrEscTime",   SFSM_cptrPlrEscTime,true];
 
+// pre 1.21 settings
 missionNamespace setVariable ["SFSM_FlinchTreshHold",    1,                     true];
 // missionNamespace setVariable ["SFSM_ProneTreshHold",    SFSM_ProneTreshHold,    true];
 missionNamespace setVariable ["SFSM_FlinchCoolDown",    SFSM_FlinchCoolDown,    true];
@@ -164,11 +191,10 @@ missionNamespace setVariable ["SFSM_DebugType",              SFSM_DebugType,    
 missionNamespace setVariable ["SFSM_noRubber",               SFSM_noRubber,               true];
 missionNamespace setVariable ["SFSM_medicSearchDistance",    SFSM_medicSearchDistance,    true];
 missionNamespace setVariable ["SFSM_globalUD",               SFSM_globalUD,               true];
-
 missionNamespace setVariable ["SFSM_fipoKnockOutTime",       SFSM_fipoKnockOutTime,       true];
 missionNamespace setVariable ["SFSM_storeMoraleData",        SFSM_storeMoraleData,        true];
 missionNamespace setVariable ["FIPO_idleAnimations",         FIPO_idleAnimations,         true];
-
 missionNamespace setVariable ["SFSM_allowEvasion",           SFSM_allowEvasion,           true];
+
 
 true;

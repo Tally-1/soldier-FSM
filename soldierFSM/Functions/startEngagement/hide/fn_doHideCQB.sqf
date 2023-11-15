@@ -7,12 +7,13 @@
 //              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
 
 params ["_man", "_enemyVehicle"];
-private _text = "CQB: holding hide-position "; 
-private _timer = time + SFSM_hidingTimeOut;
+private _text       = "CQB: holding hide-position ";
+private _coverTime  = [_man, SFSM_hidingTimeOut] call SFSM_fnc_getCourageTime;
+private _timer      = time + _coverTime;
 private _exitStatus = "";
-private _behaviour = combatBehaviour _man;
+private _behaviour  = combatBehaviour _man;
 private _combatMode = unitCombatMode _man;
-private _ovEnemy = objNull;
+private _ovEnemy    = objNull;
 
 _man disableAI 'path';
 _man setCombatBehaviour "STEALTH";

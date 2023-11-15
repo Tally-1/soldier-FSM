@@ -1,52 +1,37 @@
-params ["_man", "_captor"];
+params[
+    "_captive", 
+    "_captor",
+    ["_forceAbuse", false],
+    ["_forceExecution", false]
+];
+_captor disableAI "path";
 
-if([_man] call SFSM_fnc_isUncon)then{
-    [_man, false] call ace_medical_fnc_setUnconscious;
-    [_captor, _man] call ace_medical_treatment_fnc_fullHeal;
-    // private _surrender = 
-    [_man] call SFSM_fnc_surrender;
-    // waitUntil{sleep 0.1; scriptDone _surrender};
+[_captive, _captor] call SFSM_fnc_initUnconCapture;
+[_captive] remoteExecCall ["SFSM_fnc_removeCaptureAction", 0];
+[_captive] remoteExecCall ["SFSM_fnc_executeAction", 0];
+[_captive] call SFSM_fnc_captureKillEh;
+[_captive] call SFSM_fnc_captureHitEh;
+[_captive] call SFSM_fnc_setCaptured;
+
+_captor enableAI "path";
+
+private _bombed =
+[_captive, _captor] call SFSM_fnc_bombOnCapture;
+
+
+
+if(_bombed)exitWith{false;};
+
+sleep 1;
+
+["capture",  [_captive, _captor]] call CBA_fnc_localEvent;
+[_captive, _captor] remoteExec ["SFSM_fnc_capturePlayer", _captive];
+[_captive] spawn SFSM_fnc_postCapture;
+
+if([_captive, _captor, _forceAbuse]     call SFSM_fnc_allowCaptureAbuse)then{
+   [_captive, _captor, _forceExecution] spawn SFSM_fnc_captureAbuse;
 };
 
-[[name _man, " was captured by ", (name _captor)],1] call dbgmsg;
+[[name _captive, " was captured by ", (name _captor)],1] call dbgmsg;
 
-[_man]  remoteExecCall ["removeAllActions", 0];
-[_man] call SFSM_fnc_executeAction;
-
-
-
-_man playMoveNow "Acts_ExecutionVictim_Loop";
-_man setVariable ["SFSM_captive", true];
-[_man, "Captured"] call SFSM_fnc_setAction;
-
-_man addEventHandler ["Killed", { 
-    params ["_man", "_killer", "_instigator", "_useEffects"];
-    [_man, "Acts_ExecutionVictim_Kill_End"] remoteExecCall ["switchMove",0];
-    [_man] remoteExecCall ["removeAllActions", 0];
-    _man removeEventHandler [_thisEvent, _thisEventHandler];
-}];
-
-_man addEventHandler ["Hit", { 
-    _this append [_thisEvent, _thisEventHandler];
-    _this spawn {
-    sleep 0.02;
-    params ["_man", "_killer", "_instigator", "_useEffects", "_thisEvent", "_thisEventHandler"];
-    if([_man] call SFSM_fnc_isUncon)then{
-    _man setDamage 1;
-    _man removeEventHandler [_thisEvent, _thisEventHandler]; 
-}}}];
-
-
-if(random 1 < SFSM_bombOnCapture)exitWith{[_man, _captor] call SFSM_fnc_bombOnCapture;};
-
-["capture",  [_man, _captor]] call CBA_fnc_localEvent;
-
-_man spawn {
-    sleep 3;
-    if(animationState _this isNotEqualTo "acts_executionvictim_loop")then{
-        _this playMoveNow "Acts_ExecutionVictim_Loop";
-        [_this, "Captured"] call SFSM_fnc_setAction;
-    };
-    sleep 300; 
-    _this setDamage 1;
-};
+true;

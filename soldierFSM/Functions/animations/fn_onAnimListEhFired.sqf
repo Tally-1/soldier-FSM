@@ -16,7 +16,7 @@ params [
 ];
 _anim = toLowerANSI _anim;
 private _wantedAnim = _animArr#_index;
-private _continue   = [] call _condition; //Must return bool
+private _continue   = [_man] call _condition; //Must return bool
 private _completed  = _index isEqualTo ((count _animArr)-1);
 private _timedOut   = time > _timer;
 private _abort      = isNil "_animArr";
@@ -31,9 +31,9 @@ if(_timedOut  isEqualTo true)  exitWith{true;};
 if(_continue  isEqualTo false) exitWith{true;};
 if(_canMove   isEqualTo false) exitWith{true;};
 
-[] call _midFnc;
+[_man] call _midFnc;
 
-_continue = [] call _condition;
+_continue = [_man] call _condition;
 
 if(_continue  isEqualTo false) exitWith{true;};
 

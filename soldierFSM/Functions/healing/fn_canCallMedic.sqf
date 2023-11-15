@@ -1,4 +1,6 @@
-params["_player"];
+params[
+	["_player", player]
+];
 if(isNil "SFSM_fnc_callPlayerMedic")                    exitWith{false;};
 if(_player call SFSM_fnc_inVehicle)                     exitWith{false;};
 if((!isNil "SFSM_playerHealing")&&{SFSM_playerHealing}) exitWith{false;};

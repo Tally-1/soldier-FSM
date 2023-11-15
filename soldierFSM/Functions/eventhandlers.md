@@ -241,10 +241,10 @@ params["_man", "_enemies"];
 -------------------------------------------------------------------
 
 // When surrendering
-["overrun_surrender",  [_man]] call CBA_fnc_localEvent;
+["SFSM_surrender",  [_man]] call CBA_fnc_localEvent;
 
 [Example]
-_id = ["overrun_surrender", {
+_id = ["SFSM_surrender", {
 params["_man"];
 
 }] call CBA_fnc_addEventHandler;

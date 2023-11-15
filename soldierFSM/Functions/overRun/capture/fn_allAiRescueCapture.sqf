@@ -1,8 +1,9 @@
 private _excluded  = [];
+private _units     = entities "CaManBase";
 
 {
     if([_x] call SFSM_fnc_canBeCaptured)then{
-        private _activeUnit = [_x, allUnits, _excluded] call SFSM_fnc_helpOrCapture;
+        private _activeUnit = [_x, _units, _excluded] call SFSM_fnc_helpOrCapture;
         
         if(!isNull _activeUnit)then{
             _excluded pushBack _activeUnit;
@@ -21,7 +22,7 @@ private _excluded  = [];
     };
 
     
-} forEach allUnits;
+} forEach _units;
 
 if(_excluded isNotEqualTo [])then{
     [[count _excluded, " units sent for capture / rescue tasks."],1] call dbgmsg;

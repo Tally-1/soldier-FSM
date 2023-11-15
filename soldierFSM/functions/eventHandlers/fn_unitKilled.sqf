@@ -12,14 +12,23 @@ addMissionEventHandler ["EntityKilled", {
     detach _man;
 
     //Handle fighting positions
-    private _fipo = [_man] call SFSM_fnc_getFipo;
+    private _fipo  = [_man] call SFSM_fnc_getFipo;
+    private _group = group _man;
+
     if(!isNil "_fipo")then{
         [_man, _fipo] spawn SFSM_fnc_handleFipoHit;
     };
 
+    private _units = units _group select {alive _x;};
+    if  (count _units isEqualTo 0)
+    then{SFSM_cleanupGrps pushBackUnique _group;};
+    
+    if  (typeOf _man isNotEqualTo (typeOf vehicle _man))
+    then{_man action ["Eject", _vehicle];};
+
     // if!([_man] call SFSM_fnc_isRealMan)exitWith{};
     // Alternative to the isRealMan function (I might refactor it later)
-    private _group = group _man;
+    
     if !(_man isKindOf "CAManBase")      exitWith{};
     if (isNull _group)                   exitWith{};
     if (side _group isEqualTo sideLogic) exitWith{};

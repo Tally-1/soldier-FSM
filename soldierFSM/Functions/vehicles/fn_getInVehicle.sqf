@@ -14,7 +14,6 @@ if(_otherSidePresent)exitWith{};
 [_vehicle, _man] call SFSM_fnc_initGetInVehicle;
 private _vPos = (getPos _vehicle);
 
-// private _move = 
 [
     _man,  //unit 
     _vPos,//position 
@@ -23,8 +22,6 @@ private _vPos = (getPos _vehicle);
     2     // sleep between each repetition of doMove. (optional)
 
 ] call SFSM_fnc_forceMove2;
-
-// waitUntil{sleep 0.1; scriptDone _move;};
 
 if((!alive _vehicle)
 ||(!alive _man)

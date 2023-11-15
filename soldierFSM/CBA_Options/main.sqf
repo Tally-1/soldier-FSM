@@ -95,11 +95,13 @@ private _versionName = ["DCO soldier FSM | ", SFSM_Version] joinString "";
 
 #include "\soldierFSM\CBA_Options\Actions.sqf"
 #include "\soldierFSM\CBA_Options\movement.sqf"
+#include "\soldierFSM\CBA_Options\soundReaction.sqf"
 #include "\soldierFSM\CBA_Options\CQB.sqf"
 #include "\soldierFSM\CBA_Options\players.sqf"
 #include "\soldierFSM\CBA_Options\specialists.sqf"
 #include "\soldierFSM\CBA_Options\vehicles.sqf"
 #include "\soldierFSM\CBA_Options\overrun.sqf"
+#include "\soldierFSM\CBA_Options\capture.sqf"
 #include "\soldierFSM\CBA_Options\FIPO.sqf"
 #include "\soldierFSM\CBA_Options\medical.sqf"
 #include "\soldierFSM\functions\PR\customCBA.sqf"

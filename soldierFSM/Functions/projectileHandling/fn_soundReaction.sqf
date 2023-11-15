@@ -13,16 +13,16 @@ private _handGrenade = "Grenade" in (typeOf _projectile);
 if(_handGrenade)exitwith{false};
 
 private _weapon = ([(currentWeapon _shooter)] call BIS_fnc_itemType)#1;
-private _hasSilencer = !(((_shooter weaponAccessories currentWeapon _shooter)#0) == "");
-private _distance = 300;
+private _hasSilencer = !(((_shooter weaponAccessories currentWeapon _shooter)#0) isequalTo "");
+private _distance = SFSM_shotDistanceDef;
 
 switch (_weapon) do {
-                        case "AssaultRifle": { _distance = 400;};
-                        case "MachineGun":   { _distance = 600;};
-                        case "SniperRifle":  { _distance = 800;};
+                        case "AssaultRifle": { _distance = SFSM_shotDistanceAss;};
+                        case "MachineGun":   { _distance = SFSM_shotDistanceMac;};
+                        case "SniperRifle":  { _distance = SFSM_shotDistanceSni;};
                     };
 
-if(_hasSilencer)then{_distance = 100};
+if(_hasSilencer)then{_distance = SFSM_shotDistanceSil};
 
 private _nearMen = [_shooter, _distance] call Tcore_fnc_nearSoldiers;
 
@@ -31,8 +31,8 @@ private _nearMen = [_shooter, _distance] call Tcore_fnc_nearSoldiers;
     private _battle = [_X, "currentBattle"] call SFSM_fnc_unitData;
     
 
-    if(_action == "none"
-    &&{_battle == "none"
+    if(_action isequalTo "none"
+    &&{_battle isequalTo "none"
     &&{!(_x getVariable ['SFSM_excluded', false])}})
     then{
             private _coverPos = [_x] call Tcore_fnc_coverPosSimple;

@@ -1,4 +1,7 @@
-params["_man", "_abilities"];
+params[
+	"_man", 
+	["_abilities", SFSM_aiAbilities]
+];
 {
 	_man enableAI _x;
 

@@ -7,7 +7,8 @@
 //              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
 
 params["_man", "_endPos"];
-private _timer = time + SFSM_stayCoverPosTime;
+private _coverTime   = [_man, SFSM_stayCoverPosTime] call SFSM_fnc_getCourageTime;
+private _timer       = time + _coverTime;
 private _stayInCover = true;
 private _hitByBullet = false;
 private _overrun     = false;
