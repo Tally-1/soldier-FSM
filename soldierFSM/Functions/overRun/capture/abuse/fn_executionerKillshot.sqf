@@ -6,11 +6,14 @@ _executioner selectWeapon _pistol;
 _executioner attachTo [_victim, [0,0,0]];
 _executioner switchMove "Acts_Executioner_Kill";
 
+
 _victim setDamage 0.95;
 
 sleep 0.1; 
 detach _executioner;
-sleep 1.2;
+sleep 0.9;
+_victim      switchMove "acts_executionvictim_kill";
+sleep 0.3;
 
 [_executioner, 4, true] call SFSM_fnc_forcedFire;
 
