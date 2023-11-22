@@ -230,84 +230,84 @@ class CfgFunctions
         class movement
         {
             file = "\soldierFSM\functions\movement";
-            class forceMoveToPos        {};
-            class forceMove2            {};
-            class postForceMove2        {};
+            class forceMoveToPos                 {};
+            class forceMove2                     {};
+            class postForceMove2                 {};
 
-            class objectsInPath         {};
-            class calculatePath         {};
-            class abortForcedMove       {};
-            class moveToMan             {};
+            class objectsInPath                  {};
+            class calculatePath                  {};
+            class abortForcedMove                {};
+            class moveToMan                      {};
 
-            class canRun                {};
-            class forceMoveATL          {};
+            class canRun                         {};
+            class forceMoveATL                   {};
 
-            class regroup               {};
-            class fixPos                {};
+            class regroup                        {};
+            class fixPos                         {};
 
-            class formatMovePos         {};
-            class forceMoveToPos2       {};
-            class keepMoving            {};
+            class formatMovePos                  {};
+            class forceMoveToPos2                {};
+            class keepMoving                     {};
 
         };
 
         class evasionAttack
         {
             file = "\soldierFSM\functions\movement\evasionAttack";
-            class evasiveAttack          {};
-            class evasiveAttackAnims     {};
-            class canDoEvasiveAttack     {};
-            class evasiveAttackCondition {};
-            class evasiveAttackLoop      {};
-            class evasiveAttackAlign     {};
-            class endEvasiveAttack       {};
-            class initEvasiveAttack      {};
+            class evasiveAttack                                {};
+            class evasiveAttackAnims                           {};
+            class canDoEvasiveAttack                           {};
+            class evasiveAttackCondition                       {};
+            class evasiveAttackLoop                            {};
+            class evasiveAttackAlign                           {};
+            class endEvasiveAttack                             {};
+            class initEvasiveAttack                            {};
         };
 
         class sprint
         {
             file = "\soldierFSM\functions\movement\sprint";
-            class canSprint             {};
-            class clearSprintPath       {};
-            class sprint                {};
-            class sprintInit            {};
-            class sprintLooper          {};
-            class sprintVarRemoval      {};
+            class canSprint                             {};
+            class clearSprintPath                       {};
+            class sprint                                {};
+            class sprintInit                            {};
+            class sprintLooper                          {};
+            class sprintVarRemoval                      {};
 
-            class sprintAnimList        {};
-            class sprintCondition       {};
-            class sprintMidFnc          {};
-            class sprintEndFnc          {};
-            class updateSprintAnims     {};
-            class canUpdateSprintAnims  {};
-            class sprintEndAnims        {};
-            class sprintSuppress        {};
-            class updateSprintTimer     {};
-            class adjustSprintDir       {};
+            class sprintAnimList                        {};
+            class sprintCondition                       {};
+            class sprintMidFnc                          {};
+            class sprintEndFnc                          {};
+            class updateSprintAnims                     {};
+            class canUpdateSprintAnims                  {};
+            class sprintEndAnims                        {};
+            class sprintSuppress                        {};
+            class updateSprintTimer                     {};
+            class adjustSprintDir                       {};
         };
 
         class vehicles
         {
             file = "\soldierFSM\functions\vehicles";
-            class vehicleData           {};
-            class vehicleHeard          {};
-            class availableVehicles     {};
-            class vehicleAvailable      {};
-            class UnitsNearVehicles     {};
-            class endGetInVehicle       {};
-            class otherSideInVehicle    {};
-            class initGetInVehicle      {};
-            class hijackAllVehicles     {};
-            class hijackVehicle         {};
-            class getInVehicle          {};
-            class vehicleNeedsCrew      {};
-            class reinforceVehicles     {};
+            class vehicleData                    {};
+            class vehicleHeard                   {};
+            class availableVehicles              {};
+            class vehicleAvailable               {};
+            class UnitsNearVehicles              {};
+            class endGetInVehicle                {};
+            class otherSideInVehicle             {};
+            class initGetInVehicle               {};
+            class hijackAllVehicles              {};
+            class hijackVehicle                  {};
+            class getInVehicle                   {};
+            class vehicleNeedsCrew               {};
+            class reinforceVehicles              {};
             
-            class canHijackVehicle      {};
-            class hijackVehiclesGlobal  {};
-            class joinVehGrp            {};
-            class reinforceVehGlobal    {};
-            class handleHijackGlobal    {};
+            class canHijackVehicle               {};
+            class hijackVehiclesGlobal           {};
+            class joinVehGrp                     {};
+            class reinforceVehGlobal             {};
+            class handleHijackGlobal             {};
 
         };
 
@@ -315,7 +315,7 @@ class CfgFunctions
         class taskManagement
         {
             file = "\soldierFSM\functions\taskManagement";
-            class HandleSuppression     {};
+            class HandleSuppression              {};
             class TaskManager           {};
             class tenSecondTasks        {};
             class fiveMinTasks          {};

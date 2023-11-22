@@ -72,7 +72,7 @@ private _versionName = "DCO soldier FSM | Capture";
 [
 	"SFSM_cptrExecProbPlr",
 	"SLIDER",
-	["Execute captive probability", "Probability that a captured player will be executed."],
+	["Execute player probability", "Probability that a captured player will be executed."],
 	_versionName,
 	[
 		0,     // minimum 
@@ -107,6 +107,6 @@ private _versionName = "DCO soldier FSM | Capture";
 		15,   //  max
 		7,   //   default
 		0,  //    decimals
-		true
+		false
 	]
 ] call cba_settings_fnc_init;

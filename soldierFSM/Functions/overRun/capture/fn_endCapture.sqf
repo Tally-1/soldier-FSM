@@ -26,7 +26,13 @@ if(!isNil "_loadOut")then{
 };
 
 [_man, "none"] call SFSM_fnc_setAction;
-_man switchMove "Acts_ExecutionVictim_Unbow";
+
+if("executionvictim" in animationState _man
+&&{alive _man})then{
+	_man switchMove "Acts_ExecutionVictim_Unbow";
+};
+
+
 if!(_man in allPlayers)then{[_man] join _group;};
 
 true;

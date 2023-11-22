@@ -12,8 +12,10 @@ if (_weapon != _man getVariable ["last_weapon", "?"]) then
 {
 	private _cfg = configFile >> "CfgWeapons" >> _weapon;
 	private _model = getText(_cfg >> "model");
+
 	private _simpleObject = createSimpleObject [_model, [0,0,0], true];
 	private _offset = _simpleObject selectionPosition [getText (_cfg >> "muzzlePos"), "memory"];
+	
 	_offset = _offset apply { [_x] };
 	deleteVehicle _simpleObject;
 	_man setVariable ["offset", _offset];

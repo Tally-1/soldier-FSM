@@ -1,5 +1,5 @@
 private _captor  = player getVariable "SFSM_myCaptor";
-private _abused  = _captor getVariable "SFSM_abuser";
+private _abused  = _captor getVariable ["SFSM_abuser", false];
 private _display = findDisplay 46;
 private _downId  = player getVariable "SFSM_captureKeyDown";
 private _upId    = player getVariable "SFSM_captureKeyUp";
