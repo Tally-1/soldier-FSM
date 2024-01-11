@@ -59,9 +59,9 @@ then{
     };
 
 
-if(_returnValueType == "position")    exitWith{_Returnpos};
-if(_returnValueType == "objects")    exitWith{_clusterObjects};
-if(_returnValueType == "size")        exitWith{_clusterRadius};
-if(_returnValueType == "all")        exitWith{[_Returnpos, _clusterObjects, _clusterRadius, _Side, _terrainObjects, _groups]};
+if(_returnValueType == "position")exitWith{_Returnpos};
+if(_returnValueType == "objects") exitWith{_clusterObjects};
+if(_returnValueType == "size")    exitWith{_clusterRadius};
+if(_returnValueType == "all")     exitWith{[_Returnpos, _clusterObjects, _clusterRadius, _Side, _terrainObjects, _groups]};
 
 _Returnpos

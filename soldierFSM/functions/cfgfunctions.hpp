@@ -524,6 +524,7 @@ class CfgFunctions
             
             class getOutAzFipo        {};
             class fipoPanic           {};
+            class fipoLeaderAway      {};
         };
 
         class module

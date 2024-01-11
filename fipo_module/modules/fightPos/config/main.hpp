@@ -23,6 +23,7 @@ class SFSM_FIPO : Module_F
         #include "hitAndRun.hpp"
         #include "sectors\dynamicFIPO.hpp"
         #include "suppression.hpp"
+        #include "suppressionKnowledge.hpp"
 
         class ModuleDescription : ModuleDescription{};
     };

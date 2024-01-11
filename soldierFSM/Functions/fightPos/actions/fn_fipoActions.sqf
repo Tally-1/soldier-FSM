@@ -1,5 +1,6 @@
 params["_man"];
 if([_man] call SFSM_fnc_getOutAzFipo)        exitWith{};
+if([_man] call SFSM_fnc_fipoLeaderAway)      exitWith{};
 if([_man] call SFSM_fnc_curatorGetOutFipo)   exitWith{};
 if([_man] call SFSM_fnc_leaderGetOutFipo)    exitWith{};
 if([_man] call SFSM_fnc_safeGetOutFipo)      exitWith{};
