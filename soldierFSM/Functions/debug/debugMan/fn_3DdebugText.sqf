@@ -19,6 +19,7 @@ private _excluded       = _man getVariable ["SFSM_Excluded",false];
 private _aimPos         = ASLToAGL(aimPos _man);
 private _eyePos         = ASLToAGL(eyePos _man);
 private _inFipo         = [_man, "inFipo"] call SFSM_fnc_unitData;
+private _zombie         = [_man, "isBrainDead"] call SFSM_fnc_unitData;
 
 /*
 3D icons works in layers, the last one to be added is on the top.
@@ -34,6 +35,22 @@ if(_inFipo)                    then{[_eyePos] call SFSM_fnc_dbgTxtFipo;};
 if(_selected)                  then{[_man] call SFSM_fnc_dbgTxtSelectedMan;};
 
 [_man, _supp]   call SFSM_fnc_dbgTxtAction;
+
+if(_zombie)                    exitWith{
+	drawIcon3D[
+            "\a3\ui_f\data\igui\cfg\simpletasks\types\Use_ca.paa",            
+            [1,0,0,1],    
+            (ASLToATL aimPos _man),    
+            0.5,         
+            0.5,         
+            0,              
+            "Braindead...", 
+            0.06,             
+            0.1        
+        ];
+
+true;
+};
 
 
 if(_excluded)                  exitWith{[_man]    call SFSM_fnc_dbgTxtExcluded;};

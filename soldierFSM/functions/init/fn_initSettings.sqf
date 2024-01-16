@@ -109,11 +109,16 @@ then{
         SFSM_cptrExecProbPlr  = 1;           // Float 0-1 Probability that a player-captive Will be executed.
         SFSM_cptrPlrEscProb   = 0.5;         // The probability for success when a player attempts to break free while captured.
         SFSM_cptrPlrEscTime   = 8;           // How long one escape attempt takes in seconds.
+
+        SFSM_allowEvasionAttack = true;     // When rushing an enemy at close range the AI will sometimes do a evasive manouver before firing, such as Zig-Zag or a quick flank.
 };
 
 
 
 //Make sure settings are available globally.
+// 1.3 settings
+missionNamespace setVariable ["SFSM_allowEvasionAttack",  SFSM_allowEvasionAttack, true];
+
 // 1.21 settings
 missionNamespace setVariable ["SFSM_shotDistanceDef",  SFSM_shotDistanceDef, true];
 missionNamespace setVariable ["SFSM_shotDistanceAss",  SFSM_shotDistanceAss, true];

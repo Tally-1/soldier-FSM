@@ -57,23 +57,18 @@ _man setUnitPos "UP";
 _man setAnimSpeedCoef SFSM_sprintSpeed;
 _man setSpeedMode "FULL";
 
-
-// private _script = 
-[_man,(_entrance), 60, 5] call SFSM_fnc_forceMoveToPos2;
-// waitUntil{sleep 1; scriptDone _script;};
+[_man,(_entrance), 60, 5] call SFSM_fnc_forceMove2;
 
 private _j = 1;
 {
     
-    private _baseText = "CQB: taking cover pos: ";
-    if(_dodge)then{_baseText = "CQB: dodging pos: ";};
-    if(_hide)then{_baseText = "CQB: hiding pos: ";};
+    private _baseText         = "CQB: taking cover pos: ";
+    if(_dodge) then{_baseText = "CQB: dodging pos: ";};
+    if(_hide)  then{_baseText = "CQB: hiding pos: ";};
 
     private _progressText = [_baseText, _j]joinString "";
     [_man, "action", _progressText] call SFSM_fnc_unitData;
-    // private _script = 
     [_man, _x, 4, 2] call SFSM_fnc_clearCQBPos;
-    // waitUntil{sleep 1; scriptDone _script;};
 
     private _currentBuilding = [_man] call SFSM_fnc_currentBuilding;
     private _endLoop = false;

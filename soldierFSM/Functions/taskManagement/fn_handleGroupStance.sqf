@@ -28,12 +28,13 @@ private _units = (units _group) select {[_x] call SFSM_fnc_isRealMan};
 if(_noActionLowSuppression isEqualTo false)exitWith{};
 
 _group setCombatMode "YELLOW";
-
 _group setSpeedMode "FULL";
 
 //3x spam, because ArmA, some commands do not execute for unknown reasons
 {
-    if!([_x]call SFSM_fnc_inFipo)then{ 
+    private _timeSinceFlinch = time - ([_x, "lastFlinch"] call SFSM_fnc_unitData);
+    if([_x]call SFSM_fnc_inFipo isEqualTo false
+    &&{_timeSinceFlinch > 4})then{ 
         _x setUnitPos "auto";
         _x setUnitPos "AUTO";
         _x setUnitPos "AUTO";

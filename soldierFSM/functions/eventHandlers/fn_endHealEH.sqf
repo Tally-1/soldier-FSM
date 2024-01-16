@@ -10,6 +10,7 @@ private _actionText = "none";
 params ["_man", "_actionText"];
 
 _man addEventHandler ["HandleHeal", {
-    params ["_unit", "_healer", "_isMedic"];
-    [_unit, _thisEventHandler, _actionText] spawn SFSM_fnc_endSelfHeal; 
+    params ["_man", "_healer", "_isMedic"];
+    [_man, "prevHealTime", time] call  SFSM_fnc_unitData;
+    [_man, _thisEventHandler, _actionText] spawn SFSM_fnc_endSelfHeal; 
 }];

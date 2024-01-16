@@ -1,4 +1,9 @@
-params["_startPos", "_direction", ["_iterations", 1]];
+params[
+	["_startPos",   nil, [[],objNull]],
+	["_direction",  nil,  [0]],
+	["_iterations", 1,    [0]]
+];
+
 if(typeName _startPos isEqualTo "OBJECT")
 then{
 	if(isNil "_direction")

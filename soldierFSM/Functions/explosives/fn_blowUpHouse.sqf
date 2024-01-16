@@ -43,7 +43,7 @@ private _startSpeedMode = speedMode _man;
         4,    //timeout (optional)
         3,    //minimum distance to position in order to complete move. (optional)
         2     // sleep between each repetition of doMove. (optional)
-        ] call SFSM_fnc_forceMoveToPos;
+        ] call SFSM_fnc_forceMove2;
 
     // waitUntil{sleep 1; scriptDone _moveIn;};
     

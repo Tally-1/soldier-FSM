@@ -1,4 +1,5 @@
 params["_man", "_target"];
+if!(SFSM_allowEvasionAttack)                          exitWith {false;};
 if!([_man, true] call SFSM_fnc_canRun)                exitWith {false;};
 if!([_man] call SFSM_fnc_hasAmmoForWeapon)            exitWith {false;};
 if!([_target] call SFSM_fnc_functionalMan)            exitWith {false;};

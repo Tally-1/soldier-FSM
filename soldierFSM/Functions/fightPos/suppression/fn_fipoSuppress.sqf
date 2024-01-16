@@ -8,8 +8,10 @@ if(isNil "_suppressPos")exitWith{false;};
 private _eh  = [_man] call SFSM_fnc_fipoManFired;
 [_man, "Suppressing enemy"] call SFSM_fnc_setAction;
 
-_man doSuppressiveFire _suppressPos;
-waitUntil {sleep 1;	currentCommand _man != "Suppress";};
+if([_man, _suppressPos] call SFSM_fnc_validSuppressPos)then{ 
+	_man doSuppressiveFire _suppressPos;
+	waitUntil {sleep 1;	currentCommand _man != "Suppress";};
+};
 
 _man suppressFor 5;
 waitUntil {sleep 1;	currentCommand _man != "Suppress";};

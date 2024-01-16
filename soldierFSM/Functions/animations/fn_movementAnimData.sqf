@@ -17,7 +17,7 @@
       ["animName", "AmovPercMtacSrasWrflDl"],
       ["stance", "STAND"],
       ["speed", 0.03],
-      ["direction", 215],
+      ["direction", 270],
       ["distance", 3.14]
     ]
   ],
@@ -61,7 +61,7 @@
       ["animName", "AmovPercMtacSrasWrflDfr"],
       ["stance", "STAND"],
       ["speed", 8.02],
-      ["direction", 69],
+      ["direction", 45],
       ["distance", 3.82]
     ]
   ],
@@ -127,7 +127,7 @@
       ["animName", "AmovPercMtacSrasWrflDr"],
       ["stance", "STAND"],
       ["speed", 0.03],
-      ["direction", 145],
+      ["direction", 90],
       ["distance", 3.49]
     ]
   ],
@@ -138,7 +138,7 @@
       ["animName", "AmovPercMtacSrasWrflDfl"],
       ["stance", "STAND"],
       ["speed", 8.69],
-      ["direction", 277],
+      ["direction", 315],
       ["distance", 3.82]
     ]
   ],

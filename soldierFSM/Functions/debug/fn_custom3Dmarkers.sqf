@@ -7,14 +7,17 @@
 //              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
 
 if(!isNil "SFSM_Custom3Dpositions")then{
-private _color = [0.6,0.6,0.1,1];
-private _icon  = "\A3\ui_f\data\map\markers\handdrawn\dot_CA.paa";
-private _size  = 1; 
-private _i = 0;
+private _defaultIcon  = "\A3\ui_f\data\map\markers\handdrawn\dot_CA.paa";
 
     {
-        private _pos = _x#0;
-        private _txt = _x#1;
+        _x params[
+            ["_pos",   nil,             [[]]],
+            ["_txt",   "",              [""]],
+            ["_color", [0.6,0.6,0.1,1], [[]]],
+            ["_icon",  _defaultIcon,    [""]],
+            ["_size",  1,                [0]]
+        ];
+
         drawIcon3D     [
                         _icon,            
                         _color,
@@ -26,7 +29,7 @@ private _i = 0;
                         2,             
                         0.035
                     ];
-        _i = _i+1;
+
     } forEach SFSM_Custom3Dpositions;
 
 };

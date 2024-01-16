@@ -1,11 +1,11 @@
+private _defaultPos = getPosATLVisual (_this#0);
 params[
-    "_man", 
-    ["_radius",    SFSM_overRunDistance], 
-    ["_pos",       nil], 
-    ["_knownOnly", false],
-    ["_excluded",  []]
+    ["_man",       nil,            [objNull]],
+    ["_radius",    SFSM_overRunDistance, [0]], 
+    ["_pos",       _defaultPos,         [[]]], 
+    ["_knownOnly", false,             [true]],
+    ["_excluded",  [],                  [[]]]
 ];
-if(isNil "_pos")then{_pos = getPos _man};
 
 private _entities = _pos nearEntities _radius;
 if(_entities isEqualTo [])exitWith{[]};
@@ -18,4 +18,5 @@ private _enemies = (_entities select {
 	&&{_known
 	&&{(_x in _excluded) isEqualTo false}})
 });
+
 _enemies;

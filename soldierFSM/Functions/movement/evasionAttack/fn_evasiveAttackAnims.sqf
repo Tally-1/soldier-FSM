@@ -1,34 +1,40 @@
-params["_moveType"];
+params[
+    ["_man",      nil, [objNull]],
+    ["_target",   nil, [objNull]]
+];
+private _attackTypes = [];
 
-if(_moveType isEqualTo "zig-zag")exitWith{
-    [
-        "AmovPercMtacSrasWrflDr",
-        "AmovPercMtacSrasWrflDl",
-		"AmovPercMtacSrasWrflDr",
-        "AmovPercMtacSrasWrflDl",
-        "AmovPercMtacSrasWrflDr",
-        "AmovPercMtacSrasWrflDl"
-    ];
+{
+    if(_y call ["clearPath", [_man, _target]])
+    then{_attackTypes pushBack (_y get "name")};
+    
+} forEach SFSM_attackAnims;
+
+if(_attackTypes isEqualTo [])then{ 
+    "No clear attackpath found, adding all" call dbgmsg;
+    {_attackTypes pushBack (_y get "name")} 
+    forEach SFSM_attackAnims;
 };
 
-if(_moveType isEqualTo "flank right")exitWith{
-    [
-        "AmovPercMtacSrasWrflDfr",
-        "AmovPercMtacSrasWrflDfr",
-		"AmovPercMtacSrasWrflDfr",
-        "AmovPercMtacSrasWrflDr",
-		"AmovPercMtacSrasWrflDr",
-        "AmovPercMevaSrasWrflDfr_AmovPknlMstpSrasWrflDnon"
-    ];
-};
 
-if(_moveType isEqualTo "flank left")exitWith{
-    [
-        "AmovPercMtacSrasWrflDfl",
-        "AmovPercMtacSrasWrflDfl",
-		"AmovPercMtacSrasWrflDfl",
-        "AmovPercMtacSrasWrflDl",
-		"AmovPercMtacSrasWrflDl",
-        "AmovPercMevaSrasWrflDfl_AmovPknlMstpSrasWrflDnon"
-    ];
-};
+private _moveType = selectRandom _attackTypes;
+private _animMap  = SFSM_attackAnims get _moveType;
+private _anims    = _animMap get "animations";//
+private _path     = (_animMap call ["getPath", [_man, _target]]) apply {[_x#0, _x#1, 1];};
+
+//"flank right";//"zig-zag";//, "flank right", "flank left"
+// SFSM_Custom3Dpositions = [];
+// SFSM_trajectories      = [];
+
+// for "_i"from 0 to (count _path-2)do
+// {
+//     private _pos     = _path#_i;
+//     private _nextPos = _path#(_i+1);
+//     private _trajectory = [[_pos, _nextPos]];
+//     SFSM_Custom3Dpositions pushBack [_pos, str _i];
+//     SFSM_trajectories pushBack _trajectory;
+    
+// };
+
+
+_anims;

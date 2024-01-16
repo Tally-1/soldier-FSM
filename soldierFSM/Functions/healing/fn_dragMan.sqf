@@ -10,24 +10,16 @@
 
 // Return value: none 
 
-// Example:  [_dragger, _draggedMan, _targetPos] spawn SFSM_fnc_dragUnit
+// Example:  [_dragger, _draggedMan, _targetPos] spawn SFSM_fnc_dragMan;
 
 params[
-    "_dragger",    // Object - The unit that is dragging the wounded
-    "_draggedMan", // Object - The unit that is being dragged
-    "_targetPos"   // Array - The position the unit is being dragged to
+    ["_dragger",   nil, [objNull]],  // Object - The unit that is dragging the wounded
+    ["_draggedMan",nil, [objNull]], // Object  - The unit that is being dragged
+    ["_targetPos", nil,      [[]]] // Array    - The position the unit is being dragged to
 ];
 
-// private _grab = 
-[_dragger, _draggedMan] call SFSM_fnc_initDragMan;
-// waitUntil { sleep 1; scriptDone _grab;};
-
-// private _drag = 
-[_dragger, _draggedMan, _targetPos] call SFSM_fnc_drag;
+[_dragger, _draggedMan]                                call SFSM_fnc_initDragMan;
+[_dragger, _draggedMan, _targetPos]                    call SFSM_fnc_drag;
 ["dragman_start", [_dragger, _draggedMan, _targetPos]] call CBA_fnc_localEvent;
-// waitUntil { sleep 1; scriptDone _drag;};
-
-// private _stop = 
-[_dragger, _draggedMan] call SFSM_fnc_endDragMan;
-["dragman_end", [_dragger, _draggedMan]] call CBA_fnc_localEvent;
-// waitUntil { sleep 1; scriptDone _stop;};
+[_dragger, _draggedMan]                                call SFSM_fnc_endDragMan;
+["dragman_end", [_dragger, _draggedMan]]               call CBA_fnc_localEvent;

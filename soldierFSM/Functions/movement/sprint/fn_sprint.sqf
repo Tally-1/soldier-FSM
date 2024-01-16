@@ -24,6 +24,7 @@ _man disableAI "anim";
 _man setAnimSpeedCoef SFSM_sprintSpeed;
 _man doMove [_pos#0,_pos#1, 0];
 _man setDir (_man getDir _pos);
+_man setUnitPos "AUTO";
 _man setVariable ["SFSM_SprintDestination", _pos];
 _man setVariable ["SFSM_Sprinting",         true];
 

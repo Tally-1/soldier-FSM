@@ -9,6 +9,7 @@ private _moveAnimMap = [
 ];
 
 SFSM_moveAnims = createHashMapObject [_moveAnimMap];
+// SFSM_moveAnimsCFG = createHashMapObject [_moveAnimMap];
 // [] call SFSM_fnc_OOP_moveAnimsEntries;
 private _moveAnimData = [] call SFSM_fnc_movementAnimData;
 private _animBaseMap = [

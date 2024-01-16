@@ -48,8 +48,18 @@ private _versionName = "DCO soldier FSM | Movement";
 	["Evasion", "When no cover is found a soldier will run to avoid incoming fire."],
 	_versionName,
 	true
+
 ] call cba_settings_fnc_init;
 
+
+[
+	"SFSM_allowEvasionAttack",
+	"CHECKBOX",
+	["Allow evasion attack", "When rushing an enemy at close range the AI will sometimes do a evasive manouver before firing, such as Zig-Zag or a quick flank."],
+	_versionName,
+	true
+	
+] call cba_settings_fnc_init;
 
 
 [

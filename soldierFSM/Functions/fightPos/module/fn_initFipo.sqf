@@ -1,4 +1,5 @@
 params["_fipo"];
+private _supKnowCoef = _fipo getVariable ["SFSM_suppressionKnowledge", 0];
 
 [_fipo] call SFSM_fnc_fipoDefineSides;
 // [_fipo] call SFSM_fnc_fipoMarker;
@@ -21,5 +22,7 @@ if(SFSM_debugger)then{
 };
 
 _fipo setVectorUp [0,0,1];
+
+_fipo setVariable ["minSupKnow", (_supKnowCoef*4), true];
 
 true;

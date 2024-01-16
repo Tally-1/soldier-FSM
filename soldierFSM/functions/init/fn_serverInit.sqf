@@ -57,8 +57,11 @@ isNil{
     []    call SFSM_fnc_buildingDestroyedEH;
     []    call SFSM_fnc_speechEventsMan;
     []    call SFSM_fnc_animationMaps;
+    []    call SFSM_fnc_stancePosMap;
+    []    call SFSM_fnc_initAttackAnims;
     []    call SFSM_fnc_antiRubberBand;
     []    call SFSM_fnc_ACE_MedicalCBA;
+    []    call SFSM_fnc_storeMoveDataAllMen;
 
     // May move these lines to a separate function if more non-medical
     // ACE eventhandlers are added.

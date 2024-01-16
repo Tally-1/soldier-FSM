@@ -11,6 +11,7 @@ _animCfgName = toLowerANSI _animCfgName;
 
 	if(_cfgName isEqualTo _animCfgName)
 	exitWith{_animMap = _y;};
+	
 } forEach _self;
 
 if(!isNil "_animMap")exitWith{_animMap};

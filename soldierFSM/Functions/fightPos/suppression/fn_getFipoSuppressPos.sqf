@@ -1,19 +1,31 @@
-params ["_man"];
+params  ["_man"];
+private ["_pos"];
 private _fipo        = [_man] call SFSM_fnc_getFipo;
 private _battleField = [_man] call SFSM_fnc_getBattlefield;
-private _pos         = [(_fipo modelToWorldVisualWorld [0,3,0]), 1.5] call Tcore_fnc_addZ;
 
-if(isNil "_battleField")exitWith{_pos;};
+if(isNil "_battleField")exitWith{};
 
 private _clusterData   = missionNamespace getVariable (_battlefield get "clusterData");
-if(isNil "_clusterData")exitWith{_pos;};
+if(isNil "_clusterData")exitWith{};
 
 isNil{//Forced unscheduled execution
+private _knowledgeNeeded = _fipo getVariable "minSupKnow";
+private _enemyClusters   = _clusterData select {
+	_x params [
+		["_Returnpos",        nil, [[]]],
+		["_clusterObjects",   nil, [[]]],
+		["_clusterRadius",     nil, [0]],
+		["_side",           nil, [east]]
+	];
+	
+	private _isEnemy      = ([(side _man), _side] call BIS_fnc_sideIsFriendly) isEqualTo false;
+	private _menInCluster = _clusterObjects select {_x isKindOf "caManBase"};
+	private _knowledgeArr = _menInCluster apply {_man knowsAbout _x};
+	private _knowledge    = selectMax _knowledgeArr;
+	private _known        = _knowledge >= _knowledgeNeeded;
 
-private _enemyClusters = _clusterData select {
-	private _side     = _x#3;
-	private _friendly = [(side _man), _side] call BIS_fnc_sideIsFriendly;
-	_friendly isEqualTo false;
+	_isEnemy
+	&&{_known};
 };
 
 private _enemyPositions = _enemyClusters apply {ATLToASL(_x#0);};
@@ -42,8 +54,9 @@ _pos = ([_validPositions, [], _sortVisDist, "ASCEND"] call BIS_fnc_sortBy)#0;
 
 };//unscheduled execution end.
 
-if(isNil "_pos")then{
-	_pos = [(_fipo modelToWorldVisualWorld [0,3,0]), 1.5] call Tcore_fnc_addZ;
+if(isNil "_pos")exitWith{
+	// _pos = [(_fipo modelToWorldVisualWorld [0,3,0]), 1.5] call Tcore_fnc_addZ;
+	nil;
 };
 
 _pos;

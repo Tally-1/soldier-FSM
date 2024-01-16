@@ -7,7 +7,11 @@ _executioner selectWeapon _pistol;
 _executioner attachTo [_victim, [0,0,0]];
 _executioner switchMove "Acts_Executioner_Kill";
 
-// _victim setDamage 0.95;
+if(isNil "_anchor")then{ 
+    _anchor = createSimpleObject ["UserTexture1m_F", _pos, false];
+	_executioner setVariable ["SFSM_myAnchor", _anchor];
+};
+
 
 sleep 0.1; 
 detach _executioner;

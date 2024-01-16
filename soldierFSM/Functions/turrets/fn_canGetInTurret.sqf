@@ -9,7 +9,7 @@
 params["_man", "_turret"];
 
 if(_man in crew _turret isEqualTo true
-&&{[_turret] call SFSM_fnc_deadCrew  isEqualTo false})
+&&{[_turret] call Tcore_fnc_deadCrew  isEqualTo false})
 exitWith{false;};
 
 // private _battleKey   = [_man, "currentBattle"] call SFSM_fnc_unitData;
