@@ -1,5 +1,6 @@
 params["_man"];
 if (time < 120)                                exitWith{false;};
+if (speed _man > 1)                            exitWith{false;};
 if!([_man, true]  call SFSM_fnc_canRun)        exitWith{false;};
 if!([_man, false] call SFSM_fnc_canResetBrain) exitWith{false;};
 if ([_man]        call SFSM_fnc_hasMoved)      exitWith{false;};

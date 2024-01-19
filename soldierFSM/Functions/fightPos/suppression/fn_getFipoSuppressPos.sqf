@@ -10,7 +10,7 @@ if(isNil "_clusterData")exitWith{};
 
 isNil{//Forced unscheduled execution
 private _knowledgeNeeded = _fipo getVariable "minSupKnow";
-private _enemyClusters   = _clusterData select {
+private _enemyClusters   = _clusterData select { 
 	_x params [
 		["_Returnpos",        nil, [[]]],
 		["_clusterObjects",   nil, [[]]],
@@ -18,8 +18,8 @@ private _enemyClusters   = _clusterData select {
 		["_side",           nil, [east]]
 	];
 	
-	private _isEnemy      = ([(side _man), _side] call BIS_fnc_sideIsFriendly) isEqualTo false;
 	private _menInCluster = _clusterObjects select {_x isKindOf "caManBase"};
+	private _isEnemy      = [_man, _menInCluster] call SFSM_fnc_validEnemyInArr;
 	private _knowledgeArr = _menInCluster apply {_man knowsAbout _x};
 	private _knowledge    = selectMax _knowledgeArr;
 	private _known        = _knowledge >= _knowledgeNeeded;

@@ -6,41 +6,27 @@
 //              https://thehartgen.web.app/projects/, 
 //              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
 
-private _actionTxt = "firing launcher!";
 params[
-    "_man", 
-    "_actionTxt", 
-    "_wantedDir"
+    ["_man",       nil, [objNull]]
 ];
+private _launcher     = secondaryWeapon _man;
+private _launcherAnim = "AmovPercMstpSrasWrflDnon_AmovPercMstpSrasWlnrDnon_end";
+private _mode         = (getArray (configFile >> "CfgWeapons" >> _launcher >> "modes"))#0;
+private _fired        = (_man getVariable ["SFSM_launched", false]);
+private _timer        = time +5;
 
-[_man, "action", _actionTxt] call SFSM_fnc_unitData;
+if(isNil "_mode")then{_mode = "this"};
 
-private _handler  = [_man] call SFSM_fnc_launcherHandler;
-private _launcher = secondaryWeapon _man;
-private _mode     = (getArray (configFile >> "CfgWeapons" >> _launcher >> "modes"))#0;
-private _fired    = (_man getVariable ["SFSM_launched", false]);
-private _timer    = time +5;
-
-_man playMoveNow "AmovPercMstpSrasWrflDnon_AmovPercMstpSrasWlnrDnon_end";
+_man playMoveNow _launcherAnim;
 _man selectWeapon _launcher;
 
 waitUntil {
-
-    if(!isNil "_wantedDir"
-    &&{(round _wantedDir) != (round(getDir _man))
-    &&{(_timer -  time)>= 1}})
-    then{_man setDir _wantedDir};
-
-    if(isNil "_mode")then{_mode = "this"};
-
+    _man selectWeapon _launcher;
     _man forceWeaponFire [_launcher, _mode];
     _fired = (_man getVariable ["SFSM_launched", false]);
     ((time > _timer) || _fired);
-    };
+};
 
-sleep 1;
+sleep 0.1;
 
-if!(_fired)then{_man removeEventHandler ["FiredMan", _handler];};
-_man setVariable ["SFSM_launched", nil];
-
-[_man, "action", "none"] call SFSM_fnc_unitData;
+true;

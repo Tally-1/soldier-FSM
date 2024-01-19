@@ -9,11 +9,11 @@
 params["_man"];
 private _launcher     = secondaryWeapon _man;
 private _launcherType = ([_launcher] call objScan_fnc_weaponData) get "description";
-if!(SFSM_rpgHouse)                                    exitWith{false;};
-if!([_man] call SFSM_fnc_availableAiSoldier)          exitWith{false;};
-if(_launcher isEqualTo "")                            exitWith{false;};
-if(_launcherType == "AA misile launcher")             exitWith{false;};
-if!([_man, _launcher] call SFSM_fnc_hasAmmoForWeapon) exitWith{false;};
 
+if!(SFSM_rpgHouse)                                     exitWith{false;};
+if (_launcher isEqualTo "")                            exitWith{false;};
+if (_launcherType == "AA misile launcher")             exitWith{false;};
+if!([_man, _launcher] call SFSM_fnc_hasAmmoForWeapon)  exitWith{false;};
+if!([_man] call SFSM_fnc_availableAiSoldier)           exitWith{false;};
 
 true;

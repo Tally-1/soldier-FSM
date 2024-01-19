@@ -6,101 +6,36 @@
 //              https://thehartgen.web.app/projects/, 
 //              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
 
-params["_man", "_building"];
-private _buildingVarName = ["Occupied building ", (name _man), (getPos _building)] joinString "_";
-private _buildingPos     = [_building] call SFSM_fnc_buildingCenterPosASL;
-private _launchPos       = getPos _man;
-private _canSee          = ([_man, "VIEW", _building] checkVisibility [aimPos _man, _buildingPos])>0.8;
-private _timer           = time + 31;
+params[
+    ["_man",      nil, [objNull]],
+    ["_building", nil, [objNull]],
+    ["_repeat", true,  [false]]
+];
 
-if!(_canSee)then{_launchPos = [_man, _building] call SFSM_fnc_firePosLite;};
+private _launchPos   = [_man, _building] call SFSM_fnc_getRpgLaunchPos;
 
-if(isNil "_launchPos")
-exitWith{"could not find a position to launch from" call dbgmsg;};
 
-[_man, "currentDestination", _launchPos]              call SFSM_fnc_unitData;
-[_man, "action", "CQB: Engaging house with launcher"] call SFSM_fnc_unitData;
-[_man, "targetBuilding", _buildingVarName]            call SFSM_fnc_unitData;
-missionNamespace setVariable [_buildingVarName, _building];
-//[_man, "abortForcedMove", false] call SFSM_fnc_unitData;
+if(isNil "_launchPos")exitWith{[_man, "RPG on house failed"] call SFSM_fnc_flashAction;};
 
-_man setAnimSpeedCoef SFSM_sprintSpeed;
 
-if((_launchPos distance2D _man) > 3)
-then{
-    private _move = 
-    [
-            _man,      //unit 
-            _launchPos,//position 
-            30,        //timeout (optional)
-            2,         //minimum distance to position in order to complete move. (optional)
-            3          // sleep between each repetition of doMove. (optional)
-            ] spawn SFSM_fnc_forceMove2;
+[_man, _building, _launchPos] call SFSM_fnc_initRpgHouse;
+[_man]                        call SFSM_fnc_loadLauncherHE;
+[_man, _building, _launchPos] call SFSM_fnc_moveToRpgLaunchPos;
 
-    waitUntil{
-        sleep 2; 
-        private _canSee      = ([_man, "VIEW", _building] checkVisibility [aimPos _man, _buildingPos])>0.9;
-        private _moveAborted = [_man, "abortForcedMove"] call SFSM_fnc_unitData;
-        
-        if(isNil "_move")exitWith{true;};
-        
-        // abort movement if the soldier has LOS on building
-        if(_canSee      isEqualTo true
-        &&{_moveAborted isEqualTo false
-        &&{scriptDone _move  isEqualTo false}})
-        then{[_man] call SFSM_fnc_abortForcedMove;};
+private _cannotMove = ([_man, true] call SFSM_fnc_canRun) isEqualTo false;
+if(_cannotMove)exitWith{[_man, false] call SFSM_fnc_endRpgHouse;};
 
-        (scriptDone _move) || (time > _timer);
-    };
+private _canShoot = [_man, _building] call SFSM_fnc_atValidRpgFirePos;
+private _tryAgain = _repeat isEqualTo true && {_canShoot isEqualTo false};
+
+if (_tryAgain)exitWith{ 
+    [_man, "Could not fire RPG, trying again!"] spawn SFSM_fnc_flashAction;
+    [_man, _building, false] call SFSM_fnc_rpgHouse;
 };
+if!(_canShoot)exitWith{[_man, false]  call SFSM_fnc_endRpgHouse;};
 
-_man setAnimSpeedCoef 1;
+[_man, _building] call SFSM_fnc_fireLauncherAtHouse;
 
-if(!alive _man)
-exitWith{
-        "man died before using launcher" call dbgmsg;
-        [_man, "targetBuilding", "none"] call SFSM_fnc_unitData;
-        missionNamespace setVariable [_buildingVarName, nil];
-        [_man, "currentDestination", [0,0,0]] call SFSM_fnc_unitData;
-    };
+[_man, true] call SFSM_fnc_endRpgHouse;
 
-_canSee = ([_man, "VIEW", _building] checkVisibility [aimPos _man, _buildingPos])>0.8;
-
-if!(_canSee)exitWith{
-    [_man, "action", "failed to get LOS on the building"] call SFSM_fnc_unitData;
-    sleep 3;
-
-    _man doMove (getPos _man);
-    _man doFollow (leader(group _man));
-
-    [_man, "action", "none"]              call SFSM_fnc_unitData;
-    [_man, "currentDestination", [0,0,0]] call SFSM_fnc_unitData;
-    [_man, "targetBuilding", "none"]      call SFSM_fnc_unitData;
-
-    missionNamespace setVariable [_buildingVarName, nil];
-    };
-
-["CQB_rpgFire", [_man, _building]] call CBA_fnc_localEvent;
-
-private _dir = (_man getDir _building);
-_man setDir _dir;
-_man doWatch (ASLToAGL _buildingPos);
-
-_man setVariable ["SFSM_missileTarget", _buildingPos];
-
-sleep 1;
-_dir = (_man getDir _building);
-_man setDir _dir;
-_man doWatch objNull;
-
-[_man, nil, _dir] call SFSM_fnc_forceFireLauncher;
-
-_man setVariable ["SFSM_missileTarget", nil];
-
-[_man, "action", "none"]              call SFSM_fnc_unitData;
-[_man, "currentDestination", [0,0,0]] call SFSM_fnc_unitData;
-[_man, "targetBuilding", "none"]      call SFSM_fnc_unitData;
-
-_man doMove (getPos _man);
-_man doFollow (leader(group _man));
-missionNamespace setVariable [_buildingVarName, nil];
+true;

@@ -198,6 +198,9 @@ class CfgFunctions
 
             class posOnVector           {};
             class lineBroken            {};
+            
+            class replaceInArr          {};
+            
         };
 
         class morale
@@ -265,6 +268,7 @@ class CfgFunctions
             class forcedUnitPosNoAnim            {};
             class isBrainDead                    {};
             class findZombies                    {};
+            class forceLookAtPos                 {};
 
         };
 
@@ -434,11 +438,26 @@ class CfgFunctions
         class launchers
         {
             file = "\SoldierFSM\functions\launchers" 
-            class rpgHouse          {};
-            class launcherHandler   {};
-            class forceFireLauncher {};
-            class canRpgHouse       {};
-            class forcedCqbRpg      {};
+            class rpgHouse               {};
+            class loadLauncherHE         {};
+            class launcherHandler        {};
+            class canRpgHouse            {};
+            class forcedCqbRpg           {};
+            class validRpgTargetBuilding {};
+            class isValidRpgFirePos      {};
+            class getRpgLaunchPos        {};
+            class initRpgHouse           {};
+            class endRpgHouse            {};
+            class atValidRpgFirePos      {};
+            class whileRpgMove           {};
+            class moveToRpgLaunchPos     {};
+            class fireLauncherAtHouse    {};
+            class initfireRpgAtHouse     {};
+            class forceFireLauncher      {};
+            class handleForcedMissile    {};
+            class endFireRpgAtHouse      {};
+            class missileAimed           {};
+            class getHouseTargetPos      {};
         }
 
         class dodging
@@ -1096,6 +1115,7 @@ class CfgFunctions
             class hasAmmoForWeapon       {};
             class validEnemy             {};
             class validEnemyVehicle      {};
+            class validEnemyInArr        {};
             class isMachineGunner        {};
             class isATSoldier            {};
             class isMarksman             {};
@@ -1116,6 +1136,8 @@ class CfgFunctions
             class manIsInjured           {};
 
             class weaponAimPos           {};
+            class getAmmoData            {};
+            class getMagSplashRange      {};
         };
 
         class turrets

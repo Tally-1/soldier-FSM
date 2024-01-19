@@ -9,8 +9,8 @@ params[
 private _animHandle = ["SFSM_animDone_", _anim] joinstring "";
 
 if(_switch)
-then{[_man, _anim] remoteExecCall ["switchMove", 0];}
-else{[_man, _anim] remoteExecCall ["playMoveNow", 0];};
+then{[_man, _anim] remoteExecCall ["switchMove",  _man];}
+else{[_man, _anim] remoteExecCall ["playMoveNow", _man];};
 
 
 
