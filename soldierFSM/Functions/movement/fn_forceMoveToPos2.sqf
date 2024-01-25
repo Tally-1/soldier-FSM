@@ -69,7 +69,7 @@ private _moveFailed   = _man distance2D _pos > _maxDistance;
 
 if(_moveFailed)exitWith{ 
     private _noFlash = SFSM_debugger && {(_man getVariable "SFSM_UnitData" get "flashAction") isEqualTo ""};
-    if(_noFlash)then{[_man, "forced move failed"] spawn SFSM_fnc_flashAction;};
+    if(_noFlash)then{[_man, "''doMove'' retry...", 0.5] spawn SFSM_fnc_flashAction;};
     false;
 };
 

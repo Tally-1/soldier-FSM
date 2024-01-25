@@ -25,6 +25,6 @@ then {[_man, _launchPos, _shooter] spawn SFSM_fnc_bigFlinchCover;};
 
 
 if(_takeCover)
-then{[_man, _launchPos] call SFSM_fnc_eventTriggeredCover;};
+then{[_man, _launchPos, true] call SFSM_fnc_eventTriggeredCover;};
 
 true;

@@ -7,16 +7,18 @@
 //              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
 
 params ["_man"];
-private _battleKey = [_man, "currentBattle"] call SFSM_fnc_unitData;
-if(isNil "_battleKey")exitWith{"PostCover battleKey undefined" call dbgmsg};
+// private _battleKey = [_man, "currentBattle"] call SFSM_fnc_unitData;
+// if(isNil "_battleKey")exitWith{"PostCover battleKey undefined" call dbgmsg};
 
+private _reacting    = false;
 private _battleField = SFSM_battles get _battleKey;
-if(isNil "_battleField")exitWith{};
+if(!isNil "_battleField")then{ 
+	_reacting = [_man, _battleField] call SFSM_fnc_reactToVehicles;
+};
 
-private _reacting = [_man, _battleField] call SFSM_fnc_reactToVehicles;
 
-// if!(_reacting)
-// then{[_man] spawn SFSM_fnc_randomHunkerInit};
+if!(_reacting)
+then{[_man] spawn SFSM_fnc_returnToFormation;};
 
 
 true;

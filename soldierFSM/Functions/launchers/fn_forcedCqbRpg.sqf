@@ -9,8 +9,6 @@ if!(alive _target)                            exitWith{};
 if!([_man] call SFSM_canRpgHouse)             exitWith{};
 if!([_man, _target] call SFSM_fnc_validEnemy) exitWith{};
 
-
-
 private _targetBuilding = [_target] call SFSM_fnc_currentBuilding;
 if(isNil "_targetBuilding")exitWith{};
 

@@ -21,12 +21,12 @@ _man playMoveNow _launcherAnim;
 _man selectWeapon _launcher;
 
 waitUntil {
-    _man selectWeapon _launcher;
+    // _man selectWeapon _launcher;
     _man forceWeaponFire [_launcher, _mode];
     _fired = (_man getVariable ["SFSM_launched", false]);
     ((time > _timer) || _fired);
 };
-
 sleep 0.1;
+private _hasFired = _man getVariable ["SFSM_launched", false];
 
-true;
+_hasFired;

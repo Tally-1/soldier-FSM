@@ -11,7 +11,7 @@ params["_man", "_destination", "_timeLimit"];
 
 private _start = getPos _man;
 private _timer = time + _timeLimit;
-private _agent = (calculatePath ["man", "AWARE", _start, _destination]);
+private _agent = (calculatePath ["man", (behaviour _man), _start, _destination]);
 
 _agent setVariable ["SFSM_pathOwner", _man];
 

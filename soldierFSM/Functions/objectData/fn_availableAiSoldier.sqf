@@ -1,5 +1,8 @@
 private _ignoreAction = false;
-params["_man", "_ignoreAction"];
+params[
+	["_man",          nil, [objNull]],
+	["_ignoreAction", false,  [true]]
+];
 if!([_man, true] call SFSM_fnc_canRun)                  exitWith{false;};
 if ([_man, "forcedMovement"] call SFSM_fnc_unitData)    exitWith{false;};
 if ([_man] call SFSM_fnc_isPlayer)                      exitWith{false;};

@@ -1,15 +1,16 @@
+/*
+This function tries to find a window or door near the enemy target.
+If no window is found a position on the wall is returned.
+If no position on the wall is found the center position of the building is returned.
+*/
 params[
     ["_shooter",  nil, [objNull]],
     ["_building", nil, [objNull]],
     ["_minHeight", 1.2,      [0]]
 ];
-private _centerPosASL  = [_building] call SFSM_fnc_buildingCenterPosASL;
-private _targetMan = _shooter getVariable ["SFSM_prevTarget", objNull];
-if!([_shooter, _targetMan] call SFSM_fnc_validEnemy)exitWith{_centerPosASL;};
-
-private _targetBuilding = [_targetMan] call SFSM_fnc_currentBuilding;
-if(isNil "_targetBuilding")      exitWith{_centerPosASL;};
-if(_targetBuilding != _building) exitWith{_centerPosASL;};
+private _centerPosASL = [_building] call SFSM_fnc_buildingCenterPosASL;
+private _targetMan    = [_shooter, _building] call SFSM_fnc_getHouseTargetMan;
+if!([_shooter, _targetMan] call SFSM_fnc_validEnemy)exitWith{_centerPosASL};
 
 private _startPos = eyePos _targetMan;
 private _endPos   = [_startPos, aimpos _shooter, 10] call SFSM_fnc_posOnvector;
@@ -21,9 +22,27 @@ private _surfaces = (lineIntersectsSurfaces [_startPos, _endPos, _targetMan, obj
 if(_surfaces isEqualTo [])exitWith{_centerPosASL;};
 
 private _surfaceData     = _surfaces#0;
-private _intersectPosASL = _surfaceData#0;
-private _altitude        = (ASLToATL _intersectPosASL)#2;
+private _wallPosASL      = _surfaceData#0;
+private _altitude        = (ASLToATL _wallPosASL)#2;
+private _validWallpos    = _altitude >= _minHeight;
+private _windowsAndDoors = [_building] call SFSM_fnc_getHousePoints
+                           select{
+                              private _pos = _x#0;
+                              private _ASL = ATLToASL _pos;
+                              (_wallPosASL distance (_ASL)) < 2.5
+                           };
+if(_windowsAndDoors isEqualTo []
+&&{_validWallpos    isEqualTo false})
+exitWith{_centerPosASL};
 
-if(_altitude < _minHeight)exitWith{_centerPosASL};
+if(_windowsAndDoors isEqualTo []
+&&{_validWallpos    isEqualTo true})
+exitWith{_wallPosASL};
 
-_intersectPosASL;
+_windowsAndDoors = _windowsAndDoors apply {ATLToASL (_x#0)};
+
+// private _shooterPos = getPosASLVisual _shooter;
+private _nearest    = [_wallPosASL, _windowsAndDoors] call SFSM_fnc_getNearest;
+
+
+_nearest;

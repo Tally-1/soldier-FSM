@@ -78,8 +78,6 @@ class CfgFunctions
             class OOP_getAnimEndPos    {};
         };
 
-        
-        
         class CQB
         {
            file = "\SoldierFSM\functions\CQB";
@@ -105,6 +103,9 @@ class CfgFunctions
            class houseAvailable        {};
            class nearestAvailableHouse {};
            class endCQBclearing        {};
+           class getHousePoints        {};
+           class getHouseTargetMan     {};
+           class nearestEnemyInBuilding{};
         };
         
         class misc
@@ -200,7 +201,9 @@ class CfgFunctions
             class lineBroken            {};
             
             class replaceInArr          {};
-            
+            class selectionMap          {};    
+            class squareGrid            {};
+            class getLowestPos          {};
         };
 
         class morale
@@ -269,6 +272,10 @@ class CfgFunctions
             class isBrainDead                    {};
             class findZombies                    {};
             class forceLookAtPos                 {};
+            class canReturnToFormation           {};
+            class returnToFormation              {};
+
+            class returnAllMen                   {};
 
         };
 
@@ -559,6 +566,7 @@ class CfgFunctions
             class curatorGetOutFipo   {};
             class safeGetOutFipo      {};
             class fipoRemoveUseless   {};
+            class getOutDestroyedFipo {};
             class fipoCorrectPosition {};
             
             class initIdleFipoMove    {};
@@ -1116,6 +1124,8 @@ class CfgFunctions
             class validEnemy             {};
             class validEnemyVehicle      {};
             class validEnemyInArr        {};
+            class nearestKnownEnemy      {};
+            class distanceToKnownEnemy   {};
             class isMachineGunner        {};
             class isATSoldier            {};
             class isMarksman             {};

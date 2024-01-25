@@ -7,8 +7,9 @@
 //              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
 
 params["_man", "_vehicle"];
-if!(SFSM_hearingHide)exitWith{false;};
-if!(isEngineOn _vehicle)exitWith{false;};
+if!(SFSM_hearingHide)              exitWith{false;};
+if!(isEngineOn _vehicle)           exitWith{false;};
+if(_man knowsAbout _vehicle < 3.5) exitWith{false;};
 
 private _hearingDistance = SFSM_hearingDistance;
 private _distance = (_man distance2D _vehicle);

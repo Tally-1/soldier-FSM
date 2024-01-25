@@ -1,13 +1,10 @@
-private _posCount = 100;
-private _zValue = 0;
-private _includeWaterPos = false;
 params [
-    "_center", 
-    "_size", 
-    "_posCount",
-    "_zValue",
-    "_includeWaterPos"
-    ];
+    ["_center",          nil,      [[]]], 
+    ["_size",            nil,       [0]],
+    ["_posCount",        100,       [0]],
+    ["_zValue",          0,         [0]],
+    ["_includeWaterPos", false, [false]]
+];
 
 if(_posCount isEqualTo 1)exitWith{[_center]};
 
