@@ -21,9 +21,7 @@ then{
       _man doTarget objNull;
       [_man, "action", "moving to cover for hiding"] call SFSM_fnc_unitData;
       _man setAnimSpeedCoef SFSM_sprintSpeed;
-    //   private _script = 
-      [_man, _coverPos, 30, 2] call SFSM_fnc_forceMove2;
-    //   waitUntil{sleep 0.1; scriptDone _script};
+      [_man, _coverPos] call SFSM_fnc_forcedMove;
       _man setAnimSpeedCoef 1;
 };
 private _coverTime   = [_man, SFSM_hidingTimeOut] call SFSM_fnc_getCourageTime;

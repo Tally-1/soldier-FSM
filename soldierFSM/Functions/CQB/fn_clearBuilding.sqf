@@ -40,9 +40,7 @@ _man setUnitPos "UP";
 _man setAnimSpeedCoef SFSM_sprintSpeed;
 _man setSpeedMode "FULL";
 
-// private _script = 
-[_man,(_path#0), 6, 5, 2] call SFSM_fnc_forceMove2;
-// waitUntil{scriptDone _script;};
+[_man,(_path#0), 6, 5] call SFSM_fnc_forcedMove;
 
 
 {

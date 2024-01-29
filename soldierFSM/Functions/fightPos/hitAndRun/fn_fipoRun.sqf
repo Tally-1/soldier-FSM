@@ -49,6 +49,6 @@ private _endCode = {
 
 // Move to the new position.
 private _postFnc = [[_man], false, _endCode];
-private _run     = [_man, _coverPos, 20, 10, 5, _postFnc] spawn SFSM_fnc_forceMove2;
+private _run     = [_man, _coverPos, 20, 5, nil, _postFnc] spawn SFSM_fnc_forcedMove;
 
 };

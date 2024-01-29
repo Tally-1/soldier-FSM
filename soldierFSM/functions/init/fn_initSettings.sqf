@@ -10,7 +10,7 @@
 if(isNil "SFSM_allowFlinching")
 then{
         SFSM_disableSoldierFSM  = false;   //\\ disable soldier FSM
-        SFSM_DebugType          = "always";  // What type of debug is to be used. ["always", "curator", "never"];
+        SFSM_DebugType          = "curator";  // What type of debug is to be used. ["always", "curator", "never"];
         // SFSM_Debugger           = true;   // show debug-info, and 3D markers
         SFSM_allowFlinching     = true;     // Units will flinch on incoming fire.
         SFSM_allowDodging       = true;     // Units will dodge(change position) when incoming fire reaches the treshHold (SFSM_RpsDodgeTrigger).
@@ -42,8 +42,8 @@ then{
         SFSM_hidingTimeOut      = 30;    // The max amount of time a unit will stay in a hiding-pos before returning to normal. (hiding is triggered by the presence of a enemy vehicle)
         SFSM_hearingHide        = true;  // Hide by hearing vehicle: A Vehicle with engine ON is detected within hearing-distance
         SFSM_hearingDistance    = 250;   // Max distance a vehicle will be reacted to by hearing, (if in a urban area, half of this distance is used).
-        // SFSM_overrunDistance    = 50;    // If an enemy comes within this range while holding cover / hiding the unit will try to evade the enemy, set to 0 to deactivate.
 
+        SFSM_clearHouse         = false; // Allows AI to clear buildings room by room.
         SFSM_houseDemolition    = true;  // Allow units with explosives in their backpack to blow up houses instead of clearing them room by room.
         SFSM_rpgHouse           = true;  // Allow units with RPG's to blow up houses 
         SFSM_globalUD           = false; // Global unit-data
@@ -53,9 +53,10 @@ then{
         SFSM_allowHunkerDown    = false;      //   Allow units to hunker down.
         SFSM_mgSuppression      = true;      //    Allow MG's to suppress enemy units.
         SFSM_dragWounded        = true;     //     Allow units to drag wounded units.
-        SFSM_maxDragDistance    = 40;      //      Max distance a unit will drag a wounded unit.
-        SFSM_turretLeaderDist   = 40;     //       Distance to leader for turret gunners to dismount.
-        SFSM_maxSprinters       = 10;    //        Max amount of units that can sprint at the same time.
+        SFSM_minEnemyDistForHealing = 30;  //      No Reviving when known enemies are within this distance.
+        SFSM_maxDragDistance    = 40;     //       Max distance a unit will drag a wounded unit.
+        SFSM_turretLeaderDist   = 40;    //        Distance to leader for turret gunners to dismount.
+        SFSM_maxSprinters       = 10;   //         Max amount of units that can sprint at the same time.
         SFSM_disableSpecialists = "player-squads"; // "all" "player-squads" "none"
         SFSM_specRegroupDist    = 70;             //   Distance to leader for specialists to regroup.
         SFSM_BFFknowledgeType   = "both sides";  //   "one side" "both sides"
@@ -90,9 +91,9 @@ then{
                 'Acts_AidlPercMstpSnonWnonDnon_warmup_7_loop',
                 'Acts_AidlPercMstpSnonWnonDnon_warmup_6_loop'
         ]";
-        SFSM_allowEvasion     = true;     //When no cover is found a soldier will run to avoid incoming fire.
-        SFSM_simpleBff        = true;   //  Remove Caching of Terrain objects. Will improve performance, but units taking cover will become slightly dumber.
-        SFSM_spawnBffActions  = false; //   Spawns the functions called during a battle in a separate thread, bad for performance but ensures that the loop does not get aborted when an error occurs.
+        SFSM_allowEvasion     = true;   //When no cover is found a soldier will run to avoid incoming fire.
+        SFSM_simpleBff        = true;  //  Remove Caching of Terrain objects. Will improve performance, but units taking cover will become slightly dumber.
+        SFSM_spawnBffActions  = false;//   Spawns the functions called during a battle in a separate thread, bad for performance but ensures that the loop does not get aborted when an error occurs.
         
 
         SFSM_shotDistanceDef  = 300; // Default distance a man will hear enemy fire
@@ -109,13 +110,19 @@ then{
         SFSM_cptrExecProbPlr  = 1;           // Float 0-1 Probability that a player-captive Will be executed.
         SFSM_cptrPlrEscProb   = 0.5;         // The probability for success when a player attempts to break free while captured.
         SFSM_cptrPlrEscTime   = 8;           // How long one escape attempt takes in seconds.
-
+        SFSM_captureTargets   = "all";       // Who can be captured | ["all", "ai", "players", "disabeled"]
+        SFSM_captiveAutoDeath = -1;          // How long until a captive dies automatically. -1 = never | [-1,1,2,3,4,5]
+        
         SFSM_allowEvasionAttack = true;     // When rushing an enemy at close range the AI will sometimes do a evasive manouver before firing, such as Zig-Zag or a quick flank.
 };
 
-
-
 //Make sure settings are available globally.
+// 1.32 settings
+missionNamespace setVariable ["SFSM_captureTargets",         SFSM_captureTargets,         true];
+missionNamespace setVariable ["SFSM_captiveAutoDeath",       SFSM_captiveAutoDeath,       true];
+missionNamespace setVariable ["SFSM_minEnemyDistForHealing", SFSM_minEnemyDistForHealing, true];
+missionNamespace setVariable ["SFSM_clearHouse",             SFSM_clearHouse,             true];
+
 // 1.3 settings
 missionNamespace setVariable ["SFSM_allowEvasionAttack",  SFSM_allowEvasionAttack, true];
 

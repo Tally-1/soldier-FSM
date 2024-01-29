@@ -1,7 +1,7 @@
 params ["_marksman", "_target", "_firePos"];
 
 _marksman setVariable ["SFSM_marksmanAction", "Moving to fire position", true];
-_move = [_marksman, _firePos, 90] spawn SFSM_fnc_forceMove2;
+_move = [_marksman, _firePos, 90] spawn SFSM_fnc_forcedMove;
 
 waitUntil {
     private _abortMove = [_marksman, _target] call SFSM_fnc_abortMoveToSnipePos;

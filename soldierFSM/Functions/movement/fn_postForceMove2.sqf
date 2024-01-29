@@ -14,6 +14,8 @@ if([_man, "abortForcedMove"] call SFSM_fnc_unitData)then
 _man doFollow (leader group _man);
 _man setVariable ["SFSM_currentPath", nil, true]; 
 [_man, "forcedMovement", false] call SFSM_fnc_unitData;
+[_man] call SFSM_fnc_fixPos;
+_man getVariable "SFSM_UnitData"set["hasForcedMoveProned", true];
 
 if(isNil "_postFnc")exitWith{};
 

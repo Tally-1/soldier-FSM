@@ -23,12 +23,13 @@ _executioner addEventHandler ["Fired", {
 	_newProjectile setShotParents (getShotParents _projectile);
 
 	if(!isNil "_headPos")then{
-		[_projectile, _headPos] call SFSM_fnc_setDirAndPitchToPos;
-		_projectile setVelocityModelSpace _velocityMS;
-		[_newProjectile, _headPos] call SFSM_fnc_setDirAndPitchToPos;
+		// [_projectile, _headPos] call SFSM_fnc_setDirAndPitchToPos;
+		// _projectile setVelocityModelSpace _velocityMS;
+		// [_newProjectile, _headPos] call SFSM_fnc_setDirAndPitchToPos;
+		_newProjectile setPosATL _headPos;
 		_newProjectile setVelocityModelSpace _velocityMS;
 	};
 
-    _projectile setVelocityModelSpace _velocityMS;
+    // _projectile setVelocityModelSpace _velocityMS;
 
 }];

@@ -6,10 +6,12 @@ then{
 	[_captive] call SFSM_fnc_setCaptured;
 };
 
-if([_captive] call SFSM_fnc_isPlayer)exitWith{};
+if([_captive] call SFSM_fnc_isPlayer)  exitWith{};
+if(SFSM_captiveAutoDeath isEqualTo -1) exitWith{};
 
-for "_i" from 1 to 30 do {
-	sleep 10;
+// Sleeps the amount set i CBA settings then kills the captive.
+for "_i" from 1 to SFSM_captiveAutoDeath do {
+	sleep 60;
 };
 
 _captive setDamage 1;

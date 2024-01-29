@@ -37,7 +37,7 @@ then{_man setUnitPos "MIDDLE"};
 
 ["take_cover_init", [_man, _coverPos]]  call CBA_fnc_localEvent;
 [_man, "action", "taking cover"]        call SFSM_fnc_unitData;
-[_man, _coverPos, SFSM_dodgeTimer, 2.5] call SFSM_fnc_forceMove2;
+[_man, _coverPos, SFSM_dodgeTimer, 2.5] call SFSM_fnc_forcedMove;
 
 _man doTarget _target;
 _man setUnitPos "AUTO";

@@ -17,5 +17,5 @@ private _destinations = [];
           then{_destinations pushBackUnique _destination;};
     }
     
-} forEach allUnits;
+} forEach (entities "CAManBase");
 _destinations;

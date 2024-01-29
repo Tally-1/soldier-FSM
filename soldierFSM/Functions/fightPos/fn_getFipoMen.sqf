@@ -3,7 +3,7 @@
 // Not best practise, but I decided to also remove any erroneous fipoMen from their
 // figthingPos.
 
-private _fipoMen = allUnits select 
+private _fipoMen = (entities "CAManBase") select 
     {
         private _fipoGotten = [_x, "inFipo"]call SFSM_fnc_unitData;
         private _action     = [_x] call SFSM_fnc_getAction;

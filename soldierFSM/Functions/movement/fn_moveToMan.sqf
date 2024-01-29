@@ -11,7 +11,7 @@ for "_i" from 1 to 10 do{
 
     if(_destination distance _targetMan > 5)then{_destination = (getPosATLVisual _targetMan);};
 
-    private _move = [_movingMan, _destination] spawn SFSM_fnc_forceMove2;
+    private _move = [_movingMan, _destination] spawn SFSM_fnc_forcedMove;
 
     waitUntil {
 

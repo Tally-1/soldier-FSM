@@ -1,4 +1,4 @@
-private _zombies = allUnits select {[_x] call SFSM_fnc_isBrainDead;};
+private _zombies = (entities "CAManBase") select {[_x] call SFSM_fnc_isBrainDead;};
 
 if(_zombies isEqualTo [])exitWith{
     "No zombies detected" call dbgmsg; 

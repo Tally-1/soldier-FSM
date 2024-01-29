@@ -100,7 +100,7 @@ if(_coverFound isEqualTo false)exitWith{
 if!(SFSM_flinchStopDodge)exitWith{
 
     // private _move = 
-    [_man, _dodgePos, SFSM_DodgeTimer, 2] call SFSM_fnc_forceMove2;
+    [_man, _dodgePos, SFSM_DodgeTimer] call SFSM_fnc_forcedMove;
     // waitUntil{sleep 0.1; scriptDone _move;};
 
     _man doMove _dodgePos;

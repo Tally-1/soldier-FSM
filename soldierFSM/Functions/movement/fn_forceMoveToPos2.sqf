@@ -2,7 +2,8 @@ params [
     "_man",                  // the man that will move.
     "_pos",                 //  target position
     ["_maxTime", 30],      //   timeout (max time to attempt to reach said pos)
-    ["_maxDistance", 1.3] //    distance to wanted pos before aborting move.
+    ["_maxDistance", 1.3],
+    ["_postFnc", [[],{}]] //    distance to wanted pos before aborting move.
 ];
 private _canSprint = [_man, _pos, 50, 5] call SFSM_fnc_canSprint;
 

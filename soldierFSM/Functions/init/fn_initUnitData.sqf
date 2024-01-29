@@ -61,7 +61,7 @@ private _dataArr = [
         ["moveRegistry",         []],
         ["failedForcedMoves",      []]
 ];
-
+ 
 /*
 Examples of how the moves lists should look:
 

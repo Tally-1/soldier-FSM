@@ -22,10 +22,10 @@ private _postAction = [[_man], false, _onFinish];
 [
     _man, 
     _evadePos, 
-    SFSM_DodgeTimer,
-    2,
-    2,
+    nil,
+    nil,
+    nil,
     _postAction
-] spawn SFSM_fnc_forceMove2;
+] spawn SFSM_fnc_forcedMove;
 
 _evadePos;

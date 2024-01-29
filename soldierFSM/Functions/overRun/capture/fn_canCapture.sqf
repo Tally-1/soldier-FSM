@@ -22,6 +22,11 @@ exitWith{false;};
 private _pos       = getPosATL _captive;
 private _enemyNear = ([_captor, 50, _pos] call SFSM_fnc_nearEnemies)isNotEqualTo [];
 
+if(_enemyNear isEqualTo false)then{
+	_pos       = getPosATL _captor;
+	_enemyNear = ([_captor, 50, _pos] call SFSM_fnc_nearEnemies)isNotEqualTo [];
+};
+
 if(_enemyNear)exitWith{
 	[_captor, "Enemies near, cannot capture enemy", 1] call SFSM_fnc_flashAction;
 	false;

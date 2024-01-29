@@ -7,7 +7,7 @@ private _target         = _man getVariable "SFSM_missileTargetBuilding";
 private _targetPos      = _man getVariable "SFSM_missileTargetPos";
 private _targetAltitude = _targetPos#2;
 private _velocityMS     = velocityModelSpace _missile;
-private _maxSpeed       = 700;
+private _maxSpeed       = 400;
 private _startSpeed     = round((_velocityMS#1)*0.9);
 
 [_missile, _targetPos] call SFSM_fnc_setDirAndPitchToPos;

@@ -12,4 +12,4 @@
             [_x] call SFSM_fnc_HandleSuppression;
             [_x] call SFSM_fnc_updateMorale;
 }};
-} forEach allUnits;
+} forEach (entities "CAManBase");

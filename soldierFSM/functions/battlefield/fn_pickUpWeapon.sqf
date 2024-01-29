@@ -85,9 +85,7 @@ if(_canSprint)then{
 
     _man setAnimSpeedCoef SFSM_sprintSpeed;
     [_man, "currentDestination", _weaponPos] call SFSM_fnc_unitData;
-    // private _script = 
-    [_man, _weaponPos, 40, 1.5] call SFSM_fnc_forceMove2;
-    // waitUntil{sleep 0.1; scriptDone _script};
+    [_man, _weaponPos, 40, 1.5] call SFSM_fnc_forcedMove;
 
 };
 

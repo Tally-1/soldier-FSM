@@ -31,6 +31,14 @@ private _versionName = "DCO soldier FSM | Close Quarter Combat (CQB)";
 ] call cba_settings_fnc_init;
 
 [
+	"SFSM_clearHouse",
+	"CHECKBOX",
+	["Clear houses", "Allows AI to clear buildings room by room."],
+	_versionName,
+	true
+] call cba_settings_fnc_init;
+
+[
 	"SFSM_rpgHouse",
 	"CHECKBOX",
 	["RPG houses", "Allow units with launchers to fire their launchers at buildings with enemies inside."],

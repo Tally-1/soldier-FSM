@@ -35,17 +35,12 @@ private _startSpeedMode = speedMode _man;
 //move into house.
 {
     
-
-    // private _moveIn = 
     [
-        _man, //unit 
+        _man,  //unit 
         _x,   //position 
-        4,    //timeout (optional)
-        3,    //minimum distance to position in order to complete move. (optional)
-        2     // sleep between each repetition of doMove. (optional)
-        ] call SFSM_fnc_forceMove2;
+        4    //timeout (optional)
+    ] call SFSM_fnc_forcedMove;
 
-    // waitUntil{sleep 1; scriptDone _moveIn;};
     
     private _distance = (_man distance2D _building);
     private _currentBuilding = [_man]call SFSM_fnc_currentBuilding;

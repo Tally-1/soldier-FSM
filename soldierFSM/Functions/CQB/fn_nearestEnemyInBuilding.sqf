@@ -10,6 +10,9 @@ private _enemies =
 _menInside select {
    private _targetBuilding = [_x] call SFSM_fnc_currentBuilding;
    private _isHostile      = [_man, _x] call SFSM_fnc_hostile;
+
+   if(isNil "_targetBuilding")then{_targetBuilding = objNull;};
+
    _targetBuilding isEqualTo _building
    &&{_isHostile   isEqualTo true;};
 };

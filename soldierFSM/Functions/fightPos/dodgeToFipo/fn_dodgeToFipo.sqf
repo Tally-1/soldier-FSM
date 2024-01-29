@@ -8,7 +8,7 @@ _man setVariable ["fipoDodgeOn", true];
 
 [_man, "Dodging to FIPO"] call SFSM_fnc_setAction;
 private _target = [_man, _fipos] call SFSM_fnc_getNearest;
-[_man, (getPosATLVisual _target), SFSM_DodgeTimer, 10, 3] call SFSM_fnc_forceMove2;
+[_man, (getPosATLVisual _target), SFSM_DodgeTimer] call SFSM_fnc_forcedMove;
 
 private _validFipo = [_man, _target] call SFSM_fnc_isDodgeFipo;
 

@@ -101,4 +101,4 @@ diag_log "***soldier FSM * server loaded***";
 [] call SFSM_fnc_logSettings;
 
 //Making sure all VR indicators are deleted 
-{if(_x getVariable ['fipo_ind', false])then{deleteVehicle _x}} forEach allUnits;
+{if(_x getVariable ['fipo_ind', false])then{deleteVehicle _x}} forEach (entities "CAManBase");

@@ -31,8 +31,8 @@ private _wAction     = ["being healed by ", _healerName]joinString "";
 if(isNil "_coverPos")then{_coverPos = [_wounded, _radius] call Tcore_fnc_coverPosSimple;};
 if(isNil "_coverPos")then{_coverPos = _centerPos;};
 
-private _runH = [_healer,  _coverPos, _timeLimit, 2] spawn SFSM_fnc_forceMove2;//SFSM_fnc_forceMoveToPos;
-private _runW = [_wounded, _coverPos, _timeLimit, 2] spawn SFSM_fnc_forceMove2;//SFSM_fnc_forceMoveToPos;
+private _runH = [_healer,  _coverPos] spawn SFSM_fnc_forcedMove;//SFSM_fnc_forceMoveToPos;
+private _runW = [_wounded, _coverPos] spawn SFSM_fnc_forcedMove;//SFSM_fnc_forceMoveToPos;
 
 ["buddy_heal", [_healer, _wounded, _coverPos]] call CBA_fnc_localEvent;
 

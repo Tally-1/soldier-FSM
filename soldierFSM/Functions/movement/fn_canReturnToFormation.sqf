@@ -6,7 +6,8 @@ isNil{
 private _unitData         = _man getVariable "SFSM_unitData";
 private _group            = group _man;
 private _leader           = leader _group;
-private _distance         = _man distance2D _leader;
+private _formationPos     = formationPosition _man;
+private _distance         = _man distance2D _formationPos;
 private _enemyDistance    = [_man, 100] call SFSM_fnc_distanceToKnownEnemy;
 private _timeSinceShotIn  = time - (_unitData get "Last_Close_Bullet");
 private _timeSinceShotOut = time - (_unitData get "last_bullet_fired");

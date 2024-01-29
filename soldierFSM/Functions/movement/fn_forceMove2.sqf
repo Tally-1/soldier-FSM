@@ -11,7 +11,7 @@
 
 params [
     "_man",                  // the man that will move.
-    "_targetPos",                 //  target position
+    "_targetPos",           //  target position
     ["_maxTime", 30],      //   timeout (max time to attempt to reach said pos)
     ["_maxDistance", 1.1],//    distance to wanted pos before aborting move.
     ["_spamTimer", 1.5], //     seconds between each repetition of the doMove command.

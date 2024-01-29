@@ -16,7 +16,7 @@ private _move =
     30,        //timeout (optional)
     2          //minimum distance to position in order to complete move. (optional)
 
-] spawn SFSM_fnc_forceMove2;
+] spawn SFSM_fnc_forcedMove;
 
 waitUntil{
     if(_moveEnded)exitWith{true;};

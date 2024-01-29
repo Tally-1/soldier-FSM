@@ -22,7 +22,7 @@ if([_man, _fipo] call SFSM_fnc_canTeleportFipo)exitWith{
     [_man, _fipo] call SFSM_fnc_getInFipo;
 };
 
-private _move = [_man, _fightingPos, 90] spawn SFSM_fnc_forceMove2;
+private _move = [_man, _fightingPos, 90] spawn SFSM_fnc_forcedMove;
 private _startTime = time;
 private _startPos  = getPosASLVisual _man;
 private _aborted   = false;

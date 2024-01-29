@@ -78,6 +78,8 @@ class CfgFunctions
             class OOP_getAnimEndPos    {};
         };
 
+        
+        
         class CQB
         {
            file = "\SoldierFSM\functions\CQB";
@@ -182,7 +184,8 @@ class CfgFunctions
 
             class rgbColorToA3Color     {};
             class distanceToFooting     {};
-
+            class getSmokeDeployDir     {};
+            class deploySmokeOnMan      {};
             class deploySmoke           {};
             class numberDiff            {};
             class getProneTreshHold     {};
@@ -276,6 +279,7 @@ class CfgFunctions
             class returnToFormation              {};
 
             class returnAllMen                   {};
+            class getPathDistance                {};
 
         };
 
@@ -296,6 +300,19 @@ class CfgFunctions
             class attackAnimMap                                {};
             class initAttackAnims                              {};
             class zigZagPathClear                              {};
+
+        };
+
+        class forcedMove
+        {
+            file = "\SoldierFSM\functions\movement\forcedMove";
+            class initForcedMoveToPos {};
+            class forcedMoveToPos     {};
+            class whileForcedMove     {};
+            class endForcedMoveToPos  {};
+            class forcedMoveSprint    {};
+            class forcedMoveOnPath    {};
+            class forcedMove          {};
 
         };
 
@@ -516,6 +533,9 @@ class CfgFunctions
             file = "\SoldierFSM\functions\fightPos";
             class clearFipo             {};
             class getFipo               {};
+            class getFipoMan            {};
+            class nearFipoMen           {};
+
             class inFipo                {};
             class nearestFipo           {};
             class handleFipoHit         {};
@@ -654,6 +674,7 @@ class CfgFunctions
         {
             file = "\SoldierFSM\functions\fightPos\FUBAR";
             class fipoKnockOut          {};
+            class fipoQuickRevive       {};
             class timeSinceFipoKnockOut {};
             class fipoIsFUBAR           {};
             class fipoIsDestroyed       {};
@@ -707,6 +728,8 @@ class CfgFunctions
             class fipoOverrunDist   {};
             class panic             {};
             class calmPanicked      {};
+            class isSurrounded      {};
+            class manInLoosingState {};
         }
 
         class capture
@@ -714,6 +737,8 @@ class CfgFunctions
             file = "\SoldierFSM\functions\overrun\capture";
             class dropWeapon          {};
             class dropAllWeapons      {};
+            class canPanicSurrender   {};
+            class surrenderAll        {};
             class surrender           {};
             class capture             {};
             class execute             {};
@@ -1019,6 +1044,7 @@ class CfgFunctions
             class reviveAnim              {};
             class buddyRevive             {};
             class endBuddyRevive          {};
+            class relocateUnconMan        {};
             class initDragMan             {};
             class dragStatus              {};
             class drag                    {};
@@ -1041,6 +1067,7 @@ class CfgFunctions
 
             class ACE_medicalGlobal       {};
             class woundedAndHealersGlobal {};
+            class canMoveToRevive         {};
         };
 
 
@@ -1112,42 +1139,43 @@ class CfgFunctions
         class objectData
         {
             file = "\SoldierFSM\functions\objectData";
-            class glRifle                {};
-            class ObjStance              {};
-            class areaData               {};
-            class getMapObjects          {};
-            class excludedMapObject      {};
-            class filterMapObjects       {};
-            class terrainObjData         {};
-            class squadAsset             {};
-            class hasAmmoForWeapon       {};
-            class validEnemy             {};
-            class validEnemyVehicle      {};
-            class validEnemyInArr        {};
-            class nearestKnownEnemy      {};
-            class distanceToKnownEnemy   {};
-            class isMachineGunner        {};
-            class isATSoldier            {};
-            class isMarksman             {};
-            class isRealMan              {};
-            class functionalMan          {};
-            class isMedic                {};
-            class isFipoMedic            {};
-            class isPlayer               {};
-            class isDeactivated          {};            
+            class glRifle                     {};
+            class ObjStance                   {};
+            class areaData                    {};
+            class getMapObjects               {};
+            class excludedMapObject           {};
+            class filterMapObjects            {};
+            class terrainObjData              {};
+            class squadAsset                  {};
+            class countInventoryMagsForWeapon {};
+            class hasAmmoForWeapon            {};
+            class validEnemy                  {};
+            class validEnemyVehicle           {};
+            class validEnemyInArr             {};
+            class nearestKnownEnemy           {};
+            class distanceToKnownEnemy        {};
+            class isMachineGunner             {};
+            class isATSoldier                 {};
+            class isMarksman                  {};
+            class isRealMan                   {};
+            class functionalMan               {};
+            class isMedic                     {};
+            class isFipoMedic                 {};
+            class isPlayer                    {};
+            class isDeactivated               {};            
             
-            class availableAiSoldier     {};
-            class buildingCenterPosASL   {};
-            class availEnemyFriendDist   {};
+            class availableAiSoldier          {};
+            class buildingCenterPosASL        {};
+            class availEnemyFriendDist        {};
 
-            class validAllyVehicle       {};
-            class validAlly              {};
+            class validAllyVehicle            {};
+            class validAlly                   {};
 
-            class manIsInjured           {};
+            class manIsInjured                {};
 
-            class weaponAimPos           {};
-            class getAmmoData            {};
-            class getMagSplashRange      {};
+            class weaponAimPos                {};
+            class getAmmoData                 {};
+            class getMagSplashRange           {};
         };
 
         class turrets

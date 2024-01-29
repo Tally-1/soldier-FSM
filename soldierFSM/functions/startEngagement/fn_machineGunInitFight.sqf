@@ -58,9 +58,7 @@ if(_coverPosFound
 then{
         
         [_man, "Suppressing and Moving"] call SFSM_fnc_setAction;
-        // _script = 
-        [_man, _coverPos, 3] call SFSM_fnc_forceMove2;
-        // waitUntil {sleep 1; scriptDone _script};
+        [_man, _coverPos, 3] call SFSM_fnc_forcedMove;
     };
     
 sleep 2;
@@ -90,9 +88,7 @@ if(_coverPosFound
 }})
 then{
         [_man, "action", "Ending suppression"] call SFSM_fnc_unitData;
-        // _script = 
-        [_man, _coverPos, 3] call SFSM_fnc_forceMove2;
-        // waitUntil {sleep 1; scriptDone _script};
+        [_man, _coverPos] call SFSM_fnc_forcedMove;
     };
 
 "machineGunner ended suppression of enemy" call SFSM_fnc_debugMessage;

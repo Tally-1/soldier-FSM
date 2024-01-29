@@ -22,7 +22,7 @@ _man assignAsGunner _turret;
 	_turretPos,
 	30,
 	5
-] call SFSM_fnc_forceMove2;
+] call SFSM_fnc_forcedMove;
 
 if!([_man, _turret] call SFSM_fnc_canGetInTurret)exitWith{
     [_man, _turret, "Cannot get in"] call SFSM_fnc_failTurretMount;

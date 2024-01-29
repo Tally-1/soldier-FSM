@@ -15,7 +15,7 @@ if!(_regroupNeeded)exitWith{false};
     private _pos  = formationPosition _man;
     private _timeLimit = 60;
     private _timer = time + _timeLimit;
-    private _move = [_man, _pos, _timeLimit] spawn SFSM_fnc_forceMove2;
+    private _move = [_man, _pos, _timeLimit] spawn SFSM_fnc_forcedMove;
 
     _man spawn{
         sleep 70;

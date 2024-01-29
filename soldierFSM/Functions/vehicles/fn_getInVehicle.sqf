@@ -15,13 +15,11 @@ if(_otherSidePresent)exitWith{};
 private _vPos = (getPos _vehicle);
 
 [
-    _man,  //unit 
-    _vPos,//position 
+    _man,   //unit 
+    _vPos, //position 
     30,   //timeout (optional)
-    5,    //minimum distance to position in order to complete move. (optional)
-    2     // sleep between each repetition of doMove. (optional)
-
-] call SFSM_fnc_forceMove2;
+    5    //minimum distance to position in order to complete move. (optional)
+] call SFSM_fnc_forcedMove;
 
 if((!alive _vehicle)
 ||(!alive _man)

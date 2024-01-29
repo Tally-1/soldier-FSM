@@ -2,7 +2,7 @@ params[
     ["_missile", nil, [objNull]],
     ["_target",  nil, [objNull]],
     ["_minDist", 50,        [0]],
-    ["_maxDist", 300,       [0]]
+    ["_maxDist", 200,       [0]]
 ];
 private _distance = (_missile distance2D _target)*1.1;
 if(_distance > _maxDist) exitWith{false;};

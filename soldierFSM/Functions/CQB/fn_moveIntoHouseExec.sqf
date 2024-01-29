@@ -57,7 +57,7 @@ _man setUnitPos "UP";
 _man setAnimSpeedCoef SFSM_sprintSpeed;
 _man setSpeedMode "FULL";
 
-[_man,(_entrance), 60, 5] call SFSM_fnc_forceMove2;
+[_man,(_entrance), nil, 5] call SFSM_fnc_forcedMove;
 
 private _j = 1;
 {

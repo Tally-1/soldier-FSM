@@ -17,4 +17,6 @@ _fipo setVariable ["lastKnockout", (round time)];
 
 ["FIPO_knockedOut", [_man, _fipo]] call CBA_fnc_localEvent;
 
+[_man, _fipo] call SFSM_fnc_fipoQuickRevive;
+
 true;

@@ -2,6 +2,7 @@ params["_man"];
 private _target = _man getVariable "SFSM_myAttackTarget";
 
 _man setDir (_man getDir _target);
+[_man] call SFSM_fnc_fixPos;
 
 sleep 0.1;
 

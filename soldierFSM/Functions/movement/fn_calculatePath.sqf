@@ -9,10 +9,13 @@
 private _timeLimit = 30;
 params["_man", "_destination", "_timeLimit"];
 
-private _start = getPos _man;
-private _timer = time + _timeLimit;
-private _agent = (calculatePath ["man", (behaviour _man), _start, _destination]);
+private _start     = getPos _man;
+private _timer     = time + _timeLimit;
+private _behaviour = behaviour _man;
 
+if(_behaviour isEqualTo "ERROR")exitwith{};
+
+private _agent     = (calculatePath ["man", _behaviour, _start, _destination]);
 _agent setVariable ["SFSM_pathOwner", _man];
 
 [_agent] call SFSM_fnc_PathCalculated;
@@ -29,7 +32,13 @@ waitUntil {
 if(isNil "_path")exitWith{deleteVehicle _agent;};
 
 private _nPath = [];
-{_nPath pushBackUnique ASLToATL _x;} forEach _path;
+{
+    private _pos = ASLToATL _x;
+    if((_pos#2)<0)then{_pos = [_pos#0,_pos#1,0]};
+    
+    _nPath pushBackUnique _pos;
+
+} forEach _path;
 
 _man setVariable ["SFSM_currentPath", _nPath]; 
 

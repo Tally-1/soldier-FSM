@@ -11,4 +11,7 @@ if(_allowed isEqualTo false)exitWith{false;};
 private _timeSincePrevious = time - ([_man, "lastFipoSuppression"] call SFSM_fnc_unitData);
 if(_timeSincePrevious < 30)exitWith{false;};
 
+private _magCount = [_man] call SFSM_fnc_countInventoryMagsForWeapon;
+if(_magCount < 2)exitWith{false;};
+
 true;

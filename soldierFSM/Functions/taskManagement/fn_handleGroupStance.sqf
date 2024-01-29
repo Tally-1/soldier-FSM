@@ -33,8 +33,9 @@ _group setSpeedMode "FULL";
 //3x spam, because ArmA, some commands do not execute for unknown reasons
 {
     private _timeSinceFlinch = time - ([_x, "lastFlinch"] call SFSM_fnc_unitData);
+    private _cooldownEnded   = !isNil "_timeSinceFlinch" && {_timeSinceFlinch > 4};
     if([_x]call SFSM_fnc_inFipo isEqualTo false
-    &&{_timeSinceFlinch > 4})then{ 
+    &&{_cooldownEnded})then{ 
         _x setUnitPos "auto";
         _x setUnitPos "AUTO";
         _x setUnitPos "AUTO";

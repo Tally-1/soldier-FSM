@@ -3,5 +3,6 @@
 [] call SFSM_fnc_storeMoveDataAllMen;
 [] call SFSM_fnc_findZombies;
 [] call SFSM_fnc_returnAllMen;
+[] call SFSM_fnc_surrenderAll;
 
 true;

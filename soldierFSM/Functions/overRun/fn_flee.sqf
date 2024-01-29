@@ -33,7 +33,7 @@ _man setUnitPos "UP";
 // _man allowFleeing 1;
 
 // private _move = 
-[_man, _fleePos] call SFSM_fnc_forceMove2;
+[_man, _fleePos] call SFSM_fnc_forcedMove;
 // waitUntil{sleep 1; scriptDone _move;};
 
 [_man, "none"] call SFSM_fnc_setAction;

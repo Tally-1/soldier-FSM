@@ -59,8 +59,8 @@ exitWith{
 };
 
 
-
-if([_target] call SFSM_fnc_isUncon)exitWith{false;};
+if(SFSM_clearHouse isEqualTo false) exitWith{false;};
+if([_target] call SFSM_fnc_isUncon) exitWith{false;};
 
 _man doFire _target;
 [_man, _targetHouse, _target] spawn SFSM_fnc_ClearBuilding;

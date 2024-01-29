@@ -2,6 +2,6 @@
 	if  ([_x] call SFSM_fnc_isRealMan)
 	then{[_x] call SFSM_fnc_returnToFormation};
 
-} forEach allUnits;
+} forEach (entities "CAManBase");
 
 true;

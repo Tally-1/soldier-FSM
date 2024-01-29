@@ -52,3 +52,19 @@ private _versionName = "DCO soldier FSM | Medical";
 	],
 	1
 ] call cba_settings_fnc_init;
+
+
+[
+	"SFSM_minEnemyDistForHealing",
+	"SLIDER",
+	["No healing when enemy within", "No Reviving when known enemies are within this distance."],
+	_versionName,
+	[
+		0,   	//minimum 
+		100, 	//max
+		0,      //default
+		0,	   //decimals
+		false
+	],
+	1
+] call cba_settings_fnc_init;

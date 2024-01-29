@@ -2,7 +2,7 @@ if(!isNil "SFSM_utfp")exitWith{};
 SFSM_utfp = true;
 
 private _fipos         = SFSM_allFipos select{[_x] call SFSM_fnc_fipoAvailable;};
-private _menAndFipos   = (allUnits select {[_x] call SFSM_fnc_availableAiSoldier}) 
+private _menAndFipos   = ((entities "CAManBase") select {[_x] call SFSM_fnc_availableAiSoldier}) 
         apply {[_x, ([_x, _fipos] call SFSM_fnc_getNearest)]};
 
 _menAndFipos = [_menAndFipos, [], {(_x#0) distance (_x#1)}, "ASCEND"] call BIS_fnc_sortBy;
