@@ -7,6 +7,8 @@ class FIPO
         class fipo3denManager          {};
         class spawnIndicators          {};
         class updateIndicators         {};
+        class setIndicatorDark         {};
+        class setIndicator             {};
         class deleteIndicators         {};
         class fipoStances              {};
         class removeGarbage            {};

@@ -24,4 +24,10 @@ class Values
         value = 2;
     };
 
+    class SSR
+    {
+        name = "SIDE-STEP RIGHT";
+        value = 3;
+    };
+
 };

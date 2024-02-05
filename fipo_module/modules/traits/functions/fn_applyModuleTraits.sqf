@@ -1,9 +1,6 @@
 params["_module", "_man"];
-
-
-if(_module getVariable "excluded_sfsm")exitWith{
-    _man setVariable ["SFSM_Excluded", true, true];
-};
+if      (_module getVariable "excluded_sfsm")
+exitWith{_man setVariable ["SFSM_Excluded", true, true];};
 
 ([_module] call TMOD_fnc_getModuleTraits)
 params[

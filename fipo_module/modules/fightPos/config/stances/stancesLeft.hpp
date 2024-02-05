@@ -24,4 +24,10 @@ class Values
         value = 2;
     };
 
+    class SSL
+    {
+        name = "SIDE-STEP LEFT";
+        value = 3;
+    };
+
 };
