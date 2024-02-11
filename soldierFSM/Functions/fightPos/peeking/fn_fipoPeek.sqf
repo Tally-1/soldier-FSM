@@ -1,16 +1,23 @@
 params["_man"];
+
 private _peekTime = ([_man] call SFSM_fnc_fipoPeekTime)+0.1;//added 0.1 to account for the wait 
 private _coolDown = [_man] call SFSM_fnc_peekCoolDownTime;
-private _stances  = [_man] call SFSM_fnc_fipoStanceIndexes;
+private _fipo     = [_man] call SFSM_fnc_getFipo;
+if(isNil "_fipo")exitWith{};
 
-if(isNil "_stances")exitWith{};
+([_fipo] call SFSM_fnc_fipoStanceIndexes)
+params[
+    "_coverStance",
+    "_shootUp",
+    "_shootRight",
+    "_shootLeft"
+];
 
-private _coverStance    = _stances#0;
-private _shootUp        = _stances#1;
-private _shootRight     = _stances#2;
-private _shootLeft      = _stances#3;
 private _fireStances    = [_shootUp, _shootRight, _shootLeft];
 private _shootingStance = [_fireStances] call SFSM_fnc_selectShootingStance;
+private _stepRight      = _shootingStance isEqualTo [3, "SFSM_rightStances"];
+private _stepLeft       = _shootingStance isEqualTo [3, "SFSM_leftStances"];
+private _sideStep       = _stepRight || _stepLeft;
 
 if(isNil "_shootingStance")exitWith{"No stance found" call dbgmsg;};
 
@@ -26,9 +33,20 @@ if!(isNil "_anim")then{
     [_man] call SFSM_fnc_abortIdleFipo;
 };
 
+// Sidesteps needs a different method.
+if(_sideStep)exitWith{
+    [
+        _man, 
+        _shootingStance,
+        _coverStance
+    ] 
+    call SFSM_fnc_fipoSideStep;
+};
+
 //change to peeking(high) stance.
 [_man, "Peeking"] call SFSM_fnc_setAction;
 [_man, _shootingStance] call SFSM_fnc_animSetStance;
+
 
 //wait for stance to complete.
 waitUntil{
@@ -37,9 +55,7 @@ waitUntil{
 };
 
 //Look for and engage enemies.
-// private _peek = 
 [_man, _peekTime] call SFSM_fnc_peekActions;
-// waitUntil {scriptDone _peek;};
 
 //exit script if man has left  the fighting position
 if!([_man, "inFipo"] call SFSM_fnc_unitData)exitWith{};

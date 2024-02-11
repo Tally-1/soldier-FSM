@@ -65,6 +65,7 @@ class CfgFunctions
             class getAnimData        {};
             class checkAnimDirDist   {};
             class animListData       {};
+            class forceAnimStop      {};
         };
 
         class OOP_movement
@@ -204,9 +205,13 @@ class CfgFunctions
             class lineBroken            {};
             
             class replaceInArr          {};
+            class deleteValuesFromArr   {};
+            class removeValueFromArray  {};
             class selectionMap          {};    
             class squareGrid            {};
             class getLowestPos          {};
+
+            class isHeadLess            {};
         };
 
         class morale
@@ -433,6 +438,7 @@ class CfgFunctions
             class onCommandChange       {};
 
             class onAnimChange          {};
+            class onGroupCreated        {};
             
         };
 
@@ -705,6 +711,22 @@ class CfgFunctions
 
         };
 
+        class sidestep
+        {
+            file = "\SoldierFSM\functions\fightPos\sidestep";
+            class fipoSideStep                {};
+            class fipoSideStepStart           {};
+            class getSideStepAnim             {};
+            class execSideStep                {};
+            class execSideStepCondition       {};
+            class canReturnStep               {};
+            class canContinueSideStep         {};
+            class execSideStepMid             {};
+            class execSideStepEnd             {};
+            class fipoSideStepReturn          {};
+            class endFipoSideStep             {};
+        };
+
 /***********************FIPO-END*************************/
 /********************************************************/
 
@@ -766,6 +788,16 @@ class CfgFunctions
             class toggleCaptureAi     {};
 
             class ACE_onCaptiveChange {};
+        };
+
+        class capture_autoKill
+        {
+            file = "\SoldierFSM\functions\overrun\capture\autoKill";
+            class isValidCaptive      {};
+            class canAutoKillCaptive  {};
+            class autoKillCaptive     {};
+            class cleanupCaptives     {};
+
         };
 
         class capture_abuse
@@ -955,8 +987,11 @@ class CfgFunctions
             class initClient            {};
             class initSFSM              {postInit = 1};
             class InitMan               {};
+            class reInitAllMen          {};
             class initUnitData          {};
             class initGroup             {};
+            class initNewGroups         {};
+            class handleNewGroup        {};
             class initVehicle           {};
             class initFiPositions       {};
         };

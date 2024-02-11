@@ -7,15 +7,20 @@
 //              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
 
 params["_group"];
-private _data = _group getVariable "SFSM_groupData";
+private _data       = _group getVariable "SFSM_groupData";
+private _thisClient = clientOwner;
 
 if(!isNil "_data") exitWith {_data};
 if!((side _group) in [east, west, independent])exitWith{};
 if(_group getVariable ["SFSM_Excluded",false]) exitWith{};
 
+_group setGroupOwner _thisClient;
+[_group, _thisClient] remoteExecCall ["setGroupOwner", 2];
+
+
 private _groupData = createHashmap;
 _groupData set ["currentBattle",    "none"];
-_groupData set ["lastSpotting",        -300  ];
+_groupData set ["lastSpotting",       -300];
 _groupData set ["dodgeDisabeled",   false ];
 _groupData set ["dodgeDisableTime", time  ];
 _groupData set ["lastPhrases",      []    ];
@@ -30,6 +35,8 @@ if((! SFSM_autoStanceEnabled)
 &&{[_group] call SFSM_fnc_playableGroup})then{
 _group setVariable ["SFSM_noAutoStance", true, true];
 };
+
+
 
 
 if!(SFSM_enableCustomEH)

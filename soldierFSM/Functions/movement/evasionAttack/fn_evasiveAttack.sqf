@@ -9,14 +9,15 @@ if(_able isEqualTo false)exitWith{};
 
 
 
-private _condition = { [_man] call SFSM_fnc_evasiveAttackCondition};
+private _condition = {[_man] call  SFSM_fnc_evasiveAttackCondition;};
 private _midFnc    = {[_man] spawn SFSM_fnc_evasiveAttackAlign;};
 private _endFnc    = {[_man] spawn SFSM_fnc_endevasiveAttack;};
 private _anims     = [_man, _target] call SFSM_fnc_evasiveAttackAnims;
 
 [_man, "Evasive attack"]                          spawn SFSM_fnc_flashAction;
 [_man, _target]                                   call  SFSM_fnc_initevasiveAttack;
+[_man, _target]                                   spawn SFSM_fnc_evasiveAttackLoop;
 [_man, _anims, true, _condition,_midFnc, _endFnc] call  SFSM_fnc_playAnimList;
-[_man, _target]                                   call  SFSM_fnc_evasiveAttackLoop;
+
 
 true;

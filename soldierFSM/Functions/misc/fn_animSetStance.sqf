@@ -2,13 +2,12 @@
 // and plays it. the completion of the move can be grabbed using the "SFSM_animStanceDone" variable
 // or the CBA eventhandler.
 
-params["_man", "_indexAndMapName"];
-private _index          = _indexAndMapName#0;
-private _mapName        = _indexAndMapName#1;
-private _animationMap   = missionNamespace getVariable _mapName;//[, "SFSM_animStances"];
-private _data           = _animationMap get _index;
-private _animation      = _data#0;
-private _unitPos        = _data#1;
+params["_man", "_indexAndMapName"];_indexAndMapName
+params["_index","_mapName"];
+private _animationMap   = missionNamespace getVariable _mapName;
+private _data           = _animationMap get _index; _data
+params["_animation", "_unitPos"];
+
 private _unitSpeed      = getAnimSpeedCoef _man;
 private _verticalStance = _mapName isEqualTo "SFSM_animStances";
 private _fipo           = [_man] call SFSM_fnc_getFipo;

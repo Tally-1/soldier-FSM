@@ -33,8 +33,9 @@ addMissionEventHandler ["EntityCreated", {
 
 addMissionEventHandler ["GroupCreated", {
     params ["_group"];
-    [_group] call SFSM_fnc_initGroup;
-    "Group spawned in" call dbgmsg;
+    private _client = clientOwner;
+    [_group, _client] remoteExecCall ["SFSM_fnc_onGroupCreated", 2];
+    SFSM_newGroups pushBackUnique _group;    
 }];
 
 addMissionEventHandler ["GroupDeleted", {

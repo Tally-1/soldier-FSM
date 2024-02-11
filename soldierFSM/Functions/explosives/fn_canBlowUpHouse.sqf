@@ -26,4 +26,8 @@ if([_man, true] call SFSM_fnc_isPlayer)                     exitWith{false;};
 private _braveEnough = (_man skill "courage")>=(random 1);
 if!(_braveEnough)exitWith{"no demo, no courage" call dbgmsg; false;};
 
+private _friendlies = ([_building] call SFSM_fnc_unitsInBuilding) select {side _x isEqualTo side _man;};
+if(_friendlies isNotEqualTo [])
+exitWith{false;};
+
 true;

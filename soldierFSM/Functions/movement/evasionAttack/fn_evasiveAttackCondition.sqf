@@ -1,6 +1,16 @@
 params["_man"];
-
-private _index       = (_man getVariable "SFSM_animListParams")#5;
+(_man getVariable "SFSM_animListParams")
+params [
+	"_animArr", 
+	"_waitForCompletion", 
+	"_condition", 
+	"_midFnc", 
+	"_postFnc", 
+	"_index", 
+	"_startTime", 
+	"_timer", 
+	"_eh"
+];
 private _target      = _man getVariable "SFSM_myAttackTarget";
 private _validTarget = [_target] call SFSM_fnc_functionalMan;
 private _nextAnim    = _animArr#(_index+1);

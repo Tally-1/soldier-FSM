@@ -16,8 +16,12 @@ _man setUnitPos "MIDDLE";
 _fipo synchronizeObjectsAdd [_man];
 [_fipo] call SFSM_fnc_updateFipoMarker;
 
-private _coverStance = ([_man] call SFSM_fnc_fipoStanceIndexes)#0;
-[_man,  _coverStance] call SFSM_fnc_animSetStance;
+([_man] call SFSM_fnc_fipoStanceIndexes)#0
+params["_index", "_animVar"];
+
+if(isNil "_index")then{_index = 1;};
+
+[_man,  [_index, _animVar]] call SFSM_fnc_animSetStance;
 
 _man spawn {
     sleep 1; 

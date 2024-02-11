@@ -21,6 +21,7 @@ private _animBaseMap = [
 	_dataArr append [
 		["#base", _animBaseMap],
 		["getEndPos", SFSM_fnc_OOP_getAnimEndPos],
+		["getAnimData", SFSM_fnc_OOP_getAnimData],
 		["name", _name]
 	];
 	private _map = createHashMapObject [_dataArr];

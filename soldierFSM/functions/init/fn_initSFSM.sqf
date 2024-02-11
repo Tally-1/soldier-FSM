@@ -22,20 +22,20 @@ if(isNil "dbgmsg")
 then{dbgmsg = SFSM_fnc_debugMessage};
 
 
-if(isNil "SFSM_Version")then{missionNamespace setVariable ["SFSM_Version", 0.51, true]};
+if(isNil "SFSM_Version")then{missionNamespace setVariable ["SFSM_Version", 1.33, true]};
 
+private _headlessClient = hasInterface isEqualTo false && {isServer isEqualTo false;};
 
-if ( (isServer) || {( !hasInterface && { !isServer } )} ) then {
-
-    [] spawn SFSM_fnc_serverInit;
-}; // PapaReap to let hc pass
+if(isServer 
+||{_headlessClient}) 
+then{[] spawn SFSM_fnc_serverInit}; // PapaReap: to let HC pass.
 
 if(hasInterface)then{[] spawn SFSM_fnc_initClient;};
 
 
 if(isNil 'ObjScan_Fnc_average')
 then{
-        private _noScanText = "DCO unitScanner not detected, Soldier FSM will not function properly.";
-        [_noScanText] remoteExecCall ["hint", 0];
-        diag_log _noScanText;
-    };
+    private _noScanText = "DCO unitScanner not detected, Soldier FSM will not function properly.";
+    [_noScanText] remoteExecCall ["hint", 0];
+    diag_log _noScanText;
+};

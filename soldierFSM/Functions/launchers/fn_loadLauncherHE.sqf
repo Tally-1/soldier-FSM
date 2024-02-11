@@ -24,6 +24,9 @@ _launcher params[
    ["_lnchrMag2",    nil, [[]]],
    ["_lnchrBipod",   nil, [""]]
 ];
+
+if(isNil "_lnchrMag")exitWith{};
+
 private _currentMissile = _lnchrMag#0;
 private _unitMags       = magazines _man;
 private _usable         = compatibleMagazines _launcherType;

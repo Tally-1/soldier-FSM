@@ -56,6 +56,7 @@ isNil{
     []    call SFSM_fnc_projectileCreated;
     []    call SFSM_fnc_buildingDestroyedEH;
     []    call SFSM_fnc_speechEventsMan;
+    []    call FIPO_fnc_fipoStances;
     []    call SFSM_fnc_animationMaps;
     []    call SFSM_fnc_stancePosMap;
     []    call SFSM_fnc_initAttackAnims;

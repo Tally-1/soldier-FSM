@@ -187,25 +187,23 @@ then{
 private _addons  = [] call SFSM_fnc_loadedAddons;
 SFSM_aceLoaded   = "@ace" in _addons;
 
-// getting all fipos stored in editor
-SFSM_fipositions     = [];// entities "logic" select {typeOf _x isEqualTo "SFSM_FIPO"};
-SFSM_activationZones = [];// entities "logic" select {typeOf _x isEqualTo "SFSM_FIPO"};
-SFSM_allFipos        = [];
-// {
-//     if(typeOf _x isEqualTo "SFSM_FIPO")
-//     then{SFSM_fipositions pushBack _x};
+// Getting all fipos stored in editor
+SFSM_fipositions     = []; // Entities "logic" select {typeOf _x isEqualTo "SFSM_FIPO"};
+SFSM_activationZones = []; // Entities "logic" select {typeOf _x isEqualTo "SFSM_FIPO"};
+SFSM_allFipos        = []; // List used in task manager.
+SFSM_sprinters       = []; // Simultaneous sprinters, used to cap the amount
+SFSM_cleanupObjs     = []; // Objects  programmed for deletion.
+SFSM_cleanupGrps     = []; // Groups   programmed for deletion.
+SFSM_captivesToDie   = []; // Captives programmed for death.
+SFSM_newGroups       = [];
 
-//     if(typeOf _x isEqualTo "SFSM_AZ")
-//     then{SFSM_activationZones pushBack _x};
-    
-// } forEach (entities "logic");
-
-SFSM_sprinters   = []; //simultaneous sprinters, used to cap the amount
-SFSM_cleanupObjs = []; //Objects programmed for deletion.
-SFSM_cleanupGrps = []; //Groups programmed  for deletion.
-
-
-
+// Notifying of missing unitData:
+if(SFSM_globalUD isEqualTo false
+&&{hasInterface  isEqualTo false})then{
+    private _msg = "Unitdata is localized on dedicated server, switch Global unit-data ON";
+    [_msg] remoteExec ["systemChat", 0, true];
+    [_msg] remoteExec ["diag_log", 0, true];
+};
 
 
 if(!isNil "Tally_Dev"

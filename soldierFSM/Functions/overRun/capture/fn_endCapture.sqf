@@ -17,6 +17,7 @@ if(isNull _group)then{
 
 SFSM_cleanupObjs deleteAt (SFSM_cleanupObjs find _man);
 _man setVariable ["SFSM_OriginalGroup", nil];
+_man setVariable ["SFSM_captive",     false];
 _man enableAI "all";
 _man setCaptive false;
 

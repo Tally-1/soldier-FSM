@@ -10,13 +10,22 @@ private _stanceToPosArr = [
     ["PRONE",  "DOWN"]
 ];
 
+private _stanceToAnimArr = [ 
+    ["STAND",  "amovpercmstpsraswrfldnon"],
+    ["CROUCH", "amovpknlmstpsraswrfldnon"],
+    ["PRONE",  "amovppnemstpsraswrfldnon"]
+];
+
 SFSM_unitPositions = ["UP","MIDDLE","DOWN", "AUTO"];
 SFSM_unitStances   = ["STAND","CROUCH","PRONE"];
 
-private _map = createHashMapObject [_posToStanceArr];
-SFSM_posToStanceMap = _map;
+private _posMap     = createHashMapObject [_posToStanceArr];
+SFSM_posToStanceMap = _posMap;
 
-private _newMap     = createHashMapObject [_stanceToPosArr];
-SFSM_stanceToPosMap = _newMap;
+private _stanceMap  = createHashMapObject [_stanceToPosArr];
+SFSM_stanceToPosMap = _stanceMap;
+
+private _stanceAnimMap = createHashMapObject [_stanceToAnimArr];
+SFSM_stanceToAnimMap   = _stanceAnimMap;
 
 SFSM_posToStanceMap;

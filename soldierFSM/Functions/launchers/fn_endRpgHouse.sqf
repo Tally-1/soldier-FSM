@@ -4,7 +4,7 @@ params[
 ];
 
 private _buildingVarName = [_man, "targetBuilding"] call SFSM_fnc_unitData;
-private _building        = missionNamespace getVariable _buildingVarName;
+private _building        = missionNamespace getVariable [_buildingVarName, objNull];
 private _buildingPos     = [_building] call SFSM_fnc_buildingCenterPosASL;
 private _pos             = getPosATLVisual _man;
 private _leader          = leader group _man;

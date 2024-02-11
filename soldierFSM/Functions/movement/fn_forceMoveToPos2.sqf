@@ -19,8 +19,8 @@ if(_canSprint)exitWith{
 	[_man, _pos] call SFSM_fnc_sprint;
 };
 
-if(SFSM_forceDodge)
-then{[_man, false] call Tcore_fnc_toggleAiMoveInhibitors};
+// if(SFSM_forceDodge)
+// then{[_man, false] call Tcore_fnc_toggleAiMoveInhibitors};
 
 _man setAnimSpeedCoef SFSM_sprintSpeed;
 [_man, "forcedMovement", true] call SFSM_fnc_unitData;
@@ -57,8 +57,8 @@ _man enableAI "AUTOTARGET";
 _man enableAI "FSM";
 _man setUnitCombatMode  _combatMode;
 
-if(SFSM_forceDodge)
-then{[_man, true] call Tcore_fnc_toggleAiMoveInhibitors};
+// if(SFSM_forceDodge)
+// then{[_man, true] call Tcore_fnc_toggleAiMoveInhibitors};
 
 _man setAnimSpeedCoef 1;
 [_man] call SFSM_fnc_fixPos;

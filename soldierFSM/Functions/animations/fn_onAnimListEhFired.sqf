@@ -15,21 +15,25 @@ params [
 	"_eh"
 ];
 _anim = toLowerANSI _anim;
-private _wantedAnim = _animArr#_index;
-private _continue   = [_man] call _condition; //Must return bool
-private _completed  = _index isEqualTo ((count _animArr)-1);
-private _timedOut   = time > _timer;
-private _abort      = isNil "_animArr";
-private _extAbort   = _man getVariable ["SFSM_animListAborted", false];
-private _canMove    = [_man, true] call SFSM_fnc_canRun;
+private ["_canMove"];
+private _wantedAnim      = _animArr#_index;
+private _continue        = [_man] call _condition; //Must return bool
+private _completed       = _index isEqualTo ((count _animArr)-1);
+private _timedOut        = time > _timer;
+private _abort           = isNil "_animArr";
+private _extAbort        = _man getVariable ["SFSM_animListAborted", false];
 private _ignoreWrongAnim = _man getVariable "SFSM_ignoreWrongAnim";
 
-if(_extAbort  isEqualTo true)  exitWith{true;};
-if(_abort     isEqualTo true)  exitWith{true;};
-if(_completed isEqualTo true)  exitWith{true;};
-if(_timedOut  isEqualTo true)  exitWith{true;};
-if(_continue  isEqualTo false) exitWith{true;};
-if(_canMove   isEqualTo false) exitWith{true;};
+if(_man getVariable ["SFSM_ignoreFipo", false])
+then{_canMove = [_man, true, true, true] call SFSM_fnc_canRun}
+else{_canMove = [_man, true] call SFSM_fnc_canRun};
+
+if(_extAbort  isEqualTo true)  exitWith {true;};
+if(_abort     isEqualTo true)  exitWith {true;};
+if(_completed isEqualTo true)  exitWith {true;};
+if(_timedOut  isEqualTo true)  exitWith {true;};
+if(_continue  isEqualTo false) exitWith {true;};
+if(_canMove   isEqualTo false) exitWith {true;};
 
 [_man] call _midFnc;
 

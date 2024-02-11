@@ -1,3 +1,4 @@
+sleep 0.5;
 params["_man", "_target"];
 private _animPlaying = [_man, "playingAnimList"] call SFSM_fnc_unitData;
 while{sleep 0.05; _animPlaying}do{

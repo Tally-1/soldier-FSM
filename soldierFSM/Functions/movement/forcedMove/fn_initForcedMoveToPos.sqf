@@ -12,6 +12,6 @@ _man setAnimSpeedCoef SFSM_sprintSpeed;
 [_man, "forcedMovement", true] call SFSM_fnc_unitData;
 [_man, "hasForcedMoveProned", false] call SFSM_fnc_unitData;
 
-if(SFSM_forceDodge)then{[_man, false] call Tcore_fnc_toggleAiMoveInhibitors};
+// if(SFSM_forceDodge)then{[_man, false] call Tcore_fnc_toggleAiMoveInhibitors};
 
 true;

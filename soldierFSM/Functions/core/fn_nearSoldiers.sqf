@@ -5,7 +5,8 @@ params["_man", "_radius", "_enemiesOnly", "_pos"];
 if(isNil "_pos")then{
     _pos = getPos _man;//ASLToAGL getPosASL _man;
     // _pos =[_pos#0, _pos#1];
-    };
+};
+
 private _nearSoldiers = [];
 private _nearMen = _pos nearEntities ["CAManBase", _radius];
         

@@ -19,23 +19,34 @@ params ["_man"];
 [_man, "action", "flinch"] call SFSM_fnc_unitData;
 
 private _move         = "";
-private _standmoves = [    "AmovPercMstpSrasWrflDnon_AadjPpneMstpSrasWrflDright",
-                        "AmovPercMstpSrasWrflDnon_AadjPpneMstpSrasWrflDleft",
-                        "AmovPercMstpSrasWrflDnon_AmovPpneMstpSrasWrflDnon"
-                        ];
+private _standmoves = [ 
+    "AmovPercMstpSrasWrflDnon_AadjPpneMstpSrasWrflDright",
+    "AmovPercMstpSrasWrflDnon_AadjPpneMstpSrasWrflDleft",
+    "AmovPercMstpSrasWrflDnon_AmovPpneMstpSrasWrflDnon"
+];
 
-private _kneelMoves = [    "AmovPknlMstpSrasWrflDnon_AadjPpneMstpSrasWrflDleft",
-                        "AmovPknlMstpSrasWrflDnon_AadjPpneMstpSrasWrflDright"];
+private _kneelMoves = [    
+    "AmovPknlMstpSrasWrflDnon_AadjPpneMstpSrasWrflDleft",
+    "AmovPknlMstpSrasWrflDnon_AadjPpneMstpSrasWrflDright"
+];
 
-private _proneMoves = [    //"AmovPpneMstpSrasWrflDnon_AadjPpneMstpSrasWrflDdown",
-                        "AmovPpneMstpSrasWrflDnon_AadjPpneMstpSrasWrflDleft",
-                        "AmovPpneMstpSrasWrflDnon_AadjPpneMstpSrasWrflDRight"
-                        ];
+private _proneMoves = [    
+    //"AmovPpneMstpSrasWrflDnon_AadjPpneMstpSrasWrflDdown",
+    "AmovPpneMstpSrasWrflDnon_AadjPpneMstpSrasWrflDleft",
+    "AmovPpneMstpSrasWrflDnon_AadjPpneMstpSrasWrflDRight"
+];
+
+private _postFnc = { 
+    params["_man"];
+    [_man, "amovppnemstpsraswrfldnon"] remoteExecCall ["playMoveNow", _man];
+    [_man] remoteExecCall ["SFSM_fnc_normalizeStance", _man];
+    true;
+};
 
 switch (stance _man) do {
-    case "STAND":     {_move = selectRandom _standmoves};
-    case "CROUCH":     {_move = selectRandom _kneelMoves};
-    case "PRONE":     {_move = selectRandom _proneMoves};
+    case "STAND":  {_move = selectRandom _standmoves};
+    case "CROUCH": {_move = selectRandom _kneelMoves};
+    case "PRONE":  {_move = selectRandom _proneMoves};
 }; 
 
 ["flinch_big", [_man]]   call CBA_fnc_localEvent;
@@ -46,7 +57,7 @@ switch (stance _man) do {
     [
         [_man],
         false,
-        SFSM_fnc_normalizeStance
+        _postFnc
     ]
 ] call SFSM_fnc_animThenExec;
 _man playMove _move; 

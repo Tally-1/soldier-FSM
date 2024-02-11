@@ -4,9 +4,10 @@
 //used in the SFSM_fnc_fipoPeek function.
 //the two numbers are selected based of options defined in the DCO module "fighting Position"
 
-params["_man"];
-private _fipo = [_man] call SFSM_fnc_getFipo;
-if(isNil "_fipo")exitWith{};
+params[
+	["_fipo", nil, [objNull]]
+];
+
 private _cover = [_fipo getVariable "coverstance",         "SFSM_animStances"];
 private _up    = [_fipo getVariable "shootingStance",      "SFSM_animStances"];
 private _right = [_fipo getVariable "shootingstanceright", "SFSM_rightStances"];

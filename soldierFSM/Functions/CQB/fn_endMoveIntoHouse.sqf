@@ -35,6 +35,7 @@ if((! _dodge)
 &&{! _hide}})
 then{
         _man disableAI 'path';
+        _man setUnitPos 'MIDDLE';
         [_man, "action", "holding cover indoors"] call SFSM_fnc_unitData;
         sleep SFSM_stayCoverPosTime;
         [_man, "action", "returning to normal"] call SFSM_fnc_unitData;

@@ -15,7 +15,11 @@
 // Example: [cursorObject, true] call SFSM_fnc_canDodge;
 
 private _noRpsParam = false;
-params ["_man", "_noRpsParam"];
+params [
+	["_man",        nil, [objNull]],
+	["_noRpsParam", false, [false]],
+	["_ammoClass",  1,         [0]]
+];
 if!(SFSM_allowDodging)                              exitWith{false};
 if([_man, "inFipo"] call SFSM_fnc_unitData)         exitWith{false};
 if([_man, "forcedMovement"] call SFSM_fnc_unitData) exitWith{false};
@@ -24,6 +28,10 @@ private _rps     = [_man, "roundsPrSecond"] call SFSM_fnc_unitData;
 if(isNil "_rps") exitWith{false;};
 
 private _lowRPS  = (_rps < SFSM_RpsDodgeTrigger);
+private _bigAmmo = _ammoClass >= 2.2;
+
+if(_bigAmmo)then{_lowRPS  = _rps < (SFSM_RpsDodgeTrigger*0.5)};
+
 if(_lowRPS
 &&{_noRpsParam isEqualTo false}) exitWith{false;};
 

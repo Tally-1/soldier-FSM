@@ -44,6 +44,7 @@ private _dataArr = [
         ["hasForcedMoveProned",  true],
         ["forcedMovement",      false],
         ["inFipo",              false],
+        ["fipo-sidestep",       false],
         ["isBrainDead",         false],
         ["lastbrainCheck",      0-300],
         ["lastFipoPanicCheck",  0-300],

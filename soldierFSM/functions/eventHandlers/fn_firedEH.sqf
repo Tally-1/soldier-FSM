@@ -34,6 +34,12 @@ _man addEventHandler ["Fired", {
     if(secondaryWeapon _man isNotEqualTo "")then{
         [_man] call SFSM_fnc_forcedCqbRpg;
     };
+
+    if(captive _man)then{
+        _man setCaptive false;
+        _man setVariable ["SFSM_captive", false];
+        _man enableAI "all";
+    };
     
     true;
 }];

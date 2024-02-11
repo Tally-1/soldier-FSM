@@ -1,7 +1,10 @@
 params["_man"];
 private _fipo = [_man] call SFSM_fnc_getFipo;
-if(isNil "_fipo")             exitWith{false;};
-if(_man distance _fipo < 1.1) exitWith{false;};
+
+if(isNil "_fipo")                                  exitWith{false;};
+if(_man distance _fipo < 1.1)                      exitWith{false;};
+if([_man, "fipo-sidestep"] call SFSM_fnc_unitData) exitWith{false;};
+
 if(_fipo getVariable ["destroyed", false])
 exitWith{[_man] call SFSM_fnc_getOutFipo;};
 

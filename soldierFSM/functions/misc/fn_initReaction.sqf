@@ -18,8 +18,8 @@ params    [
         ];
 
 private _lastBullet     = [_man, "Last_Close_Bullet"] call SFSM_fnc_unitData;
-private _ammoClass        = ([_ammoCFG] call ObjScan_fnc_getAmmoData) get "class ID";
-private _canDodge       = [_man] call SFSM_fnc_canDodge;
+private _ammoClass      = ([_ammoCFG] call ObjScan_fnc_getAmmoData) get "class ID";
+private _canDodge       = [_man, false, _ammoClass] call SFSM_fnc_canDodge;
 
 if(_canDodge)
 exitWith{

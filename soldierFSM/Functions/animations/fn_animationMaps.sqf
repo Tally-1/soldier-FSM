@@ -36,9 +36,9 @@ SFSM_animStances set [8,  ["aadjpercmstpsraswrfldup",   "UP",       1.31, 1.64]]
 
 /*******************************SIDE-STANCES********************************/
 SFSM_rightStances = createHashMap;
-SFSM_rightStances set [0, ["aadjppnemstpsraswrfldright", "DOWN", 0.2, 0.35,  0.45, 0.66, 1.3,  65]];
+SFSM_rightStances set [0, ["aadjppnemstpsraswrfldright", "DOWN",   0.2, 0.35,  0.45, 0.66, 1.3,  65]];
 SFSM_rightStances set [1, ["aadjpknlmstpsraswrfldright", "MIDDLE", 0.73, 1.02, 0.13, 0.25, 0.44, 79]];
-SFSM_rightStances set [2, ["aadjpercmstpsraswrfldright", "UP", 1.25, 1.43, 0.54, 0.61, 0.9,  60]];
+SFSM_rightStances set [2, ["aadjpercmstpsraswrfldright", "UP",     1.25, 1.43, 0.54, 0.61, 0.9,  60]];
 
 SFSM_leftStances = createHashMap;
 SFSM_leftStances set [0, ["aadjppnemstpsraswrfldleft", "DOWN",   0.21, 0.4,  0.78, 1.15, 1.4,  270]];

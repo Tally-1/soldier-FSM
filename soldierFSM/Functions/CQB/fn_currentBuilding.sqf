@@ -13,9 +13,8 @@
 // Return value: object || nil
 
 // Example: [player] call SFSM_fnc_currentBuilding
-
-
 params ["_man"];
+
 private _startPos = eyepos _man;
 private _endPos = getPosWorld _man vectorAdd [0, 0, 5];
 private _objs = lineIntersectsWith [_startPos, _endPos, _man, objNull, true];
