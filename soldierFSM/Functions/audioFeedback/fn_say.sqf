@@ -11,7 +11,10 @@ if(_camPos distance2D _man > 50)exitWith{};
 _man setVariable ["A3TTS_IsSpeaking", true, true];
 _man setRandomLip true;
 
-_man directSay _phrase;
+if(SFSM_audioFeedbackType isEqualTo "voice_text")
+then{_man directSay _phrase}
+else{_man say3D _phrase};
+
 sleep 3;
 
 _man setVariable ["A3TTS_IsSpeaking", false, true];

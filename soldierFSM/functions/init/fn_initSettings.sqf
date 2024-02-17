@@ -73,7 +73,7 @@ then{
         SFSM_fipoGetInDistance      = 70;     // Distance to squad leader to allow getting into a fipo 
         SFSM_allowFipoTeleport      = true;   // allow man to teleport the last 10m to get into a fipo 
         SFSM_playerSpotTeleportDist = 100;    // how far away a player must be to allow fipo-teleport        
-        SFSM_audioFeedback          = false;  // enable audio feedback from ai soldiers 
+        SFSM_audioFeedbackType      = "voice";// enable audio feedback from ai soldiers ["voice_text", "voice", "none"]
         SFSM_playerSquadFipo        = true;   // enable ai-soldiers in player-squads to get into fipos 
         SFSM_overRun                = true;   // allow overrun actions (surrender / flee / counter)
         SFSM_playerSquadOverRun     = true;   // enable ai-soldiers in player-squads to be overrun
@@ -117,6 +117,10 @@ then{
 };
 
 //Make sure settings are available globally.
+// 1.37 settings
+missionNamespace setVariable ["SFSM_audioFeedbackType",      SFSM_audioFeedbackType,      true];
+
+
 // 1.32 settings
 missionNamespace setVariable ["SFSM_captureTargets",         SFSM_captureTargets,         true];
 missionNamespace setVariable ["SFSM_captiveAutoDeath",       SFSM_captiveAutoDeath,       true];
@@ -196,7 +200,6 @@ missionNamespace setVariable ["SFSM_buddyHeal",              SFSM_buddyHeal,    
 missionNamespace setVariable ["SFSM_fipoGetInDistance",      SFSM_fipoGetInDistance,      true];
 missionNamespace setVariable ["SFSM_allowFipoTeleport",      SFSM_allowFipoTeleport,      true];
 missionNamespace setVariable ["SFSM_playerSpotTeleportDist", SFSM_playerSpotTeleportDist, true];
-missionNamespace setVariable ["SFSM_audioFeedback",          SFSM_audioFeedback,          true];
 missionNamespace setVariable ["SFSM_playerSquadFipo",        SFSM_playerSquadFipo,        true];
 missionNamespace setVariable ["SFSM_overRun",                SFSM_overRun,                true];
 missionNamespace setVariable ["SFSM_DebugType",              SFSM_DebugType,              true];

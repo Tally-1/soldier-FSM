@@ -11,7 +11,7 @@ private _path     = [_pos];
     private _dir      = (_pos getDir (getPosATLVisual _target));
     private _animData = SFSM_moveAnims call ["getMapByCfgName", [_x]];
     
-    if(isNil "_animData")exitWith{};
+    if(isNil "_animData")exitWith{[[_x, " not found in SFSM_moveAnims"]] call dbgmsg;};
 
     private _newPos   = _animData call ["getEndPos", [_pos, _dir]];
 

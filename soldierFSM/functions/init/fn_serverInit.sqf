@@ -65,10 +65,16 @@ isNil{
     []    call SFSM_fnc_storeMoveDataAllMen;
 
     // May move these lines to a separate function if more non-medical
-    // ACE eventhandlers are added.
+    // ACE / CBA eventhandlers are added.
     [
         "ace_captiveStatusChanged", 
         {_this call SFSM_fnc_ACE_onCaptiveChange;}
+    
+    ] call CBA_fnc_addEventHandler;
+    
+    [
+        "fipo_getIn", 
+        {isNil{_this call SFSM_fnc_onFipoGetIn}}
     
     ] call CBA_fnc_addEventHandler;
     

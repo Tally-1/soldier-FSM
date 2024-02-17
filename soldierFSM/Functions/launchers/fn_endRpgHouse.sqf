@@ -12,9 +12,9 @@ private _leader          = leader group _man;
 _man doMove _pos;
 _man doFollow _leader;
 
-[_man, "targetBuilding", "none"]                    call SFSM_fnc_unitData;
-[_man, "currentDestination", [0,0,0]]               call SFSM_fnc_unitData;
-[_man, "action", "none"]                            call SFSM_fnc_unitData;
+[_man, "targetBuilding",      "none"] call SFSM_fnc_unitData;
+[_man, "currentDestination", [0,0,0]] call SFSM_fnc_unitData;
+[_man, "action",              "none"] call SFSM_fnc_unitData;
 
 missionNamespace setVariable [_buildingVarName, nil];
 _man             setVariable ["SFSM_missileTarget", nil];

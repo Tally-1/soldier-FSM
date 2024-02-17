@@ -24,6 +24,7 @@ class SFSM_FIPO : Module_F
         #include "sectors\dynamicFIPO.hpp"
         #include "suppression.hpp"
         #include "suppressionKnowledge.hpp"
+        #include "twoWayCheckbox.hpp"
 
         class ModuleDescription : ModuleDescription{};
     };

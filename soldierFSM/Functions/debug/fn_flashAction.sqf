@@ -28,6 +28,10 @@ if(_flashAction isNotEqualTo "") then{
 	if(_time < 0.2)then{_time = 0.2;};
 };
 
+if(typeName _flashText isEqualTo "ARRAY")then{
+	_flashText = _flashText joinString"";
+};
+
 ["flash_action", [_man, _flashText]] call CBA_fnc_localEvent;
 
 [_man, "flashAction", _flashText] call SFSM_fnc_unitData;

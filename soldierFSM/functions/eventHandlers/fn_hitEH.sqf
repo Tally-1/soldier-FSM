@@ -65,7 +65,7 @@ _man addEventHandler ["Hit", {
     if("hunker" in _action)exitWith{};
 
     //Stop holding if the man is in a cover-pos
-    if(_action == "Holding cover position")
+    if(_action isEqualTo "Holding cover position")
     exitWith{
                 [_man, (getPos _man), true] call SFSM_fnc_endStayInCover; 
                 "end cover, hit by bullet" call dbgmsg;

@@ -19,7 +19,6 @@ private _bombed =
 [_captive, _captor] call SFSM_fnc_bombOnCapture;
 
 
-
 if(_bombed)exitWith{false;};
 
 sleep 1;

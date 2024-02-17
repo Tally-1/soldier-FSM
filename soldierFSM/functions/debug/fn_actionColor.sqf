@@ -50,10 +50,12 @@ if("Resetting brain"          isEqualTo _action)    exitWith{_aqua};
 if("Brain reset"              isEqualTo _action)    exitWith{_green};
 if("Back in action"           isEqualTo _action)    exitWith{_green};
 if("!PANIC!"                  isEqualTo _action)    exitWith{_red};
+if("Evasive attack"           isEqualTo _action)    exitWith{_orange};
 
 /*------------------------------------------------------------------------*/
 
 if("fiPo"                 in _action)             exitWith{_darkGreen};
+if("explosion"            in _action)             exitWith{_red};
 if("house is about to ex" in _action)             exitWith{_red};
 if("earching for targets" in _action)             exitWith{_darkGreen};
 if("Picking up"           in _action)             exitWith{_orange};

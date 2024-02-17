@@ -25,6 +25,7 @@ private _dataArr = [
         ["lastPeek",            0-300],
         ["lastOverRun",         0-300],
         ["prevHealTime",        0-300],
+        ["healerDeathTime",     0-300],
         ["lastCqbRpgCheck",     0    ],
         ["roundsPrSecond",      0    ],
         ["action",              "none"],

@@ -1,6 +1,7 @@
 #include "BIS_AddonInfo.hpp"
 #include "\soldierFSM\functions\cfgFunctions.hpp"
 #include "\soldierFSM\sounds\cfgRadio.hpp"
+#include "\soldierFSM\sounds\cfgSounds.hpp"
 
 class CfgPatches
 {

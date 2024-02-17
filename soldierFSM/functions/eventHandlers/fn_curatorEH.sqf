@@ -32,6 +32,13 @@ _this addEventHandler ["CuratorObjectSelectionChanged",
 
 _this addEventHandler ["CuratorWaypointPlaced", {
     params ["_curator", "_group", "_waypointID"];
+    {
+        private _holdingCover = "Holding cover" in ([_x] call SFSM_fnc_getAction);
+        if(_holdingCover)
+        then{[_x, (getPos _x), true] call SFSM_fnc_endStayInCover};
+    
+    } forEach units _group;
+
     if!(SFSM_ExcludeZcommand)exitWith{};
     _this call SFSM_fnc_zWPplaced;
 }];

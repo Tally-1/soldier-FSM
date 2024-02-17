@@ -10,10 +10,9 @@ if(_abused)then{
 	[player, _captor, true] call SFSM_fnc_endCaptureAbuse;
 };
 
-_display displayRemoveEventHandler ["KeyDown", _downId];
-_display displayRemoveEventHandler ["KeyUp",   _upId];
-
-if(!isNil "_eh")then{player removeEventHandler ["Killed", _eh];};
+if(!isNil "_downId") then {_display displayRemoveEventHandler ["KeyDown", _downId]};
+if(!isNil "_upId")   then {_display displayRemoveEventHandler ["KeyDown", _upId]};
+if(!isNil "_eh")     then {player removeEventHandler ["Killed", _eh]};
 
 player setVariable ["SFSM_captureKeyDown", nil];
 player setVariable ["SFSM_captureKeyUp",   nil];

@@ -10,8 +10,6 @@ params ["_man", "_endPos"];
 private _distanceToPos = (_man distance2D _endPos);
 private _positionIsAvailable = true;
 
-
-
 if(_distanceToPos < 2.5)
 then{
         private _soldiersInPosition = count([_man, 3] call Tcore_fnc_nearSoldiers);
@@ -29,14 +27,8 @@ if!(_positionIsAvailable)exitWith{
     [_man, _endPos] call SFSM_fnc_forceCoverDodge;
 };
 
-
 [_man] call SFSM_fnc_postCoverActions;
 
 ["take_cover_end", [_man, _endPos]] call CBA_fnc_localEvent;
+
 true;
-
-/*
-
-
-
-*/

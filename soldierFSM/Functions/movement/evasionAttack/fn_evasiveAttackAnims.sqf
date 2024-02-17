@@ -10,11 +10,7 @@ private _attackTypes = [];
     
 } forEach SFSM_attackAnims;
 
-if(_attackTypes isEqualTo [])then{ 
-    "No clear attackpath found, adding all" call dbgmsg;
-    {_attackTypes pushBack (_y get "name")} 
-    forEach SFSM_attackAnims;
-};
+if(_attackTypes isEqualTo [])exitWith{[]};
 
 
 private _moveType = selectRandom _attackTypes;
@@ -22,6 +18,9 @@ private _animMap  = SFSM_attackAnims get _moveType;
 private _anims    = _animMap get "animations";//
 private _path     = (_animMap call ["getPath", [_man, _target]]) apply {[_x#0, _x#1, 1];};
 
+[_man, _moveType] spawn SFSM_fnc_flashAction;
+
+/*WHEN DEBUGGING THIS IS USEFULL IN ORDER TO PREVIEW CHOSEN PATH*/
 //"flank right";//"zig-zag";//, "flank right", "flank left"
 // SFSM_Custom3Dpositions = [];
 // SFSM_trajectories      = [];

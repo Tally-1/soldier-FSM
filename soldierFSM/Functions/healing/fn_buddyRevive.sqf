@@ -7,11 +7,8 @@
 //              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
 
 // Description: Used with ACE medical. A soldier drags a unconscious soldier to a safe location and revives him.
-
 // Params: [_healer:object(man), _unconscious:object(man)]
-
 // Return value: none
-
 // Example: [_healer, _unconscious] spawn SFSM_fnc_buddyRevive;
 
 params["_healer", "_unconscious"]; 
@@ -20,8 +17,8 @@ if([_healer] call SFSM_fnc_isFipoMedic)then{
     private _fipo = [_healer] call SFSM_fnc_getFipo;
     _healer setVariable ["SFSM_myFipo", _fipo];
     [_healer] call SFSM_fnc_getOutFipo;
-    
 };
+
 ["buddy_revive_init", [_healer, _unconscious]] call CBA_fnc_localEvent;
 
 
@@ -41,6 +38,9 @@ private _wAction       = ["being revived by ", _healerName]joinString "";
 [_healer, _hAction]      call SFSM_fnc_setAction;
 [_unconscious, _wAction] call SFSM_fnc_setAction;
 
+// Add eventhandler to set cooldown if healer dies.
+[_healer, _unconscious] call SFSM_fnc_buddyReviveDeathEh;
+
 
 if(_inSmokeDist)then{[_healer, _unconscious] call SFSM_fnc_deploySmokeOnMan;};
 [_healer, _wPos, nil, 3, _moveCondition] call SFSM_fnc_forcedMove;
@@ -53,9 +53,6 @@ if!(_canHeal)exitWith{[_healer, _unconscious, false] call SFSM_fnc_endBuddyReviv
 
 _canHeal = [_healer, _unconscious, true, 7, true] call SFSM_fnc_canBuddyHeal;
 if!(_canHeal)exitWith{[_healer, _unconscious, false] call SFSM_fnc_endBuddyRevive;};
-
-
-
 
 //start reviving
 _healer disableAI "MOVE";

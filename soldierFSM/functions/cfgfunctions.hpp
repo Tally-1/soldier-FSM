@@ -50,7 +50,7 @@ class CfgFunctions
             class canSpeak        {};
             class speechEventsMan {};
             class getPhrase       {};
-        }
+        };
 
         class animations 
         {
@@ -78,8 +78,6 @@ class CfgFunctions
             class OOP_animEndPos       {};
             class OOP_getAnimEndPos    {};
         };
-
-        
         
         class CQB
         {
@@ -305,6 +303,7 @@ class CfgFunctions
             class attackAnimMap                                {};
             class initAttackAnims                              {};
             class zigZagPathClear                              {};
+            class evasiveAttackMidFnc                          {};
 
         };
 
@@ -488,6 +487,7 @@ class CfgFunctions
             class endFireRpgAtHouse      {};
             class missileAimed           {};
             class getHouseTargetPos      {};
+            class clearHouseImpactPos    {};
         }
 
         class dodging
@@ -561,6 +561,10 @@ class CfgFunctions
             class tempPegToFipo         {};
             class dynamicFipoActive     {};
             class assignFipo            {};
+
+            class onFipoGetIn           {};
+            class canChangeFipoDir      {};
+            class handleTwoWayFIPO      {};
             
                         
         };
@@ -1103,6 +1107,7 @@ class CfgFunctions
             class ACE_medicalGlobal       {};
             class woundedAndHealersGlobal {};
             class canMoveToRevive         {};
+            class buddyReviveDeathEh      {};
         };
 
 

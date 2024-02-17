@@ -32,17 +32,13 @@ private _versionName = "DCO soldier FSM | Actions";
 ] call cba_settings_fnc_init;
 
 [
-	"SFSM_allowHunkerDown",
-	"CHECKBOX",
-	["Allow Hunker-Down", "Determine if a soldier should be able to hunker behind cover and shoot at visible enemies. (!NOT THE SAME AS FIPO!)"],
+	"SFSM_audioFeedbackType",
+	"LIST",
+	["AI audio feedback", "Select how soldiers status is relayed to the player."],
 	_versionName,
-	false
-] call cba_settings_fnc_init;
-
-[
-	"SFSM_audioFeedback",
-	"CHECKBOX",
-	["Voice feedback", "AI soldiers informs of their status using a auto generated voice."],
-	_versionName,
-	true
+	[
+		["voice_text", "voice", "none"],
+		["Voice and text", "Voice Only", "No feedback."], 
+		1
+	]
 ] call cba_settings_fnc_init;

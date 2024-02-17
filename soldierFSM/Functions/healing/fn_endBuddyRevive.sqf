@@ -51,10 +51,8 @@ if(_asset isEqualTo "medic"
     [_healer] call SFSM_fnc_searchAndRevive;
 };
 
-
-
-
-
+_healer removeEventHandler ["Killed", (_healer getVariable "SFSM_myReviveDeathEh")];
+_healer setVariable ["SFSM_myReviveTarget", nil];
 
 if!(_success)exitWith{false;};
 

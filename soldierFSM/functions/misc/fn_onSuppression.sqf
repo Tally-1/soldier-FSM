@@ -7,9 +7,9 @@
 //              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
 
 params ["_man", "_ammoCFG", "_shooter"];
-if([_man] call SFSM_fnc_isPlayer)         exitwith{};
-if!(typeOf (vehicle _man) == typeOf _man) exitwith{};//if man is in a vehicle
-if!([_man] call SFSM_fnc_isRealMan)       exitWith{};
+if([_man] call SFSM_fnc_isPlayer)                  exitwith{};
+if(typeOf (vehicle _man) isNotEqualTo typeOf _man) exitwith{};//if man is in a vehicle
+if!([_man] call SFSM_fnc_isRealMan)                exitWith{};
 
 private _rps         = [_man, "roundsPrSecond"] call SFSM_fnc_unitData;
 private _suppression = (getSuppression _man);

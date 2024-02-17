@@ -218,5 +218,49 @@
       ["direction", 0],
       ["distance",  4.85]
     ]
+  ],
+  [
+    "evasive-right-to-crouch",
+    [
+      ["time", 1.39],
+      ["animName", "AmovPercMevaSrasWrflDfr_AmovPknlMstpSrasWrflDnon"],
+      ["stance", "CROUCH"],
+      ["speed", 12.81],
+      ["direction", 50],
+      ["distance", 0.25]
+    ]
+  ],
+  [
+    "evasive-left-to-crouch",
+    [
+      ["time", 1.35],
+      ["animName", "AmovPercMevaSrasWrflDfl_AmovPknlMstpSrasWrflDnon"],
+      ["stance", "CROUCH"],
+      ["speed", 12.94],
+      ["direction", 310],
+      ["distance", 0.26]
+    ]
+  ],
+  [
+    "evasive-left",
+    [
+      ["time", 1.32],
+      ["animName", "AmovPercMevaSrasWrflDfl"],
+      ["stance", "STAND"],
+      ["speed", 12.95],
+      ["direction", 285],
+      ["distance", 2.9]
+    ]
+  ],
+  [
+    "evasive-right",
+    [
+      ["time", 1.32],
+      ["animName", "AmovPercMevaSrasWrflDfr"],
+      ["stance", "STAND"],
+      ["speed", 12.81],
+      ["direction", 75],
+      ["distance", 2.9]
+    ]
   ]
 ];
