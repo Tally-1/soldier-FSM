@@ -7,10 +7,10 @@ class CfgVehicles
         {
             
             class Default;
-            class Edit;                    // Default edit box (i.e. text input field)
+            class Edit;                 // Default edit box (i.e. text input field)
             class Combo;                // Default combo box (i.e. drop-down menu)
-            class Checkbox;                // Default checkbox (returned value is Boolean)
-            class CheckboxNumber;        // Default checkbox (returned value is Number)
+            class Checkbox;             // Default checkbox (returned value is Boolean)
+            class CheckboxNumber;       // Default checkbox (returned value is Number)
             class Slider;               // Grabbed from the CFG-3DEN (seems to work, % type slider)
             class SliderDistance;       // 
             class SliderTime;           // 
@@ -33,4 +33,5 @@ class CfgVehicles
     #include "..\modules\fightPos\config\main.hpp"
     #include "..\modules\traits\config\main.hpp"
     #include "..\modules\activationZone\config\main.hpp"
+    #include "..\modules\virtualisationZone\config\main.hpp"
 };
