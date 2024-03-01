@@ -4,7 +4,7 @@ displayName = "Fighting Position";                              // Name displaye
 icon = "\a3\ui_f\data\igui\cfg\simpletasks\types\rifle_ca.paa"; // Map icon. Delete this entry to use the default icon.
 category = "SFSM_modules";
 
-function = "FIPO_fnc_fipo3denManager"; // Name of function triggered once conditions are met
+function           = "FIPO_fnc_fipo3denManager"; // Name of function triggered once conditions are met
 functionPriority   = 1;               // Execution priority, modules with lower number are executed first. 0 is used when the attribute is undefined
 isGlobal           = 1;              // 0 for server only execution, 1 for global execution, 2 for persistent global execution
 isTriggerActivated = 0;             // 1 for module waiting until all synced triggers are activated
