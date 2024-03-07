@@ -79,6 +79,9 @@ private _battlefield = _this;
 **When a man flinches due to heavy munitions coming in**
 ["flinch_big", [_man]]   call CBA_fnc_localEvent;
 
+**When a man flinches and does an evasive sprint**
+["flinch_sprint", [_man]] call CBA_fnc_localEvent;
+
 **When a man is evading an enemy while outdoors**
 ["dodge_outdoor", [_man, _dodgePos, _enemy]]   call CBA_fnc_localEvent;
 

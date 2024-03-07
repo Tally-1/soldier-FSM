@@ -1,7 +1,12 @@
-if (is3DEN)   exitWith{}; // I may do a 3den function here later
-if!(isServer) exitWith{};
-
-_this spawn { 
-waitUntil { time>5; };
-_this call SFSM_fnc_initVirtualZone;
-};
+ // I may do a 3den-debug function here later
+if!(is3DEN)   exitWith{};
+params[
+	["_mode",  "", [""]],
+	["_input", [], [[]]]
+];
+_input
+params[
+	["_module",          objNull,[objNull]], // Module logic
+	["_isActivated",     true,      [true]], // True when the module was activated, false when it is deactivated
+	["_isCuratorPlaced", false,     [true]]  // True if the module was placed by Zeus
+];

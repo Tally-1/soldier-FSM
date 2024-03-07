@@ -12,9 +12,12 @@
 
 // Return value: 0
 
-// Example: [_nySoldado] call SFSM_fnc_BigBulletFlinch;
+// Example: [_mySoldado] call SFSM_fnc_BigBulletFlinch;
 
 params ["_man"];
+if([_man] call SFSM_fnc_canSprintFlinch
+&&{[_man] call SFSM_fnc_sprintFlinch})
+exitWith{0;};
 
 [_man, "action", "flinch"] call SFSM_fnc_unitData;
 
@@ -60,6 +63,7 @@ switch (stance _man) do {
         _postFnc
     ]
 ] call SFSM_fnc_animThenExec;
+
 _man playMove _move; 
 
 0;

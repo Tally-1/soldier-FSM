@@ -28,7 +28,7 @@ if(""                          isEqualTo _action)    exitWith{_default};
 if("return fire"              isEqualTo _action)    exitWith{[0.8,0.3,0.4,1]};
 if("return direct fire"       isEqualTo _action)    exitWith{[0.4,0.3,0.8,1]};
 if("reacting"                 isEqualTo _action)    exitWith{[0.3,0.3,0.8,1]};
-if("flinch"                   isEqualTo _action)    exitWith{[0.6,0.2,0.2,1]};
+if("flinch"                   in        _action)    exitWith{[0.6,0.2,0.2,1]};
 
 /*------------------------------------------------------------------------*/
 

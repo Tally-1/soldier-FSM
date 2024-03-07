@@ -64,6 +64,8 @@ isNil{
     []    call SFSM_fnc_ACE_MedicalCBA;
     []    call SFSM_fnc_storeMoveDataAllMen;
 
+    {[_x] call SFSM_fnc_initVirtualZone} forEach (entities "SFSM_VZ");
+
     // May move these lines to a separate function if more non-medical
     // ACE / CBA eventhandlers are added.
     [
@@ -77,11 +79,18 @@ isNil{
         {isNil{_this call SFSM_fnc_onFipoGetIn}}
     
     ] call CBA_fnc_addEventHandler;
+
+    [
+        "new_battle", 
+        {isNil{_this call SFSM_fnc_activateBattleVzs}}
+    
+    ] call CBA_fnc_addEventHandler;
     
 };
 
 sleep 0.1;
 
+[] spawn SFSM_fnc_updateVirtualZones;
 [] spawn SFSM_fnc_TaskManager;
 [] spawn SFSM_fnc_fipoManager;
 [] spawn SFSM_fnc_AZmanager;

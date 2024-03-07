@@ -18,12 +18,13 @@ private _assignAllTime = time + 60;
 // forever loop, priority is put on the activation Zone FIPOS (Newest feature)
 while {sleep 2; true} do {
    // [true] call SFSM_fnc_handleActivationZones;
+   SFSM_fipositions = SFSM_fipositions select {!isNull _x;};
    [SFSM_fipositions, true] call SFSM_fnc_fipoAssigner;
 
    if(time > _assignAllTime)
    then{
+      SFSM_allFipos = SFSM_allFipos select {!isNull _x;};
       [SFSM_allFipos, true] call SFSM_fnc_fipoAssigner;
-      // [] call SFSM_fnc_AssigAllFipos;
       _assignAllTime = time + 120;
       "Assigned all FIPOs" call dbgmsg;
    };

@@ -3,7 +3,7 @@ params[
 ];
 private _handler = _man getVariable "SFSM_rpgHandler";
 
-_man removeEventHandler ["FiredMan", _handler];
+if(!isNil "_handler")then{_man removeEventHandler ["FiredMan", _handler];};
 
 _man setVariable ["SFSM_launched",              nil];
 _man setVariable ["SFSM_missileTargetPos",      nil];

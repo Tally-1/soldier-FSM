@@ -1,13 +1,15 @@
 params[
-    "_man", 
-    "_target", 
-    ["_accuracy", 0.1]
+    ["_man",      nil, [objNull]],
+	["_target",   nil, [objNull]],
+	["_accuracy", 0.1,       [0]]
 ];
 private _hasAim = false;
 
 isNil{
     private _distance = (_man distance _target);
     ([_man, _distance] call SFSM_fnc_weaponAimPos)params["_barrelPos", "_wpAimPos"];
+    if(isNil "_barrelPos") exitWith{_hasAim = false;};
+    if(isNil "_wpAimPos")  exitWith{_hasAim = false;};
 
     private _objsInPath = (lineIntersectsSurfaces [_barrelPos, _wpAimPos, _man, objNull, true, 1, "GEOM", "NONE", true]) apply {_x#3};
     if (_target in _objsInPath)       exitWith{_hasAim = true;};

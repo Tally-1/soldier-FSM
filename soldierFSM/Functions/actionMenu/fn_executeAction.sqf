@@ -3,7 +3,7 @@ if(SFSM_aceLoaded) exitWith{
    [_man] call SFSM_fnc_ACE_executeAction;
 };
 
-private _condition = "alive _target && {handgunWeapon player isNotEqualTo ''}";
+private _condition = "alive _target && {handgunWeapon _caller isNotEqualTo '' && {typeOf _target isEqualTo typeOf vehicle _target}}";
 private _title     = "<t color='#f8aa45'>Execute</t>";
 private _eh        = _man addAction
 

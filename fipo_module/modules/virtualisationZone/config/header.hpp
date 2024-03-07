@@ -4,7 +4,7 @@ displayName      = "Virtualization-Zone";                     // Name displayed 
 icon             = "\a3\Modules_F\Data\iconSavegame_ca.paa"; // Map icon. Delete this entry to use the default icon.
 category         = "SFSM_modules";
 canSetArea       = 1;
-canSetAreaHeight = 1;
+canSetAreaHeight = 0;
 canSetAreaShape  = 0;
 
 function           = "VZ_fnc_initVz";  // Name of function triggered once conditions are met

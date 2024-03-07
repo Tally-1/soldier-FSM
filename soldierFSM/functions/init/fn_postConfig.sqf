@@ -20,6 +20,7 @@ SFSM_lastSoundCheck     = -300;
 SFSM_lastImpactHandler  = -300;
 SFSM_lastCrater         = -300;
 SFSM_lastSprintLosCheck = -300;
+SFSM_FipoGetOutDistance = 3;
 
 
 //types of trees, simple way of distinguishing between hard and soft cover

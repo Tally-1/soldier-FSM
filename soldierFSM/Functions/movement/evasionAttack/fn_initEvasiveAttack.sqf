@@ -3,7 +3,7 @@ params[
     ["_target", nil, [objNull]]
 ];
 
-_man setAnimSpeedCoef SFSM_sprintSpeed;
+_man setAnimSpeedCoef SFSM_evasionAttackSpeed;
 _man doTarget objNull;
 _man setDir (_man getDir _target);
 _man disableAI "MOVE";

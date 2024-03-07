@@ -24,7 +24,7 @@ private _warningText = parseText
 ([
     _outLine,
     _bigTxt,_red, "!!Warning!!", _end,_end,_newLine,
-    _green, "Deleting units while they are engaged in a fight, MAY cause errors.", _end, _newLine,_newLine,
+    _green, "Deleting units while they are engaged in a fight, ",_aqua,"MAY",_end," cause errors.", _end, _newLine,_newLine,
     _khaki, "First kill them using the [end] button.", _newLine,
             "Then wait 2-5 seconds before deleting them.", _newLine,
             "If you ignore this, then do not complain about errors on screen..", _newLine,

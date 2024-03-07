@@ -31,8 +31,7 @@ if(((time - _lastBullet) > 3)
 &&{_action == "flinch"})
 then{[_x, "action", "none"] call SFSM_fnc_unitData};
 
-if((getSuppression _man) < _proneTreshHold
-&&{!([_man] call SFSM_fnc_inFipo)})
+if([_man] call SFSM_fnc_canNormalizeStance)
 exitwith{
     
 //3x spam, because ArmA, some functions do not execute for unknown reasons.

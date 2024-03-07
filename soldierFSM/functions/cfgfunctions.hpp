@@ -48,6 +48,8 @@ class CfgFunctions
             class SquadSay        {};
             class say             {};
             class canSpeak        {};
+            class canSpeakEnglish {};
+            class languageMan     {};
             class speechEventsMan {};
             class getPhrase       {};
         };
@@ -210,6 +212,9 @@ class CfgFunctions
             class getLowestPos          {};
 
             class isHeadLess            {};
+            class get360PosASL          {};
+            class hashAllObjVars        {};
+
         };
 
         class morale
@@ -284,6 +289,7 @@ class CfgFunctions
             class returnAllMen                   {};
             class getPathDistance                {};
 
+            class canNormalizeStance             {};
         };
 
         class evasionAttack
@@ -504,9 +510,7 @@ class CfgFunctions
 
             class evasion               {};
             class evadeDir              {};
-            class evasionFail           {};
-
-            
+            class evasionFail           {};          
             
         };
         
@@ -527,6 +531,10 @@ class CfgFunctions
 
             class registerFlinch        {};
             class isPinnedDown          {};
+            
+            class evasionDir2           {};
+            class canSprintFlinch       {};
+            class sprintFlinch          {};
             
         };
        
@@ -671,24 +679,24 @@ class CfgFunctions
         class hitAndRun
         {
             file = "\SoldierFSM\functions\fightPos\hitAndRun";
-            class initHitAndRunFipo   {};
-            class fipoCooldownLeft    {};
-            class firedHitAndRunEH    {};
-            class fipoTimeUntilExit   {};
-            class getOutFipoHitAndRun {};
-            class fipoRun             {};
-            class endHitAndRun        {};
+            class initHitAndRunFipo            {};
+            class fipoCooldownLeft             {};
+            class firedHitAndRunEH             {};
+            class fipoTimeUntilExit            {};
+            class getOutFipoHitAndRun          {};
+            class fipoRun                      {};
+            class endHitAndRun                 {};
         };
 
         class FUBAR
         {
             file = "\SoldierFSM\functions\fightPos\FUBAR";
-            class fipoKnockOut          {};
-            class fipoQuickRevive       {};
-            class timeSinceFipoKnockOut {};
-            class fipoIsFUBAR           {};
-            class fipoIsDestroyed       {};
-            class fipoBuildingDestroyed {};
+            class fipoKnockOut             {};
+            class fipoQuickRevive          {};
+            class timeSinceFipoKnockOut    {};
+            class fipoIsFUBAR              {};
+            class fipoIsDestroyed          {};
+            class fipoBuildingDestroyed    {};
         };
 
         class activationZones
@@ -714,6 +722,28 @@ class CfgFunctions
             class onAzSidesChanged      {};
 
         };
+
+        class virtualZone
+       {
+            file = "\SoldierFSM\functions\fightPos\virtualZone";
+            class updateVirtualZones             {};
+            class initVirtualZone                {};
+
+            class canDeActivateVz                {};
+            
+            class canActivateVz                  {};
+            class VZconditionsTrue               {};
+            class canBattleInitVz                {};
+            class unVirtualizeZone               {};
+            class virtualizeZone                 {};
+            class toggleVz                       {};
+
+            class virtualizeFipo                 {};
+            class spawnVzFipo                    {};
+            class initVzFipos                    {};
+
+            class activateBattleVzs              {};
+       };
 
         class sidestep
         {
@@ -1042,6 +1072,10 @@ class CfgFunctions
             class activeAZ3D            {};
             class AZ3DCorners           {};
 
+            class drawVrtZones          {};
+            class VZ3D                  {};
+
+
         };
 
         class debugMan
@@ -1216,6 +1250,11 @@ class CfgFunctions
             class weaponAimPos                {};
             class getAmmoData                 {};
             class getMagSplashRange           {};
+
+            class validVehicle                {};
+            class deadCrew                    {};
+            class sidesFromObjArr             {};
+            class unitsInModuleArea           {};
         };
 
         class turrets

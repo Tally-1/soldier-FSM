@@ -12,7 +12,14 @@ if(_CQB)exitWith{[_man, _enemyVehicle] spawn SFSM_fnc_doHideCQB;};
 
 private _action = [_man, "action"] call SFSM_fnc_unitData;
 if(_action isNotEqualTo "none")
-then{sleep 20; ["double action", 2] call dbgmsg};
+then{
+    private _timer = time+20;
+    waitUntil {
+        sleep 1;
+        _action = [_man] call SFSM_fnc_getAction;
+        _action isEqualTo "none" || time > _timer
+    };
+};
 
 private _coverPos = [_man] call SFSM_fnc_getCoverPos;
 if(!isNil "_coverPos")

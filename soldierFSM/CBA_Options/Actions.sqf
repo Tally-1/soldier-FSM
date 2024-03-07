@@ -37,8 +37,8 @@ private _versionName = "DCO soldier FSM | Actions";
 	["AI audio feedback", "Select how soldiers status is relayed to the player."],
 	_versionName,
 	[
-		["voice_text", "voice", "none"],
-		["Voice and text", "Voice Only", "No feedback."], 
+		["voice_text", "voice", "english", "none"],
+		["Voice and text", "Voice Only", "Only English speaking units", "No feedback."], 
 		1
 	]
 ] call cba_settings_fnc_init;

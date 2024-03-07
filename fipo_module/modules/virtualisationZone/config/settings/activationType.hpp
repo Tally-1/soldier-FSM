@@ -32,7 +32,7 @@ class activationType : Combo
 
         class overTwo
         {
-            name = "More than two sides present";
+            name = "Three sides present";
             value = 3;
         };
 

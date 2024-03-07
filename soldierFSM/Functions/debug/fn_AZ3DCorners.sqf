@@ -1,6 +1,7 @@
 params[
-	"_AZ", 
-	["_color", [1,1,1,0.8]]
+	["_AZ",             nil, [createHashmap]],
+	["_color",          [1,1,1,0.8],    [[]]],
+	["_ignoreDistance", false,       [false]]
 ];
 
 private _pos         = _AZ get "position";
@@ -12,7 +13,10 @@ if((selectMax _screenPos) > 2) exitWith{false;};
 private _camPos      = (positionCameraToWorld [0,0,0]);
 private _distance    = (_camPos distance2d _pos);
 private _maxDist     = (_AZ get "radius");
-if(_distance > _maxDist)exitWith{false;};
+
+if(_distance > _maxDist
+&&{_ignoreDistance isEqualTo false})
+exitWith{false;};
 
 (_AZ get "corners")params["_floor", "_roof", "_all"];
 private _j = 0;

@@ -3,7 +3,8 @@ private _title     = "<t color='#f8aa45'>Execute</t>";
 private _condition = { 
 	params ["_target", "_caller"];
     alive _target 
-	&& {handgunWeapon _caller isNotEqualTo ''}
+	&& {handgunWeapon _caller isNotEqualTo ''
+	&& {typeOf _target isEqualTo typeOf vehicle _target}}
 };
 
 private _function = { 

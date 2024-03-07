@@ -3,6 +3,13 @@ params[
 	["_ignoreMan", false]
 ];
 
+if (isNil "_fipo"
+|| {isNull _fipo})
+exitWith {
+	[["Fipo undefined/Null. ", round time]] call dbgmsg;
+	false;
+};
+
 // FIPO has already been taken
 private _fipoMan = [_fipo] call SFSM_fnc_fipoMan;
 

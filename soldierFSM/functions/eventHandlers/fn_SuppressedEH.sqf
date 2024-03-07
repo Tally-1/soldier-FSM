@@ -38,9 +38,6 @@ private _SuppressedEH =
 _man addEventHandler ["Suppressed", {
     params ["_unit", "_distance", "_shooter", "_instigator", "_ammoObject", "_ammoClassName", "_ammoConfig"];
     if (!alive _unit)exitWith{};
-    if((!(SFSM_TestMode)) 
-    &&{(side _man == side _shooter)})exitwith{};
-
     [_unit, _ammoClassName, _shooter] call SFSM_fnc_onSuppression;
     _man setVariable["SFSM_prevShooter", _instigator, true];
     

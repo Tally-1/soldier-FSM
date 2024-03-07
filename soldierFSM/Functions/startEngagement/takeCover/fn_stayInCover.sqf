@@ -18,6 +18,7 @@ _man disableAI "PATH";
 [_man, "pathEnabeled", false]    call SFSM_fnc_unitData;
 [_man, "action", "Holding cover position"]    call SFSM_fnc_unitData;
 _man setCombatBehaviour "STEALTH";
+_man setUnitPos "DOWN";
 
 while {sleep 0.5; _stayInCover} do {
     private _unconscious      = _man getVariable ["ace_isunconscious", false];

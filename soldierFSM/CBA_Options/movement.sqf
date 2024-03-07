@@ -40,8 +40,6 @@ private _versionName = "DCO soldier FSM | Movement";
 	true
 ] call cba_settings_fnc_init;
 
-
-
 [
 	"SFSM_allowEvasion",
 	"CHECKBOX",
@@ -58,6 +56,26 @@ private _versionName = "DCO soldier FSM | Movement";
 	["Allow evasion attack", "When rushing an enemy at close range the AI will sometimes do a evasive manouver before firing, such as Zig-Zag or a quick flank."],
 	_versionName,
 	true
+	
+] call cba_settings_fnc_init;
+
+
+[
+	"SFSM_evasionAttackSpeed",
+	"SLIDER",
+	[
+		"Evasion attack speed", 
+		"Speed coef for evasion attacks. Faster speeds makes the AI harder to hit, slower speeds makes him more accurate when moving and shooting."
+	],
+	_versionName,
+	[
+		0.7,   	//minimum 
+		2,    //max
+		1.2, 	//default
+		1,		//decimals
+		false
+	],
+	1
 	
 ] call cba_settings_fnc_init;
 

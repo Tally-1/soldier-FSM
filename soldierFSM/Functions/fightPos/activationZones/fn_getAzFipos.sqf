@@ -1,7 +1,9 @@
 params["_activationZone"];
 private _azFipos = [];
 {
-    if(typeOf _x isEqualTo "SFSM_FIPO")then{
+    if((!isNull _x)
+    &&{typeOf _x isEqualTo "SFSM_FIPO"})
+    then{
         _azFipos pushBack _x;
         _x setVariable ["AZ_FIPO", true, true];
     };

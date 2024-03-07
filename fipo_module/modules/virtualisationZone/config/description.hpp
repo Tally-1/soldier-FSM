@@ -5,9 +5,11 @@ class ModuleDescription : ModuleDescription
     "Virtualization module.",
     "This module virtualizes all FIPOs within its area.",
     "The module will ''un-virtualize'' the FIPOs once activated according to its settings.",
-    "With missons containg many FIPOs this will help performance",
-    "",
-    ""
+    "With missons containg many FIPOs this will help performance.",
+    "-----------------------------------------------------------------",
+    "!WARNING!",
+    "Do not use Activation Zones in combination with Virtualization modules,",
+    "The FIPOs will become useless upon reactivation"
 
     };
     

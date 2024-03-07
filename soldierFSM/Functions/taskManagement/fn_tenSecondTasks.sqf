@@ -12,7 +12,7 @@ _script = [] spawn SFSM_fnc_groupTasks;            waitUntil{scriptDone _script}
 _script = [] spawn SFSM_fnc_vehicleTasks;          waitUntil{scriptDone _script};
 _script = [] spawn SFSM_fnc_ACE_medicalGlobal;     waitUntil{scriptDone _script};
 _script = [] spawn SFSM_fnc_manTurretsGlobal;      waitUntil{scriptDone _script};
-
+_script = [] spawn SFSM_fnc_updateVirtualZones;    waitUntil{scriptDone _script};
 
 {
 	if((getPosATLVisual _x)#2 < (0-1))then{

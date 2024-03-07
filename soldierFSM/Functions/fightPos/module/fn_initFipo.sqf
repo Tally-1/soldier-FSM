@@ -1,8 +1,12 @@
 params["_fipo"];
+
+if (isNil "_fipo"
+|| {isNull _fipo})
+exitWith {"Fipo undefined, cannot init" call dbgmsg;};
+
 private _supKnowCoef = _fipo getVariable ["SFSM_suppressionKnowledge", 0];
 
 [_fipo] call SFSM_fnc_fipoDefineSides;
-// [_fipo] call SFSM_fnc_fipoMarker;
 [_fipo] call SFSM_fnc_moveInFipoSynced;
 
 if(_fipo getVariable "dynamicFipo") then{_fipo setVariable ["active", false];};
@@ -19,6 +23,7 @@ if(SFSM_debugger)then{
 	if(_low > _high)then{
 		"Fighting position with cover-pos higher than shooting-pos detected" call dbgmsg;
 	};
+	// [_fipo] call SFSM_fnc_fipoMarker;
 };
 
 _fipo setVectorUp [0,0,1];

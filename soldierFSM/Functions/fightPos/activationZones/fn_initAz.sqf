@@ -1,4 +1,6 @@
-params["_activationZone"];
+params[
+    ["_activationZone", nil, [objNull]]
+];
 
 private _activationSides = [_activationZone] call SFSM_fnc_getAzSides;
 private _fipos           = [_activationZone] call SFSM_fnc_getAzFipos;

@@ -13,9 +13,18 @@ if(isNil "SFSM_fipoAssigner" isEqualTo false
 SFSM_fipoAssigner = true;
 
 private _isAcAz       = _fipoList isEqualTo SFSM_activeAzFipos;
+private _validList    = _fipoList select {!isNull _x;};
 private _startTime    = time;
 private _squadLeaders = (allGroups apply {leader _x})select{[_x] call SFSM_fnc_isRealMan};
 private _excludedMen  = [];
+
+if(_validList isEqualTo [])exitWith{
+    if(_isAcAz)
+    then{SFSM_activeAzFipos = SFSM_activeAzFipos select {!isNull _x}}
+    else{SFSM_fipositions   = SFSM_fipositions select {!isNull _x}};
+
+    [[count _fipoList, " Null FIPOs were processed"]] call dbgmsg;
+};
 
 {
     if([_x] call SFSM_fnc_fipoAvailable)
@@ -29,7 +38,7 @@ private _excludedMen  = [];
     if(_isAcAz)
     then{SFSM_activeAzFipos deleteAt (SFSM_activeAzFipos find _x)};
     
-} forEach _fipoList;
+} forEach _validList;
 
 
 if(SFSM_debugger

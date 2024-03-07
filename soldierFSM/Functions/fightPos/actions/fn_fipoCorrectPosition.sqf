@@ -1,12 +1,18 @@
 params["_man"];
-private _fipo = [_man] call SFSM_fnc_getFipo;
+private _fipo      = [_man] call SFSM_fnc_getFipo;
+private _distance  = _man distance _fipo;
+private _destroyed = _fipo getVariable ["destroyed", false];
+private _tooFar    = _distance > SFSM_FipoGetOutDistance;
+private _getOut    = _destroyed || _tooFar;
 
 if(isNil "_fipo")                                  exitWith{false;};
-if(_man distance _fipo < 1.1)                      exitWith{false;};
+if(_distance < 1.1)                                exitWith{false;};
 if([_man, "fipo-sidestep"] call SFSM_fnc_unitData) exitWith{false;};
 
-if(_fipo getVariable ["destroyed", false])
-exitWith{[_man] call SFSM_fnc_getOutFipo;};
+if(_getOut)exitWith{
+    [_man] call SFSM_fnc_getOutFipo; 
+    false;
+};
 
 doStop _man;
 _man doFollow _man;

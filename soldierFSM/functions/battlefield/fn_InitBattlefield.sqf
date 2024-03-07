@@ -15,10 +15,8 @@
 
 //Example: ["unit1", "unit2"] call SFSM_fnc_initBattlefield;
 
-
-//unit 1 && unit 2 refers to the two units who first spot eachother.
+//_unitA && _unitB refers to the two units who first spot eachother.
 params ["_unitA", "_unitB"];
-
 
 "Initializing battle." call SFSM_fnc_debugMessage;
 
@@ -115,19 +113,10 @@ if(SFSM_simpleBff isEqualTo false)then{[_battlefield] call SFSM_fnc_getCoverPosi
 
 [["Battle at ", _areaName, " initialized in ", (time - _startTime), " seconds"]] call SFSM_fnc_debugMessage;
 
+_battlefield set ["currentAction", "loading terrain"];
 [_battlefield] call SFSM_fnc_bfDebugMarkers;
-
-_battlefield set ["currentAction",    "loading terrain"];
-
-
-
-// [_battlefield] spawn SFSM_fnc_battlefieldMarksmen;
-// [_battlefield] spawn SFSM_fnc_battleFieldMedicLoop;
-// [_battlefield] spawn SFSM_fnc_assignBattlefieldTurrets;
-// [_battlefield] spawn SFSM_fnc_BffOverRunLoop;
-// [_battlefield] spawn SFSM_fnc_battlefieldRescueLoop;
 [_battlefield] spawn SFSM_fnc_battlefieldPostInit;
 
-["new_battle", _battlefield] call CBA_fnc_localEvent;
+["new_battle", [_battlefield]] call CBA_fnc_localEvent;
 
 _battleKey; 

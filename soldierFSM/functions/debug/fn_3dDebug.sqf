@@ -32,6 +32,7 @@ then{
         [] call SFSM_fnc_drawAllAimLines;
         [] call SFSM_fnc_draw3Dsectors;
         [] call SFSM_fnc_drawActivationZones;
+        [] call SFSM_fnc_drawVrtZones;
 }}];
 
 
