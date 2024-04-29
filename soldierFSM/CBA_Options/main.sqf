@@ -1,4 +1,4 @@
-missionNamespace setVariable ["SFSM_Version", 1.43, true];
+missionNamespace setVariable ["SFSM_Version", 1.44, true];
 private _versionName = ["DCO soldier FSM | ", SFSM_Version] joinString "";
 
 [
@@ -95,6 +95,7 @@ private _versionName = ["DCO soldier FSM | ", SFSM_Version] joinString "";
 
 #include "\soldierFSM\CBA_Options\Actions.sqf"
 #include "\soldierFSM\CBA_Options\movement.sqf"
+#include "\soldierFSM\CBA_Options\evasionAttack.sqf"
 #include "\soldierFSM\CBA_Options\soundReaction.sqf"
 #include "\soldierFSM\CBA_Options\CQB.sqf"
 #include "\soldierFSM\CBA_Options\players.sqf"

@@ -25,4 +25,5 @@ do {
     case 1: { systemChat _text};
     case 2: { hint _text};
 };
+
 _text;

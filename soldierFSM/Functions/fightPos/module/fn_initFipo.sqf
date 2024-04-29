@@ -1,4 +1,6 @@
-params["_fipo"];
+params[
+	["_fipo", nil, [objNull]]
+];
 
 if (isNil "_fipo"
 || {isNull _fipo})

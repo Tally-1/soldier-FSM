@@ -29,10 +29,10 @@ Hence the most important should be called last.
 if(_rps > 1)                   then{[_incPos, _suppColor, _rps] call SFSM_fnc_dbgTxtRPS;};
 if(_supp > 0)                  then{[_supPos, _suppColor, _supp] call SFSM_fnc_dbgTxtSupression;};
 
-if(_forcedMovement)            then{[_man] call SFSM_fnc_dbgTxtForcedMovement;};
+if(_forcedMovement)            then{[_man]    call SFSM_fnc_dbgTxtForcedMovement;};
 if(_sprinting)                 then{[_aimPos] call SFSM_fnc_dbgTxtSprint;};
 if(_inFipo)                    then{[_eyePos] call SFSM_fnc_dbgTxtFipo;};
-if(_selected)                  then{[_man] call SFSM_fnc_dbgTxtSelectedMan;};
+if(_selected)                  then{[_man]    call SFSM_fnc_dbgTxtSelectedMan;};
 
 [_man, _supp]   call SFSM_fnc_dbgTxtAction;
 
@@ -53,9 +53,9 @@ true;
 };
 
 
-if(_excluded)                  exitWith{[_man]    call SFSM_fnc_dbgTxtExcluded;};
-if(_unconscious)               exitWith{[_aimPos] call SFSM_fnc_dbgTxtUncon;};
-if(_injured)                   exitWith{[_eyePos] call SFSM_fnc_dbgTxtInjured;};
+if(_excluded)    exitWith{[_man]    call SFSM_fnc_dbgTxtExcluded;};
+if(_unconscious) exitWith{[_aimPos] call SFSM_fnc_dbgTxtUncon;};
+if(_injured)     exitWith{[_eyePos] call SFSM_fnc_dbgTxtInjured;};
 
 [_man, _morPos] call SFSM_fnc_dbgTxtMorale;
 

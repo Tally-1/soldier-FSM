@@ -113,11 +113,20 @@ then{
         SFSM_captureTargets   = "all";       // Who can be captured | ["all", "ai", "players", "disabeled"]
         SFSM_captiveAutoDeath = 1;           // How long until a captive dies automatically. -1 = never | [-1,1,2,3,4,5]
         
-        SFSM_allowEvasionAttack = true;      // When rushing an enemy at close range the AI will sometimes do a evasive manouver before firing, such as Zig-Zag or a quick flank.
-        SFSM_evasionAttackSpeed = 1.2;        // Speed coef for evasion attacks. 1 = vanilla. 2 = twice the normal speed
+        SFSM_allowEvasionAttack    = true;   // When rushing an enemy at close range the AI will sometimes do a evasive manouver before firing, such as Zig-Zag or a quick flank.
+        SFSM_evasionAttackSpeed    = 1.2;    // Speed coef for evasive attacks. 1 = vanilla. 2 = twice the normal speed
+        SFSM_evasionAttackCoolDown = 10;     // How long between each time a soldier can execute an evasive attack.
+        SFSM_EA_ZigZag             = true;   // Enable Zig-Zag sidestep evasive attack.
+        SFSM_EA_feintPushRight     = true;   // Enable Evade left  -> push right evasive attack.
+        SFSM_EA_feintPushLeft      = true;   // Enable Evade right -> push left evasive attack.
+        SFSM_EA_flankRight         = true;   // Enable flank right evasive attack.
+        SFSM_EA_flankLeft          = true;   // Enable flank left  evasive attack.
 }; 
 
 //Make sure settings are available globally.
+// 1.44 settings
+missionNamespace setVariable ["SFSM_evasionAttackCoolDown", SFSM_evasionAttackCoolDown, true];
+
 // 1.41 settings
 missionNamespace setVariable ["SFSM_evasionAttackSpeed", SFSM_evasionAttackSpeed, true];
 

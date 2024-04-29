@@ -17,26 +17,20 @@ do {
         if(time > _tenSecondTimer)
         then{
                 _tenSecondTimer = time + 10;
-                // private _script = 
                 [] call SFSM_fnc_tenSecondTasks;
-                // waitUntil{scriptDone _script};
             };
         
         if(time > _minuteTimer)
         then{
                 _minuteTimer    = time + 60;
-                // private _script = 
                 [] call SFSM_fnc_minuteTasks;
-                // waitUntil{scriptDone _script};
             };
         
         
         if(time > _fiveMinTimer)
         then{
                 _fiveMinTimer   = time + 300;
-                // private _script = 
                 [] call SFSM_fnc_fiveMinTasks;                
-                // waitUntil{scriptDone _script};
             };
         
         private _timeSpent = time - _startTime;

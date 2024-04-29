@@ -27,6 +27,7 @@ private _dataArr = [
         ["lastOverRun",           0-300],
         ["prevHealTime",          0-300],
         ["healerDeathTime",       0-300],
+        ["lastEvasiveAttack",     0    ],
         ["lastCqbRpgCheck",       0    ],
         ["roundsPrSecond",        0    ],
         ["action",               "none"],
@@ -62,7 +63,10 @@ private _dataArr = [
         ["playingAnimList",     false],
         ["fleeCoef",                0],
         ["moveRegistry",           []],
-        ["failedForcedMoves",      []]
+        ["failedForcedMoves",      []],
+
+                /*METHODS*/
+        ["timeSinceEvasiveAttack", {time - (_self get"lastEvasiveAttack")}]
 ];
  
 /*

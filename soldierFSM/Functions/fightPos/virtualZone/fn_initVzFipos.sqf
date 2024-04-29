@@ -12,5 +12,7 @@ _fipos call BIS_fnc_initModules;
 	
 } forEach _fipos;
 
+[_fipos, true] call SFSM_fnc_fipoAssigner;
+
 
 true;
