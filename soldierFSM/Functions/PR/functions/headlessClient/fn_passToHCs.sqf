@@ -10,6 +10,10 @@
 
 if !(isServer) exitWith {};
 
+//if HC management is disabled in CBA settings, exit
+waitUntil {!isNil PR_disable_HC};
+if (PR_disable_HC) exitWith {}; 
+
 if ( ((["PR_HeadlessClient", 1] call BIS_fnc_getParamValue) == 0) || { ( !PR_Allow_HC && ((["PR_HeadlessClient", 0] call BIS_fnc_getParamValue) == 0) ) } ) exitWith {};
 
 if !(isNil "PR_PTHCs") exitWith {};

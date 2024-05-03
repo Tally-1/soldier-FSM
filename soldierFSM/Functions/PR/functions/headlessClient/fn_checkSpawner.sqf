@@ -10,6 +10,10 @@
 
 if ( !isDedicated && { isServer } ) exitWith { false };
 
+//if HC management is disabled in CBA settings, exit
+waitUntil {!isNil PR_disable_HC};
+if (PR_disable_HC) exitWith {}; 
+
 _return = if (
     ( !isServer && { hasInterface } )
     || { (isNull PR_AI_SpawnOwner) && { !(isServer) } }

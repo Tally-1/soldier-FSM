@@ -12,6 +12,10 @@
 
 if !(isServer) exitWith {};
 
+//if HC management is disabled in CBA settings, exit
+waitUntil {!isNil PR_disable_HC};
+if (PR_disable_HC) exitWith {}; 
+
 // Setup triggers functions to watch for headless clients, connect and disconnect
 pr_hc_fnc_hc1Trigger = {
     trgHC1 = createTrigger ["EmptyDetector", [0,0,0]];
