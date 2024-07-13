@@ -4,7 +4,6 @@ if!([_man, _forced]call SFSM_fnc_canResetBrain)exitWith{
 	private _msg = "Brain reset failed";
 	[_man, _msg] spawn SFSM_fnc_flashAction;
 };
-
 private _group      = group _man;
 private _side       = side _group;
 private _isLeader   = leader _group isEqualTo _man;
@@ -12,12 +11,17 @@ private _newGroup   = createGroup _side;
 private _abilities  = [_man] call SFSM_fnc_abilitiesInUse;
 private _squadIndex = [_man] call SFSM_fnc_getSquadIndex;
 
+
 [_man]                    call SFSM_fnc_deActivateMan;
 [_man, _newGroup]         call SFSM_fnc_forceGroupJoin;
 
 if(!isNull _group)then{
 	[_man, _group, _squadIndex] call SFSM_fnc_forceGroupJoin;
 }else{
+	private _SQFMData  = _group getVariable "SQFM_grpData";
+	private _copySQFSM = count units _group < 2 && {!isNil "_SQFMData"};
+	if(_copySQFSM)
+	then{[_newGroup, _SQFMData]spawn{(_this#0)setVariable["SQFM_grpData",_this#1,true]}};
 	[_man, "Original group invalid"] spawn SFSM_fnc_flashAction;
 };
 

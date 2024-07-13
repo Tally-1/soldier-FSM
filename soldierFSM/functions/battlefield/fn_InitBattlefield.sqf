@@ -19,7 +19,6 @@
 params ["_unitA", "_unitB"];
 
 "Initializing battle." call SFSM_fnc_debugMessage;
-
 private _battlefield = createHashmap;
 private _startTime   = time;
 private _dimensions  = [_unitA, _unitB] call SFSM_fnc_battlefieldDimensions;
@@ -30,6 +29,12 @@ private _sides       = [east, west, independent];
 private _markers     = [];
 private _supplies    = _centerPos nearSupplies _radius;
 
+if(!isNil "SQFM_fnc_posRadInitBattle")
+then{
+	private _battleMap = [_centerPos, _radius] call SQFM_fnc_posRadInitBattle;
+	_battlefield set ["SQFM_battleMap", _battleMap];
+	"SQFM battlemap initialized" call dbgmsg;
+};
 
 _battlefield set ["currentAction",  "initializing"];
 _battlefield set ["center",         _centerPos];
@@ -98,8 +103,8 @@ private _areaName = _battlefield get "name";
 _battlefield set ["zones", ([_battlefield] call SFSM_fnc_getZones)];
 
 {[_x, "currentBattle", _battleKey] call SFSM_fnc_vehicleData;} forEach _vehicles;
-{[_x, "currentBattle", _battleKey] call SFSM_fnc_unitData} forEach _units;
-{[_x, "currentBattle", _battleKey] call SFSM_fnc_groupData} forEach _groups; 
+{[_x, "currentBattle", _battleKey] call SFSM_fnc_unitData}     forEach _units;
+{[_x, "currentBattle", _battleKey] call SFSM_fnc_groupData}    forEach _groups; 
 
 
 //initGrid will create a hashmap containing 100 positions, and 3 arrays containing positions hidden from clusters divided by side.

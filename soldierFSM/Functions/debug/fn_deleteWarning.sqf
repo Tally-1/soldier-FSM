@@ -6,17 +6,17 @@
 //              https://thehartgen.web.app/projects/, 
 //              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
 
-private _smallTxt = "<t size='0.75'>";
-private _bigTxt   = "<t size='2'>";
+private _smallTxt    = "<t size='0.75'>";
+private _bigTxt      = "<t size='2'>";
 private _versionName = ["soldier FSM V. ", SFSM_Version] joinString "";
-private _signature = ["--> ", _versionName, " setting: "] joinString "";
-private _outLine  = "<t shadow='2'>";
-private _aqua     = "<t color='#00ffff'>";
-private _khaki    = "<t color='#acffa4'>";
-private _green    = "<t color='#83ff7f'>";
-private _red      = "<t color='#e51313'>";
-private _end      = "</t>";
-private _newLine  = "<br/>";
+private _signature   = ["--> ", _versionName, " setting: "] joinString "";
+private _outLine     = "<t shadow='2'>";
+private _aqua        = "<t color='#00ffff'>";
+private _khaki       = "<t color='#acffa4'>";
+private _green       = "<t color='#83ff7f'>";
+private _red         = "<t color='#e51313'>";
+private _end         = "</t>";
+private _newLine     = "<br/>";
 
 // private _curatorDeleted = _warningType == "curator";
 

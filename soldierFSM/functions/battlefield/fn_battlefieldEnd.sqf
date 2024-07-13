@@ -27,6 +27,7 @@ private _weaponsVarName   = _battlefield get "weapons";
 private _groupsVarName    = _battlefield get "groups";
 private _ClustersVarName  = _battlefield get "clusterData";
 private _suppliesVarName  = _battlefield get "supplies";
+private _sqfmBattle       = _battlefield get "SQFM_battleMap";
 
 private _vehicles= missionNamespace getVariable _vehicleVar;
 private _units   = missionNamespace getVariable _unitVar;
@@ -79,6 +80,12 @@ if(SFSM_simpleBff isEqualTo false)then{
 
 SFSM_Battles deleteAt _battleKey;
 _battlefield = nil;
+
+if(!isNil "_sqfmBattle")
+then{
+	_sqfmBattle set ["forcedEnd", true];
+	"SQFM battlemap Ended" call dbgmsg;
+};
 
 _endText call SFSM_fnc_debugMessage;
 

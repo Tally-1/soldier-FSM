@@ -9,12 +9,16 @@
 params ['_man', '_coverPos'];
 private _group = group _man;
 private _canTakeCover = [_group] call SFSM_fnc_groupCanDodge;
-private _lastCover   = [_man, "last_time_in_cover"] call SFSM_fnc_unitData;
-if(isNil "_lastCover")                         exitWith{};
-private _noCoverSpam = (time - _lastCover) < (SFSM_stayCoverPosTime + 120);
-if (isNil "_noCoverSpam")                      exitWith{};
-if (isNil '_coverPos')                         exitWith{};
-if (_noCoverSpam)                              exitWith{};
+private _lastCover    = [_man, "last_time_in_cover"] call SFSM_fnc_unitData;
+if(isNil "_lastCover") exitWith{};
+if(isNil '_coverPos')  exitWith{};
+
+private _coverCoolDown = SFSM_stayCoverPosTime + 180;
+private _timeSinceLast = time - _lastCover; 
+private _toSoon        = _timeSinceLast < _coverCoolDown;
+
+if (isNil "_toSoon")                           exitWith{};
+if (_toSoon)                                   exitWith{};
 if (_man getVariable ['SFSM_excluded', false]) exitWith{};
 if ([_man] call SFSM_fnc_isPlayer)             exitWith{};
 if!([_man, true] call SFSM_fnc_canRun)         exitWith{};

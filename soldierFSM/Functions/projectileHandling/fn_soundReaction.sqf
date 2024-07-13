@@ -16,11 +16,12 @@ private _weapon = ([(currentWeapon _shooter)] call BIS_fnc_itemType)#1;
 private _hasSilencer = !(((_shooter weaponAccessories currentWeapon _shooter)#0) isequalTo "");
 private _distance = SFSM_shotDistanceDef;
 
-switch (_weapon) do {
-                        case "AssaultRifle": { _distance = SFSM_shotDistanceAss;};
-                        case "MachineGun":   { _distance = SFSM_shotDistanceMac;};
-                        case "SniperRifle":  { _distance = SFSM_shotDistanceSni;};
-                    };
+switch(_weapon)do 
+{
+    case "AssaultRifle": { _distance = SFSM_shotDistanceAss;};
+    case "MachineGun":   { _distance = SFSM_shotDistanceMac;};
+    case "SniperRifle":  { _distance = SFSM_shotDistanceSni;};
+};
 
 if(_hasSilencer)then{_distance = SFSM_shotDistanceSil};
 
