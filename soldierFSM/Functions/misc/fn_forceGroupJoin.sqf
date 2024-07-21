@@ -7,11 +7,11 @@ else{[_man] joinSilent _group};
 
 while {_keepJoining} do {
 	
-	if(!isNil "_index")then{_man joinAsSilent [_group, _index];}
-    else{[_man] joinSilent _group};
-	
 	if(group _man isEqualTo _group) exitWith{_keepJoining = false;};
 	if(_timer > time)               exitWith{_keepJoining = false;};
+
+	if(!isNil "_index")then{_man joinAsSilent [_group, _index];}
+    else{[_man] joinSilent _group};
 };
 
 true;

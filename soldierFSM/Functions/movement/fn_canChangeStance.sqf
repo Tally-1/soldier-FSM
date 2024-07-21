@@ -9,6 +9,9 @@ if!(_canChange)then{
     _canChange = [_man, _newPos, true, true] call SFSM_fnc_forcedUnitPosNoAnim;
 };
 
+// Kamephis change
+sleep 1;
+
 if!(_canChange)then{
     _canChange = [_man, _newPos, true, true] call SFSM_fnc_forcedUnitPosNoAnim;
 };

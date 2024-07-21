@@ -12,6 +12,14 @@ private _versionName = "DCO soldier FSM | Medical";
 	]
 ] call cba_settings_fnc_init;
 
+[
+	"SFSM_ACE_Revive",
+	"CHECKBOX",
+	["Allow ACE revive", "Enables the ai to revive downed men on the battlefield. Beware this is a ''Insta-revive''"],
+	_versionName,
+	true
+] call cba_settings_fnc_init;
+
 
 [
 	"SFSM_medicSearchDistance",
@@ -61,7 +69,7 @@ private _versionName = "DCO soldier FSM | Medical";
 	_versionName,
 	[
 		0,   	//minimum 
-		100, 	//max
+		300, 	//max
 		0,      //default
 		0,	   //decimals
 		false

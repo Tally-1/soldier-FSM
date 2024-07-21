@@ -8,7 +8,10 @@ params[
 private _combatMode   = combatMode _man;
 private _defaultUpos  = unitPos _man;
 private _wantedStance = SFSM_posToStanceMap get (toUpper _unitPos);
-private _timer        = time + 2;
+
+// Kamephis (2 -> 5) seconds changed
+// private _timer        = time + 2;
+private _timer        = time + 5;
 private _canWait      = !isNil "_wantedStance";
 private _success      = true;
 

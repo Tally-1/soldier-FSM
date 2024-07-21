@@ -21,7 +21,7 @@ if(!isNull _group)then{
 	private _SQFMData  = _group getVariable "SQFM_grpData";
 	private _copySQFSM = count units _group < 2 && {!isNil "_SQFMData"};
 	if(_copySQFSM)
-	then{[_newGroup, _SQFMData]spawn{(_this#0)setVariable["SQFM_grpData",_this#1,true]}};
+	then{[_newGroup, _SQFMData]spawn{(_this#0)setVariable["SQFM_grpData",(_this#1),true]}};
 	[_man, "Original group invalid"] spawn SFSM_fnc_flashAction;
 };
 

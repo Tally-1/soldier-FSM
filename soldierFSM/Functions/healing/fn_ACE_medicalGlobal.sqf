@@ -22,16 +22,21 @@ if(_maxHealCount isEqualTo 0)exitWith{/*"Nobody is available for buddy-healing" 
 if(_wounded       isEqualTo []
 &&{_incapacitated isEqualTo []})exitWith{};
 
+private _hCount = count _healers;
+private _wCount = count _wounded;
+private _iCount = count _incapacitated;
+private _debug  = _iCount>0 || {_wCount>0};
 
 // Debug message detaling the number of wounded and incapacitated units on the field
-[[(count _wounded), " wounded and ", (count _incapacitated), " incapacitated on the field"]] call dbgmsg;
-[[(count _healers), " healers available..."]] call dbgmsg;
-
+if(_debug)then{
+    [[_wCount, " wounded and ", _iCount, " incapacitated on the field"]] call dbgmsg;
+    [[_hCount, " healers available..."]] call dbgmsg;
+};
 
 // Assign medic to incapacitated units.
-if(_incapacitated isNotEqualTo [])exitWith{
-    [_categorizedUnits, _maxHealCount] spawn SFSM_fnc_battlefieldRevives; 
-};
+if(_incapacitated isNotEqualTo []
+&&{SFSM_ACE_Revive isEqualTo true})
+exitWith{[_categorizedUnits, _maxHealCount] spawn SFSM_fnc_battlefieldRevives};
 
 
 // Loop through all wounded units and assign a healer to them.

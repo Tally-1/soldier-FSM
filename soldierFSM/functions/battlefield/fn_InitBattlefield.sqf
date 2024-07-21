@@ -113,8 +113,8 @@ _battlefield set ["zones", ([_battlefield] call SFSM_fnc_getZones)];
 //Records the house a soldier is inside, in said units hashmap.
 // [_battleField] spawn SFSM_fnc_assignAllBuildings;
 
-
-if(SFSM_simpleBff isEqualTo false)then{[_battlefield] call SFSM_fnc_getCoverPositionsLight;};
+if(SFSM_simpleBff isEqualTo false)
+then{[_battlefield] call SFSM_fnc_getCoverPositionsLight};
 
 [["Battle at ", _areaName, " initialized in ", (time - _startTime), " seconds"]] call SFSM_fnc_debugMessage;
 
