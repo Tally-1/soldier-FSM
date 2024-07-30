@@ -68,7 +68,6 @@ while {_keepMoving} do {
             _canSprint = [_man, _pos, 50, 20] call SFSM_fnc_canSprint;
             // _man setDestination [_pos, "DoNotPlanFormation", true];
             _man doMove _pos;
-            _man moveTo _pos;
             _man doTarget objNull;
             _man disableAI "AUTOTARGET";
             _failedMoves = _failedMoves+1;
@@ -106,9 +105,5 @@ then{[_man, true] call Tcore_fnc_toggleAiMoveInhibitors};
 _man setAnimSpeedCoef 1;
 [_man, "forcedMovement", false] call SFSM_fnc_unitData;
 [_man] call SFSM_fnc_fixPos;
-// private _currentPos = (getPos _man);
-// _man moveTo _currentPos;
-// _man doMove _currentPos;
-// _man doTarget objNull;
-// _man doFollow (leader (group _man));
+
 true;

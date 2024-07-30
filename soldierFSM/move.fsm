@@ -1,0 +1,290 @@
+/*%FSM<COMPILE "C:\Program Files (x86)\Steam\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, move">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Start",0,250,-532.299011,-969.982605,-442.299133,-919.982666,0.000000,"Start"};
+item1[] = {"End_",1,250,-237.064026,-945.120789,-147.063995,-895.120850,0.000000,"End" \n ""};
+item2[] = {"repeat",4,218,-651.079773,-939.482849,-561.078674,-889.482300,0.000000,"repeat"};
+item3[] = {"move",2,250,-526.774902,-895.315369,-436.774811,-845.315430,0.000000,"move"};
+item4[] = {"Success",4,218,-363.983795,-915.566223,-273.983765,-865.566223,0.000000,"Success"};
+item5[] = {"failed",4,4314,-368.159760,-1026.927612,-278.159729,-976.927124,0.000000,"failed"};
+item6[] = {"FSM_reset",4,218,-363.166748,-861.256226,-273.166748,-811.256226,0.000000,"FSM reset"};
+item7[] = {"nil_data",4,218,-367.292084,-971.463013,-277.292084,-921.463074,0.000000,"nil data"};
+link0[] = {0,2};
+link1[] = {0,4};
+link2[] = {0,5};
+link3[] = {0,6};
+link4[] = {0,7};
+link5[] = {2,3};
+link6[] = {3,2};
+link7[] = {3,4};
+link8[] = {3,5};
+link9[] = {3,6};
+link10[] = {3,7};
+link11[] = {4,1};
+link12[] = {5,1};
+link13[] = {6,1};
+link14[] = {7,1};
+globals[] = {0.000000,0,0,0,0,640,480,1,113,6316128,1,-764.350220,183.399857,-427.867737,-1241.276489,1030,884,1};
+window[] = {2,-1,-1,-1,-1,843,104,1128,104,3,1048};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "move";
+        class States
+        {
+                /*%FSM<STATE "Start">*/
+                class Start
+                {
+                        name = "Start";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/"(_leader getVariable ""FSM_moveParams"")" \n
+                         "params [" \n
+                         "    [""_position"",  nil, [[]]]," \n
+                         "    [""_timeLimit"", nil,  [0]]," \n
+                         "    [""_cRadius"",   nil,  [0]]" \n
+                         "];" \n
+                         "private _rpTime    = time+1;" \n
+                         "private _tries     = 0;" \n
+                         "private _startPos  = _leader getVariable ""FSM_startPos"";" \n
+                         "private _startTime = time;" \n
+                         "" \n
+                         "_leader setVariable [""FSM_endedMove"", false];" \n
+                         "" \n
+                         "_leader moveTo _destination;" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Success">*/
+                                class Success
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="End_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"if(isNil ""_cRadius"")then{_cRadius = 2};" \n
+                                         "" \n
+                                         "private _distance = _leader distance2d _destination;" \n
+                                         "private _arrived  = !isNil ""_cRadius"" &&{moveToCompleted _leader && {_distance < _cRadius}};" \n
+                                         "" \n
+                                         "" \n
+                                         "_arrived;"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "failed">*/
+                                class failed
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="End_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"if(isNil ""_cRadius"")then{_cRadius = 3};" \n
+                                         "" \n
+                                         "private _wrongCommand   = currentCommand _leader isNotEqualTo ""SCRIPTED"";" \n
+                                         "private _distance       = _leader distance2D _destination;" \n
+                                         "private _validCondition = [_leader, false, true] call SFSM_fnc_moveManFsmCondition;" \n
+                                         "private _arrived        = moveToCompleted _leader && {_distance < _cRadius};" \n
+                                         "private _moveFailed     = (_wrongCommand " \n
+                                         "								|| {_validCondition isEqualTo false " \n
+                                         "								|| {_tries > 5}})" \n
+                                         "								&& {(!isNil ""_arrived"")" \n
+                                         "								&& {_arrived isEqualTo false}};" \n
+                                         "" \n
+                                         "// if(_moveFailed)then{" \n
+                                         "// 	systemchat""Move Failed"";" \n
+                                         "// 	if(_wrongCommand)then{systemchat""Command""};" \n
+                                         "// 	if(_validCondition isEqualTo false)then{systemchat""condition""};" \n
+                                         "// };" \n
+                                         "" \n
+                                         "_moveFailed;" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "FSM_reset">*/
+                                class FSM_reset
+                                {
+                                        itemno = 6;
+                                        priority = 0.000000;
+                                        to="End_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"private _reset = _leader getVariable [""MoveFsm_Reset"", false];" \n
+                                         "" \n
+                                         "if(_reset)then{_leader setVariable [""MoveFsm_Reset"", nil]};" \n
+                                         "" \n
+                                         "_reset;"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "nil_data">*/
+                                class nil_data
+                                {
+                                        itemno = 7;
+                                        priority = 0.000000;
+                                        to="End_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_cRadius"";"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "repeat">*/
+                                class repeat
+                                {
+                                        itemno = 2;
+                                        priority = 0.000000;
+                                        to="move";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"private _distance  = _leader distance2D _destination;" \n
+                                         "private _startDist = _startPos distance _leader;" \n
+                                         "private _still     = (time-_startTime>3) && {_startDist < 2};" \n
+                                         "private _notMoving = moveTofailed _leader||{moveToCompleted _leader||{_still }};" \n
+                                         "" \n
+                                         "if(isNil ""_cRadius"")then{_cRadius = 2};" \n
+                                         "" \n
+                                         "private _repeat = _notMoving && {_distance > 3 && {time > _rpTime }};" \n
+                                         "" \n
+                                         "// if(_notMoving)then{systemChat ""not moving""};" \n
+                                         "" \n
+                                         "_repeat;"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "End_">*/
+                class End_
+                {
+                        name = "End_";
+                        itemno = 1;
+                        init = /*%FSM<STATEINIT""">*/"_leader setVariable [""FSM_endedMove"", true];" \n
+                         "private _reset = _leader getVariable ""MoveFsm_Reset"";" \n
+                         "if(!isNil ""_reset"")then{_leader setVariable [""MoveFsm_Reset"", nil]};" \n
+                         "" \n
+                         "true;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "move">*/
+                class move
+                {
+                        name = "move";
+                        itemno = 3;
+                        init = /*%FSM<STATEINIT""">*/"// systemchat ""repeat"";" \n
+                         "_rpTime = time+3;" \n
+                         "_tries  = _tries+1;" \n
+                         "" \n
+                         "_leader moveTo _destination;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Success">*/
+                                class Success
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="End_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"if(isNil ""_cRadius"")then{_cRadius = 2};" \n
+                                         "" \n
+                                         "private _distance = _leader distance2d _destination;" \n
+                                         "private _arrived  = !isNil ""_cRadius"" &&{moveToCompleted _leader && {_distance < _cRadius}};" \n
+                                         "" \n
+                                         "" \n
+                                         "_arrived;"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "failed">*/
+                                class failed
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="End_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"if(isNil ""_cRadius"")then{_cRadius = 3};" \n
+                                         "" \n
+                                         "private _wrongCommand   = currentCommand _leader isNotEqualTo ""SCRIPTED"";" \n
+                                         "private _distance       = _leader distance2D _destination;" \n
+                                         "private _validCondition = [_leader, false, true] call SFSM_fnc_moveManFsmCondition;" \n
+                                         "private _arrived        = moveToCompleted _leader && {_distance < _cRadius};" \n
+                                         "private _moveFailed     = (_wrongCommand " \n
+                                         "								|| {_validCondition isEqualTo false " \n
+                                         "								|| {_tries > 5}})" \n
+                                         "								&& {(!isNil ""_arrived"")" \n
+                                         "								&& {_arrived isEqualTo false}};" \n
+                                         "" \n
+                                         "// if(_moveFailed)then{" \n
+                                         "// 	systemchat""Move Failed"";" \n
+                                         "// 	if(_wrongCommand)then{systemchat""Command""};" \n
+                                         "// 	if(_validCondition isEqualTo false)then{systemchat""condition""};" \n
+                                         "// };" \n
+                                         "" \n
+                                         "_moveFailed;" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "FSM_reset">*/
+                                class FSM_reset
+                                {
+                                        itemno = 6;
+                                        priority = 0.000000;
+                                        to="End_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"private _reset = _leader getVariable [""MoveFsm_Reset"", false];" \n
+                                         "" \n
+                                         "if(_reset)then{_leader setVariable [""MoveFsm_Reset"", nil]};" \n
+                                         "" \n
+                                         "_reset;"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "nil_data">*/
+                                class nil_data
+                                {
+                                        itemno = 7;
+                                        priority = 0.000000;
+                                        to="End_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_cRadius"";"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "repeat">*/
+                                class repeat
+                                {
+                                        itemno = 2;
+                                        priority = 0.000000;
+                                        to="move";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"private _distance  = _leader distance2D _destination;" \n
+                                         "private _startDist = _startPos distance _leader;" \n
+                                         "private _still     = (time-_startTime>3) && {_startDist < 2};" \n
+                                         "private _notMoving = moveTofailed _leader||{moveToCompleted _leader||{_still }};" \n
+                                         "" \n
+                                         "if(isNil ""_cRadius"")then{_cRadius = 2};" \n
+                                         "" \n
+                                         "private _repeat = _notMoving && {_distance > 3 && {time > _rpTime }};" \n
+                                         "" \n
+                                         "// if(_notMoving)then{systemChat ""not moving""};" \n
+                                         "" \n
+                                         "_repeat;"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="Start";
+        finalStates[] =
+        {
+                "End_",
+        };
+};
+/*%FSM</COMPILE>*/

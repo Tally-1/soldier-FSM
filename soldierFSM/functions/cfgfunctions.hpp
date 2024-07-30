@@ -326,6 +326,23 @@ class CfgFunctions
 
         };
 
+        class fsmMovement
+        {
+            file = "\SoldierFSM\functions\movement\fsmMovement";
+            class addMoveManFsmCombatEh    {};
+			class removeMoveManFsmCombatEh {};
+			class moveManFsmCondition      {};
+			class validFsmMoveTarget       {};
+			class fsmMoveHandleTarget      {};
+			class whileManFsmMoving        {};
+			class fsmMoveHandleAutoTarget  {};
+			class initFsmMoveMan           {};
+			class execFsmMoveMan           {};
+			class endFsmMoveMan            {};
+			class fsmMoveManToPos          {};
+
+        };
+
         class sprint
         {
             file = "\SoldierFSM\functions\movement\sprint";

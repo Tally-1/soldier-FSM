@@ -11,10 +11,11 @@ if(isNil "_pos")exitWith{false;};
 private _keepMoving = true;
 
 isNil{// Forced unscheduled execution
+private _command       = currentCommand _man;
 private _distance      = ((eyePos _man) distance2d _pos);
 private _close         = _man distance _pos < 3;
-private _failed        = moveToFailed _man;
-private _completed     = moveToCompleted _man;
+private _failed        = (!(_command in ["MOVE",""]))&&{_close isEqualTo false};
+private _completed     = unitReady _man;
 private _badCompletion = _completed && {_distance > _maxDistance};
 
 
@@ -24,20 +25,15 @@ if (_distance < _maxDistance)                         exitWith{_keepMoving = fal
 if (time > _timer)                                    exitWith{_keepMoving = false};
 if!([_man, true] call SFSM_fnc_canRun)                exitWith{_keepMoving = false};
 if ([_man] call SFSM_fnc_isPlayer)                    exitWith{_keepMoving = false};
-// if ([_man, _pos] call SFSM_fnc_canSprint)             exitWith{[_man, _pos] spawn SFSM_fnc_sprint;};
-
 
 private _target        = getAttackTarget _man;
 if(!isNull _target)then{_man doTarget objNull;};
 
-
-if(_failed
-|| _badCompletion
-|| _close)
+private _repeat = _failed||{_badCompletion||{_close}};
+if(_repeat)
 then{
         
         _man doMove _pos;
-        _man moveTo _pos;
 		_man doTarget objNull;
         _man disableAI "AUTOTARGET";
 		if(SFSM_debugger

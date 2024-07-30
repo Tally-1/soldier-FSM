@@ -20,7 +20,6 @@ while{_keepMoving}do{
     then{
             // _man setDestination [_ATLPos, "DoNotPlanFormation", true];
             _man doMove _ATLPos;
-            _man moveTo _ATLPos;
             _man doTarget objNull;
             _man disableAI "AUTOTARGET";
             _man setCombatBehaviour "AWARE";
@@ -44,7 +43,6 @@ while{_keepMoving}do{
 [_man, "forcedMovement", false] call SFSM_fnc_unitData;
 
 _man doFollow (leader (group _man));
-_man moveTo _ATLPos;
 _man doMove _ATLPos;
 _man doTarget objNull;
 

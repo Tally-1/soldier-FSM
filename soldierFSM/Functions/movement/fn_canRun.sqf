@@ -29,7 +29,7 @@ isNil{//Forced unscheduled execution
     if (_ignoreLegs)exitWith{true;};
 
     private _legDamage = getAllHitPointsDamage _man#2#10;
-    if(_legDamage > 0.4)exitWith{_canRun = false;};
+    if(_legDamage > 0.4)exitWith{_canRun = false};
 };
 
 _canRun;
