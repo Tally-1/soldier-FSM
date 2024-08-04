@@ -11,6 +11,10 @@
 
 params ["_unitArray"];
 
+//if HC management is disabled in CBA settings, exit
+waitUntil {!isNil PR_disable_HC};
+if (PR_disable_HC) exitWith {}; 
+
 if ( !(isNil "PR_HC1") && { (typeName PR_HC1 == "OBJECT") } && { (name PR_AI_SpawnOwner == name PR_HC1) } ) then {
     { hcUnits pushBack _x } forEach _unitArray; publicVariable "hcUnits";
 } else {
