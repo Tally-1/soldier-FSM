@@ -2,7 +2,9 @@ params  ["_man"];
 private ["_pos"];
 private _fipo        = [_man] call SFSM_fnc_getFipo;
 private _battleField = [_man] call SFSM_fnc_getBattlefield;
+private _sqfmFnc     = !isNil "SQFM_fnc_zoneSuppressionTargets";
 
+if(_sqfmFnc)            exitWith{[_man, _fipo] call SFSM_fnc_SQFSM_getSuppressionTargetFipo};
 if(isNil "_battleField")exitWith{};
 
 private _clusterData   = missionNamespace getVariable (_battlefield get "clusterData");

@@ -38,7 +38,7 @@ if([_man, _enemy] call SFSM_fnc_initDodgeToFipo)exitWith{};
 if(_seekCover isEqualTo false)exitWith{
     // Forced unscheduled execution
     // https://community.bistudio.com/wiki/call
-    isNil {[_man, _enemy] call SFSM_fnc_evasion;};
+    isNil {[_man, _enemy] call SFSM_fnc_evasion};
 };
 
 private _dodgeToHouse = false;

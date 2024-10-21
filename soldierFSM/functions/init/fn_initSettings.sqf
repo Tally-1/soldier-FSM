@@ -10,7 +10,7 @@
 if(isNil "SFSM_allowFlinching")
 then{
         SFSM_disableSoldierFSM  = false;   //\\ disable soldier FSM
-        SFSM_DebugType          = "curator";  // What type of debug is to be used. ["always", "curator", "never"];
+        SFSM_DebugType          = "always";  // What type of debug is to be used. ["always", "curator", "never"];
         // SFSM_Debugger           = true;   // show debug-info, and 3D markers
         SFSM_allowFlinching     = true;     // Units will flinch on incoming fire.
         SFSM_allowDodging       = true;     // Units will dodge(change position) when incoming fire reaches the treshHold (SFSM_RpsDodgeTrigger).
@@ -48,15 +48,16 @@ then{
         SFSM_rpgHouse           = true;  // Allow units with RPG's to blow up houses 
         SFSM_globalUD           = false; // Global unit-data
 
-        SFSM_EmergencyHealing   = "whole-body"; // If a soldier is hit, he will inmediately go prone and heal himself, to allow for running.
-        SFSM_throwBackGrenade   = true;        //  Allow units to throw back grenades.
-        SFSM_allowHunkerDown    = false;      //   Allow units to hunker down.
-        SFSM_mgSuppression      = true;      //    Allow MG's to suppress enemy units.
-        SFSM_dragWounded        = true;     //     Allow units to drag wounded units.
-        SFSM_minEnemyDistForHealing = 30;  //      No Reviving when known enemies are within this distance.
-        SFSM_maxDragDistance    = 40;     //       Max distance a unit will drag a wounded unit.
-        SFSM_turretLeaderDist   = 40;    //        Distance to leader for turret gunners to dismount.
-        SFSM_maxSprinters       = 10;   //         Max amount of units that can sprint at the same time.
+        SFSM_EmergencyHealing   = "whole-body";  // If a soldier is hit, he will inmediately go prone and heal himself, to allow for running.
+        SFSM_ACE_Revive         = true;         //  Enables the ai to revive downed men on the battlefield. Beware this is a ''Insta-revive''
+        SFSM_throwBackGrenade   = true;        //   Allow units to throw back grenades.
+        SFSM_allowHunkerDown    = false;      //    Allow units to hunker down.
+        SFSM_mgSuppression      = true;      //     Allow MG's to suppress enemy units.
+        SFSM_dragWounded        = true;     //      Allow units to drag wounded units.
+        SFSM_minEnemyDistForHealing = 30;  //       No Reviving when known enemies are within this distance.
+        SFSM_maxDragDistance    = 40;     //        Max distance a unit will drag a wounded unit.
+        SFSM_turretLeaderDist   = 40;    //         Distance to leader for turret gunners to dismount.
+        SFSM_maxSprinters       = 10;   //          Max amount of units that can sprint at the same time.
         SFSM_disableSpecialists = "player-squads"; // "all" "player-squads" "none"
         SFSM_specRegroupDist    = 70;             //   Distance to leader for specialists to regroup.
         SFSM_BFFknowledgeType   = "both sides";  //   "one side" "both sides"
@@ -223,6 +224,7 @@ missionNamespace setVariable ["SFSM_fipoKnockOutTime",       SFSM_fipoKnockOutTi
 missionNamespace setVariable ["SFSM_storeMoraleData",        SFSM_storeMoraleData,        true];
 missionNamespace setVariable ["FIPO_idleAnimations",         FIPO_idleAnimations,         true];
 missionNamespace setVariable ["SFSM_allowEvasion",           SFSM_allowEvasion,           true];
+missionNamespace setVariable ["SFSM_ACE_Revive",             SFSM_ACE_Revive,             true];
 
 
 true;

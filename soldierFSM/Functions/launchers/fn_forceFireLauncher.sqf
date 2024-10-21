@@ -13,7 +13,7 @@ private _launcher     = secondaryWeapon _man;
 private _launcherAnim = "AmovPercMstpSrasWrflDnon_AmovPercMstpSrasWlnrDnon_end";
 private _mode         = (getArray (configFile >> "CfgWeapons" >> _launcher >> "modes"))#0;
 private _fired        = (_man getVariable ["SFSM_launched", false]);
-private _timer        = time +5;
+private _timer        = time +10;
 
 if(isNil "_mode")then{_mode = "this"};
 

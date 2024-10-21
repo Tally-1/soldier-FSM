@@ -17,7 +17,7 @@ private _canAUTOTARGET = _man checkAIFeature "AUTOTARGET";
 private _timeLimit     = time + _time;
 private _aiSettings    = [_canTARGET, _canAUTOCOMBAT, _canAUTOTARGET];
 private _params        = [_position, _timeLimit, _cRadius, _condition, _cndFreq];
-
+private _isIndoors     = !isNil{[_man] call SFSM_fnc_currentBuilding};
 
 _man setVariable ["FSM_moveParams",            _params]; // used as inside the FSM, and in the while loop
 _man setVariable ["FSM_moveAborted",             false]; // used as a condition inside the FSM 
@@ -27,6 +27,8 @@ _man setVariable ["FSM_aiSettings",        _aiSettings];
 _man setVariable ["FSM_movesRepeated",               0];
 _man setVariable ["FSM_startPos", getPosATLVisual _man];
 _man setVariable ["FSM_startTime",                time];
+_man setVariable ["FSM_CQB",                _isIndoors];
+_man setVariable ["FSM_lastCqbCheck",             time];
 
 _man disableAI "TARGET";
 _man disableAI "AUTOCOMBAT";

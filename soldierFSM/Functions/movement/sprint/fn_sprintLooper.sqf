@@ -59,7 +59,7 @@ _man addEventHandler ["AnimDone", {
         if(_needsAdjusting)then{_man setDir _wantedDir};
 
         _man setVariable ["SFSM_SprintSegmentsDone", (_i+1)];
-        [_man,  "AmovPercMevaSrasWrflDf"] remoteExecCall ["playMoveNow", 0];
+        [_man,  "AmovPercMevaSrasWrflDf"] remoteExecCall ["playMoveNow", _man];
     };
 
     true;

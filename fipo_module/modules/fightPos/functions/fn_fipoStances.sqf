@@ -29,8 +29,8 @@ private _unitPosUp   = SFSM_animStances get 7;
 
 private _sideStepDataArr = [
     ["DOWN",   [_unitPosDown#0, _unitPosDown#2, _unitPosDown#3, 1.25]],
-    ["MIDDLE", [_unitPosMid#0,  _unitPosMid#2,  _unitPosMid#3,  3.8]],
-    ["UP",     [_unitPosUp#0,   _unitPosUp#2,   _unitPosUp#3,   3.4]]
+    ["MIDDLE", [_unitPosMid#0,  _unitPosMid#2,  _unitPosMid#3,   3.8]],
+    ["UP",     [_unitPosUp#0,   _unitPosUp#2,   _unitPosUp#3,    3.4]]
 ];
 
 FIPO_sideStepAnimData = createHashMapObject [_sideStepDataArr];

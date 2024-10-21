@@ -1,6 +1,6 @@
 ["ace_medical_CriticalInjury", {
 params["_man"];
-isNil{[_man] call SFSM_fnc_onKnockOut;};
+isNil{[_man] call SFSM_fnc_onKnockOut};
 
 }] call CBA_fnc_addEventHandler;
 

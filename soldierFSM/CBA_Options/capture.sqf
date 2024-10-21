@@ -12,17 +12,20 @@ private _versionName = "DCO soldier FSM | Capture";
 	]
 ] call cba_settings_fnc_init;
 
+
+
 [
 	"SFSM_captiveAutoDeath",
 	"LIST",
 	["Captive Heart attack", "How long until a captive dies automatically."],
 	_versionName,
 	[
-		["never", "As soon as nobody is around.", "5 minutes", "10 minutes", "15 minutes", "30 minutes", "60 minutes"],
 		[-1, -2, 5, 10, 15, 30, 60], 
+		["never", "As soon as nobody is around.", "5 minutes", "10 minutes", "15 minutes", "30 minutes", "60 minutes"],
 		0
 	]
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
+
 
 [
 	"SFSM_bombOnCapture",

@@ -5,6 +5,9 @@ params [
 params [
     ["_position",  nil, [[]]]
 ];
+private _CQB = [_man] call SFSM_fnc_fsmMoveManIsCQB;
+if(_CQB)then{[_man, SFSM_overRunDistance] call SFSM_fnc_killNearEnemies};
+
 
 [_man] call SFSM_fnc_fsmMoveHandleTarget;
 [_man] call SFSM_fnc_fsmMoveHandleAutoTarget;
@@ -16,6 +19,7 @@ private _sinceStart  = time - (_man getVariable "FSM_startTime");
 private _wrongOrder  = currentCommand _man isNotEqualTo "SCRIPTED";
 private _notMoving   = _sinceStart > 10 && {_distance < 1};
 private _repeatOrder = (_wrongOrder||{_notMoving}) &&{_timeSince>2};
+
 
 if(_repeatOrder)
 then{

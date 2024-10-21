@@ -3,6 +3,8 @@ params[
 	["_suppressPos", nil,      [[]]]
 ];
 private _barrelPos  = ([_man, 5]                    call SFSM_fnc_weaponAimPos)#0;
+if(isNil "_barrelPos")exitWith{false};
+
 private _midPos     = [_barrelPos, _suppressPos, 5] call SFSM_fnc_posOnVector;
 private _lineBroken = [_barrelPos, _midPos]         call SFSM_fnc_lineBroken;
 

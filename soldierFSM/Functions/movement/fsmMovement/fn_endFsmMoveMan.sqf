@@ -27,6 +27,8 @@ _man setVariable ["FSM_conditionCheckTime", nil];
 _man setVariable ["FSM_moveStart",          nil];
 _man setVariable ["FSM_movesRepeated",      nil];
 _man setVariable ["FSM_moveAborted",        nil];
+_man setVariable ["FSM_CQB",                nil];
+_man setVariable ["FSM_lastCqbCheck",       nil];
 
 if(!isNil "SFSM_fnc_unitData") 
 then{[_man, "forcedMovement", false] call SFSM_fnc_unitData};

@@ -38,12 +38,8 @@ if([_man, _targetPos] call SFSM_fnc_canSprint)exitWith{
 
 };
 
-private _timer     = time + 3.2;
-private _calculate = [_man, _targetPos, 3] spawn SFSM_fnc_calculatePath;
 [_man, "Calculating path"] spawn SFSM_fnc_flashAction;
-
-
-waitUntil {(scriptDone _calculate) || (_timer < time); };
+[_man, _targetPos, 3.2]    call  SFSM_fnc_calculatePath;
 
 private _path = _man getVariable "SFSM_currentPath";
 if(isNil "_path")exitWith{

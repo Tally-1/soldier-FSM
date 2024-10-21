@@ -5,43 +5,40 @@
 //              https://github.com/Tally-1, 
 //              https://thehartgen.web.app/projects/, 
 //              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
-
-private _timeLimit = 30;
-params["_man", "_destination", "_timeLimit"];
-
+params[
+    ["_man",         nil,[objNull]],
+    ["_destination", nil,     [[]]],
+    ["_timeLimit",    10,       [0]]
+];
+private _agent     = objNull;
 private _start     = getPos _man;
+private _distance  = _start distance _destination;
 private _timer     = time + _timeLimit;
 private _behaviour = behaviour _man;
 
-if(_behaviour isEqualTo "ERROR")exitwith{};
+// No need to calculate a path on minor distances
+if(_distance < 10)               exitwith{};
+if(_behaviour isEqualTo "ERROR") exitwith{};
 
-private _agent     = (calculatePath ["man", _behaviour, _start, _destination]);
-_agent setVariable ["SFSM_pathOwner", _man];
 
-[_agent] call SFSM_fnc_PathCalculated;
+// make sure no frames pass until eventhandlers and variables are in place
+isNil{
+    _agent     = (calculatePath ["man", _behaviour, _start, _destination]);
+	_agent addEventHandler ["PathCalculated", SFSM_fnc_pathCalculated];
+    _agent setVariable ["SFSM_pathOwner", _man];
+	_man   setVariable ["SFSM_currentPath",nil];
+};
+
+// retrieve _path if possible.
 private _path = _man getVariable "SFSM_currentPath";
-
 waitUntil {
-    sleep 0.1;
     _path = _man getVariable "SFSM_currentPath";
     (!isNil "_path") || (_timer < time);
- };
+};
 
-// if(isNull _agent)exitWith{};
 
-if(isNil "_path")exitWith{deleteVehicle _agent;};
-
-private _nPath = [];
-{
-    private _pos = ASLToATL _x;
-    if((_pos#2)<0)then{_pos = [_pos#0,_pos#1,0]};
-    
-    _nPath pushBackUnique _pos;
-
-} forEach _path;
-
-_man setVariable ["SFSM_currentPath", _nPath]; 
+if(isNil "_path")exitWith{deleteVehicle _agent};
 
 deleteVehicle _agent;
 
-true;
+_path;

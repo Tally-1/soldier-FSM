@@ -28,7 +28,8 @@ while {sleep 1; _distance > _maxDistance} do {
 
 //look for and engage close enemies.
 // private _killEnemies = 
-[_man, _maxTime] call SFSM_fnc_CQBTargetEnemies;
+// [_man, _maxTime] call SFSM_fnc_CQBTargetEnemies;
+[_man, 30] call SFSM_fnc_killNearEnemies;
 // waitUntil{scriptDone _killEnemies};
 
 
