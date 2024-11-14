@@ -14,7 +14,7 @@ if!([_man] call SFSM_fnc_hasAmmoForWeapon)                  exitWith {false;};
 if!([_man, true] call SFSM_fnc_canRun)                      exitWith {false;};
 if!([_target] call SFSM_fnc_functionalMan)                  exitWith {false;};
 
-private _noLOS = [eyePos _man, eyePos _target, _man, _target] call SFSM_fnc_lineBroken;
+private _noLOS = [eyePos _man, eyePos _target, [_man, _target]] call SFSM_fnc_lineBroken;
 if (_noLOS)                                                 exitWith {false;};
 if (_man call SFSM_fnc_unitIndoor)                          exitWith {false;};
 if (_target call SFSM_fnc_unitIndoor)                       exitWith {false;};

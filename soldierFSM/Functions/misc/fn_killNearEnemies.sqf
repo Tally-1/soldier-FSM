@@ -15,13 +15,16 @@ if(_count > 0)
 then{
         private _action    = [_man, "action"] call SFSM_fnc_unitData;
         private _killTimer = time + 10;
-        private _actionTxt = "!Targeting Enemy!";
-
-        if(_count > 1)
-        then{_actionTxt = [_actionTxt, "(",_foreachIndex+1,"/",_count,")"]joinString""};
-        [_man, "action", _actionTxt] call SFSM_fnc_unitData;
         
-        {[_man,_x,_killTimer] call SFSM_fnc_attackNearEnemy}forEach _enemies;
+        {
+                private _actionTxt = "!Targeting Enemy!";
+                if(_count > 1)
+                then{_actionTxt = [_actionTxt, "(",_foreachIndex+1,"/",_count,")"]joinString""};
+
+                [_man, "action", _actionTxt] call SFSM_fnc_unitData;
+                [_man,_x,_killTimer] call SFSM_fnc_attackNearEnemy;
+
+        }forEach _enemies;
 
         [_man, "action", _action] call SFSM_fnc_unitData;    
 };

@@ -53,6 +53,7 @@ if(_asset isEqualTo "medic"
 
 _healer removeEventHandler ["Killed", (_healer getVariable "SFSM_myReviveDeathEh")];
 _healer setVariable ["SFSM_myReviveTarget", nil];
+_healer setVariable ["SFSM_reviving", false, true];
 
 if!(_success)exitWith{false;};
 

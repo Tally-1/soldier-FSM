@@ -39,7 +39,7 @@ _man addEventHandler ["Suppressed", {
     params ["_unit", "_distance", "_shooter", "_instigator", "_ammoObject", "_ammoClassName", "_ammoConfig"];
     if (!alive _unit)exitWith{};
     [_unit, _ammoClassName, _shooter] call SFSM_fnc_onSuppression;
-    _man setVariable["SFSM_prevShooter", _instigator, true];
+    _man setVariable["SFSM_prevShooter", _shooter, true];
     
 }];
 

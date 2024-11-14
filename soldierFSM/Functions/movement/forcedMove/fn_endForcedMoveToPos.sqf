@@ -14,3 +14,4 @@ _man setAnimSpeedCoef 1;
 if(SFSM_forceDodge)then{[_man, true] call Tcore_fnc_toggleAiMoveInhibitors};
 
 _man setUnitCombatMode  _combatMode;
+_man setUnitPos "AUTO";

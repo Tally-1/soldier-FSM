@@ -24,7 +24,7 @@ _nearFipoMen = [_fipo, _nearFipoMen] call Tcore_fnc_sortByDist;
 
 	private _healerPos  = aimPos _x;
 	private _woundedPos = aimPos _wounded;
-	private _canSee     = ([_healerPos, _woundedPos, _x, _wounded] call SFSM_fnc_lineBroken)isEqualTo false;
+	private _canSee     = ([_healerPos, _woundedPos, [_x, _wounded]] call SFSM_fnc_lineBroken)isEqualTo false;
 
 	if(_canSee)exitWith{_healer = _x;};
 	

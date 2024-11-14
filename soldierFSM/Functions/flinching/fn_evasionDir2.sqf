@@ -16,7 +16,7 @@ private _positions = [
 	if!(isNil "_evasionPos")
 	exitWith{};
 	
-	if!([aimPos _man, _x, _man] call SFSM_fnc_lineBroken)
+	if!([aimPos _man, _x, [_man]] call SFSM_fnc_lineBroken)
 	exitWith{_evasionPos = _x;};
 	
 } forEach _positions;

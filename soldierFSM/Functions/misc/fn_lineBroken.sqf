@@ -1,13 +1,28 @@
 params[
 	["_startPosASL", nil,          [[]]],
 	["_endPosASL",   nil,          [[]]],
-	["_ignoreObj1",  objNull, [objNull]],
-	["_ignoreObj2",  objNull, [objNull]]
+    ["_ignoreList",  [],           [[]]]
 ];
 
-private _linebreaks = lineIntersectsSurfaces [_startPosASL, _endPosASL, _ignoreObj1, _ignoreObj2, true, 3];
+private _count  = count _ignoreList;
+private _needed = 2-_count;
+if(_needed > 0)
+then{
+    for"_i"from 1 to _needed do
+    {_ignoreList pushBack objNull}
+};
 
-_linebreaks = _linebreaks select {(_x#3) isKindOf "man" isEqualTo false;};
+private _linebreaks = lineIntersectsSurfaces [_startPosASL, _endPosASL, (_ignoreList#0), (_ignoreList#1), true, 5];
+
+// Select objects that are not men, nor in the ignoreList
+_linebreaks = _linebreaks select { 
+    private _object         = _x#3;
+    private _isMan          = _object isKindOf "man";// isEqualTo false;
+    private _ignored        = _object in _ignoreList;
+    private _validLineBreak = (_isMan isEqualTo false && {_ignored isEqualTo false})||{isNull _object};
+    
+    _validLineBreak;
+};
 
 private _broken = _linebreaks isNotEqualTo [];
 

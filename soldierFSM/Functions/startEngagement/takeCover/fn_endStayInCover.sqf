@@ -24,7 +24,8 @@ _man enableAI "PATH";
 _man setCombatBehaviour "AWARE";
 
 
-if(_hitByBullet)
+if(_hitByBullet
+&&{[_man, true] call SFSM_fnc_canDodge})
 exitWith{
             private _enemyPos = getPos (_man getVariable "SFSM_enemy");
             if(!isNil "_enemyPos")then{_evadePos = _enemyPos};

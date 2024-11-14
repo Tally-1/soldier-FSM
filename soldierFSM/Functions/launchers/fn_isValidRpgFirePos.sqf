@@ -15,7 +15,7 @@ private _linebreaks = lineIntersectsSurfaces [_firePosASL, _topPos, _shooter, ob
 private _buildings  = _linebreaks select {(_x#3) isKindOf "house"};
 if(_buildings isNotEqualTo [])exitWith{};
 
-private _noLOS = [_firePosASL, _targetPosASL, _shooter, _targetObj] call SFSM_fnc_lineBroken;
+private _noLOS = [_firePosASL, _targetPosASL, [_shooter, _targetObj]] call SFSM_fnc_lineBroken;
 if(_noLOS)exitWith{};
 
 _validPos = true;

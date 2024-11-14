@@ -22,9 +22,9 @@ if(_canSprint)exitWith{
 };
 
 
-private _alreadyMoving = (_man getVariable ["FSM_moveEnded", true])isEqualTo false;
-if(_alreadyMoving)
-exitWith{[_man, "Move failed, already moving"] spawn SFSM_fnc_flashAction};
+// private _alreadyMoving = (_man getVariable ["FSM_moveEnded", true])isEqualTo false;
+// if(_alreadyMoving)
+// exitWith{[_man, "Move failed, already moving"] spawn SFSM_fnc_flashAction};
 
 private _canRun = [_man,true] call SFSM_fnc_canRun;
 if!(_canRun)

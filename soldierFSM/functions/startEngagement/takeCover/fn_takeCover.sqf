@@ -26,7 +26,7 @@ if!(_canTakeCover)                             exitWith{[["taking cover blocked 
 
 [_man] call SFSM_fnc_initTakeCover;
 
-if!([_man] call SFSM_fnc_manAvailable)
+if!([_man] call SFSM_fnc_availableAiSoldier)
 exitWith{'unit too busy to take cover' call dbgmsg};
 
 if(_man call SFSM_fnc_unitInDoor 

@@ -2,7 +2,7 @@ params [
     ["_man",nil,[objNull]] // The man that will move.
 ];
 private _prevVal   = _man getVariable "FSM_CQB";
-private _lastCheck = _man getVariable "FSM_lastCqbCheck";
+private _lastCheck = _man getVariable ["FSM_lastCqbCheck",time-1];
 private _time      = time - _lastCheck;
 if(_time<1)exitWith{_prevVal};
 

@@ -20,6 +20,8 @@ private _aimPos         = ASLToAGL(aimPos _man);
 private _eyePos         = ASLToAGL(eyePos _man);
 private _inFipo         = [_man, "inFipo"] call SFSM_fnc_unitData;
 private _zombie         = [_man, "isBrainDead"] call SFSM_fnc_unitData;
+private _revving        = _man getVariable ["SFSM_reviving", false];
+private _suppressing    = _man getVariable ["SFSM_suppressing", false];
 
 /*
 3D icons works in layers, the last one to be added is on the top.
@@ -53,9 +55,12 @@ true;
 };
 
 
-if(_excluded)    exitWith{[_man]    call SFSM_fnc_dbgTxtExcluded;};
-if(_unconscious) exitWith{[_aimPos] call SFSM_fnc_dbgTxtUncon;};
-if(_injured)     exitWith{[_eyePos] call SFSM_fnc_dbgTxtInjured;};
+if(_excluded)    exitWith{[_man]    call SFSM_fnc_dbgTxtExcluded};
+if(_unconscious) exitWith{[_aimPos] call SFSM_fnc_dbgTxtUncon};
+if(_injured)     exitWith{[_eyePos] call SFSM_fnc_dbgTxtInjured};
+if(_suppressing) exitWith{[_aimPos] call SFSM_fnc_dbgTxtSuppressing};
+if(_revving)     exitWith{[_aimPos] call SFSM_fnc_dbgTxtRevving};
+
 
 [_man, _morPos] call SFSM_fnc_dbgTxtMorale;
 

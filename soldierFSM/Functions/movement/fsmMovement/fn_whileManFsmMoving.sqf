@@ -42,7 +42,7 @@ then{
 
     if(!isNil "SFSM_fnc_flashAction")
     then{[_man, _msg] spawn SFSM_fnc_flashAction}
-    else{_msg call dbgm};
+    else{_msg call dbgmsg};
 
     sleep 0.1;
 };

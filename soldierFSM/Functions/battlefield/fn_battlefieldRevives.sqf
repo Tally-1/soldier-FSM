@@ -16,7 +16,9 @@ private _assignedHealers = [];
 	if(_pos#2 < 0)then{_x setPos [_pos#0, _pos#1, 0.2];};//ACE ground break fix
 	private _reviver =  [_x, _healers, _assignedHealers] call SFSM_fnc_nearestValidReviver;
 	
-	if(!isNil "_reviver")then{
+	if(!isNil "_reviver"
+	&&{!(_reviver getVariable["SFSM_reviving", false])})
+	then{
             [_reviver, _x] spawn SFSM_fnc_buddyRevive;
 			_assignedHealers pushBack _reviver;
     }else{
