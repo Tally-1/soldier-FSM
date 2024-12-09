@@ -4,6 +4,18 @@
 */
 
 private _versionName = "DCO soldier FSM | Headless Client";
+//disable initialization of all HC related functions
+[
+    "PR_disable_HC",
+    "CHECKBOX",
+    ["Disable all Headless Client management", "Disables SFSM Headless Client management, does not affect SFSM running on units itself."],
+    _versionName,
+    true,
+    2,
+    {},
+    true
+
+] call CBA_fnc_addSetting;
 
 [
     "PR_Allow_HC",

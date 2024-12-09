@@ -14,6 +14,10 @@
 
 if !(isServer) exitWith {};
 
+//if HC management is disabled in CBA settings, exit
+waitUntil {!isNil PR_disable_HC};
+if (PR_disable_HC) exitWith {}; 
+
 if (isNil "PR_Allow_HC") then { PR_Allow_HC = false; publicVariable "PR_Allow_HC"; };
 if (isNil "PR_Use_HC") then { PR_Use_HC = false; publicVariable "PR_Use_HC"; };
 if (isNil "PR_HC1_Present") then { PR_HC1_Present = false; publicVariable "PR_HC1_Present"; };
