@@ -6,7 +6,7 @@ private _versionName = "DCO soldier FSM | Movement";
 	["Flinch", "Units will flinch on incoming fire."],
 	_versionName,
 	true
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
 	"SFSM_flinchStopDodge",
@@ -14,7 +14,7 @@ private _versionName = "DCO soldier FSM | Movement";
 	["flinch Stops Dodge", "if this is toggled then the unit will stop running towards cover and instead flinch"],
 	_versionName,
 	false
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
 	"SFSM_FlinchCoolDown",
@@ -29,7 +29,7 @@ private _versionName = "DCO soldier FSM | Movement";
 		false
 	],
 	1
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 
 [
@@ -38,7 +38,7 @@ private _versionName = "DCO soldier FSM | Movement";
 	["Dodge", "Units will dodge (change position) when incoming fire reaches the dodge-trigger-treshHold (SFSM_RpsDodgeTrigger)."],
 	_versionName,
 	true
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
 	"SFSM_allowEvasion",
@@ -47,7 +47,7 @@ private _versionName = "DCO soldier FSM | Movement";
 	_versionName,
 	true
 
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 
 [
@@ -63,7 +63,7 @@ private _versionName = "DCO soldier FSM | Movement";
 		false
 	],
 	1
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 
 [
@@ -79,7 +79,7 @@ private _versionName = "DCO soldier FSM | Movement";
 		false
 	],
 	1
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 
 [
@@ -95,7 +95,7 @@ private _versionName = "DCO soldier FSM | Movement";
 		false
 	],
 	1
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
 	"SFSM_DodgeTimer",
@@ -110,7 +110,7 @@ private _versionName = "DCO soldier FSM | Movement";
 		false
 	],
 	1
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 
 [
@@ -126,7 +126,7 @@ private _versionName = "DCO soldier FSM | Movement";
 		false
 	],
 	1
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 
 [
@@ -142,7 +142,7 @@ private _versionName = "DCO soldier FSM | Movement";
 		false
 	],
 	1
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 
 [
@@ -151,7 +151,7 @@ private _versionName = "DCO soldier FSM | Movement";
 	["Dodge indoors", "Toggle if a soldier can dodge / take cover while indoors."],
 	_versionName,
 	true
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 
 [
@@ -160,7 +160,7 @@ private _versionName = "DCO soldier FSM | Movement";
 	["Dodge, player groups", "Allows units in a group lead by a player to dodge / hide. Dodging can be frustrating for players who like to micro-manage their AI"],
 	_versionName,
 	false
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 
 [
@@ -169,7 +169,7 @@ private _versionName = "DCO soldier FSM | Movement";
 	["No zeus dodge", "stop units that have been given waypoints by a curator from dodging"],
 	_versionName,
 	false
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 
 [
@@ -185,7 +185,7 @@ private _versionName = "DCO soldier FSM | Movement";
 		false
 	],
 	1
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 
 [
@@ -195,7 +195,7 @@ private _versionName = "DCO soldier FSM | Movement";
 	_versionName,
 	true
 
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
 	"SFSM_stayCoverPosTime",
@@ -210,7 +210,7 @@ private _versionName = "DCO soldier FSM | Movement";
 		false
 	],
 	1
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 
 [
@@ -219,7 +219,7 @@ private _versionName = "DCO soldier FSM | Movement";
 	["panic upon lack of cover", "Yip's much wanted eyelid trench, if no cover is found upon battle-start the unit panics for about 2 seconds"],
 	_versionName,
 	false
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 
 [
@@ -235,5 +235,5 @@ private _versionName = "DCO soldier FSM | Movement";
 		false
 	],
 	1
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 

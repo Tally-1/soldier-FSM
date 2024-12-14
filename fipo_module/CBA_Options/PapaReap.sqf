@@ -14,7 +14,7 @@ private _versionName = "DCO soldier FSM | Headless Client";
     true,
     {},
     true
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
     "PR_Use_HC",
@@ -25,7 +25,7 @@ private _versionName = "DCO soldier FSM | Headless Client";
     true,
     {},
     true
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
     "PR_HC1",
@@ -36,4 +36,4 @@ private _versionName = "DCO soldier FSM | Headless Client";
     true,
     {},
     true
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;

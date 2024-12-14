@@ -6,7 +6,7 @@ private _versionName = "DCO soldier FSM | Actions";
 	["Emergency rearm", "Soldiers pick up launchers, machineGuns and ammo from killed soldiers."],
 	_versionName,
 	true
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
 	"SFSM_throwBackGrenade",
@@ -14,7 +14,7 @@ private _versionName = "DCO soldier FSM | Actions";
 	["Throw back Grenade", "Enables soldiers to throw back incoming handgrenades."],
 	_versionName,
 	true
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
 	"SFSM_reactFireCoolDown",
@@ -29,7 +29,7 @@ private _versionName = "DCO soldier FSM | Actions";
 		false
 	],
 	1
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
 	"SFSM_audioFeedbackType",
@@ -41,4 +41,4 @@ private _versionName = "DCO soldier FSM | Actions";
 		["Voice and text", "Voice Only", "Only English speaking units", "No feedback."], 
 		1
 	]
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;

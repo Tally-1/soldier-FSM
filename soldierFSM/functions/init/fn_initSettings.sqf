@@ -6,6 +6,14 @@
 //              https://thehartgen.web.app/projects/, 
 //              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
 
+
+missionNamespace setVariable ["SFSM_enableCustomEH",  false, true];//using the A3 2.10 eventhandler, this setting is here for legacy reasons
+missionNamespace setVariable ["SFSM_forceDodge",      true,  true];
+missionNamespace setVariable ["SFSM_Debugger",        false, true];
+missionNamespace setVariable ["SFSM_FlinchTreshHold", 1,     true];
+
+if(true)exitWith{};
+
 //Set default settings unless previously defined (usually via CBA settings)
 if(isNil "SFSM_allowFlinching")
 then{
@@ -152,21 +160,20 @@ missionNamespace setVariable ["SFSM_shotDistanceSni",  SFSM_shotDistanceSni, tru
 missionNamespace setVariable ["SFSM_shotDistanceSil",  SFSM_shotDistanceSil, true];
 missionNamespace setVariable ["SFSM_captureAbuseProb", SFSM_captureAbuseProb,true];
 missionNamespace setVariable ["SFSM_cptrAbuseProbPlr", SFSM_cptrAbuseProbPlr,true];
-missionNamespace setVariable ["SFSM_captureExecProb",  SFSM_captureExecProb,true];
-missionNamespace setVariable ["SFSM_cptrExecProbPlr",  SFSM_cptrExecProbPlr,true];
-missionNamespace setVariable ["SFSM_cptrPlrEscProb",   SFSM_cptrPlrEscProb,true];
-missionNamespace setVariable ["SFSM_cptrPlrEscTime",   SFSM_cptrPlrEscTime,true];
+missionNamespace setVariable ["SFSM_captureExecProb",  SFSM_captureExecProb, true];
+missionNamespace setVariable ["SFSM_cptrExecProbPlr",  SFSM_cptrExecProbPlr, true];
+missionNamespace setVariable ["SFSM_cptrPlrEscProb",   SFSM_cptrPlrEscProb,  true];
+missionNamespace setVariable ["SFSM_cptrPlrEscTime",   SFSM_cptrPlrEscTime,  true];
+
 
 // pre 1.21 settings
-missionNamespace setVariable ["SFSM_FlinchTreshHold",    1,                     true];
+
 // missionNamespace setVariable ["SFSM_ProneTreshHold",    SFSM_ProneTreshHold,    true];
 missionNamespace setVariable ["SFSM_FlinchCoolDown",    SFSM_FlinchCoolDown,    true];
 missionNamespace setVariable ["SFSM_RpsDodgeTrigger",   SFSM_RpsDodgeTrigger,   true];
 missionNamespace setVariable ["SFSM_DodgeCoolDown",     SFSM_DodgeCoolDown,     true];
 missionNamespace setVariable ["SFSM_DodgeDistance",     SFSM_DodgeDistance,     true];
 missionNamespace setVariable ["SFSM_DodgeTimer",        SFSM_DodgeTimer,        true];
-missionNamespace setVariable ["SFSM_forceDodge",        true,                   true]; 
-missionNamespace setVariable ["SFSM_Debugger",          false,                  true]; 
 missionNamespace setVariable ["SFSM_noCoverPanic",      SFSM_noCoverPanic,      true];
 missionNamespace setVariable ["SFSM_reactFireCoolDown", SFSM_reactFireCoolDown, true];
 missionNamespace setVariable ["SFSM_ExcludeZcommand",   SFSM_ExcludeZcommand,   true];
@@ -174,7 +181,7 @@ missionNamespace setVariable ["SFSM_PlayerGrpDodge",    SFSM_PlayerGrpDodge,    
 missionNamespace setVariable ["SFSM_hideFromVehicles",  SFSM_hideFromVehicles,  true];
 missionNamespace setVariable ["SFSM_AtSpecHuntVehicles",SFSM_AtSpecHuntVehicles,true];
 missionNamespace setVariable ["SFSM_disableSoldierFSM", SFSM_disableSoldierFSM, true];
-missionNamespace setVariable ["SFSM_enableCustomEH",    false,                  true];//using the A3 2.10 eventhandler, this setting is here for legacy reasons
+
 missionNamespace setVariable ["SFSM_allowFlinching",    SFSM_allowFlinching,    true];
 missionNamespace setVariable ["SFSM_allowDodging",      SFSM_allowDodging,      true];
 missionNamespace setVariable ["SFSM_panicCoef",         SFSM_panicCoef,         true];

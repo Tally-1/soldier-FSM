@@ -6,7 +6,7 @@ private _versionName = "DCO soldier FSM | Evasion Attack";
 	_versionName,
 	true
 	
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
 	"SFSM_evasionAttackSpeed",
@@ -25,7 +25,7 @@ private _versionName = "DCO soldier FSM | Evasion Attack";
 	],
 	1
 	
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 
 [
@@ -45,7 +45,7 @@ private _versionName = "DCO soldier FSM | Evasion Attack";
 	],
 	1
 	
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 
 [
@@ -55,7 +55,7 @@ private _versionName = "DCO soldier FSM | Evasion Attack";
 	_versionName,
 	true
 	
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
 	"SFSM_EA_feintPushRight",
@@ -64,7 +64,7 @@ private _versionName = "DCO soldier FSM | Evasion Attack";
 	_versionName,
 	true
 	
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 
 [
@@ -74,7 +74,7 @@ private _versionName = "DCO soldier FSM | Evasion Attack";
 	_versionName,
 	true
 	
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
 	"SFSM_EA_flankRight",
@@ -83,7 +83,7 @@ private _versionName = "DCO soldier FSM | Evasion Attack";
 	_versionName,
 	true
 	
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
 	"SFSM_EA_flankLeft",
@@ -92,4 +92,4 @@ private _versionName = "DCO soldier FSM | Evasion Attack";
 	_versionName,
 	true
 	
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;

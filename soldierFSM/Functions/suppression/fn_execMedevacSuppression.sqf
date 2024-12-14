@@ -15,7 +15,7 @@ private _count  = selectMin[count _friendlies,count _hostiles];
 for "_i" from 0 to _count-1 do {
     private _shooter = _friendlies#_i;
     private _target  = _hostiles#_i;
-    [_healer, _mainEnemy, _action] spawn SFSM_fnc_engageAndSuppress;
+    [_shooter, _target, _action] spawn SFSM_fnc_engageAndSuppress;
 };
 
 [[_count, " medevac suppression-targets assigned"]] call dbgmsg;

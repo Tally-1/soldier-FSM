@@ -1,13 +1,13 @@
-missionNamespace setVariable ["SFSM_Version", 1.47, true];
+missionNamespace setVariable ["SFSM_Version", 1.48, true];
 private _versionName = ["DCO soldier FSM | ", SFSM_Version] joinString "";
 
 [
-	"SFSM_disableSoldierFSM",
+	"SFSM_disablefipo_module",
 	"CHECKBOX",
 	["Disable soldier FSM", "Disables all functions upon mission-init"],
 	_versionName,
 	false
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
 	"SFSM_DebugType",
@@ -19,7 +19,7 @@ private _versionName = ["DCO soldier FSM | ", SFSM_Version] joinString "";
 		["Never", "Only when in Curator-mode", "Always"], 
 		1
 	]
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 
 [
@@ -28,7 +28,7 @@ private _versionName = ["DCO soldier FSM | ", SFSM_Version] joinString "";
 	["Prevent sprint-rubberbanding", "Rubberbanding units sometimes occurs on high-load missions, if checked this feature tries to mitigate it. It will however freeze the unit for 10ms"],
 	_versionName,
 	false
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 
 [
@@ -44,7 +44,7 @@ private _versionName = ["DCO soldier FSM | ", SFSM_Version] joinString "";
 		false
 	],
 	1
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 
 [
@@ -57,7 +57,7 @@ private _versionName = ["DCO soldier FSM | ", SFSM_Version] joinString "";
 		["Both sides needs knowledge", "Start battle as soon as one unit spots another"], 
 		1
 	]
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 
 [
@@ -66,7 +66,7 @@ private _versionName = ["DCO soldier FSM | ", SFSM_Version] joinString "";
 	["Battlefield Framework Light", "Remove Caching of Terrain objects. Will improve performance, but units taking cover will become slightly dumber."],
 	_versionName,
 	true
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
 	"SFSM_spawnBffActions",
@@ -74,7 +74,7 @@ private _versionName = ["DCO soldier FSM | ", SFSM_Version] joinString "";
 	["Spawn Battlefield Framework Actions", "Spawns the functions called during a battle in a separate thread, bad for performance but ensures that the loop does not get destroyed when an error occurs."],
 	_versionName,
 	true
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
 	"SFSM_globalUD",
@@ -82,7 +82,7 @@ private _versionName = ["DCO soldier FSM | ", SFSM_Version] joinString "";
 	["Global unit-data", "(experimental), Set this to false to reduce net-traffic. May affect client-players debug-mode."],
 	_versionName,
 	false
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
 	"SFSM_storeMoraleData",
@@ -90,19 +90,19 @@ private _versionName = ["DCO soldier FSM | ", SFSM_Version] joinString "";
 	["Store Morale Data", "If MoraleData should be stored in the unitData hashmap (mainly used for debugging)"],
 	_versionName,
 	false
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 
-#include "\soldierFSM\CBA_Options\Actions.sqf"
-#include "\soldierFSM\CBA_Options\movement.sqf"
-#include "\soldierFSM\CBA_Options\evasionAttack.sqf"
-#include "\soldierFSM\CBA_Options\soundReaction.sqf"
-#include "\soldierFSM\CBA_Options\CQB.sqf"
-#include "\soldierFSM\CBA_Options\players.sqf"
-#include "\soldierFSM\CBA_Options\specialists.sqf"
-#include "\soldierFSM\CBA_Options\vehicles.sqf"
-#include "\soldierFSM\CBA_Options\overrun.sqf"
-#include "\soldierFSM\CBA_Options\capture.sqf"
-#include "\soldierFSM\CBA_Options\FIPO.sqf"
-#include "\soldierFSM\CBA_Options\medical.sqf"
-#include "\soldierFSM\functions\PR\customCBA.sqf"
+#include "\fipo_module\CBA_Options\Actions.sqf"
+#include "\fipo_module\CBA_Options\movement.sqf"
+#include "\fipo_module\CBA_Options\evasionAttack.sqf"
+#include "\fipo_module\CBA_Options\soundReaction.sqf"
+#include "\fipo_module\CBA_Options\CQB.sqf"
+#include "\fipo_module\CBA_Options\players.sqf"
+#include "\fipo_module\CBA_Options\specialists.sqf"
+#include "\fipo_module\CBA_Options\vehicles.sqf"
+#include "\fipo_module\CBA_Options\overrun.sqf"
+#include "\fipo_module\CBA_Options\capture.sqf"
+#include "\fipo_module\CBA_Options\FIPO.sqf"
+#include "\fipo_module\CBA_Options\medical.sqf"
+#include "\fipo_module\CBA_Options\PapaReap.sqf"

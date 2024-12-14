@@ -6,7 +6,7 @@ private _versionName = "DCO soldier FSM | Overrun";
 	["Enable overrun behaviour", "Allow overrun actions (surrender / flee / counter-attack)"],
 	_versionName,
 	true
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
 	"SFSM_playerSquadOverRun",
@@ -14,7 +14,7 @@ private _versionName = "DCO soldier FSM | Overrun";
 	["Overrun behaviour on player-squads", "Enable ai-soldiers in player-squads to be overrun"],
 	_versionName,
 	true
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
 	"SFSM_overRunDistance",
@@ -28,7 +28,7 @@ private _versionName = "DCO soldier FSM | Overrun";
 		0,	    //decimals
 		false
 	]
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
 	"SFSM_allowPanic",
@@ -36,7 +36,7 @@ private _versionName = "DCO soldier FSM | Overrun";
 	["Allow Panic", "If checked soldiers will Panic under the right conditions."],
 	_versionName,
 	true
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 
 [
@@ -45,4 +45,4 @@ private _versionName = "DCO soldier FSM | Overrun";
 	["Allow Surrender", "If checked then soldiers will Surrender under the right conditions."],
 	_versionName,
 	true
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;

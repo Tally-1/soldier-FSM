@@ -14,7 +14,7 @@ private _enemies        = [];
     private _position = _x#0;
     
     if(alive _unitObj
-    &&{!(_thisSide == civilian)
+    &&{_thisSide != civilian
     &&{_enemy
     &&{_unitObj isKindOf "land"}}})
     then{

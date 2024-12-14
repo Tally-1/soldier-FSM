@@ -22,6 +22,7 @@ private _greenTeal   = [0.5, 1, 0.3, 1];
 
 
 if(""                          isEqualTo _action)    exitWith{_default};
+if("none"                      isEqualTo _action)    exitWith{_default};
 
 /*------------------------------------------------------------------------*/
 
@@ -32,6 +33,8 @@ if("flinch"                   in        _action)    exitWith{[0.6,0.2,0.2,1]};
 
 /*------------------------------------------------------------------------*/
 
+if("Medevac suppression"      isEqualTo _action)    exitWith{_green};
+if("Battlefield suppression"  isEqualTo _action)    exitWith{_greenTeal};
 if("! Suppressed !"           isEqualTo _action)    exitWith{_red};
 if("Fleeing  "                isEqualTo _action)    exitWith{_lightOrange};
 if("Fleeing"                  isEqualTo _action)    exitWith{_red};

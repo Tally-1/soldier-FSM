@@ -10,7 +10,7 @@ private _versionName = "DCO soldier FSM | Specialists";
 		["Disable for all squads", "Disable for player squads only", "No squads disabled"], 
 		1
 	]
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 
 [
@@ -19,7 +19,7 @@ private _versionName = "DCO soldier FSM | Specialists";
 	["AT hunt vehicles", "Units with launchers will target enemy vehicles instead of hiding."],
 	_versionName,
 	true
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 
 [
@@ -28,7 +28,7 @@ private _versionName = "DCO soldier FSM | Specialists";
 	["MG's suppress enemy", "Enables mahcinegun suppression at the start of an engagement"],
 	_versionName,
 	true
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 
 [
@@ -44,7 +44,7 @@ private _versionName = "DCO soldier FSM | Specialists";
 		false
 	],
 	1
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 
 [
@@ -53,7 +53,7 @@ private _versionName = "DCO soldier FSM | Specialists";
 	["Marksman FSM", "Enables snipers / marksmen with long-range scopes to hunt for High Value Targets on the battlefield."],
 	_versionName,
 	true
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
 	"SFSM_maxHuntTime",
@@ -68,7 +68,7 @@ private _versionName = "DCO soldier FSM | Specialists";
 		false
 	],
 	1
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
 	"SFSM_huntCooldown",
@@ -83,4 +83,34 @@ private _versionName = "DCO soldier FSM | Specialists";
 		false
 	],
 	1
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
+
+[
+	"SFSM_maxMgs",
+	"SLIDER",
+	["Max machine Gunners", "The maximum amount of machine-gunners in a squad, if the number is less than this the soldiers in the squad will look for machineguns on the battleField and pick them up."],
+	_versionName,
+	[
+		0,   //minimum 
+		16, //max
+		4, //default
+		0, //decimals
+		false
+	],
+	1
+] call CBA_fnc_addSetting;
+
+[
+	"SFSM_maxAts",
+	"SLIDER",
+	["Max AT Soldiers", "The maximum amount of Anti Tank soldiers in a squad, if the number is less than this the soldiers in the squad will look for launchers on the battleField and pick them up."],
+	_versionName,
+	[
+		0,   //minimum 
+		16, //max
+		4, //default
+		0, //decimals
+		false
+	],
+	1
+] call CBA_fnc_addSetting;

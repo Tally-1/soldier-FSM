@@ -6,7 +6,7 @@
 params[
     ["_shooter", nil,    [objNull]], // the man who will suppress the enemy 
     ["_target",  nil, [objNull,[]]], // the enemy (Man or position) who will be suppressed 
-    ["_find",    nil,           []]  // If set to true an algorythm will be called to find the best position to suppress at (shoot at)
+    ["_find",    nil,       [true]]  // If set to true an algorythm will be called to find the best position to suppress at (shoot at)
 ];
 private _suppressTarget = _target;
 private _timer          = time+4;

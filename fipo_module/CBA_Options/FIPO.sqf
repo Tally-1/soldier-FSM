@@ -12,7 +12,7 @@ private _versionName = "DCO soldier FSM | Fighting Positions (FIPO)";
 		0,	    //decimals
 		false
 	]
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 
 
@@ -22,7 +22,7 @@ private _versionName = "DCO soldier FSM | Fighting Positions (FIPO)";
 	["Snap into fighting position", "Makes it easier for ai to get into position by teleporting the last 10m. (only happens when outside the range defined below)"],
 	_versionName,
 	true
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 
 
@@ -38,7 +38,7 @@ private _versionName = "DCO soldier FSM | Fighting Positions (FIPO)";
 		0,	    //decimals
 		false
 	]
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
 	"SFSM_fipoKnockOutTime",
@@ -52,7 +52,7 @@ private _versionName = "DCO soldier FSM | Fighting Positions (FIPO)";
 		0,	    //decimals
 		false
 	]
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 
 [
@@ -61,7 +61,7 @@ private _versionName = "DCO soldier FSM | Fighting Positions (FIPO)";
 	["Player squad fighting position", "enable ai-soldiers in player-squads to get into fipos "],
 	_versionName,
 	false
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 
 [
@@ -70,4 +70,4 @@ private _versionName = "DCO soldier FSM | Fighting Positions (FIPO)";
     ["Idle animations", "A random animation from this list is played while the soldier is idle. When editing make sure commas and quotation-signs are written correctly."],
     _versionName,
     "['Acts_Executioner_Squat', 'Acts_AidlPercMstpSlowWrflDnon_pissing', 'Acts_AidlPercMstpSlowWrflDnon_warmup03', 'Acts_AidlPercMstpSnonWnonDnon_warmup_7_loop', 'Acts_AidlPercMstpSnonWnonDnon_warmup_6_loop']"
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;

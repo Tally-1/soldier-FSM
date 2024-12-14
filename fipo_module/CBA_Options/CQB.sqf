@@ -13,7 +13,7 @@ private _versionName = "DCO soldier FSM | Close Quarter Combat (CQB)";
 		false
 	],
 	1
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
 	"SFSM_CQBunitCap",
@@ -28,7 +28,7 @@ private _versionName = "DCO soldier FSM | Close Quarter Combat (CQB)";
 		false
 	],
 	1
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
 	"SFSM_clearHouse",
@@ -36,7 +36,7 @@ private _versionName = "DCO soldier FSM | Close Quarter Combat (CQB)";
 	["Clear houses", "Allows AI to clear buildings room by room."],
 	_versionName,
 	true
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
 	"SFSM_rpgHouse",
@@ -44,7 +44,7 @@ private _versionName = "DCO soldier FSM | Close Quarter Combat (CQB)";
 	["RPG houses", "Allow units with launchers to fire their launchers at buildings with enemies inside."],
 	_versionName,
 	true
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
 	"SFSM_houseDemolition",
@@ -52,4 +52,4 @@ private _versionName = "DCO soldier FSM | Close Quarter Combat (CQB)";
 	["House Demolition", "Allow units with explosives in their backPack to blow up houses. (!DANGER!)"],
 	_versionName,
 	true
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;

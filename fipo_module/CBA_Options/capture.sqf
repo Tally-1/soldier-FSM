@@ -10,7 +10,7 @@ private _versionName = "DCO soldier FSM | Capture";
 		["all", "ai", "players", "nobody"], 
 		0
 	]
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 
 
@@ -39,7 +39,7 @@ private _versionName = "DCO soldier FSM | Capture";
 		2,  //    decimals
 		true
 	]
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
 	"SFSM_captureExplosive",
@@ -51,7 +51,7 @@ private _versionName = "DCO soldier FSM | Capture";
 		["GBU", "Grenade", "Largest explosive in Inventory"], 
 		1
 	]
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
 	"SFSM_captureAbuseProb",
@@ -65,7 +65,7 @@ private _versionName = "DCO soldier FSM | Capture";
 		1,  //    decimals
 		true
 	]
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
 	"SFSM_cptrAbuseProbPlr",
@@ -79,7 +79,7 @@ private _versionName = "DCO soldier FSM | Capture";
 		1,  //    decimals
 		true
 	]
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
 	"SFSM_captureExecProb",
@@ -93,7 +93,7 @@ private _versionName = "DCO soldier FSM | Capture";
 		1,  //    decimals
 		true
 	]
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
 	"SFSM_cptrExecProbPlr",
@@ -107,7 +107,7 @@ private _versionName = "DCO soldier FSM | Capture";
 		1,  //    decimals
 		true
 	]
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
 	"SFSM_cptrPlrEscProb",
@@ -121,7 +121,7 @@ private _versionName = "DCO soldier FSM | Capture";
 		1,  //    decimals
 		true
 	]
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
 	"SFSM_cptrPlrEscTime",
@@ -135,4 +135,4 @@ private _versionName = "DCO soldier FSM | Capture";
 		0,  //    decimals
 		false
 	]
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;

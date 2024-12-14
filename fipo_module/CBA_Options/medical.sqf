@@ -10,7 +10,7 @@ private _versionName = "DCO soldier FSM | Medical";
 		["disabeled", "legs-only", "whole-body"], 
 		1
 	]
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
 	"SFSM_ACE_Revive",
@@ -18,7 +18,7 @@ private _versionName = "DCO soldier FSM | Medical";
 	["Allow ACE revive", "Enables the ai to revive downed men on the battlefield. Beware this is a ''Insta-revive''"],
 	_versionName,
 	true
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 
 [
@@ -34,7 +34,7 @@ private _versionName = "DCO soldier FSM | Medical";
 		false
 	],
 	1
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 
 [
@@ -43,7 +43,7 @@ private _versionName = "DCO soldier FSM | Medical";
 	["Drag wounded", "ACE medical implementation. When a man is unconscious the medic will drag him to safety before reviving him"],
 	_versionName,
 	true
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 
 [
@@ -59,7 +59,7 @@ private _versionName = "DCO soldier FSM | Medical";
 		false
 	],
 	1
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 
 [
@@ -75,4 +75,4 @@ private _versionName = "DCO soldier FSM | Medical";
 		false
 	],
 	1
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;

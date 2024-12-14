@@ -45,3 +45,9 @@ class Cfg3DEN
         };
     };
 };
+
+class Extended_PreInit_EventHandlers {
+    class CBApreInit_SFSM {
+        init = "[] spawn compile preprocessFileLineNumbers '\fipo_module\CBA_Options\main.sqf'";
+    };
+};

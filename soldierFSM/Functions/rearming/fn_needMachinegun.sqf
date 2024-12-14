@@ -22,11 +22,10 @@ private _machineGunners = 0;
         _machineGunners = _machineGunners+1;
     };
     
-    if(_machineGunners isEqualTo 2)exitwith{};
     
 } forEach (units group _man);
 
-if(_machineGunners >= 2)exitWith{false;};
+if(_machineGunners >= SFSM_maxMgs)exitWith{false;};
 
 
 true;

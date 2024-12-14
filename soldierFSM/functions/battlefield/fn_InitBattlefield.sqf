@@ -49,14 +49,15 @@ _battlefield set ["terrainLoaded",  false];
 SFSM_Battles set [_battleKey, _battlefield];
 
 private _clustersData = [
-                            _centerPos,    // center of area
-                            _sides,     // sides
-                            true,        // return all data
-                            _radius,    // AreaRadius
-                            50,            // ClusterRadius
-                            2,            // height of returned positions (AGL)
-                            false        // include terrainObjects
-                        ] call Tcore_fnc_allClustersInRadius;
+    _centerPos,    // center of area
+    _sides,       // sides
+    true,        // return all data
+    _radius,    // AreaRadius
+    50,        // ClusterRadius
+    2,        // height of returned positions (AGL)
+    false    // include terrainObjects
+
+] call Tcore_fnc_allClustersInRadius;
 
 [["Loaded clusterPositions in ",(time - _startTime)," seconds."]] call SFSM_fnc_debugMessage;
 // if(true) exitWith {};

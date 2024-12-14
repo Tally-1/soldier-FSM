@@ -10,7 +10,7 @@ private _versionName = "DCO soldier FSM | Vehicles";
 		["Allow AI to hijack any vehicle", "Disable hijack behaviour", "Use action menu to reserve against hijacking"], 
 		2
 	]
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 
 
@@ -20,7 +20,7 @@ private _versionName = "DCO soldier FSM | Vehicles";
 	["Hide from vehicles", "Units will run away / hide from vehicles they cannot hurt."],
 	_versionName,
 	true
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 
 
@@ -30,7 +30,7 @@ private _versionName = "DCO soldier FSM | Vehicles";
 	["Hide by hearing vehicle", "A Vehicle with engine ON is detected within hearing-distance"],
 	_versionName,
 	true
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 
 
@@ -47,7 +47,7 @@ private _versionName = "DCO soldier FSM | Vehicles";
 		false
 	],
 	1
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 
 [
@@ -63,7 +63,7 @@ private _versionName = "DCO soldier FSM | Vehicles";
 		false
 	],
 	1
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 
 [
@@ -79,4 +79,4 @@ private _versionName = "DCO soldier FSM | Vehicles";
 		false
 	],
 	1
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;

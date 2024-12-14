@@ -6,7 +6,7 @@ private _versionName = "DCO soldier FSM | Player Options";
 	["Enable auto-stance", "Enable auto-stance for playerGroups, ai will normalize stance after going prone"],
 	_versionName,
 	true
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
 	"SFSM_autoStanceAction",
@@ -14,7 +14,7 @@ private _versionName = "DCO soldier FSM | Player Options";
 	["Show auto-stance Action", "Add action to toggle Autostance. Only applies to squad-leaders with Ai members in their squad."],
 	_versionName,
 	true
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
 	"SFSM_buddyRearm",
@@ -22,7 +22,7 @@ private _versionName = "DCO soldier FSM | Player Options";
 	["Show buddy-rearm Action", "When ammo for primary weapon is low, an action is added to allowing the player to call for ammo from his squad-members"],
 	_versionName,
 	true
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
 	"SFSM_buddyHeal",
@@ -30,4 +30,4 @@ private _versionName = "DCO soldier FSM | Player Options";
 	["Show buddy-heal Action", "When health is low, and the player has no medkit, an action is added allowing the player to call for medical-help from his squad-members"],
 	_versionName,
 	true
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;

@@ -13,7 +13,7 @@ private _versionName = "DCO soldier FSM | Sound Reaction";
 		false
 	],
 	1
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
 	"SFSM_shotDistanceAss",
@@ -28,7 +28,7 @@ private _versionName = "DCO soldier FSM | Sound Reaction";
 		false
 	],
 	1
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
 	"SFSM_shotDistanceMac",
@@ -43,7 +43,7 @@ private _versionName = "DCO soldier FSM | Sound Reaction";
 		false
 	],
 	1
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
 	"SFSM_shotDistanceSni",
@@ -58,7 +58,7 @@ private _versionName = "DCO soldier FSM | Sound Reaction";
 		false
 	],
 	1
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
 	"SFSM_shotDistanceSil",
@@ -73,4 +73,4 @@ private _versionName = "DCO soldier FSM | Sound Reaction";
 		false
 	],
 	1
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
