@@ -10,12 +10,16 @@ params[
 ];
 private _suppressTarget = _target;
 private _timer          = time+4;
+private _isObject       = typeName _target isEqualTo "OBJECT";
 
 _shooter setVariable ["SFSM_suppressing", true, true];
 
-if(_find)then{
+if(_find
+&&{_isObject})then{
     _suppressTarget = [_shooter, _target, false]call SFSM_fnc_getSuppressionTarget
 };
+
+if(!_isObject)then{diag_log (["Soldier FSM Target Array: ",_target])};
 
 if(isNil "_suppressTarget")then{
     [_shooter, "Suppress-Target not found"] spawn SFSM_fnc_flashAction;

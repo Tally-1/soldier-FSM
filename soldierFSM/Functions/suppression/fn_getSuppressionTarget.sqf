@@ -4,6 +4,9 @@ params[
     ["_knownOnly", nil,    [true]], // if knowledge is required to return the object.
     ["_fipo",      nil, [objNull]]  // When called to calculate a target for a FIPO man
 ];
+if(isNil "_target")exitWith{};
+if(isNull _target) exitWith{};
+
 if(_knownOnly
 &&{_shooter knowsAbout _target < 3.5})
 exitWith{};

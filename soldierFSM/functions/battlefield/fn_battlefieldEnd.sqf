@@ -34,6 +34,14 @@ private _units   = missionNamespace getVariable _unitVar;
 private _groups  = missionNamespace getVariable _groupsVarName;
 private _endText = ["Battle ", (_battlefield get "name"), " ended."] joinString "";
 
+if(!isNil "_sqfmBattle")
+then{
+	_sqfmBattle set  ["forcedEnd", true];
+    _sqfmBattle call ["update"];
+    _self       call ["endBattle"];
+	"SQFM battlemap Ended" call dbgmsg;
+};
+
 // force all assigned gunners to leave their turrets
 [_battlefield, true] call SFSM_fnc_leaveBattlefieldTurrets;
 
@@ -81,11 +89,8 @@ if(SFSM_simpleBff isEqualTo false)then{
 SFSM_Battles deleteAt _battleKey;
 _battlefield = nil;
 
-if(!isNil "_sqfmBattle")
-then{
-	_sqfmBattle set ["forcedEnd", true];
-	"SQFM battlemap Ended" call dbgmsg;
-};
+if(!isNil "setGlobalVar")
+then{[missionNamespace,"SFSM_Battles",SFSM_Battles] call setGlobalVar};
 
 _endText call SFSM_fnc_debugMessage;
 

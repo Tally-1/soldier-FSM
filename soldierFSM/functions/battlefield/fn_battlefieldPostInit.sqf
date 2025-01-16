@@ -80,4 +80,7 @@ _battlefield set ["currentAction",    "none"];
 //spawn a loop that updates the battlefield-hashmap every 10 seconds(can be changed in init-server)
 [_battlefield] spawn SFSM_fnc_battleFieldUpdater;
 
+if(!isNil "setGlobalVar")
+then{[missionNamespace,"SFSM_Battles",SFSM_Battles] call setGlobalVar};
+
 true;
