@@ -36,6 +36,9 @@ private _units = missionNamespace getVariable (_battleField get 'units');
 _units = ([_units, [], { [_x, "last_bullet_fired"] call SFSM_fnc_unitData;}, "ASCEND"] call BIS_fnc_sortBy);
 private _lastToShoot = _units#(count _units-1);
 private _lastGunshot = [_lastToShoot, "last_bullet_fired"] call SFSM_fnc_unitData;
+
+if(isNil "_lastGunshot")then{_lastGunshot = 0};
+
 private _lastShotTime = time - _lastGunshot;
 
 

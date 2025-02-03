@@ -21,7 +21,7 @@ private _targetPos = getPosATLVisual _target;
 private _buildingVarName = ["Occupied building ", (name _man), (getPos _building)] joinString "_";
 private _path = [_building, true, _startPos] call SFSM_fnc_buildingPath;
 private _cPos = 1;
-private _startSpeedMode = speedMode _man;
+// private _startSpeedMode = speedMode _man;
 private _startTime = time;
 private _rigged = _building getVariable ["SFSM_explosiveRigged", false];
 
@@ -110,5 +110,5 @@ _man doMove (getPos _man);
 [_man] doFollow leader (group _man);
 _man setUnitPos "AUTO";
 _man setAnimSpeedCoef 1;
-_man setSpeedMode _startSpeedMode;
+// _man setSpeedMode _startSpeedMode;
 true;

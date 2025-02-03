@@ -36,9 +36,11 @@ waitUntil {
     (!isNil "_path") || (_timer < time);
 };
 
+// private _deleteAgent = { if((!isNull _agent)&&{local _agent&&{!isDedicated}})then{deleteVehicle _agent};nil};
 
-if(isNil "_path")exitWith{deleteVehicle _agent};
 
-deleteVehicle _agent;
+if(isNil "_path")exitWith{};// _deleteAgent;
+
+// call _deleteAgent;
 
 _path;

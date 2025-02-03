@@ -19,8 +19,6 @@ if(_find
     _suppressTarget = [_shooter, _target, false]call SFSM_fnc_getSuppressionTarget
 };
 
-if(!_isObject)then{diag_log (["Soldier FSM Target Array: ",_target])};
-
 if(isNil "_suppressTarget")then{
     [_shooter, "Suppress-Target not found"] spawn SFSM_fnc_flashAction;
     _suppressTarget = _target;

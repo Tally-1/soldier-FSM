@@ -16,5 +16,5 @@ _man doMove (getPos _man);
 [_man] doFollow leader (group _man);
 _man setUnitPos "AUTO";
 _man setAnimSpeedCoef 1;
-_man setSpeedMode _startSpeedMode;
+// _man setSpeedMode _startSpeedMode;
 true;

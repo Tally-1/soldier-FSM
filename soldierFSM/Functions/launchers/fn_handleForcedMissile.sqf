@@ -2,7 +2,9 @@ params[
     ["_man",     nil, [objNull]],
     ["_missile", nil, [objNull]]
 ];
-SFSM_bullets pushBack _missile;
+if(hasInterface)
+then{SFSM_bullets pushBack _missile};
+
 private _target         = _man getVariable "SFSM_missileTargetBuilding";
 private _targetPos      = _man getVariable "SFSM_missileTargetPos";
 private _targetAltitude = _targetPos#2;

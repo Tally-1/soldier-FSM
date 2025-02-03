@@ -7,7 +7,7 @@
 //              https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
 
 Params ["_man", "_wounded"]; 
-_man attachTo [_wounded, [0,1.2,0], "face", true];
+_man attachTo [_wounded, [0,1.2,0]];
 _man setDir 180;
 
 _man action ['SWITCHWEAPON', _man, _man, 1];

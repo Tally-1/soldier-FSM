@@ -14,7 +14,9 @@ _marksman addEventHandler ["Fired", {
     _projectile setVariable ["SFSM_IconColor", _color];
     _projectile setVariable ["SFSM_MrkmnSht", true];
 
-    SFSM_bullets pushBack _projectile;
+    if(hasInterface)
+    then{SFSM_bullets pushBack _projectile};
+    
     // [_projectile]spawn SFSM_fnc_bulletTracker;
     _projectile setVariable ["SFSM_track",[ASLToAGL (eyePos _marksman)]];
 }];

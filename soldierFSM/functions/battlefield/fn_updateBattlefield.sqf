@@ -49,8 +49,8 @@ private _unitFilter = {
 
 
 private _mapObjsData = missionNamespace getVariable (_battleField get "mapObjects");
-private _groups      = [_clustersData]       call Tcore_fnc_clusterGroups;
-private _units       = [_clustersData]       call Tcore_fnc_clusterUnits select _unitFilter;
+private _groups      = [_clustersData]       call Tcore_fnc_clusterGroups    select {!isNull _x};
+private _units       = [_clustersData]       call Tcore_fnc_clusterUnits     select _unitFilter;
 private _vehicles    = [_clustersData]       call Tcore_fnc_clusterVehicles;
 private _deadMen     = allDeadMen select {_centerPos distance2D _x < _radius;}; //missionNamespace getVariable (_battleField get "deadMen");
 
@@ -130,4 +130,5 @@ if(_battleOver)exitWith{
 };
 
 ["battle_updated", _battlefield] call CBA_fnc_localEvent;
+
 _battleOver;

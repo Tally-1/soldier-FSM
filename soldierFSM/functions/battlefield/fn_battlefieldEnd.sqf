@@ -38,7 +38,7 @@ if(!isNil "_sqfmBattle")
 then{
 	_sqfmBattle set  ["forcedEnd", true];
     _sqfmBattle call ["update"];
-    _self       call ["endBattle"];
+    _sqfmBattle call ["endBattle"];
 	"SQFM battlemap Ended" call dbgmsg;
 };
 
